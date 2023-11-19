@@ -1,0 +1,38 @@
+{
+    "id": "firardfortress",
+    "title": "Firard System: Fortress version",
+    "description": "A custom system inspired by many others like DnD5 or Aventures, this system is made to play with friends in a casual and narrative way.",
+    "version": "0.0.7",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "11",
+        "maximum": "11"
+        },
+    "author": [
+        {
+            "name": "Liamor2",
+            "url": "https://foundryvtt.com"
+        }
+    ],
+    "esmodules": [
+        "scripts/firardfortress.js"
+    ],
+    "styles": [
+        "styles/styles.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "fr",
+            "name": "Français",
+            "path": "lang/fr.json"
+        }
+    ],
+    "gridDistance": 1,
+    "gridUnits": "m",
+    "background": "systems/firardfortress/assets/background.png"
+}

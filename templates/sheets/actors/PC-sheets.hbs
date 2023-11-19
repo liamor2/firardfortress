@@ -1,0 +1,20 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div>
+        <p>{{data.name}}</p>
+        <div>
+            <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
+            <span>/</span>
+            <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}"/>
+            <span>/</span>
+            <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
+        </div>
+        <div>
+            <label>STR</label>
+            <input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/>
+            <span>/</span>
+            <p>{{data.system.stat.STR.mod.text}}</p>
+            <span>/</span>
+            <a class="item-roll rollable" data-roll="1d20+{{data.system.stat.STR.mod.num}}"><i class="fa-duotone fa-dice-d20"></i></a>
+        </div>
+    </div>
+</form>
