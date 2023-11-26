@@ -1,5 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <div>
+    <header>
+        <div>
+            
+        </div>
         <p>{{data.name}}</p>
         <div>
             <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
@@ -8,13 +11,50 @@
             <span>/</span>
             <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
         </div>
+    </header>
+
+    {{!-- Sheet Nav --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <ul>
+            <li><a class="item" data-tab="main">Main</a></li>
+            <li><a class="item" data-tab="skills">Skills</a></li>
+            <li><a class="item" data-tab="spells">Spells</a></li>
+            <li><a class="item" data-tab="notes">Notes</a></li>
+        </ul>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+
+        {{!-- Main Tab --}}
+        <section class="sheet-tab tab" data-tab="main">
+            <p class="sheet-header">Main</p>
+        </section>
+
+        {{!-- Skills Tab --}}
+        <section class="sheet-tab tab" data-tab="skills">
+            <p class="sheet-header">Skills</p>
+        </section>
+
+        {{!-- Spells Tab --}}
+        <section class="sheet-tab tab" data-tab="spells">
+            <p class="sheet-header">Spells</p>
+        </section>
+
+        {{!-- Notes Tab --}}
+        <section class="sheet-tab tab" data-tab="notes">
+            <p class="sheet-header">Notes</p>
+        </section>
+    </main>
+    <div>
         <div>
-            <label>STR</label>
+            <label>{{localize "FI.Stat.STR"}}</label>
             <input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/>
             <span>/</span>
             <p>{{data.system.stat.STR.mod.text}}</p>
             <span>/</span>
             <a class="item-roll rollable" data-roll="1d20+{{data.system.stat.STR.mod.num}}"><i class="fa-duotone fa-dice-d20"></i></a>
+            <a class="item-roll advancedRoll" data-roll="STR"><i class="fa-duotone fa-dice-d12"></i></a>
         </div>
     </div>
 </form>

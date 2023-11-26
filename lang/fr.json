@@ -1,1 +1,15 @@
-{}
+{
+    "FI": {
+        "Stat": {
+            "STR" : "Force",
+            "DEX" : "Dextérité",
+            "CON" : "Constitution",
+            "INT" : "Intelligence",
+            "WIS" : "Sagesse",
+            "CHA" : "Charisme",
+            "LUK" : "Chance",
+            "WIL" : "Volonté",
+            "HON" : "Honneur"
+        }
+    }
+}

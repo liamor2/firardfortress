@@ -1,3 +1,16 @@
-/* div {
-    background-color: red;
+/* nav.sheet-tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 } */
+
+nav.sheet-tabs ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+}
+
+nav.sheet-tabs ul li {
+    margin: 0 10px;
+}
