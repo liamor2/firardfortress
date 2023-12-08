@@ -27,22 +27,19 @@ export default class firardFortressActorSheet extends ActorSheet {
                 value.mod.text = `${value.mod.num}`;
             }
         }
-        if (verify) {
-            this.verifyData(data);
-            console.log(data);
-        }
+        this.verifyData(data, verify);
+        console.log(data);
         return data;
     }
 
     activateListeners(html) {
         super.activateListeners(html);
 
-        this.statBar();
         html.find('.rollable').click(this._onRoll.bind(this));
         html.find('.add').click(this._onAdd.bind(this));
         html.find('.delete').click(this._onDelete.bind(this));
 
-
+        this.statBar();
     }
 
     _onRoll(event) {
@@ -190,19 +187,18 @@ export default class firardFortressActorSheet extends ActorSheet {
             index = parseInt(dataset.delete.slice(17));
             dataset.delete = "system.languages";
         }
-        
 
         switch (dataset.delete) {
-            case  "system.languages":
+            case "system.languages":
                 let languages = data.data.system.languages;
                 if (!Array.isArray(languages)) {
                     languages = Object.values(languages);
                 }
                 languages.splice(index, 1);
-                updateData = {"system.languages": languages};
+                updateData = { "system.languages": languages };
                 break;
             default:
-                console.log("default: " + dataset.delete)
+                console.log("default: " + dataset.delete);
                 break;
         }
         this.object.update(updateData);
@@ -210,13 +206,15 @@ export default class firardFortressActorSheet extends ActorSheet {
 
 
 
-    verifyData(data) {
+    verifyData(data, verify) {
         this.verifyMP(data);
         this.verifySP(data);
         this.verifyPA(data);
         this.verifyMA(data);
         this.verifyHP(data);
-        this.verifyLanguages(data);
+        if (verify) {
+            this.verifyLanguages(data);
+        }
     }
         
 
@@ -406,88 +404,45 @@ export default class firardFortressActorSheet extends ActorSheet {
         }
     }
 
-    // verify languages
-    async verifyLanguages(data) {
-        let languages = data.data.system.languages;
-        const items = data.items;
-        const languageItems = [];
-        if (!Array.isArray(languages)) {
-            languages = Object.values(languages);
-        }
-        if (languages.length == 0) {
-            languages.push({
+    // verify Languages
+    verifyLanguages(data) {
+        const systemLanguages = Array.isArray(data.data.system.languages) ? data.data.system.languages : Object.values(data.data.system.languages);
+        const languageItems = this.actor.items.filter(item => item.type === "Language");
+
+        if (systemLanguages.length === 0) {
+            systemLanguages.push({
                 "name": "Common",
                 "speaking": true,
                 "reading": true,
                 "writing": true
             });
         }
-        // console.log(languages);
 
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            if (item.type == "Language") {
-                languageItems.push(item);
+        for (const language of systemLanguages) {
+            if (language.name === "") {
+                continue;
             }
-        }
-        // console.log(languageItems);
 
-        if (languages.length != languageItems.length) {
-            console.log("firardFortress | Languages do not match items, fixing...");
-            for (let i = 0; i < languageItems.length; i++) {
-                const item = languageItems[i];
-                if (item._id != undefined) {
-                    try {
-                        await this.object.deleteEmbeddedDocuments("Item", [item._id]);
-                        console.log("firardFortress | Deleted item: " + item.name);
-                    } catch (error) {
-                        console.log("firardFortress | Error deleting item: " + item.name);
+            const associatedItem = languageItems.find(item => item.name === language.name);
+            if (!associatedItem) {
+                console.log("Firard Fortress | Creating new language item");
+                const newLanguageItem = [{
+                    name: language.name,
+                    type: "Language",
+                    data: {
+                        speaking: language.speaking,
+                        reading: language.reading,
+                        writing: language.writing
                     }
+                }];
+                if (languageItems.find(item => item.name === language.name)) {
+                    console.log("Firard Fortress | Language item already exists");
+                    continue;
                 } else {
-                    console.log("firardFortress | Item does not exist");
+                    this.actor.createEmbeddedDocuments("Item", newLanguageItem);
                 }
             }
-            for (let i = 0; i < languages.length; i++) {
-                const language = languages[i].name;
-                console.log(language);
-                if (language !== "") {
-                    const newItem = { name: `Language (${language})`, type: 'Language' };
-                    this.object.createEmbeddedDocuments("Item", [newItem]);
-                }
-            }
-            console.log("firardFortress | Languages fixed");
-        } else {
-            console.log("firardFortress | Languages match items");
         }
-
-        // for (let i = 0; i < items.length; i++) {
-        //     const item = items[i];
-        //     // console.log(item);
-        //     if (item.type == "Language") {
-        //         languageItems.push(item);
-        //     }
-        // }
-        // if (languages.length != languageItems.length) {
-        //     console.log("firardFortress | Languages do not match items, fixing...");
-        //     for (let i = 0; i < items.length; i++) {
-        //         const item = items[i];
-        //         // console.log(item);
-        //         if (item.type == "Language") {
-        //             this.object.deleteEmbeddedDocuments("Item", [item._id]);
-        //         }
-        //     }
-        //     for (let i = 0; i < languages.length; i++) {
-        //         const language = languages[i].name;
-        //         console.log(language);
-        //         if (language !== "") {
-        //             const newItem = { name: `Language (${language})`, type: 'Language' };
-        //             this.object.createEmbeddedDocuments("Item", [newItem]);
-        //         }
-        //     }
-        //     console.log("firardFortress | Languages fixed");
-        // } else {
-        //     console.log("firardFortress | Languages match items");
-        // }
     }
 
 
