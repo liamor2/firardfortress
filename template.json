@@ -77,23 +77,30 @@
                 "temp": 0
             },
             "PA": {
-                "max": 10,
+                "max": 0,
                 "value": 0,
                 "temp": 0
             },
             "MA": {
-                "max": 10,
+                "max": 0,
                 "value": 0,
                 "temp": 0
             },
-            "baseSpeed": 10
+            "baseSpeed": 10,
+            "posture": "",
+            "displayAdvancedRoll": true
         },
         "subStat": {
             "name": "",
             "race": "",
             "class": "",
             "level": 1,
-            "languages": []
+            "languages": [{
+                "name": "Common",
+                "speaking": true,
+                "reading": true,
+                "writing": true
+            }]
         },
         "description": {
             "biography": "",
@@ -121,7 +128,7 @@
     }
 },
 "Item": {
-    "types": ["Equipment", "Weapon", "Misc", "Money", "Proficiency", "Spell", "Skill", "Hybrid", "Transformation", "Passif", "AdventureDice"],
+    "types": ["Equipment", "Weapon", "Misc", "Money", "Proficiency", "Spell", "Skill", "Hybrid", "Transformation", "Passif", "AdventureDice", "Language"],
     "templates": {
         "general":{
             "name": "",
@@ -242,7 +249,11 @@
     },
     "AdventureDice": {
         "group": "",
-        "balance": 0
+        "heroBalance": 0,
+        "GMBalance": 0
+    },
+    "Language": {
+        "name": ""
     }
 }
 }

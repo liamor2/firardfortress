@@ -1,25 +1,233 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header>
-        <div>
-            
+    <header class="header">
+        <div class="header-left">
+            <div class="header-top">
+                <div class="header-top-left">
+                    <img src="{{data.img}}" class="image-header" alt="{{data.name}}"/>
+                    <div>
+                        <label>{{localize "FI.Name"}}</label>
+                        <input type="text" name="name" value="{{data.name}}"/>
+                    </div>
+                </div>
+                <div class="header-top-right">
+                    <table>
+                        <tr>
+                            <td>
+                                <label>{{localize "FI.PlayerName"}}</label>
+                                <input type="text" name="system.playerName" value="{{data.system.playerName}}"/>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.Guild"}}</label>
+                                <input type="text" name="system.guild" value="{{data.system.guild}}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>{{localize "FI.Class"}}</label>
+                                <input type="text" name="system.class" value="{{data.system.class}}"/>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.Race"}}</label>
+                                <input type="text" name="system.race" value="{{data.system.race}}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>{{localize "FI.Level"}}</label>
+                                <input type="number" name="system.level" value="{{data.system.level}}"/>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.Posture.Label"}}</label>
+                                <select name="system.posture">
+                                    <option {{#if (eq data.system.posture "")}}selected{{/if}} disabled>{{localize "FI.Posture.Select"}}</option>
+                                    <option value="Offensive" {{#if (eq data.system.posture "Offensive")}}selected{{/if}}>{{localize "FI.Posture.Offensive"}}</option>
+                                    <option value="Defensive" {{#if (eq data.system.posture "Defensive")}}selected{{/if}}>{{localize "FI.Posture.Defensive"}}</option>
+                                    <option value="Focus" {{#if (eq data.system.posture "Focus")}}selected{{/if}}>{{localize "FI.Posture.Focus"}}</option>
+                                    <option value="Concentration" {{#if (eq data.system.posture "Concentration")}}selected{{/if}}>{{localize "FI.Posture.Concentration"}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <table>
+                    <tr>
+                        <td colspan="4">{{localize "FI.Stat.STR"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.DEX"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.CON"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.INT"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.WIS"}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.STR.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.STR.mod.num}}" data-roll="{{data.system.stat.STR.mod.num}}" data-label="{{localize "FI.Stat.STR"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.DEX.value" value="{{data.system.stat.DEX.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.DEX.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.DEX.mod.num}}" data-roll="{{data.system.stat.DEX.mod.num}}" data-label="{{localize "FI.Stat.DEX"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.CON.value" value="{{data.system.stat.CON.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.CON.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.CON.mod.num}}" data-roll="{{data.system.stat.CON.mod.num}}" data-label="{{localize "FI.Stat.CON"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.INT.value" value="{{data.system.stat.INT.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.INT.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.INT.mod.num}}" data-roll="{{data.system.stat.INT.mod.num}}" data-label="{{localize "FI.Stat.INT"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.WIS.value" value="{{data.system.stat.WIS.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.WIS.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.WIS.mod.num}}" data-roll="{{data.system.stat.WIS.mod.num}}" data-label="{{localize "FI.Stat.WIS"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">{{localize "FI.Stat.CHA"}}</td>
+                        <td colspan="5">{{localize "FI.Stat.LUK"}}</td>
+                        <td colspan="5">{{localize "FI.Stat.WIL"}}</td>
+                        <td colspan="5">{{localize "FI.Stat.HON"}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.CHA.value" value="{{data.system.stat.CHA.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.CHA.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.CHA.mod.num}}" data-roll="{{data.system.stat.CHA.mod.num}}" data-label="{{localize "FI.Stat.CHA"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.LUK.value" value="{{data.system.stat.LUK.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.LUK.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.LUK.mod.num}}" data-roll="{{data.system.stat.LUK.mod.num}}" data-label="{{localize "FI.Stat.LUK"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.WIL.value" value="{{data.system.stat.WIL.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.WIL.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.WIL.mod.num}}" data-roll="{{data.system.stat.WIL.mod.num}}" data-label="{{localize "FI.Stat.WIL"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.HON.value" value="{{data.system.stat.HON.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.HON.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.Roll"}} 1d20+{{data.system.stat.HON.mod.num}}" data-roll="{{data.system.stat.HON.mod.num}}" data-label="{{localize "FI.Stat.HON"}}"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <p>{{data.name}}</p>
-        <div>
-            <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
-            <span>/</span>
-            <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}"/>
-            <span>/</span>
-            <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
+        <div class="stat-container header-right">
+            <div class="stat label">
+                <p>{{localize "FI.Value"}}</p>
+                <span>/</span>
+                <p>{{localize "FI.Temp"}}</p>
+                <span>/</span>
+                <p>{{localize "FI.Max"}}</p>
+            </div>
+            <label>
+                <svg version="1.0" width="200.000000pt" height="200.000000pt" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"><path d="M639 1485 c-67 -21 -138 -73 -176 -129 -135 -196 -50 -431 246 -675 263 -218 291 -223 466 -92 212 160 318 274 384 411 32 68 36 83 36 160 0 71 -4 94 -26 141 -34 72 -96 134 -168 168 -47 22 -70 26 -141 26 -94 0 -149 -19 -221 -76 l-39 -31 -39 31 c-90 71 -222 98 -322 66z m168 -160 c19 -8 53 -31 74 -49 21 -19 56 -40 78 -47 54 -16 109 0 160 47 72 64 150 80 219 45 46 -23 67 -46 87 -94 19 -47 19 -86 -2 -139 -40 -105 -151 -226 -329 -360 l-94 -70 -94 70 c-225 169 -347 323 -346 436 0 37 30 104 56 128 55 48 125 61 191 33z"/> </g> </svg>
+                {{localize "FI.HP"}}
+            </label>
+            <div class="bar HPbar">
+                <div class="barValue HPbarValue"></div>
+                <div class="barValue barTemp HPbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
+            </div>
+            <label>
+                <svg version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M3725 4807 c-14 -11 -17 -21 -12 -46 14 -68 142 -232 210 -267 50 -27 117 14 117 72 0 44 -69 144 -129 189 -85 61 -148 79 -186 52z"/> <path d="M2540 4753 c-75 -8 -362 -64 -485 -94 -129 -31 -132 -31 -485 -39 -312 -7 -365 -10 -437 -29 -164 -41 -300 -122 -395 -233 -116 -135 -162 -178 -221 -208 -33 -16 -72 -30 -87 -30 -59 0 -64 -56 -10 -106 39 -38 88 -54 185 -60 111 -8 144 -20 160 -56 18 -45 6 -81 -64 -188 -179 -275 -312 -615 -372 -955 -30 -170 -38 -540 -15 -710 38 -276 76 -427 136 -546 31 -60 91 -68 146 -19 19 16 46 33 60 36 71 18 175 -54 257 -178 68 -102 91 -169 112 -323 42 -319 88 -423 226 -514 139 -91 499 -173 759 -172 222 0 319 38 306 120 -9 62 -49 86 -167 99 -141 15 -227 56 -323 155 -95 97 -154 201 -253 444 -45 111 -123 282 -172 380 -117 229 -134 289 -135 483 l-1 145 46 95 c29 60 64 115 97 150 59 63 61 59 36 -60 -28 -133 3 -315 80 -469 48 -95 81 -131 118 -131 44 0 64 15 84 62 15 37 17 69 16 216 -3 223 -2 224 155 380 104 103 126 131 182 232 84 151 129 215 188 272 67 65 141 100 222 105 79 5 124 -17 147 -73 24 -58 10 -94 -71 -185 -169 -189 -268 -424 -295 -699 -20 -192 17 -367 105 -506 74 -117 276 -285 430 -360 92 -44 253 -96 385 -125 87 -19 135 -23 280 -23 182 1 250 10 382 55 271 91 594 353 700 567 35 70 42 94 46 161 4 76 3 80 -21 95 -35 24 -73 5 -128 -63 -55 -69 -151 -135 -218 -151 -151 -36 -134 42 70 310 156 205 237 376 304 645 83 329 89 735 15 1027 -70 271 -173 446 -334 565 -53 39 -62 42 -100 37 -22 -3 -48 -15 -57 -25 -16 -17 -15 -25 12 -109 64 -199 16 -350 -111 -350 -104 0 -191 106 -307 375 -48 111 -93 182 -163 258 -148 162 -373 274 -623 311 -95 15 -305 19 -397 9z m-745 -920 c112 -40 144 -45 236 -38 82 6 88 5 108 -16 25 -27 28 -81 5 -104 -21 -20 -62 -41 -212 -105 -147 -63 -215 -105 -305 -190 -86 -80 -166 -177 -296 -357 -56 -78 -123 -163 -149 -188 -83 -83 -181 -117 -224 -78 -35 31 -17 197 39 363 94 280 345 636 496 705 109 50 179 52 302 8z m1370 -115 c18 -18 60 -78 91 -133 128 -224 232 -361 437 -573 242 -250 288 -349 288 -613 -1 -332 -119 -599 -327 -738 -93 -62 -264 -121 -352 -121 -214 0 -426 159 -493 369 -43 135 -22 338 47 458 69 119 192 198 233 149 6 -7 15 -46 20 -86 7 -52 16 -79 32 -96 59 -63 160 -48 202 29 21 39 22 54 21 222 -1 256 -22 338 -166 655 -82 180 -142 343 -154 418 -6 36 -3 47 16 67 32 34 64 31 105 -7z m492 -105 c128 -138 243 -276 249 -298 13 -50 -42 -96 -99 -81 -60 15 -187 149 -237 250 -32 62 -40 132 -18 154 24 24 69 14 105 -25z m-2730 -1327 c24 -21 28 -32 31 -95 2 -39 1 -87 -2 -106 -9 -46 -48 -91 -93 -106 -72 -23 -136 40 -136 135 0 56 30 136 65 173 30 32 97 32 135 -1z"/> <path d="M4687 2349 c-23 -13 -47 -62 -47 -94 0 -33 24 -81 45 -89 37 -14 86 -6 110 19 20 19 25 34 25 75 0 41 -5 56 -25 75 -26 27 -75 33 -108 14z"/> <path d="M655 1303 c-30 -7 -73 -52 -80 -83 -9 -40 18 -96 54 -114 40 -21 69 -20 108 4 71 43 64 154 -12 186 -36 15 -37 15 -70 7z"/> <path d="M2186 951 c-44 -5 -63 -12 -77 -30 -25 -31 -24 -54 6 -100 33 -53 71 -80 198 -141 101 -48 116 -59 245 -183 176 -170 229 -196 398 -197 93 0 189 16 389 66 167 42 227 67 260 106 44 52 28 150 -29 176 -51 23 -144 41 -266 52 -151 13 -188 24 -352 106 -70 35 -167 75 -214 89 -144 42 -432 71 -558 56z"/><path d="M4008 721 c-27 -24 -33 -36 -33 -71 0 -35 6 -47 33 -71 79 -70 197 -7 178 95 -15 77 -115 103 -178 47z"/></g></svg>
+                {{localize "FI.MP"}}
+            </label>
+            <div class="bar MPbar">
+                <div class="barValue MPbarValue"></div>
+                <div class="barValue barTemp MPbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.MP.value" value="{{data.system.MP.value}}" max="{{data.system.MP.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.MP.temp" value="{{data.system.MP.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.MP.max" value="{{data.system.MP.max}}"/>
+            </div>
+            <label>
+                <svg version="1.0" width="200.000000pt" height="200.000000pt" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M834 1444 c-291 -305 -530 -562 -532 -570 -2 -8 2 -21 8 -29 10 -13 60 -15 291 -15 266 0 280 -1 299 -20 25 -25 44 14 -206 -422 -107 -185 -194 -343 -194 -350 0 -19 21 -38 42 -38 14 0 1122 1063 1150 1104 10 15 10 28 -2 46 -8 13 -60 16 -337 20 l-328 5 -3 25 c-2 17 60 137 198 384 110 198 200 367 200 376 0 21 -20 40 -41 40 -9 0 -255 -250 -545 -556z"/> </g></svg>
+                {{localize "FI.SP"}}
+            </label>
+            <div class="bar SPbar">
+                <div class="barValue SPbarValue"></div>
+                <div class="barValue barTemp SPbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.SP.value" value="{{data.system.SP.value}}" max="{{data.system.SP.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.SP.temp" value="{{data.system.SP.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.SP.max" value="{{data.system.SP.max}}"/>
+            </div>
+            <label>
+                <svg version="1.0" width="800.000000pt" height="800.000000pt" viewBox="0 0 800.000000 800.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M732 7988 c-44 -15 -118 -82 -141 -127 -42 -81 -140 -617 -175 -951 -37 -349 -48 -848 -25 -1186 102 -1548 690 -2981 1707 -4164 163 -188 516 -540 712 -708 151 -130 951 -744 1055 -810 61 -39 136 -51 204 -32 70 19 903 651 1166 886 445 395 787 778 1114 1244 642 915 1061 1983 1210 3085 71 526 81 1148 26 1675 -37 353 -127 850 -174 954 -23 52 -85 108 -145 131 -79 30 -132 18 -298 -68 -449 -236 -821 -333 -1313 -344 -398 -9 -706 42 -1079 179 -95 35 -209 89 -461 217 -38 20 -65 26 -115 26 -63 0 -73 -4 -290 -112 -321 -160 -558 -236 -914 -291 -158 -24 -623 -24 -785 1 -180 27 -364 71 -513 121 -179 61 -270 100 -458 198 -135 71 -162 81 -215 84 -33 2 -75 -2 -93 -8z m3399 -592 c506 -243 1091 -360 1632 -326 100 6 245 20 322 31 257 36 593 129 824 229 52 22 96 39 98 37 5 -5 41 -224 57 -352 205 -1572 -172 -3170 -1058 -4485 -241 -358 -478 -644 -800 -966 -299 -298 -440 -418 -943 -798 l-263 -199 -322 243 c-178 134 -387 297 -465 362 -379 317 -734 690 -1021 1075 -490 655 -842 1364 -1062 2138 -119 420 -190 815 -232 1285 -19 221 -16 842 5 1060 26 256 78 624 91 637 2 2 45 -15 97 -38 136 -59 336 -124 522 -169 680 -166 1378 -116 2052 145 65 25 312 140 331 154 1 1 61 -28 135 -63z"/> <path d="M3865 7004 c-474 -194 -964 -294 -1441 -294 -269 0 -583 34 -809 87 -60 14 -141 28 -178 30 -61 5 -72 3 -107 -21 -39 -26 -62 -59 -73 -106 -3 -14 -11 -135 -17 -270 -37 -793 97 -1647 375 -2395 376 -1009 977 -1866 1810 -2580 151 -129 495 -384 534 -396 66 -20 104 0 313 158 813 615 1421 1345 1857 2228 454 920 677 1973 631 2985 -6 135 -15 261 -21 281 -19 74 -80 119 -161 119 -24 0 -102 -13 -174 -30 -735 -168 -1506 -102 -2236 191 -80 33 -157 59 -170 59 -12 0 -72 -21 -133 -46z m230 -344 c513 -209 1185 -317 1735 -280 176 11 413 40 527 64 l61 13 6 -30 c3 -16 6 -120 6 -231 0 -1766 -781 -3423 -2137 -4535 -165 -135 -279 -221 -293 -221 -7 0 -60 37 -118 82 -581 444 -1046 954 -1424 1558 -585 936 -888 1997 -888 3111 0 114 3 220 6 236 l6 30 61 -13 c228 -47 622 -79 862 -70 432 18 801 83 1175 206 118 38 307 110 316 119 0 1 45 -17 99 -39z"/> </g> </svg>
+                {{localize "FI.PA"}}
+            </label>
+            <div class="bar PAbar">
+                <div class="barValue PAbarValue"></div>
+                <div class="barValue barTemp PAbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.PA.value" value="{{data.system.PA.value}}" max="{{data.system.PA.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.PA.temp" value="{{data.system.PA.temp}}"/>
+                <span>/</span>
+                <input type="number" name="system.PA.max" value="{{data.system.PA.max}}"/>
+            </div>
+            <label>
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="800.000000pt" height="800.000000pt" viewBox="0 0 800.000000 800.000000"  preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M7090 7613 c-136 -29 -525 -95 -755 -127 -685 -97 -1544 -156 -2279 -156 -1000 0 -2116 101 -2958 267 -103 20 -189 35 -192 33 -8 -10 -27 -485 -33 -859 -6 -376 -6 -384 13 -377 105 41 172 51 324 50 141 0 163 -3 240 -28 266 -87 464 -268 569 -521 43 -104 63 -203 64 -330 5 -402 -270 -752 -673 -856 -110 -28 -301 -31 -404 -6 -38 10 -71 15 -74 12 -9 -8 36 -360 74 -590 139 -831 355 -1407 697 -1860 88 -116 315 -339 439 -431 191 -142 340 -224 923 -513 319 -157 439 -227 595 -347 110 -84 261 -232 335 -328 28 -36 52 -65 55 -65 3 -1 25 25 50 57 65 83 194 215 282 289 162 135 319 228 698 416 604 299 750 385 976 574 529 443 853 1137 1033 2208 33 198 84 586 77 593 -3 2 -35 -4 -73 -14 -100 -26 -291 -24 -402 5 -336 88 -586 346 -656 682 -22 103 -19 275 5 379 80 332 362 601 698 666 144 27 329 12 455 -37 l49 -20 -6 268 c-10 431 -28 915 -35 954 l-6 35 -105 -23z m-1646 -1314 c-114 -393 -210 -717 -214 -722 -5 -6 -264 64 -275 75 -2 1 36 138 85 303 48 165 86 301 85 303 -2 2 -298 -218 -660 -488 -361 -270 -660 -490 -665 -488 -5 2 -46 52 -90 112 -69 91 -80 110 -68 122 22 22 2003 1502 2006 1499 2 -1 -90 -324 -204 -716z m-2359 243 c336 -244 616 -449 622 -456 10 -9 -4 -35 -67 -121 -44 -61 -85 -111 -90 -113 -5 -2 -124 81 -265 183 -141 103 -258 185 -261 183 -2 -3 115 -359 261 -792 146 -433 265 -794 265 -801 0 -8 -52 -31 -135 -58 -74 -25 -135 -44 -135 -43 0 1 -187 557 -415 1236 -228 678 -415 1235 -415 1237 0 7 4 4 635 -455z m2568 -1857 l1003 -760 -241 -3 c-132 -2 -475 0 -762 3 l-523 7 0 144 0 144 324 2 323 3 -654 494 c-401 304 -652 500 -649 507 10 25 161 223 169 221 4 -1 459 -344 1010 -762z m-2830 45 c74 -104 74 -104 53 -120 -11 -9 -138 -99 -281 -201 l-260 -184 818 -3 817 -2 0 -145 0 -145 -1272 0 c-786 0 -1268 4 -1262 9 5 5 297 215 649 465 505 360 642 453 652 443 7 -6 45 -59 86 -117z m1888 -241 c80 -25 129 -46 129 -54 0 -10 -513 -1629 -751 -2373 -6 -18 -12 -32 -14 -30 -12 12 -484 1493 -478 1498 8 7 266 91 269 87 1 -1 45 -137 98 -302 112 -349 105 -329 111 -324 2 3 113 346 246 764 133 418 243 763 246 768 6 10 2 11 144 -34z"/> </g> </svg>
+                {{localize "FI.MA"}}
+            </label>
+            <div class="bar MAbar">
+                <div class="barValue MAbarValue"></div>
+                <div class="barValue barTemp MAbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.MA.value" value="{{data.system.MA.value}}" max="{{data.system.MA.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.MA.temp" value="{{data.system.MA.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.MA.max" value="{{data.system.MA.max}}"/>
+            </div>
         </div>
     </header>
 
     {{!-- Sheet Nav --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <ul>
-            <li><a class="item" data-tab="main">Main</a></li>
-            <li><a class="item" data-tab="skills">Skills</a></li>
-            <li><a class="item" data-tab="spells">Spells</a></li>
-            <li><a class="item" data-tab="notes">Notes</a></li>
+            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
+            <li><a class="item" data-tab="skills">{{localize "FI.Skills"}}</a></li>
+            <li><a class="item" data-tab="spells">{{localize "FI.Spells"}}</a></li>
+            <li><a class="item" data-tab="notes">{{localize "FI.Notes"}}</a></li>
         </ul>
     </nav>
 
@@ -43,18 +251,80 @@
 
         {{!-- Notes Tab --}}
         <section class="sheet-tab tab" data-tab="notes">
-            <p class="sheet-header">Notes</p>
+            <div class="description">
+                {{!-- implement language list --}}
+                <div class="description-language">
+                    <label>{{localize "FI.Language"}}</label>
+                    <table>
+                        <tr>
+                            <th>{{localize "FI.Language"}}</th>
+                            <th>{{localize "FI.Speaking"}}</th>
+                            <th>{{localize "FI.Reading"}}</th>
+                            <th>{{localize "FI.Writing"}}</th>
+                            <th>{{localize "FI.Delete"}}</th>
+                        </tr>
+                            {{#each data.system.languages as |language index|}}
+                                <tr>
+                                    <td><input type="text" name="system.languages.{{index}}.name" value="{{language.name}}"/></td>
+                                    <td><input type="checkbox" name="system.languages.{{index}}.speaking" {{#if language.speaking}}checked{{/if}}/></td>
+                                    <td><input type="checkbox" name="system.languages.{{index}}.reading" {{#if language.reading}}checked{{/if}}/></td>
+                                    <td><input type="checkbox" name="system.languages.{{index}}.writing" {{#if language.writing}}checked{{/if}}/></td>
+                                    <td><button class="delete" data-delete="system.languages.{{index}}"><i class="fa-duotone fa-trash"></i></button></td>
+                                </tr>
+                            {{/each}}
+                    </table>
+                    <button class="add" data-add="system.languages"><i class="fa-duotone fa-plus"></i></button>
+                </div>
+                <div class="description-left">
+                    <div class="description-biography">
+                        <label>{{localize "FI.Biography"}}</label>
+                        <textarea class="richTextArea" name="system.biography">{{data.system.biography}}</textarea>
+                    </div>
+                    <div class="description-appearance">
+                        <label>{{localize "FI.Appearance"}}</label>
+                        <textarea class="richTextArea" name="system.appearance">{{data.system.appearance}}</textarea>
+                    </div>
+                </div>
+                <div class="description-right">
+                    <div class="description-personality">
+                        <label>{{localize "FI.Personality"}}</label>
+                        <textarea class="richTextArea" name="system.personality">{{data.system.personality}}</textarea>
+                    </div>
+                    <div class="description-background">
+                        <label>{{localize "FI.Background"}}</label>
+                        <textarea class="richTextArea" name="system.background">{{data.system.background}}</textarea>
+                    </div>
+                </div>
+                <div class="description-notes">
+                    <label>{{localize "FI.Notes"}}</label>
+                    <textarea class="richTextArea" name="system.description.notes">{{data.system.notes}}</textarea>
+                </div>
+            </div>
         </section>
     </main>
-    <div>
-        <div>
-            <label>{{localize "FI.Stat.STR"}}</label>
-            <input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/>
-            <span>/</span>
-            <p>{{data.system.stat.STR.mod.text}}</p>
-            <span>/</span>
-            <a class="item-roll rollable" data-roll="1d20+{{data.system.stat.STR.mod.num}}"><i class="fa-duotone fa-dice-d20"></i></a>
-            <a class="item-roll advancedRoll" data-roll="STR"><i class="fa-duotone fa-dice-d12"></i></a>
-        </div>
-    </div>
+
+    {{!-- Sheet Footer --}}
+    <footer class="sheet-footer footer">
+        <span class="sheet-footer-right">
+            <label>{{localize "FI.DisplayAdvancedRoll"}}</label>
+            <input type="checkbox" name="system.displayAdvancedRoll" {{#if data.system.displayAdvancedRoll}}checked{{/if}}/>
+        </span>
+    </footer>
 </form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

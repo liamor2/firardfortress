@@ -10,6 +10,18 @@
             "LUK" : "Chance",
             "WIL" : "Volonté",
             "HON" : "Honneur"
-        }
+        },
+        "Posture": {
+            "Label": "Posture",
+            "Select": "-- Sélectionnez une posture --",
+            "Offensive": "Offensif",
+            "Defensive": "Défensif",
+            "Focus": "Focus",
+            "Concentration": "Concentration"
+        },
+        "Value": "VAl",
+        "Temp": "TMP",
+        "Max": "MAX",
+        "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
     }
 }

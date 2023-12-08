@@ -10,6 +10,18 @@
             "LUK" : "Luck",
             "WIL" : "Willpower",
             "HON" : "Honor"
-        }
+        },
+        "Posture": {
+            "Label": "Posture",
+            "Select": "-- Please Select a Posture --",
+            "Offensive": "Offensive",
+            "Defensive": "Defensive",
+            "Focus": "Focus",
+            "Concentration": "Concentration"
+        },
+        "Value": "VAl",
+        "Temp": "TMP",
+        "Max": "MAX",
+        "DisplayAdvancedRoll": "Display Advanced Roll"
     }
 }

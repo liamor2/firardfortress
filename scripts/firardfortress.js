@@ -12,3 +12,7 @@ Hooks.once('init', async function() {
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("firardFortress", firardFortressItemSheet, { makeDefault: true });
 });
+
+Hooks.once('ready', async function() {
+    console.log('firardFortress | Ready');
+});
