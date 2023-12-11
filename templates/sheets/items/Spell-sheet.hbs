@@ -18,7 +18,8 @@
             <label>{{localize "FI.SpellSheet.MPCost"}}</label>
             <input type="number" class="" name="system.mpCost" value="{{data.system.mpCost}}"/>
             <label>{{localize "FI.SpellSheet.SpellType"}}</label>
-            <input type="text" name="system.spellType" value="{{data.system.spellType}}" list="spellTypes"/>
+            <input type="text" name="system.spellType" value="{{data.system.spellType}}" list="spellTypes" title="{{localize "FI.SpellSheet.SpellType"}}"/>
+            
             <datalist id="spellTypes">
                 <option value="{{localize "FI.SpellType.Abjuration"}}"/>
                 <option value="{{localize "FI.SpellType.Alteration"}}"/>
