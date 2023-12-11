@@ -2,12 +2,12 @@ import { gsap } from "/scripts/greensock/esm/all.js";
 
 export default class firardFortressActorSheet extends ActorSheet {
     get template() {
-        console.log(`firardFortress | Loading ${this.actor.type} sheet`);
+        console.log(`Firard Fortress | Loading ${this.actor.type} sheet`);
 
         return `systems/firardfortress/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
     }
 
-    static get defaultOptions() {
+    static get defaultOptions() { 
         return mergeObject(super.defaultOptions, {
             width: 800,
             height: 880,
@@ -35,10 +35,20 @@ export default class firardFortressActorSheet extends ActorSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
+        // click listeners
         html.find('.rollable').click(this._onRoll.bind(this));
         html.find('.add').click(this._onAdd.bind(this));
         html.find('.delete').click(this._onDelete.bind(this));
 
+        // hover listeners
+
+        // input listeners
+
+        // change listeners
+
+        // submit listeners
+
+        // other listeners
         this.statBar();
     }
 
@@ -46,7 +56,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        const data = this.getData(true);
+        const data = this.getData(false);
         const advancedRoll = data.data.system.displayAdvancedRoll;
         let mod = 0;
         if (dataset.roll < 0) {
@@ -150,7 +160,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        const data = this.getData(true);
+        const data = this.getData(false);
         let updateData = {};
         // console.log(dataset.add);
 
@@ -194,7 +204,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                 if (!Array.isArray(languages)) {
                     languages = Object.values(languages);
                 }
-                languages.splice(index, 1);
+                let language = languages.splice(index, 1);
                 updateData = { "system.languages": languages };
                 break;
             default:
@@ -205,6 +215,11 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
 
+    allowDrop(ev) {	
+        ev.preventDefault();
+    }
+
+
 
     verifyData(data, verify) {
         this.verifyMP(data);
@@ -212,7 +227,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.verifyPA(data);
         this.verifyMA(data);
         this.verifyHP(data);
-        if (verify) {
+        if (verify && this.actor.type !== "NPC") {
             this.verifyLanguages(data);
         }
     }
@@ -408,6 +423,8 @@ export default class firardFortressActorSheet extends ActorSheet {
     verifyLanguages(data) {
         const systemLanguages = Array.isArray(data.data.system.languages) ? data.data.system.languages : Object.values(data.data.system.languages);
         const languageItems = this.actor.items.filter(item => item.type === "Language");
+        let customLanguageSTR = game.settings.get("polyglot", "customLanguages");
+        let customLanguages = customLanguageSTR.split(",");
 
         if (systemLanguages.length === 0) {
             systemLanguages.push({
@@ -419,30 +436,55 @@ export default class firardFortressActorSheet extends ActorSheet {
         }
 
         for (const language of systemLanguages) {
-            if (language.name === "") {
+            if (`Language(${language.name})` === "") {
                 continue;
             }
 
-            const associatedItem = languageItems.find(item => item.name === language.name);
+            const associatedItem = languageItems.find(item => item.name === `Language(${language.name})`);
             if (!associatedItem) {
                 console.log("Firard Fortress | Creating new language item");
                 const newLanguageItem = [{
-                    name: language.name,
+                    name: `Language(${language.name})`,
                     type: "Language",
                     data: {
+                        name: language.name,
                         speaking: language.speaking,
                         reading: language.reading,
                         writing: language.writing
                     }
                 }];
-                if (languageItems.find(item => item.name === language.name)) {
+                if (languageItems.find(item => item.name === `Language(${language.name})`)) {
                     console.log("Firard Fortress | Language item already exists");
                     continue;
                 } else {
-                    this.actor.createEmbeddedDocuments("Item", newLanguageItem);
+                    if (language.name != "") {
+                        this.actor.createEmbeddedDocuments("Item", newLanguageItem);
+                    } else {
+                        console.log("Firard Fortress | Language item name is empty");
+                    }
                 }
             }
+
+            if (!customLanguages.includes(language.name) && language.name != "") {
+                customLanguages.push(language.name);
+            }
         }
+        for (const item of languageItems) {
+            const language = systemLanguages.find(language => `Language(${language.name})` === item.name);
+            if (!language) {
+                console.log("Firard Fortress | Deleting language item");
+                item.delete();
+            } else if (languageItems.filter(item => item.name === `Language(${language.name})`).length > 1) {
+                const duplicateItems = languageItems.filter(item => item.name === `Language(${language.name})`);
+                const itemToRemove = duplicateItems[0];
+                console.log("Firard Fortress | Removing duplicate language item");
+                itemToRemove.delete();
+            }
+        }
+
+        customLanguageSTR = customLanguages.join(",");
+        game.settings.set("polyglot", "customLanguages", customLanguageSTR);
+        console.log("Firard Fortress | Custom Languages: " + customLanguageSTR);
     }
 
 
@@ -458,6 +500,7 @@ export default class firardFortressActorSheet extends ActorSheet {
             const statTemp = data.data.system[stat].temp;
             const statBarValue = document.querySelector(`.${stat}barValue`);
             const statBarTemp = document.querySelector(`.${stat}barTemp`);
+            const statBarMax = document.querySelector(`.${stat}bar`);
 
             if (statValue >= 0) {
                 gsap.to(statBarValue, {
@@ -486,6 +529,27 @@ export default class firardFortressActorSheet extends ActorSheet {
                 gsap.to(statBarTemp, {
                     delay : 0.1,
                     width: "100%",
+                    duration: 0.5,
+                    ease: "power2.inOut"
+                });
+            }
+            if (statMax === 0) {
+                gsap.to(statBarValue, {
+                    delay : 0.1,
+                    width: "0%",
+                    duration: 0.5,
+                    ease: "power2.inOut"
+                });
+                gsap.to(statBarTemp, {
+                    delay : 0.1,
+                    width: "0%",
+                    duration: 0.5,
+                    ease: "power2.inOut"
+                });
+                gsap.to(statBarMax, {
+                    delay : 0.1,
+                    backgroundColor: "#808080",
+                    opacity: 0.2,
                     duration: 0.5,
                     ease: "power2.inOut"
                 });

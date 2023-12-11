@@ -1,4 +1,4 @@
-<form class="{{cssClass}} actor-sheet PC-sheet" autocomplete="off">
+<form class="{{cssClass}} actor-sheet NPC-sheet" autocomplete="off">
     <script>
         if (typeof inputs === 'undefined') {
             var inputs = document.querySelectorAll('input:not([type="checkbox"])');
@@ -21,38 +21,12 @@
                     <table>
                         <tr>
                             <td>
-                                <label>{{localize "FI.PlayerName"}}</label>
-                                <input type="text" name="system.playerName" value="{{data.system.playerName}}"/>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.Guild"}}</label>
-                                <input type="text" name="system.guild" value="{{data.system.guild}}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <label>{{localize "FI.Class"}}</label>
                                 <input type="text" name="system.class" value="{{data.system.class}}"/>
                             </td>
                             <td>
                                 <label>{{localize "FI.Race"}}</label>
                                 <input type="text" name="system.race" value="{{data.system.race}}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>{{localize "FI.Level"}}</label>
-                                <input type="number" name="system.level" value="{{data.system.level}}"/>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.Posture.Label"}}</label>
-                                <select name="system.posture">
-                                    <option {{#if (eq data.system.posture "")}}selected{{/if}} disabled>{{localize "FI.Posture.Select"}}</option>
-                                    <option value="Offensive" {{#if (eq data.system.posture "Offensive")}}selected{{/if}}>{{localize "FI.Posture.Offensive"}}</option>
-                                    <option value="Defensive" {{#if (eq data.system.posture "Defensive")}}selected{{/if}}>{{localize "FI.Posture.Defensive"}}</option>
-                                    <option value="Focus" {{#if (eq data.system.posture "Focus")}}selected{{/if}}>{{localize "FI.Posture.Focus"}}</option>
-                                    <option value="Concentration" {{#if (eq data.system.posture "Concentration")}}selected{{/if}}>{{localize "FI.Posture.Concentration"}}</option>
-                                </select>
                             </td>
                         </tr>
                     </table>
@@ -228,111 +202,6 @@
             </div>
         </div>
     </header>
-
-    {{!-- Sheet Nav --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <ul>
-            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
-            <li><a class="item" data-tab="skills">{{localize "FI.Skills"}}</a></li>
-            <li><a class="item" data-tab="spells">{{localize "FI.Spells"}}</a></li>
-            <li><a class="item" data-tab="notes">{{localize "FI.Notes"}}</a></li>
-        </ul>
-    </nav>
-
-    {{!-- Sheet Body --}}
-    <main class="sheet-body">
-
-        {{!-- Main Tab --}}
-        <section class="sheet-tab tab" data-tab="main">
-            <p class="sheet-header">Main</p>
-        </section>
-
-        {{!-- Skills Tab --}}
-        <section class="sheet-tab tab" data-tab="skills">
-            <p class="sheet-header">Skills</p>
-        </section>
-
-        {{!-- Spells Tab --}}
-        <section class="sheet-tab tab" data-tab="spells">
-            <p class="sheet-header">Spells</p>
-        </section>
-
-        {{!-- Notes Tab --}}
-        <section class="sheet-tab tab" data-tab="notes">
-            <div class="description">
-                {{!-- implement language list --}}
-                <div class="description-language">
-                    <label>{{localize "FI.Language"}}</label>
-                    <table>
-                        <tr>
-                            <th>{{localize "FI.Language"}}</th>
-                            <th>{{localize "FI.Speaking"}}</th>
-                            <th>{{localize "FI.Reading"}}</th>
-                            <th>{{localize "FI.Writing"}}</th>
-                            <th>{{localize "FI.Delete"}}</th>
-                        </tr>
-                            {{#each data.system.languages as |language index|}}
-                                <tr>
-                                    <td>
-                                        <input type="text" name="system.languages.{{index}}.name" value="{{language.name}}" onkeydown="if (event.keyCode === 13) { this.blur(); }" list="languageList"/>
-                                    <td>
-                                        <input type="checkbox" name="system.languages.{{index}}.speaking" {{#if language.speaking}}checked{{/if}}/>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" name="system.languages.{{index}}.reading" {{#if language.reading}}checked{{/if}}/>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" name="system.languages.{{index}}.writing" {{#if language.writing}}checked{{/if}}/>
-                                    </td>
-                                    <td>
-                                        <button class="delete" data-delete="system.languages.{{index}}"><i class="fa-duotone fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            {{/each}}
-                    </table>
-                    <datalist id="languageList">
-                        <script>
-                            if (typeof game.settings.get("polyglot", "customLanguages") !== "undefined") {
-                                var customLanguageList = game.settings.get("polyglot", "customLanguages").split(",");
-                            }
-                            for (let i = 0; i < customLanguageList.length; i++) {
-                            var option = document.createElement("option");
-                            option.value = customLanguageList[i];
-                            document.getElementById("languageList").appendChild(option);
-                        }
-                        </script>
-                    </datalist>
-                    <button class="add language-add" data-add="system.languages"><i class="fa-duotone fa-plus"></i></button>
-                </div>
-                <div class="description-left">
-                    <div class="description-biography">
-                        <label>{{localize "FI.Biography"}}</label>
-                        <textarea class="richTextArea" name="system.biography">{{data.system.biography}}</textarea>
-                    </div>
-                    <div class="description-appearance">
-                        <label>{{localize "FI.Appearance"}}</label>
-                        <textarea class="richTextArea" name="system.appearance">{{data.system.appearance}}</textarea>
-                    </div>
-                </div>
-                <div class="description-right">
-                    <div class="description-personality">
-                        <label>{{localize "FI.Personality"}}</label>
-                        <textarea class="richTextArea" name="system.personality">{{data.system.personality}}</textarea>
-                    </div>
-                    <div class="description-background">
-                        <label>{{localize "FI.Background"}}</label>
-                        <textarea class="richTextArea" name="system.background">{{data.system.background}}</textarea>
-                    </div>
-                </div>
-                <div class="description-notes">
-                    <label>{{localize "FI.Notes"}}</label>
-                    <textarea class="richTextArea" name="system.description.notes">{{data.system.notes}}</textarea>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    {{!-- Sheet Footer --}}
     <footer class="sheet-footer footer">
         <span class="sheet-footer-right">
             <label>{{localize "FI.DisplayAdvancedRoll"}}</label>
@@ -340,20 +209,3 @@
         </span>
     </footer>
 </form>
-
-<script>
-    // TinyMCE init
-    tinymce.init({
-        selector: '.richTextArea',
-        menubar: false,
-        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
-        plugins: 'lists',
-        min_height: 150,
-        height: 150,
-        setup: function (editor) {
-            editor.on('change', function () {
-                editor.save();
-            });
-        }
-    });
-</script>

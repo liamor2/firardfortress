@@ -19,9 +19,44 @@
             "Focus": "Focus",
             "Concentration": "Concentration"
         },
-        "Value": "VAl",
-        "Temp": "TMP",
-        "Max": "MAX",
-        "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
+        "Roll": {
+            "Label": "Lancer",
+            "Normal": "Normal",
+            "Advantage": "Avantage",
+            "Disadvantage": "Désavantage",
+            "Roll": "Lancer",
+            "Value": "VAl",
+            "Temp": "TMP",
+            "Max": "MAX",
+            "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
+        },
+        "SpellType": {
+            "Label": {
+                "Abjuration": "Se concentre sur la protection et le blocage des effets magiques. Utilise des barrières, des champs de force, et des sorts d'annulation pour défendre contre les attaques magiques et physiques.",
+                "Alteration": "Modifie les propriétés physiques des objets ou des êtres. Peut changer la taille, le poids, la texture ou d'autres aspects physiques, mais ne modifie pas la nature intrinsèque.",
+                "Charm": "Influence les pensées et les émotions des autres. Peut contrôler les actions d'une personne ou changer sa perception de la réalité.",
+                "Conjuration": "Crée des objets, des créatures ou des phénomènes à partir de rien. Les objets créés sont temporaires et disparaissent après un certain temps.",
+                "Divination": "Permet de voir des choses qui sont cachées ou éloignées. Peut révéler des informations sur des personnes, des lieux ou des événements.",
+                "Enchantment": "Permet de donner des propriétés spécifiques à un objet ou à une créature. Peut rendre un objet plus puissant, ou une créature plus rapide ou plus intelligente.",
+                "Evocation": "Manipule les énergies pour créer des effets destructifs ou constructifs, comme des boules de feu, des rayons de froid ou des éclairs.",
+                "Illusion": "Crée des images, des sons ou autres sensations qui trompent un ou plusieurs sens.  Utilisée pour tromper, distraire, ou camoufler.",
+                "Invocation": "Fait appel à des créatures ou des objets déjà existant pour qu'ils viennent en aide au lanceur. Les créatures invoquées sont permanentes et restent jusqu'à ce qu'elles soient détruites ou désinvoquées.",
+                "Necromancy": "Manipule la vie, la mort, et l'au-delà. Peut ressusciter les morts, drainer la vie ou communiquer avec les esprits des défunts.",
+                "Restoration": " Guérit, purifie, ou renforce. Peut aussi restaurer les propriétés physiques ou mentales perdues, annuler les malédictions ou renforcer les défenses naturelles.",
+                "Transmutation": "Change la nature intrinsèque d'un objet ou d'une créature sans en changer la composition. Peut changer la forme, la couleur, la taille, ou d'autres aspects physiques."
+            },
+            "Abjuration": "Abjuration",
+            "Alteration": "Altération",
+            "Charm": "Charme",
+            "Conjuration": "Conjuration",
+            "Divination": "Divination",
+            "Enchantment": "Enchantement",
+            "Evocation": "Évocation",
+            "Illusion": "Illusion",
+            "Invocation": "Invocation",
+            "Necromancy": "Nécromancie",
+            "Restoration": "Restauration",
+            "Transmutation": "Transmutation"
+        }
     }
 }

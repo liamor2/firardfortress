@@ -1,5 +1,7 @@
+/* Actor sheet */
+
 /* header */
-header.header {
+form.actor-sheet header.header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -10,24 +12,24 @@ header.header {
     border-bottom: 1px solid #ccc;
 }
 
-header img.image-header {
+form.actor-sheet header img.image-header {
     height: 100%;
     width: auto;
 }
 
-header div.header-left {
+form.actor-sheet header div.header-left {
     display: block;
     justify-content: space-between;
     align-items: center;
     width: 85%;
 }
 
-header div.stat-container {
+form.actor-sheet header div.stat-container {
     display: block;
     text-align: center;
 }
 
-header div.stat-container div.bar {
+form.actor-sheet header div.stat-container div.bar {
     position: relative;
     width: 100%;
     height: 9px;
@@ -37,98 +39,98 @@ header div.stat-container div.bar {
     margin: 2px 0;
 }
 
-header div.stat-container div.bar div.barValue {
+form.actor-sheet header div.stat-container div.bar div.barValue {
     position: absolute;
     height: 5px;
     border-radius: 5px;
 }
 
-header div.stat-container div.bar div.barTemp {
+form.actor-sheet header div.stat-container div.bar div.barTemp {
     z-index: 1;
 }
 
-header div.stat-container div.bar.HPbar{
+form.actor-sheet header div.stat-container div.bar.HPbar{
     background-color: #ff00002f;
 }
 
-header div.stat-container div.bar div.barValue.HPbarValue {
+form.actor-sheet header div.stat-container div.bar div.barValue.HPbarValue {
     background-color: #ff0000;
     width: 100%;
 }
 
-header div.stat-container div.bar div.barValue.HPbarTemp {
+form.actor-sheet header div.stat-container div.bar div.barValue.HPbarTemp {
     background-color: #a10000;
     width: 0%;
 }
 
-header div.stat-container div.bar.MPbar {
+form.actor-sheet header div.stat-container div.bar.MPbar {
     background-color: #0000ff2f;
 }
 
-header div.stat-container div.bar div.barValue.MPbarValue {
+form.actor-sheet header div.stat-container div.bar div.barValue.MPbarValue {
     background-color: #0000ff;
     width: 100%;
 }
 
-header div.stat-container div.bar div.barValue.MPbarTemp {
+form.actor-sheet header div.stat-container div.bar div.barValue.MPbarTemp {
     background-color: #0000a1;
     width: 0%;
 }
 
-header div.stat-container div.bar.SPbar {
+form.actor-sheet header div.stat-container div.bar.SPbar {
     background-color: #00ff002f;
 }
 
-header div.stat-container div.bar div.barValue.SPbarValue {
+form.actor-sheet header div.stat-container div.bar div.barValue.SPbarValue {
     background-color: #00ff00;
     width: 100%;
 }
 
-header div.stat-container div.bar div.barValue.SPbarTemp {
+form.actor-sheet header div.stat-container div.bar div.barValue.SPbarTemp {
     background-color: #00a100;
     width: 0%;
 }
 
-header div.stat-container div.bar.PAbar {
+form.actor-sheet header div.stat-container div.bar.PAbar {
     background-color: #ffff002f;
 }
 
-header div.stat-container div.bar div.barValue.PAbarValue {
+form.actor-sheet header div.stat-container div.bar div.barValue.PAbarValue {
     background-color: #ffff00;
     width: 100%;
 }
 
-header div.stat-container div.bar div.barValue.PAbarTemp {
+form.actor-sheet header div.stat-container div.bar div.barValue.PAbarTemp {
     background-color: #a1a100;
     width: 0%;
 }
 
-header div.stat-container div.bar.MAbar {
+form.actor-sheet header div.stat-container div.bar.MAbar {
     background-color: #ff00ff2f;
 }
 
-header div.stat-container div.bar div.barValue.MAbarValue {
+form.actor-sheet header div.stat-container div.bar div.barValue.MAbarValue {
     background-color: #ff00ff;
     width: 100%;
 }
 
-header div.stat-container div.bar div.barValue.MAbarTemp {
+form.actor-sheet header div.stat-container div.bar div.barValue.MAbarTemp {
     background-color: #a100a1;
     width: 0%;
 }
 
-header div.stat-container div.stat {
+form.actor-sheet header div.stat-container div.stat {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 5px 0;
 }
 
-header div.stat-container div.stat.label {
+form.actor-sheet header div.stat-container div.stat.label {
     font-size: small;
 }
 
-header div.header-top {
+form.actor-sheet header div.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,50 +138,50 @@ header div.header-top {
     width: 95%;
 }
 
-header div.header-top div.header-top-left {
+form.actor-sheet header div.header-top div.header-top-left {
     display: block;
     align-items: center;
     width: 33%;
     height: 127px;
 }
 
-header div.header-top div.header-top-right {
+form.actor-sheet header div.header-top div.header-top-right {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 67%;
 }
 
-header div.header-bottom {
+form.actor-sheet header div.header-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header div.header-bottom {
+form.actor-sheet header div.header-bottom {
     display: block;
     align-items: center;
     width: 95%;
     margin-top: 75px;
 }
 
-header div.header-bottom table {
+form.actor-sheet header div.header-bottom table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
     table-layout: fixed;
 }
 
-header div.header-bottom table tr {
+form.actor-sheet header div.header-bottom table tr {
     border-bottom: 1px solid #ccc;
 }
 
-header div.header-bottom table tr td {
+form.actor-sheet header div.header-bottom table tr td {
     padding: 5px;
     border: black 1px solid;
 }
 
-header div.header-bottom table tr td.stat-input div {
+form.actor-sheet header div.header-bottom table tr td.stat-input div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -187,21 +189,21 @@ header div.header-bottom table tr td.stat-input div {
     width: 100%;
 }
 
-header div.header-bottom table tr td.stat-input div.mainStat {
+form.actor-sheet header div.header-bottom table tr td.stat-input div.mainStat {
     width: 150px;
 }
 
-header div.header-bottom table tr td.stat-input div .stat {
+form.actor-sheet header div.header-bottom table tr td.stat-input div .stat {
     padding: 0 5px;
     border-right: #00000059 1px solid;
 }
 
-header div.header-bottom table tr td.stat-input div .stat:last-child {
+form.actor-sheet header div.header-bottom table tr td.stat-input div .stat:last-child {
     width: 20px;
     border-right: none;
 }
 
-header div.header-bottom table tr td.stat-input div .stat input {
+form.actor-sheet header div.header-bottom table tr td.stat-input div .stat input {
     width: 100%;
     border: none;
     background-color: transparent;
@@ -209,11 +211,11 @@ header div.header-bottom table tr td.stat-input div .stat input {
     font-size: 2em;
 }
 
-header div.header-bottom table tr td.stat-input div .stat input:focus {
+form.actor-sheet header div.header-bottom table tr td.stat-input div .stat input:focus {
     outline: none;
 }
 
-header div.header-bottom table tr td.stat-input div .stat p {
+form.actor-sheet header div.header-bottom table tr td.stat-input div .stat p {
     width: 100%;
     border: none;
     background-color: transparent;
@@ -222,13 +224,13 @@ header div.header-bottom table tr td.stat-input div .stat p {
     color: #a10000;
 }
 
-header div.header-right {
+form.actor-sheet header div.header-right {
     justify-content: space-between;
     align-items: center;
     width: 15%;
 }
 
-header div.header-right label {
+form.actor-sheet header div.header-right label {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -236,7 +238,7 @@ header div.header-right label {
     height: 100%;
 }
 
-header div.header-right label svg {
+form.actor-sheet header div.header-right label svg {
     height: 20px;
     width: auto;
 }
@@ -245,14 +247,17 @@ header div.header-right label svg {
 
 
 
+
+
+
 /* nav */
-nav.sheet-tabs ul {
+form.actor-sheet nav.sheet-tabs ul {
     display: flex;
     list-style-type: none;
     justify-content: space-between;
 }
 
-nav.sheet-tabs ul li {
+form.actor-sheet nav.sheet-tabs ul li {
     margin: 0 10px;
 }
 
@@ -278,7 +283,7 @@ nav.sheet-tabs ul li {
 
 /* notes tab */
 
-section div.description {
+form.actor-sheet section div.description {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -294,7 +299,7 @@ section div.description {
     font-size: 1.2em;
 }
 
-section div.description div.description-language {
+form.actor-sheet section div.description div.description-language {
     width: 100%;
     height: 100%;
     border: none;
@@ -304,7 +309,7 @@ section div.description div.description-language {
     font-size: 1.2em;
 }
 
-section div.description div.description-left {
+form.actor-sheet section div.description div.description-left {
     display: block;
     justify-content: space-between;
     align-items: center;
@@ -312,7 +317,7 @@ section div.description div.description-left {
     height: 100%;
 }
 
-section div.description div.description-right {
+form.actor-sheet section div.description div.description-right {
     display: block;
     justify-content: space-between;
     align-items: center;
@@ -320,7 +325,7 @@ section div.description div.description-right {
     height: 100%;
 }
 
-section div.description div.description-notes {
+form.actor-sheet section div.description div.description-notes {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -329,7 +334,7 @@ section div.description div.description-notes {
     height: 100%;
 }
 
-section div.description div textarea {
+form.actor-sheet section div.description div textarea {
     width: 100%;
     height: 100%;
     border: none;
@@ -339,8 +344,22 @@ section div.description div textarea {
     font-size: 1.2em;
 }
 
+form.actor-sheet section div.description div.description-language tr {
+    border-bottom: 1px solid #ccc;
+}
 
+form.actor-sheet section div.description div.description-language tr td {
+    padding: 5px;
+    border: black 1px solid;
+}
 
+form.actor-sheet section div.description div.description-language tr td input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
 
 
 
@@ -351,7 +370,7 @@ section div.description div textarea {
 
 /* footer */
 
-footer.footer {
+form.actor-sheet footer.footer {
     position: absolute;
     bottom: 0;
     width: 99%;
@@ -363,13 +382,267 @@ footer.footer {
     font-size: 0.7em;
 }
 
-footer span.sheet-footer-right {
+form.actor-sheet footer span.sheet-footer-right {
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
-footer span.sheet-footer-right input {
+form.actor-sheet footer span.sheet-footer-right input {
     width: 12px;
     height: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Item sheet */
+
+/* Adventure Dice */
+
+form.item-sheet.adventure-dice header.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.adventure-dice div.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    text-align: center;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame {
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 2%;
+    position: relative;
+    justify-content: center;
+    width: fit-content;
+    padding: 1em;
+    gap: 1em;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame legend {
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock {
+    position: relative;
+    background-color: transparent;
+    width: 4em;
+    height: 4em;
+    overflow: hidden;
+    border: medium solid #666666;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 0 0.5em #666666;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock label {
+    display: none;
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock meter.clock-segment {
+    appearance: none;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: inherit;
+    margin: 0;
+    width: 2em;
+    height: 2em;
+    border: solid #666666;
+    border-width: 0.001em;
+    background-color: #eee;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: 0 2em;
+    transform:rotate(calc(var(--index) * var(--angle))) skewY(calc(var(--segmentAngle) - 90deg)) scale(1.5);
+}
+
+form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock meter.filled {
+    background-color: #000000;
+}
+
+/* Spells */
+
+form.item-sheet.spell header.sheet-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.spell header.sheet-header div.sheet-header-1 {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+}
+
+form.item-sheet.spell header.sheet-header div.sheet-header-2 {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+}
+
+form.item-sheet.spell header.sheet-header div.sheet-header-3 {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+}
+
+form.item-sheet.spell header.sheet-header div.sheet-header-4 {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+}
+
+form.item-sheet.spell main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.spell main.sheet-body div.sheet-body-left {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width: 49%;
+    height: 100%;
+}
+
+form.item-sheet.spell main.sheet-body div.sheet-body-right {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    width: 49%;
+    height: 100%;
+}
+
+form.item-sheet.spell footer.sheet-footer {
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff1f;
 }

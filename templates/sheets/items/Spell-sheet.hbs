@@ -1,0 +1,68 @@
+<form class="{{cssClass}} item-sheet spell" autocomplete="off">
+    <script>
+        if (typeof inputs === 'undefined') {
+            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        }
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="sheet-header">
+        <div class="sheet-header-1">
+            <div class="sheet-header-image">
+                <img src="{{data.img}}" title="{{data.name}}" width="64" height="64" />
+                <input type="text" name="system.name" value="{{data.system.name}}"/>
+            </div>
+        </div>
+        <div class="sheet-header-2">
+            <label>{{localize "FI.SpellSheet.MPCost"}}</label>
+            <input type="number" class="" name="system.mpCost" value="{{data.system.mpCost}}"/>
+            <label>{{localize "FI.SpellSheet.SpellType"}}</label>
+            <input type="text" name="system.spellType" value="{{data.system.spellType}}" list="spellTypes"/>
+            <datalist id="spellTypes">
+                <option value="{{localize "FI.SpellType.Abjuration"}}"/>
+                <option value="{{localize "FI.SpellType.Alteration"}}"/>
+                <option value="{{localize "FI.SpellType.Charm"}}"/>
+                <option value="{{localize "FI.SpellType.Conjuration"}}"/>
+                <option value="{{localize "FI.SpellType.Divination"}}"/>
+                <option value="{{localize "FI.SpellType.Enchantment"}}"/>
+                <option value="{{localize "FI.SpellType.Evocation"}}"/>
+                <option value="{{localize "FI.SpellType.Illusion"}}"/>
+                <option value="{{localize "FI.SpellType.Invocation"}}"/>
+                <option value="{{localize "FI.SpellType.Necromancy"}}"/>
+                <option value="{{localize "FI.SpellType.Restoration"}}"/>
+                <option value="{{localize "FI.SpellType.Transmutation"}}"/>
+            </datalist>
+        </div>
+        <div class="sheet-header-3">
+            <label>{{localize "FI.SpellSheet.SpellLevel"}}</label>
+            <input type="number" name="system.spellLevel" value="{{data.system.spellLevel}}"/>
+            <label>{{localize "FI.SpellSheet.SpellRange"}}</label>
+            <input type="text" name="system.spellRange" value="{{data.system.spellRange}}"/>
+        </div>
+    </header>
+    <main class="sheet-body">
+
+    </main>
+    <footer class="sheet-footer">
+        <label>{{localize "FI.SpellSheet.Description"}}</label>
+        <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+    </footer>
+</form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>
