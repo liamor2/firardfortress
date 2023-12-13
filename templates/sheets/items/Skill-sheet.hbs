@@ -1,0 +1,162 @@
+<form class="{{cssClass}} item-sheet skill" autocomplete="off">
+    <script>
+        if (typeof inputs === 'undefined') {
+            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        }
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="sheet-header">
+        <div class="sheet-header-1">
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.SkillSheet.Name"}}">{{data.system.name}}</textarea>
+        </div>
+        <table class="sheet-header-2">
+            <tr class="top">
+                <td class="skillType" colspan="2">
+                    <label>{{localize "FI.SkillSheet.SkillType"}}</label>
+                    <div class="skillTypeDiv" title="{{localize "FI.SkillSheet.SkillType"}}">
+                        <i class="fas fa-magic"></i>
+                        <input type="text" name="system.skillType" value="{{data.system.skillType}}" list="skillTypes" title="{{localize "FI.SkillSheet.SkillType"}}"/>
+                        <script>
+                            var descriptionButton = document.createElement('i');
+                            var skillTypeList = document.querySelector('#skillTypes');
+                            var translatedSkillTypes = [];
+                            for (let i = 0; i < skillTypeList.options.length; i++) {
+                                translatedSkillTypes.push(game.i18n.localize(`FI.SkillType.${skillTypeList.options[i].title}`));
+                            }
+                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
+                            descriptionButton.title = '';
+                            descriptionButton.addEventListener('mouseover', () => {
+                                const skillType = document.querySelector('input[name="system.skillType"]').value;
+                                if (translatedSkillTypes.includes(skillType)) {
+                                    const title = skillTypeList.querySelector(`option[value="${skillType}"]`).title;
+                                    const description = game.i18n.localize(`FI.SkillType.Label.${title}`);
+                                    descriptionButton.title = description;
+                                } else {
+                                    descriptionButton.title = game.i18n.localize('FI.SkillType.Label.Custom');
+                                }
+                            });
+                            document.querySelector('.skillTypeDiv').appendChild(descriptionButton);
+                        </script>
+                        <datalist id="skillTypes">
+                            <option value="{{localize "FI.SkillType.Combat"}}" title="Combat"/>
+                            <option value="{{localize "FI.SkillType.Movement"}}" title="Movement"/>
+                            <option value="{{localize "FI.SkillType.Stealth"}}" title="Stealth"/>
+                            <option value="{{localize "FI.SkillType.Survival"}}" title="Survival"/>
+                            <option value="{{localize "FI.SkillType.Tactical"}}" title="Tactical"/>
+                            <option value="{{localize "FI.SkillType.Weapon"}}" title="Weapon"/>
+                        </datalist>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="SPCost">
+                    <label>{{localize "FI.SkillSheet.SPCost"}}</label>
+                    <input type="number" name="system.spCost" value="{{data.system.spCost}}" title="{{localize "FI.SkillSheet.SPCost"}}"/>
+                    <label>{{localize "FI.System.SP"}}</label>
+                </td>
+                <td class="range">
+                    <div>
+                        <p>{{localize "FI.System.Min"}}</p>
+                        <label>{{localize "FI.SkillSheet.SkillRange"}}</label>
+                        <p>{{localize "FI.System.Max"}}</p>
+                    </div>
+                    <div>
+                        <input type="number" name="system.range.min" value="{{data.system.range.min}}"/>
+                        <span>-</span>
+                        <input type="number" name="system.range.max" value="{{data.system.range.max}}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="stat">
+                    <label>{{localize "FI.Stat.Label"}}</label>
+                    <select name="system.stat" value="{{data.system.stat}}">
+                        <option value="">{{localize "FI.Stat.None"}}</option>
+                        <option value="STR">{{localize "FI.Stat.STR"}}</option>
+                        <option value="DEX">{{localize "FI.Stat.DEX"}}</option>
+                        <option value="CON">{{localize "FI.Stat.CON"}}</option>
+                        <option value="INT">{{localize "FI.Stat.INT"}}</option>
+                        <option value="WIS">{{localize "FI.Stat.WIS"}}</option>
+                        <option value="CHA">{{localize "FI.Stat.CHA"}}</option>
+                        <option value="LUK">{{localize "FI.Stat.LUK"}}</option>
+                        <option value="WIL">{{localize "FI.Stat.WIL"}}</option>
+                        <option value="HON">{{localize "FI.Stat.HON"}}</option>
+                        <script>
+                                document.querySelector('select[name="system.stat"]').value = '{{data.system.stat}}';
+                        </script>
+                    </select>
+                </td>
+                <td class="value">
+                    <label>{{localize "FI.System.Value"}}</label>
+                    <input type="text" name="system.value" value="{{data.system.value}}"/>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <ul>
+            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
+            <li><a class="item" data-tab="description">{{localize "FI.Description"}}</a></li>
+        </ul>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+
+        {{!-- Main Tab --}}
+        <section class="sheet-tab tab" data-tab="main">
+            <div class="rolls-label">
+                <label>{{localize "FI.SkillSheet.Rolls"}}</label>
+                <a class="item-roll rollable" title="{{localize "FI.Roll"}}" data-type="Skill"><i class="fa-duotone fa-dice-d20"></i></a>
+            </div>
+            <div class="rolls">
+                {{#each data.system.roll as |roll|}}
+                    <div class="roll">
+                        <input class="number" type="number" name="system.roll.{{@index}}.dice" value="{{roll.dice}}" title="{{localize "FI.SkillSheet.Dice"}}"/>
+                        <input class="dice" name="system.roll.{{@index}}.type" value="{{roll.type}}" title="{{localize "FI.SkillSheet.DiceType"}}" list="diceTypes"/>
+                        <datalist id="diceTypes">
+                            <option value="d4"/>
+                            <option value="d6"/>
+                            <option value="d8"/>
+                            <option value="d10"/>
+                            <option value="d12"/>
+                            <option value="d20"/>
+                            <option value="d100"/>
+                        </datalist>
+                        <span>+</span>
+                        <input class="number" type="number" name="system.roll.{{@index}}.bonus" value="{{roll.bonus}}" title="{{localize "FI.SkillSheet.Bonus"}}"/>
+                        <input class="text" type="text" name="system.roll.{{@index}}.damageType" value="{{roll.damageType}}" title="{{localize "FI.SkillSheet.DamageType"}}"/>
+                        <button class="roll-delete" title="{{localize "FI.Delete"}}" data-index="{{@index}}"><i class="fas fa-trash"></i></button>
+                    </div>
+                {{/each}}
+            </div>
+            <button class="item-add" title="{{localize "FI.Add"}}" data-add="skill"><i class="fas fa-plus"></i></button>
+        </section>
+
+        {{!-- Description Tab --}}
+        <section class="sheet-tab tab sheet-description" data-tab="description">
+            <label>{{localize "FI.SkillSheet.Description"}}</label>
+            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+        </section>
+    </main>
+</form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

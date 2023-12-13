@@ -1,0 +1,78 @@
+<form class="{{cssClass}} item-sheet passif" autocomplete="off">
+    <script>
+        if (typeof inputs === 'undefined') {
+            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        }
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="sheet-header">
+        <div class="sheet-header-1">
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.PassifSheet.Name"}}">{{data.system.name}}</textarea>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+        <table class="sheet-main">
+            <tr class="top">
+                <td class="passifType">
+                    <label>{{localize "FI.PassifSheet.PassifType"}}</label>
+                    <div class="passifTypeDiv" title="{{localize "FI.PassifSheet.PassifType"}}">
+                        <i class="fas fa-magic"></i>
+                        <input type="text" name="system.passifType" value="{{data.system.passifType}}" list="passifTypes" title="{{localize "FI.PassifSheet.PassifType"}}"/>
+                        <script>
+                            var descriptionButton = document.createElement('i');
+                            var passifTypeList = document.querySelector('#passifTypes');
+                            var translatedPassifTypes = [];
+                            for (let i = 0; i < passifTypeList.options.length; i++) {
+                                translatedPassifTypes.push(game.i18n.localize(`FI.PassifType.${passifTypeList.options[i].title}`));
+                            }
+                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
+                            descriptionButton.title = '';
+                            descriptionButton.addEventListener('mouseover', () => {
+                                const passifType = document.querySelector('input[name="system.passifType"]').value;
+                                if (translatedPassifTypes.includes(passifType)) {
+                                    const title = passifTypeList.querySelector(`option[value="${passifType}"]`).title;
+                                    const description = game.i18n.localize(`FI.PassifType.Label.${title}`);
+                                    descriptionButton.title = description;
+                                } else {
+                                    descriptionButton.title = game.i18n.localize('FI.PassifType.Label.Custom');
+                                }
+                            });
+                            document.querySelector('.passifTypeDiv').appendChild(descriptionButton);
+                        </script>
+                        <datalist id="passifTypes">
+                            <option value="{{localize "FI.PassifType.Conditional"}}" title="Conditional"/>
+                            <option value="{{localize "FI.PassifType.Permanent"}}" title="Permanent"/>
+                            <option value="{{localize "FI.PassifType.Temporary"}}" title="Temporary"/>
+                        </datalist>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <section class="sheet-description">
+            <label>{{localize "FI.PassifSheet.Description"}}</label>
+            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+        </section>
+    </main>
+</form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

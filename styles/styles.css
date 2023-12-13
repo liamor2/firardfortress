@@ -1,6 +1,9 @@
 /* Actor sheet */
 
+/* ----------------------------------------------------------------------------------------------------------- */
 /* header */
+/* ----------------------------------------------------------------------------------------------------------- */
+
 form.actor-sheet header.header {
     display: flex;
     flex-wrap: wrap;
@@ -12,9 +15,10 @@ form.actor-sheet header.header {
     border-bottom: 1px solid #ccc;
 }
 
-form.actor-sheet header img.image-header {
+form.actor-sheet header img.profile-img {
     height: 100%;
     width: auto;
+    max-width: 150px;
 }
 
 form.actor-sheet header div.header-left {
@@ -243,6 +247,9 @@ form.actor-sheet header div.header-right label svg {
     width: auto;
 }
 
+.tox-statusbar__branding {
+    display: none;
+}
 
 
 
@@ -250,14 +257,17 @@ form.actor-sheet header div.header-right label svg {
 
 
 
+/* ----------------------------------------------------------------------------------------------------------- */
 /* nav */
-form.actor-sheet nav.sheet-tabs ul {
+/* ----------------------------------------------------------------------------------------------------------- */
+
+nav.sheet-tabs.tabs ul {
     display: flex;
     list-style-type: none;
     justify-content: space-between;
 }
 
-form.actor-sheet nav.sheet-tabs ul li {
+nav.sheet-tabs.tabs ul li {
     margin: 0 10px;
 }
 
@@ -266,22 +276,36 @@ form.actor-sheet nav.sheet-tabs ul li {
 
 
 
-
+/* ----------------------------------------------------------------------------------------------------------- */
 /* body */
+/* ----------------------------------------------------------------------------------------------------------- */
 
+/* ----------------------------------------------------------------------------------------------------------- */
 /* main tab */
+/* ----------------------------------------------------------------------------------------------------------- */
 
 
 
+
+/* ----------------------------------------------------------------------------------------------------------- */
 /* skill tab */
+/* ----------------------------------------------------------------------------------------------------------- */
 
 
 
+
+/* ----------------------------------------------------------------------------------------------------------- */
 /* spell tab */
+/* ----------------------------------------------------------------------------------------------------------- */
 
 
 
+
+/* ----------------------------------------------------------------------------------------------------------- */
 /* notes tab */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+
 
 form.actor-sheet section div.description {
     display: flex;
@@ -367,8 +391,9 @@ form.actor-sheet section div.description div.description-language tr td input {
 
 
 
-
+/* ----------------------------------------------------------------------------------------------------------- */
 /* footer */
+/* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet footer.footer {
     position: absolute;
@@ -447,10 +472,19 @@ form.actor-sheet footer span.sheet-footer-right input {
 
 
 
-
+/* ----------------------------------------------------------------------------------------------------------- */
 /* Item sheet */
+/* ----------------------------------------------------------------------------------------------------------- */
 
-/* Adventure Dice */
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* AdventureDice */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.adventure-dice {
+    width: 500px;
+    height: 280px;
+}
 
 form.item-sheet.adventure-dice header.header {
     display: flex;
@@ -569,12 +603,24 @@ form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-fr
     background-color: #000000;
 }
 
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
 /* Spells */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.spell {
+    width: 400px;
+    height: 800px;
+}
 
 form.item-sheet.spell header.sheet-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: block;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     padding: 10px 20px;
@@ -583,31 +629,90 @@ form.item-sheet.spell header.sheet-header {
 }
 
 form.item-sheet.spell header.sheet-header div.sheet-header-1 {
-    display: block;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
     align-items: center;
-    width: 25%;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(0, 174, 255, 0.555)
 }
 
-form.item-sheet.spell header.sheet-header div.sheet-header-2 {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    width: 25%;
+form.item-sheet.spell header.sheet-header div.sheet-header-1 img {
+    height: 65%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
 }
 
-form.item-sheet.spell header.sheet-header div.sheet-header-3 {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    width: 25%;
+form.item-sheet.spell header.sheet-header div.sheet-header-1 textarea {
+    width: 100%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
 }
 
-form.item-sheet.spell header.sheet-header div.sheet-header-4 {
-    display: block;
+form.item-sheet.spell header.sheet-header table.sheet-header-2 {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 table.sheet-header-2-1 {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tbody {
+    background-color: rgba(0, 174, 255, 0.11);
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td {
+    padding: 5px;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td.range div {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 25%;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
 }
 
 form.item-sheet.spell main.sheet-body {
@@ -621,28 +726,1195 @@ form.item-sheet.spell main.sheet-body {
     border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.spell main.sheet-body div.sheet-body-left {
-    display: block;
+form.item-sheet.spell section.sheet-tab div.rolls-label {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    width: 49%;
-    height: 100%;
-}
-
-form.item-sheet.spell main.sheet-body div.sheet-body-right {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    width: 49%;
-    height: 100%;
-}
-
-form.item-sheet.spell footer.sheet-footer {
-    display: block;
     align-items: center;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 10px 20px;
     background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls-label label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls-label button {
+    width: 10%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(151, 151, 151, 0.356);
+    border-bottom: #858585 1px solid;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll:last-child {
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll input {
+    border: rgba(128, 128, 128, 0.301) 1px solid;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll input.number {
+    width: 13%;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll input.number:first-child {
+    text-align: right;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll span {
+    width: 5%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll input.text {
+    width: 30%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll input.dice {
+    width: 22%;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+form.item-sheet.spell section.sheet-tab div.rolls div.roll button {
+    width: 10%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.spell section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* skills */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.skill {
+    width: 400px;
+    height: 800px;
+}
+
+form.item-sheet.skill header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.skill header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(0, 255, 0, 0.555)
+}
+
+form.item-sheet.skill header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+form.item-sheet.skill header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 table.sheet-header-2-1 {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tbody {
+    background-color: rgba(30, 255, 0, 0.11);
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td {
+    padding: 5px;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.skill main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls-label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls-label label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls-label button {
+    width: 10%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(151, 151, 151, 0.356);
+    border-bottom: #858585 1px solid;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll:last-child {
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll input {
+    border: rgba(128, 128, 128, 0.301) 1px solid;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll input.number {
+    width: 13%;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll input.number:first-child {
+    text-align: right;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll span {
+    width: 5%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll input.text {
+    width: 30%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll input.dice {
+    width: 22%;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+form.item-sheet.skill section.sheet-tab div.rolls div.roll button {
+    width: 10%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.skill section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Hybrid */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.hybrid {
+    width: 400px;
+    height: 800px;
+}
+
+form.item-sheet.hybrid header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.hybrid header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(0, 255, 234, 0.555)
+}
+
+form.item-sheet.hybrid header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+form.item-sheet.hybrid header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 table.sheet-header-2-1 {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tbody {
+    background-color: rgba(0, 255, 179, 0.11);
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td {
+    padding: 5px;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.hybrid main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls-label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls-label label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls-label button {
+    width: 10%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(151, 151, 151, 0.356);
+    border-bottom: #858585 1px solid;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll:last-child {
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input {
+    border: rgba(128, 128, 128, 0.301) 1px solid;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.number {
+    width: 13%;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.number:first-child {
+    text-align: right;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll span {
+    width: 5%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.text {
+    width: 30%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.dice {
+    width: 22%;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+form.item-sheet.hybrid section.sheet-tab div.rolls div.roll button {
+    width: 10%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.hybrid section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Transformation */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.transformation {
+    width: 435px;
+    height: 800px;
+}
+
+form.item-sheet.transformation header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.transformation header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(204, 0, 255, 0.555)
+}
+
+form.item-sheet.transformation header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+form.item-sheet.transformation header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.transformation table.sheet-main {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.transformation table.sheet-main tbody {
+    background-color: rgba(225, 0, 255, 0.11);
+}
+
+form.item-sheet.transformation table.sheet-main tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.transformation table.sheet-main tr td {
+    padding: 5px;
+}
+
+form.item-sheet.transformation table.sheet-main tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.transformation table.sheet-main tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.transformation table.sheet-main tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.transformation table.sheet-main tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.transformation main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.transformation section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Passif */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.passif {
+    width: 400px;
+    height: 800px;
+}
+
+form.item-sheet.passif header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.passif header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(255, 0, 76, 0.555)
+}
+
+form.item-sheet.passif header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+form.item-sheet.passif header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.passif table.sheet-main {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.passif table.sheet-main tbody {
+    background-color: rgba(255, 0, 76, 0.11);
+}
+
+form.item-sheet.passif table.sheet-main tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.passif table.sheet-main tr td {
+    padding: 5px;
+}
+
+form.item-sheet.passif table.sheet-main tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.passif table.sheet-main tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.passif table.sheet-main tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.passif table.sheet-main tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.passif main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.passif section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Proficiency */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.proficiency {
+    width: 400px;
+    height: 800px;
+}
+
+form.item-sheet.proficiency header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.proficiency header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(255, 123, 0, 0.555)
+}
+
+form.item-sheet.proficiency header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+form.item-sheet.proficiency header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.proficiency table.sheet-main {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.proficiency table.sheet-main tbody {
+    background-color: rgba(255, 102, 0, 0.11);
+}
+
+form.item-sheet.proficiency table.sheet-main tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.proficiency table.sheet-main tr td {
+    padding: 5px;
+}
+
+form.item-sheet.proficiency table.sheet-main tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.proficiency table.sheet-main tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.proficiency table.sheet-main tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.proficiency table.sheet-main tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.proficiency main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.proficiency section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Proficiency */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.money {
+    width: 400px;
+    height: 800px;
+}
+
+form.item-sheet.money header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.money header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(255, 230, 0, 0.555)
+}
+
+form.item-sheet.money header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+form.item-sheet.money header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.money table.sheet-main {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.money table.sheet-main tbody {
+    background-color: rgba(255, 238, 0, 0.11);
+}
+
+form.item-sheet.money table.sheet-main tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.money table.sheet-main tr td {
+    padding: 5px;
+}
+
+form.item-sheet.money table.sheet-main tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.money table.sheet-main tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.money table.sheet-main tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.money table.sheet-main tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.money main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.money section.sheet-description{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Misc */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+form.item-sheet.misc {
+    width: 400px;
+    height: 800px;
+}
+
+form.item-sheet.misc header.sheet-header {
+    display: block;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.misc header.sheet-header div.sheet-header-1 {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    align-items: center;
+    width: 120%;
+    margin: 0 10px;
+    padding: 10px 30px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgba(255, 255, 255, 0.555)
+}
+
+form.item-sheet.misc header.sheet-header div.sheet-header-1 img {
+    height: 100%;
+    width: auto;
+    max-width: 75px;
+    border: rgba(0, 0, 0, 0.1) 1px solid;
+    filter: invert(100%);
+}
+
+form.item-sheet.misc header.sheet-header div.sheet-header-1 textarea {
+    width: 65%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Signika", sans-serif;
+    resize: none;
+}
+
+form.item-sheet.misc table.sheet-main {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+form.item-sheet.misc table.sheet-main tbody {
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+form.item-sheet.misc table.sheet-main tr:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+form.item-sheet.misc table.sheet-main tr td {
+    padding: 5px;
+}
+
+form.item-sheet.misc table.sheet-main tr td i.fas {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.misc table.sheet-main tr td input {
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+form.item-sheet.misc table.sheet-main tr td.range div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+form.item-sheet.misc table.sheet-main tr td.range div span {
+    border: none;
+    margin: 0 3px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2em;
+}
+
+form.item-sheet.misc main.sheet-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+}
+
+form.item-sheet.misc section.sheet-description{
+    width: 100%;
+    height: 150px;
 }

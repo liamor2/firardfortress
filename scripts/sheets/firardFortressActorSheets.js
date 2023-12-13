@@ -39,6 +39,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         html.find('.rollable').click(this._onRoll.bind(this));
         html.find('.add').click(this._onAdd.bind(this));
         html.find('.delete').click(this._onDelete.bind(this));
+        html.find('.edit-item').click(this._onEditItem.bind(this));
 
         // hover listeners
 
@@ -56,104 +57,19 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        const data = this.getData(false);
-        const advancedRoll = data.data.system.displayAdvancedRoll;
-        let mod = 0;
-        if (dataset.roll < 0) {
-            mod = dataset.roll;
-        } else {
-            mod = `+${dataset.roll}`;
-        }
 
-        if (advancedRoll) {
-            new Dialog({
-                title: `Advanced Roll: ${dataset.label}`,
-                content: 
-                `<div style="display:flex; flex-direction:column; height:50px">
-                    <select id="rollType">
-                        <option value="normal">Normal</option>
-                        <option value="advantage">Advantage</option>
-                        <option value="disadvantage">Disadvantage</option>
-                        <option value="custom">Custom</option>
-                    </select>
-                    <div id="rollCustomDiv" style="display:none">
-                        <label for="rollCustom">Formula</label>
-                        <input id="rollCustom" type="text" placeholder="Custom Roll">
-                    </div>
-                    <script>
-                        document.getElementById("rollType").addEventListener("change", function() {
-                            if (this.value == "custom") {
-                                document.getElementById("rollCustomDiv").style.display = "flex";
-                            } else {
-                                document.getElementById("rollCustomDiv").style.display = "none";
-                            }
-                        });
-                    </script>
-                </div>`,
-                buttons: {
-                    confirm: {
-                        icon: '<i class="fas fa-check"></i>',
-                        label: 'Confirm',
-                        callback: (html) => {
-                            const rollType = html.find('#rollType')[0].value;
-                            const rollCustom = html.find('#rollCustom')[0].value;
-                            let roll = new Roll("1d20" + mod);
-                            let label = dataset.label ? `Rolling ${dataset.label}` : '';
-                            if (rollType == "normal") {
-                                return roll.toMessage({
-                                    speaker: ChatMessage.getSpeaker({
-                                        actor: this.actor
-                                    }),
-                                    flavor: label
-                                });
-                            } else if (rollType == "advantage") {
-                                roll = new Roll("2d20kh" + mod);
-                                return roll.toMessage({
-                                    speaker: ChatMessage.getSpeaker({
-                                        actor: this.actor
-                                    }),
-                                    flavor: label
-                                });
-                            } else if (rollType == "disadvantage") {
-                                roll = new Roll("2d20kl" + mod);
-                                return roll.toMessage({
-                                    speaker: ChatMessage.getSpeaker({
-                                        actor: this.actor
-                                    }),
-                                    flavor: label
-                                });
-                            } else if (rollType == "custom") {
-                                roll = new Roll(rollCustom);
-                                return roll.toMessage({
-                                    speaker: ChatMessage.getSpeaker({
-                                        actor: this.actor
-                                    }),
-                                    flavor: label
-                                });
-                            }
-                        }
-                    },
-                    cancel: {
-                        icon: '<i class="fas fa-times"></i>',
-                        label: "Cancel"
-                    }
-                },
-                default: "confirm"
-            }).render(true)
-        } else {
-            let roll = new Roll("1d20" + mod);
-            let label = dataset.label ? `Rolling ${dataset.label}` : '';
-            return roll.toMessage({
-                speaker: ChatMessage.getSpeaker({
-                    actor: this.actor
-                }),
-                flavor: label
-            });
-        }
-    }
+        console.log(dataset);
 
-    _onAdvRoll(event) {
-        // new Dialog({title: "Title", content: html_content_to_display, buttons: {confirm:{icon: '<i class="fas fa-check"></i>', label: 'Confirm', callback: (html) => {//Code to do stuff here}}, cancel: {icon: '<i class="fas fa-times"></i>', label: "Cancel"}}}).render(true)
+        switch (dataset.rolltype) {
+            case "Stat":
+                this.statRoll(event, dataset, "Main");
+                break;
+            case "Spell":
+                this.itemRoll(event, dataset, "Spell");
+                break;
+            default:
+                break;
+        }
     }
 
     async _onAdd(event) {
@@ -162,7 +78,6 @@ export default class firardFortressActorSheet extends ActorSheet {
         const dataset = element.dataset;
         const data = this.getData(false);
         let updateData = {};
-        // console.log(dataset.add);
 
         switch (dataset.add) {
             case "system.languages":
@@ -212,6 +127,12 @@ export default class firardFortressActorSheet extends ActorSheet {
                 break;
         }
         this.object.update(updateData);
+    }
+
+    _onEditItem(event) {
+        const item = this.actor.items.get(event.currentTarget.dataset.id);
+        console.log(item);
+        item.sheet.render(true);
     }
 
 
@@ -487,6 +408,185 @@ export default class firardFortressActorSheet extends ActorSheet {
         console.log("Firard Fortress | Custom Languages: " + customLanguageSTR);
     }
 
+    // roll functions
+    statRoll(event, dataset, rollType, resolve) {
+        event.preventDefault();
+        const data = this.getData(false);
+        const advancedRoll = data.data.system.displayAdvancedRoll;
+        let posture = "";
+        let mod = 0;
+        if (dataset.roll < 0) {
+            mod = dataset.roll;
+        } else {
+            mod = `+${dataset.roll}`;
+        }
+        if (data.data.system.posture === "Focus" && (dataset.type === "INT" || dataset.type === "WIS" || dataset.type === "CHA" || dataset.type === "WIL")) {
+            mod += "+1";
+            posture = " (+ Focus)"
+        } else if (data.data.system.posture === "Focus" && (dataset.type === "DEX" || dataset.type === "CON" || dataset.type === "WIS" || dataset.type === "LUK")) {
+            mod += "-1";
+            posture = " (- Focus)"
+        } else if (data.data.system.posture === "Concentration" && (dataset.type === "DEX" || dataset.type === "CON" || dataset.type === "STR" || dataset.type === "LUK")) {
+            mod += "+1";
+            posture = " (+ Concentration)"
+        } else if (data.data.system.posture === "Concentration" && (dataset.type === "INT" || dataset.type === "WIS" || dataset.type === "CHA" || dataset.type === "WIL")) {
+            mod += "-1";
+            posture = " (- Concentration)"
+        }
+            
+
+        if (advancedRoll) {
+            this.advRoll(dataset, rollType, mod, posture, resolve);
+        } else {
+            this.renderRollMessage(dataset, rollType, mod, posture, resolve);
+        }
+    }
+
+    advRoll(dataset, rollType, mod, posture, resolve) {
+        // new Dialog({title: "Title", content: html_content_to_display, buttons: {confirm:{icon: '<i class="fas fa-check"></i>', label: 'Confirm', callback: (html) => {//Code to do stuff here}}, cancel: {icon: '<i class="fas fa-times"></i>', label: "Cancel"}}}).render(true)
+        new Dialog({
+            title: `Advanced Roll: ${dataset.label}`,
+            content: 
+            `<div style="display:flex; flex-direction:column; height:50px">
+                <select id="rollType">
+                    <option value="normal">Normal</option>
+                    <option value="advantage">Advantage</option>
+                    <option value="disadvantage">Disadvantage</option>
+                    <option value="custom">Custom</option>
+                </select>
+                <div id="rollCustomDiv" style="display:none">
+                    <label for="rollCustom">Formula</label>
+                    <input id="rollCustom" type="text" placeholder="Custom Roll">
+                </div>
+                <script>
+                    document.getElementById("rollType").addEventListener("change", function() {
+                        if (this.value == "custom") {
+                            document.getElementById("rollCustomDiv").style.display = "flex";
+                        } else {
+                            document.getElementById("rollCustomDiv").style.display = "none";
+                        }
+                    });
+                </script>
+            </div>`,
+            buttons: {
+                confirm: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: 'Confirm',
+                    callback: (html) => {
+                        if (rollType === "Main") {
+                            this.renderAdvRollMessage(html, dataset, mod, posture);
+                        } else if (rollType === "Item") {
+                            this.statRollForItem(dataset, mod, posture, resolve);
+                        }
+                    }
+                },
+                cancel: {
+                    icon: '<i class="fas fa-times"></i>',
+                    label: "Cancel"
+                }
+            },
+            default: "confirm"
+        }).render(true)
+    }
+
+    itemRoll(event, dataset, itemType) {
+        event.preventDefault();
+        const data = this.getData(false);
+        const item = data.items.find(item => item._id === dataset.id);
+        let itemRoll = new Promise((resolve, reject) => {
+            this.statRoll(event, dataset, "Item", resolve);
+        });
+        itemRoll.then((result) => {
+            console.log(result);
+        });
+    }
+
+    statRollForItem(dataset, mod, posture, resolve) {
+        let roll = new Roll("1d20" + mod).roll();
+        console.log(roll);
+        let label = dataset.label ? `Rolling ${dataset.label}${posture}` : '';
+        const htmlButtons = `
+            <button id="checkButton"><i class="fa-light fa-check"></i></button>
+            <button id="crossButton"><i class="fa-light fa-times"></i></button>
+        `;
+        const html = `
+            <div class="rollResult">
+                <div class="rollLabel">${label}</div>
+                <div class="rollValue">${roll.total}</div>
+                <div class="rollButtons">${htmlButtons}</div>
+            </div>
+        `;
+        ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({
+                actor: this.actor
+            }),
+            flavor: label,
+            content: html,
+            roll: roll
+        });
+        const checkButton = document.querySelector('#checkButton');
+        const crossButton = document.querySelector('#crossButton');
+        checkButton.addEventListener('click', () => {
+            resolve(true);
+        });
+        crossButton.addEventListener('click', () => {
+            resolve(false);
+        });
+    }
+
+    renderRollMessage(dataset, rollType, mod, posture, resolve) {
+        let roll = new Roll("1d20" + mod);
+        let label = dataset.label ? `Rolling ${dataset.label}${posture}` : '';
+        if (rollType == "Main") {
+            return roll.toMessage({
+                speaker: ChatMessage.getSpeaker({
+                    actor: this.actor
+                }),
+                flavor: label
+            });
+        } else if (rollType == "Item") {
+            console.log("Item");
+        }
+    }
+
+    renderAdvRollMessage(html, dataset, mod, posture) {
+        const rollType = html.find('#rollType')[0].value;
+        const rollCustom = html.find('#rollCustom')[0].value;
+        let roll = new Roll("1d20" + mod);
+        let label = dataset.label ? `Rolling ${dataset.label}${posture}` : '';
+        if (rollType == "normal") {
+            return roll.toMessage({
+                speaker: ChatMessage.getSpeaker({
+                    actor: this.actor
+                }),
+                flavor: label
+            });
+        } else if (rollType == "advantage") {
+            roll = new Roll("2d20kh" + mod);
+            return roll.toMessage({
+                speaker: ChatMessage.getSpeaker({
+                    actor: this.actor
+                }),
+                flavor: label
+            });
+        } else if (rollType == "disadvantage") {
+            roll = new Roll("2d20kl" + mod);
+            return roll.toMessage({
+                speaker: ChatMessage.getSpeaker({
+                    actor: this.actor
+                }),
+                flavor: label
+            });
+        } else if (rollType == "custom") {
+            roll = new Roll(rollCustom);
+            return roll.toMessage({
+                speaker: ChatMessage.getSpeaker({
+                    actor: this.actor
+                }),
+                flavor: label
+            });
+        }
+    }
 
     // stat bar animations
     statBar() {

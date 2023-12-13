@@ -1,5 +1,16 @@
 {
     "FI": {
+        "System": {
+            "HP": "HP",
+            "MP": "MP",
+            "SP": "SP",
+            "PA": "PA",
+            "MA": "MA",
+            "Min": "Min",
+            "Max": "Max",
+            "Value": "Valeur",
+            "Bonus": "Bonus"
+        },
         "Stat": {
             "STR" : "Force",
             "DEX" : "Dextérité",
@@ -9,7 +20,9 @@
             "CHA" : "Charisme",
             "LUK" : "Chance",
             "WIL" : "Volonté",
-            "HON" : "Honneur"
+            "HON" : "Honneur",
+            "Label": "Statistique",
+            "None": "Aucune"
         },
         "Posture": {
             "Label": "Posture",
@@ -32,18 +45,19 @@
         },
         "SpellType": {
             "Label": {
-                "Abjuration": "Se concentre sur la protection et le blocage des effets magiques. Utilise des barrières, des champs de force, et des sorts d'annulation pour défendre contre les attaques magiques et physiques.",
-                "Alteration": "Modifie les propriétés physiques des objets ou des êtres. Peut changer la taille, le poids, la texture ou d'autres aspects physiques, mais ne modifie pas la nature intrinsèque.",
-                "Charm": "Influence les pensées et les émotions des autres. Peut contrôler les actions d'une personne ou changer sa perception de la réalité.",
-                "Conjuration": "Crée des objets, des créatures ou des phénomènes à partir de rien. Les objets créés sont temporaires et disparaissent après un certain temps.",
-                "Divination": "Permet de voir des choses qui sont cachées ou éloignées. Peut révéler des informations sur des personnes, des lieux ou des événements.",
-                "Enchantment": "Permet de donner des propriétés spécifiques à un objet ou à une créature. Peut rendre un objet plus puissant, ou une créature plus rapide ou plus intelligente.",
-                "Evocation": "Manipule les énergies pour créer des effets destructifs ou constructifs, comme des boules de feu, des rayons de froid ou des éclairs.",
-                "Illusion": "Crée des images, des sons ou autres sensations qui trompent un ou plusieurs sens.  Utilisée pour tromper, distraire, ou camoufler.",
-                "Invocation": "Fait appel à des créatures ou des objets déjà existant pour qu'ils viennent en aide au lanceur. Les créatures invoquées sont permanentes et restent jusqu'à ce qu'elles soient détruites ou désinvoquées.",
-                "Necromancy": "Manipule la vie, la mort, et l'au-delà. Peut ressusciter les morts, drainer la vie ou communiquer avec les esprits des défunts.",
-                "Restoration": " Guérit, purifie, ou renforce. Peut aussi restaurer les propriétés physiques ou mentales perdues, annuler les malédictions ou renforcer les défenses naturelles.",
-                "Transmutation": "Change la nature intrinsèque d'un objet ou d'une créature sans en changer la composition. Peut changer la forme, la couleur, la taille, ou d'autres aspects physiques."
+                "Abjuration": "L'abjuration se concentre sur la protection et le blocage des effets magiques. Utilise des barrières, des champs de force, et des sorts d'annulation pour défendre contre les attaques magiques et physiques.",
+                "Alteration": "L'altération modifie les propriétés physiques des objets ou des êtres. Peut changer la taille, le poids, la texture ou d'autres aspects physiques, mais ne modifie pas la nature intrinsèque.",
+                "Charm": "Les charmes influencent les pensées et les émotions des autres. Peut contrôler les actions d'une personne ou changer sa perception de la réalité.",
+                "Conjuration": "La conjuration crée des objets, des créatures ou des phénomènes à partir de rien. Les objets créés sont temporaires et disparaissent après un certain temps.",
+                "Divination": "La divination permet de voir des choses qui sont cachées ou éloignées. Peut révéler des informations sur des personnes, des lieux ou des événements.",
+                "Enchantment": "Les enchantements permettent de donner des propriétés spécifiques à un objet ou à une créature. Peut rendre un objet plus puissant, ou une créature plus rapide ou plus intelligente.",
+                "Evocation": "L'évocation manipule les énergies pour créer des effets destructifs ou constructifs, comme des boules de feu, des rayons de froid ou des éclairs.",
+                "Illusion": "Les illusion crées des images, des sons ou autres sensations qui trompent un ou plusieurs sens.  Utilisée pour tromper, distraire, ou camoufler.",
+                "Invocation": "L'invocation fait appel à des créatures ou des objets déjà existant pour qu'ils viennent en aide au lanceur. Les créatures invoquées sont permanentes et restent jusqu'à ce qu'elles soient détruites ou désinvoquées.",
+                "Necromancy": "La nécromancie manipule la vie, la mort, et l'au-delà. Peut ressusciter les morts, drainer la vie ou communiquer avec les esprits des défunts.",
+                "Restoration": "La restauration guérit, purifie, ou renforce. Peut aussi restaurer les propriétés physiques ou mentales perdues, annuler les malédictions ou renforcer les défenses naturelles.",
+                "Transmutation": "La transmutation change la nature intrinsèque d'un objet ou d'une créature sans en changer la composition. Peut changer la forme, la couleur, la taille, ou d'autres aspects physiques.",
+                "Custom": "Vous avez sélectionné une école de magie personnalisée, il n'y a donc pas de description détaillées disponible."
             },
             "Abjuration": "Abjuration",
             "Alteration": "Altération",
@@ -57,6 +71,119 @@
             "Necromancy": "Nécromancie",
             "Restoration": "Restauration",
             "Transmutation": "Transmutation"
+        },
+        "SpellSheet": {
+            "MPCost": "Coût en PM",
+            "SpellType": "Ecole de magie",
+            "SpellRange": "Portée",
+            "Description": "Description",
+            "Name": "Nom",
+            "Rolls": "Lancers"
+        },
+        "SkillType": {
+            "Label": {
+                "Combat": "Les compétences de combat sont utilisées pour attaquer ou défendre en combat. Elles sont utilisées pour les attaques au corps à corps ou les attaques à distance.",
+                "Movement": "Les compétences de mouvement sont utilisées pour se déplacer. Elles sont utilisées pour se déplacer rapidement, esquiver, ou se déplacer à travers des obstacles.",
+                "Stealth": "Les compétences de discrétion sont utilisées pour se cacher ou se déplacer sans être vu. Elles sont utilisées pour se cacher, se déplacer silencieusement, ou se fondre dans la foule.",
+                "Survival": "Les compétences de survie sont utilisées pour survivre lors d'un combat. Elles sont utilisées pour résister aux effets de statut, se soigner, ou se protéger.",
+                "Tactical": "Les compétences tactiques sont utilisées pour donner des avantages aux alliés. Elles sont utilisées pour donner des bonus de dégâts, des bonus de défense, ou des bonus de mouvement.",
+                "Weapon": "Les compétences d'armes sont liées à l'utilisation d'une arme spécifique, contrairement aux compétences de combat. Elles sont utilisées pour attaquer ou défendre.",
+                "Custom": "Vous avez sélectionné un type de compétence personnalisée, il n'y a donc pas de description détaillées disponible."
+            },
+            "Combat": "Combat",
+            "Movement": "Mouvement",
+            "Stealth": "Discrétion",
+            "Survival": "Survie",
+            "Tactical": "Tactique",
+            "Weapon": "Arme"
+        },
+        "SkillSheet": {
+            "SPCost": "Coût en PE",
+            "SkillType": "Type de compétence",
+            "SkillRange": "Portée",
+            "Description": "Description",
+            "Name": "Nom",
+            "Rolls": "Lancers"
+        },
+        "HybridType": {
+            "Label": {
+                "Physical": "Les compétences hybrides physiques sont des compétences qui se basent plus sur le combat, mais en y rajoutant un autre élément, par exemple l'utilisation d'une compétence d'épée après y avoir appliqué un enchantement.",
+                "Magical": "Les compétences hybrides magiques sont des compétences qui se basent plus sur la magie, mais en puisant dans d'autres sources que du mana, comme par exemple la vie ou l'endurance du lanceur.",
+                "Custom": "Vous avez sélectionné un type de compétence hybride personnalisée, il n'y a donc pas de description détaillées disponible."
+            },
+            "Physical": "Physique",
+            "Magical": "Magique"
+        },
+        "HybridSheet": {
+            "MPCost": "Coût en PM",
+            "SPCost": "Coût en PE",
+            "HPCost": "Coût en PV",
+            "OtherCost": "Autre coût",
+            "HybridType": "Type de compétence hybride",
+            "HybridRange": "Portée",
+            "Description": "Description",
+            "Name": "Nom",
+            "Rolls": "Lancers"
+        },
+        "TransformationType": {
+            "Label": {
+                "Elemental": "Les transformation élémentaires ou forme élémentaire sont atteintes en sacrifiant un dés d'aventures sans obtenir son bonus pour obtenir de manière temporaire une forme ou les compétences sont décuplées.",
+                "Racial": "Les transformation raciales sont intrinsèque à la race choisie par le personnage.",
+                "Class": "Les transformation de classe sont intrinsèque à la classe choisie par le personnage.",
+                "Custom": "Vous avez sélectionné un type de transformation personnalisée, il n'y a donc pas de description détaillées disponible."
+            },
+            "Elemental": "Elémentaire",
+            "Racial": "Raciale",
+            "Class": "De classe"
+        },
+        "TransformationSheet": {
+            "MPCost": "Coût en PM",
+            "SPCost": "Coût en PE",
+            "HPCost": "Coût en PV",
+            "OtherCost": "Autre coût",
+            "Description": "Description",
+            "TransformationType": "Type de compétence de transformation",
+            "Name": "Nom"
+        },
+        "PassifType": {
+            "Label": {
+                "Conditional": "Les compétences passives conditionnelles s'activent et se désactivent automatiquement lorsqu'une condition est remplie.",
+                "Permanent": "Les compétences passives permanentes sont toujours actives, comme par exemple une compétence de vision nocturne.",
+                "Temporary": "Les compétences passives temporaires s'activent automatiquement pendant un certain temps, comme par exemple une compétence de régénération.",
+                "Custom": "Vous avez sélectionné un type de compétence passive personnalisée, il n'y a donc pas de description détaillées disponible."
+            },
+            "Conditional": "Conditionnelle",
+            "Permanent": "Permanente",
+            "Temporary": "Temporaire"
+        },
+        "PassifSheet": {
+            "PassifType": "Type de compétence passive",
+            "Description": "Description",
+            "Name": "Nom"
+        },
+        "ProficiencyType": {
+            "Label": {
+                "Physcial": "Les dons physiques donnent des bonus lors d'actions liés aux statistiques physiques (FOR/CON/DEX).",
+                "Social": "Les dons sociaux donnent des bonus lors d'actions liés aux statistiques sociales (CHA/LUK/HON).",
+                "Mental": "Les dons mentaux donnent des bonus lors d'actions liés aux statistiques mentales (INT/WIS/WIL).",
+                "Custom": "Vous avez sélectionné un type de don personnalisé, il n'y a donc pas de description détaillées disponible."
+            },
+            "Physcial": "Physique",
+            "Social": "Social",
+            "Mental": "Mental"
+        },
+        "ProficiencySheet": {
+            "ProficiencyType": "Type de don",
+            "Description": "Description",
+            "Name": "Nom"
+        },
+        "MoneySheet": {
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Value": "Valeur",
+            "Total": "Total",
+            "Localisation": "Localisation",
+            "Description": "Description"
         }
     }
 }

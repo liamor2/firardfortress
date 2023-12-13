@@ -21,8 +21,11 @@ export default class firardFortressItemSheet extends ItemSheet {
         const defaultOptions = super.defaultOptions;
 
         return mergeObject(defaultOptions, {
-            classes: ['firardfortress', 'sheet', 'item'],
-            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }]
+            width: "auto",
+            height: "auto",
+            resizable: false,
+            classes: ['sheet', 'item-sheet'],
+            tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'main' }]
         });
     }
 
@@ -31,6 +34,8 @@ export default class firardFortressItemSheet extends ItemSheet {
 
         html.find('.item-roll').click(this._onItemRoll.bind(this));
         html.find('.item-delete').click(this._onItemDelete.bind(this));
+        html.find('.roll-delete').click(this._onRollDelete.bind(this));
+        html.find('.item-add').click(this._onItemAdd.bind(this));
     }
 
     _onItemDelete(event) {
@@ -40,6 +45,43 @@ export default class firardFortressItemSheet extends ItemSheet {
         const item = this.actor.items.get(itemId);
 
         item.delete();
+    }
+
+    _onRollDelete(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+        console.log(dataset);
+        const item = this.object;
+        
+        let rolls = item.system.roll;
+        if (!Array.isArray(rolls)) {
+            rolls =  Object.values(rolls);
+        }
+        rolls.splice(dataset.index, 1);
+        item.update({ "system.roll": rolls });
+        this.render();
+    }
+
+    _onItemAdd(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+        const data = this.getData();
+
+        switch (dataset.add) {
+            case 'spell':
+                this.addSpellRoll(data, "Fire");
+                break;
+            case 'skill':
+                this.addSpellRoll(data, "Physical");
+                break;
+            case 'hybrid':
+                this.addSpellRoll(data, "Piercing");
+                break;
+            default:
+                break;
+        }
     }
 
     _updateObject(event, formData) {
@@ -78,6 +120,15 @@ export default class firardFortressItemSheet extends ItemSheet {
         switch (item.type) {
             case 'AdventureDice':
                 this.adventureDiceRoll(event, item, dataset);
+                break;
+            case 'Spell':
+                this.spellRoll(event, item, dataset, "Spell");
+                break;
+            case 'Skill':
+                this.spellRoll(event, item, dataset, "Skill");
+                break;
+            case 'Hybrid':
+                this.spellRoll(event, item, dataset, "Hybrid");
                 break;
             default:
                 break;
@@ -130,12 +181,43 @@ export default class firardFortressItemSheet extends ItemSheet {
         }
     }
 
+    spellRoll(event, item, dataset, type) {
+        let rollList = item.system.roll;
+        let rollString = ``;
+        if (!Array.isArray(rollList)) {
+            rollList =  Object.values(rollList);
+        }
+        for (let i = 0; i < rollList.length; i++) {
+            const dice = rollList[i].dice;
+            const type = rollList[i].type;
+            const bonus = rollList[i].bonus;
+            const damageType = rollList[i].damageType;
+            const roll = new Roll(`${dice}${type}`);
+            roll.roll();
+            if (game.dice3d) {
+                game.dice3d.showForRoll(roll)
+            }
+            const result = parseInt(roll.result) + bonus;
+            rollString += `</p> <p> ${dice}${type}+${bonus} = ${result} ${damageType} `;
+        }
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            content: `<h2>${game.i18n.localize(`FI.${type}.Roll`)}</h2> <p>${game.i18n.localize(`FI.${type}.RollResult`)} : ${rollString} </p>`
+        })
+    }
+
 
     createCalculatedData(data) {
         switch (this.item.type) {
             case "AdventureDice":
                 this.createAdventureDiceData(data);
                 break;
+            case "Spell":
+                this.createSpellData(data);
+                break;
+            case "Skill":
+                this.createSkillData(data);
             default:
                 break;
         }
@@ -161,5 +243,56 @@ export default class firardFortressItemSheet extends ItemSheet {
         for (let i = 0; i <= data.data.system.GMBalance-1; i++) {
             data.data.system.segments[i] = true;
         }
+    }
+
+    createSpellData(data) {
+        if (data.data.system.roll == null) data.data.system.roll = [];
+        if (!Array.isArray(data.data.system.roll)) {
+            data.data.system.roll =  Object.values(data.data.system.roll);
+        }
+        for (let i = 0; i < data.data.system.roll.length; i++) {
+            const roll = data.data.system.roll[i];
+            if (roll.dice == null) roll.dice = 1;
+            if (roll.type == null) roll.type = "d6";
+            if (roll.bonus == null) roll.bonus = 0;
+            if (roll.damageType == null) roll.damageType = "Fire";
+        }
+        if (data.data.system.range.min < 0) data.data.system.range.min = 0;
+        if (data.data.system.range.max < 0) data.data.system.range.max = 0;
+        if (data.data.system.range.min > data.data.system.range.max) data.data.system.range.min = data.data.system.range.max;
+    }
+
+    createSkillData(data) {
+        if (data.data.system.roll == null) data.data.system.roll = [];
+        if (!Array.isArray(data.data.system.roll)) {
+            data.data.system.roll =  Object.values(data.data.system.roll);
+        }
+        for (let i = 0; i < data.data.system.roll.length; i++) {
+            const roll = data.data.system.roll[i];
+            if (roll.dice == null) roll.dice = 1;
+            if (roll.type == null) roll.type = "d6";
+            if (roll.bonus == null) roll.bonus = 0;
+            if (roll.damageType == null) roll.damageType = "Physical";
+        }
+        if (data.data.system.range.min < 0) data.data.system.range.min = 0;
+        if (data.data.system.range.max < 0) data.data.system.range.max = 0;
+        if (data.data.system.range.min > data.data.system.range.max) data.data.system.range.min = data.data.system.range.max;
+    }
+
+    addSpellRoll(data, damageType) {
+        console.log(data);
+        let rolls = data.data.system.roll;
+        if (!Array.isArray(rolls)) {
+            rolls =  Object.values(rolls);
+        }
+        let roll = {
+            dice: 1,
+            type: "d6",
+            bonus: 0,
+            damageType: damageType
+        }
+        rolls.push(roll);
+        this.item.update({ "system.roll": rolls });
+        this.render();
     }
 }

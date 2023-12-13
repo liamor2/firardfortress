@@ -149,7 +149,8 @@
         }
     },
     "Equipment": {
-        "templates": ["general", "items", "equippable"]
+        "templates": ["general", "items", "equippable"],
+        "isEquipment": true
     },
     "Weapon": {
         "templates": ["general", "items", "equippable", "statLinked"],
@@ -158,7 +159,6 @@
         "roll": [
             {
                 "dice": 0,
-                "value": 0,
                 "bonus": 0,
                 "damageType": ""
             }
@@ -166,20 +166,24 @@
         "range": {
             "min": 0,
             "max": 0
-        }
+        },
+        "isWeapon": true
     },
     "Misc": {
-        "templates": ["general", "items"]
+        "templates": ["general", "items"],
+        "isMisc": true
     },
     "Money": {
         "templates": ["general"],
         "localisation": "",
         "value": 0,
-        "quantity": 0
+        "quantity": 0,
+        "isMoney": true
     },
     "Proficiency": {
         "templates": ["general", "statLinked"],
-        "proficiencyType": ""
+        "proficiencyType": "",
+        "isProficiency": true
     },
     "Spell": {
         "templates": ["general", "statLinked"],
@@ -192,11 +196,11 @@
         "roll": [
             {
                 "dice": 0,
-                "value": 0,
                 "bonus": 0,
                 "damageType": ""
             }
-        ]
+        ],
+        "isSpell": true
     },
     "Skill": {
         "templates": ["general", "statLinked"],
@@ -209,11 +213,11 @@
         "roll": [
             {
                 "dice": 0,
-                "value": 0,
                 "bonus": 0,
                 "damageType": ""
             }
-        ]
+        ],
+        "isSkill": true
     },
     "Hybrid": {
         "templates": ["general", "statLinked"],
@@ -229,11 +233,11 @@
         "roll": [
             {
                 "dice": 0,
-                "value": 0,
                 "bonus": 0,
                 "damageType": ""
             }
-        ]
+        ],
+        "isHybrid": true
     },
     "Transformation": {
         "templates": ["general", "statLinked"],
@@ -241,16 +245,19 @@
         "mpCost": 0,
         "spCost": 0,
         "hpCost": 0,
-        "otherCost": ""
+        "otherCost": "",
+        "isTransformation": true
     },
     "Passif": {
-        "templates": ["general", "statLinked"],
-        "passifType": ""
+        "templates": ["general"],
+        "passifType": "",
+        "isPassif": true
     },
     "AdventureDice": {
         "group": "",
         "heroBalance": 0,
-        "GMBalance": 0
+        "GMBalance": 0,
+        "isAdventureDice": true
     },
     "Language": {
         "name": ""

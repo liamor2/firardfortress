@@ -1,0 +1,63 @@
+<form class="{{cssClass}} item-sheet money" autocomplete="off">
+    <script>
+        if (typeof inputs === 'undefined') {
+            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        }
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="sheet-header">
+        <div class="sheet-header-1">
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.MoneySheet.Name"}}">{{data.system.name}}</textarea>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+        <table class="sheet-main">
+            <tr class="top">
+                <td class="moneyQuantity">
+                    <label>{{localize "FI.MoneySheet.Quantity"}}</label>
+                    <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize "FI.MoneySheet.Quantity"}}"/>
+                </td>
+                <td class="moneyValue">
+                    <label>{{localize "FI.MoneySheet.Value"}}</label>
+                    <input type="number" name="system.value" value="{{data.system.value}}" title="{{localize "FI.MoneySheet.ValueDescription"}}"/>
+                </td>
+            </tr>
+            <tr class="bottom">
+                <td class="moneyLocalisation">
+                    <label>{{localize "FI.MoneySheet.Localisation"}}</label>
+                    <input type="text" name="system.localisation" value="{{data.system.localisation}}" title="{{localize "FI.MoneySheet.Localisation"}}"/>
+                </td>
+                <td class="moneyTotal">
+                    <label>{{localize "FI.MoneySheet.Total"}}</label>
+                    <p>{{data.system.total}}</p>
+                </td>
+            </tr>
+        </table>
+        <section class="sheet-description" data-tab="description">
+            <label>{{localize "FI.MoneySheet.Description"}}</label>
+            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+        </section>
+    </main>
+</form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

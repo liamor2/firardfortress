@@ -9,46 +9,145 @@
     </script>
     <header class="sheet-header">
         <div class="sheet-header-1">
-            <div class="sheet-header-image">
-                <img src="{{data.img}}" title="{{data.name}}" width="64" height="64" />
-                <input type="text" name="system.name" value="{{data.system.name}}"/>
-            </div>
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.SpellSheet.Name"}}">{{data.system.name}}</textarea>
         </div>
-        <div class="sheet-header-2">
-            <label>{{localize "FI.SpellSheet.MPCost"}}</label>
-            <input type="number" class="" name="system.mpCost" value="{{data.system.mpCost}}"/>
-            <label>{{localize "FI.SpellSheet.SpellType"}}</label>
-            <input type="text" name="system.spellType" value="{{data.system.spellType}}" list="spellTypes" title="{{localize "FI.SpellSheet.SpellType"}}"/>
-            
-            <datalist id="spellTypes">
-                <option value="{{localize "FI.SpellType.Abjuration"}}"/>
-                <option value="{{localize "FI.SpellType.Alteration"}}"/>
-                <option value="{{localize "FI.SpellType.Charm"}}"/>
-                <option value="{{localize "FI.SpellType.Conjuration"}}"/>
-                <option value="{{localize "FI.SpellType.Divination"}}"/>
-                <option value="{{localize "FI.SpellType.Enchantment"}}"/>
-                <option value="{{localize "FI.SpellType.Evocation"}}"/>
-                <option value="{{localize "FI.SpellType.Illusion"}}"/>
-                <option value="{{localize "FI.SpellType.Invocation"}}"/>
-                <option value="{{localize "FI.SpellType.Necromancy"}}"/>
-                <option value="{{localize "FI.SpellType.Restoration"}}"/>
-                <option value="{{localize "FI.SpellType.Transmutation"}}"/>
-            </datalist>
-        </div>
-        <div class="sheet-header-3">
-            <label>{{localize "FI.SpellSheet.SpellLevel"}}</label>
-            <input type="number" name="system.spellLevel" value="{{data.system.spellLevel}}"/>
-            <label>{{localize "FI.SpellSheet.SpellRange"}}</label>
-            <input type="text" name="system.spellRange" value="{{data.system.spellRange}}"/>
-        </div>
+        <table class="sheet-header-2">
+            <tr class="top">
+                <td class="spellType" colspan="2">
+                    <label>{{localize "FI.SpellSheet.SpellType"}}</label>
+                    <div class="spellTypeDiv" title="{{localize "FI.SpellSheet.SpellType"}}">
+                        <i class="fas fa-magic"></i>
+                        <input type="text" name="system.spellType" value="{{data.system.spellType}}" list="spellTypes" title="{{localize "FI.SpellSheet.SpellType"}}"/>
+                        <script>
+                            var descriptionButton = document.createElement('i');
+                            var spellTypeList = document.querySelector('#spellTypes');
+                            var translatedSpellTypes = [];
+                            for (let i = 0; i < spellTypeList.options.length; i++) {
+                                translatedSpellTypes.push(game.i18n.localize(`FI.SpellType.${spellTypeList.options[i].title}`));
+                            }
+                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
+                            descriptionButton.title = '';
+                            descriptionButton.addEventListener('mouseover', () => {
+                                const spellType = document.querySelector('input[name="system.spellType"]').value;
+                                if (translatedSpellTypes.includes(spellType)) {
+                                    const title = spellTypeList.querySelector(`option[value="${spellType}"]`).title;
+                                    const description = game.i18n.localize(`FI.SpellType.Label.${title}`);
+                                    descriptionButton.title = description;
+                                } else {
+                                    descriptionButton.title = game.i18n.localize('FI.SpellType.Label.Custom');
+                                }
+                            });
+                            document.querySelector('.spellTypeDiv').appendChild(descriptionButton);
+                        </script>
+                        <datalist id="spellTypes">
+                            <option value="{{localize "FI.SpellType.Abjuration"}}" title="Abjuration"/>
+                            <option value="{{localize "FI.SpellType.Alteration"}}" title="Alteration"/>
+                            <option value="{{localize "FI.SpellType.Charm"}}" title="Charm"/>
+                            <option value="{{localize "FI.SpellType.Conjuration"}}" title="Conjuration"/>
+                            <option value="{{localize "FI.SpellType.Divination"}}" title="Divination"/>
+                            <option value="{{localize "FI.SpellType.Enchantment"}}" title="Enchantment"/>
+                            <option value="{{localize "FI.SpellType.Evocation"}}" title="Evocation"/>
+                            <option value="{{localize "FI.SpellType.Illusion"}}" title="Illusion"/>
+                            <option value="{{localize "FI.SpellType.Invocation"}}" title="Invocation"/>
+                            <option value="{{localize "FI.SpellType.Necromancy"}}" title="Necromancy"/>
+                            <option value="{{localize "FI.SpellType.Restoration"}}" title="Restoration"/>
+                            <option value="{{localize "FI.SpellType.Transmutation"}}" title="Transmutation"/>
+                        </datalist>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="MPCost">
+                    <label>{{localize "FI.SpellSheet.MPCost"}}</label>
+                    <input type="number" name="system.mpCost" value="{{data.system.mpCost}}" title="{{localize "FI.SpellSheet.MPCost"}}"/>
+                    <label>{{localize "FI.System.MP"}}</label>
+                </td>
+                <td class="range">
+                    <div>
+                        <p>{{localize "FI.System.Min"}}</p>
+                        <label>{{localize "FI.SpellSheet.SpellRange"}}</label>
+                        <p>{{localize "FI.System.Max"}}</p>
+                    </div>
+                    <div>
+                        <input type="number" name="system.range.min" value="{{data.system.range.min}}"/>
+                        <span>-</span>
+                        <input type="number" name="system.range.max" value="{{data.system.range.max}}"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="stat">
+                    <label>{{localize "FI.Stat.Label"}}</label>
+                    <select name="system.stat" value="{{data.system.stat}}">
+                        <option value="">{{localize "FI.Stat.None"}}</option>
+                        <option value="STR">{{localize "FI.Stat.STR"}}</option>
+                        <option value="DEX">{{localize "FI.Stat.DEX"}}</option>
+                        <option value="CON">{{localize "FI.Stat.CON"}}</option>
+                        <option value="INT">{{localize "FI.Stat.INT"}}</option>
+                        <option value="WIS">{{localize "FI.Stat.WIS"}}</option>
+                        <option value="CHA">{{localize "FI.Stat.CHA"}}</option>
+                        <option value="LUK">{{localize "FI.Stat.LUK"}}</option>
+                        <option value="WIL">{{localize "FI.Stat.WIL"}}</option>
+                        <option value="HON">{{localize "FI.Stat.HON"}}</option>
+                        <script>
+                                document.querySelector('select[name="system.stat"]').value = '{{data.system.stat}}';
+                        </script>
+                    </select>
+                </td>
+                <td class="value">
+                    <label>{{localize "FI.System.Value"}}</label>
+                    <input type="text" name="system.value" value="{{data.system.value}}"/>
+                </td>
+            </tr>
+        </table>
     </header>
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <ul>
+            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
+            <li><a class="item" data-tab="description">{{localize "FI.Description"}}</a></li>
+        </ul>
+    </nav>
+
+    {{!-- Sheet Body --}}
     <main class="sheet-body">
 
+        {{!-- Main Tab --}}
+        <section class="sheet-tab tab" data-tab="main">
+            <div class="rolls-label">
+                <label>{{localize "FI.SpellSheet.Rolls"}}</label>
+                <a class="item-roll rollable" title="{{localize "FI.Roll"}}" data-type="Spell"><i class="fa-duotone fa-dice-d20"></i></a>
+            </div>
+            <div class="rolls">
+                {{#each data.system.roll as |roll|}}
+                    <div class="roll">
+                        <input class="number" type="number" name="system.roll.{{@index}}.dice" value="{{roll.dice}}" title="{{localize "FI.SpellSheet.Dice"}}"/>
+                        <input class="dice" name="system.roll.{{@index}}.type" value="{{roll.type}}" title="{{localize "FI.SpellSheet.DiceType"}}" list="diceTypes"/>
+                        <datalist id="diceTypes">
+                            <option value="d4"/>
+                            <option value="d6"/>
+                            <option value="d8"/>
+                            <option value="d10"/>
+                            <option value="d12"/>
+                            <option value="d20"/>
+                            <option value="d100"/>
+                        </datalist>
+                        <span>+</span>
+                        <input class="number" type="number" name="system.roll.{{@index}}.bonus" value="{{roll.bonus}}" title="{{localize "FI.SpellSheet.Bonus"}}"/>
+                        <input class="text" type="text" name="system.roll.{{@index}}.damageType" value="{{roll.damageType}}" title="{{localize "FI.SpellSheet.DamageType"}}"/>
+                        <button class="roll-delete" title="{{localize "FI.Delete"}}" data-index="{{@index}}"><i class="fas fa-trash"></i></button>
+                    </div>
+                {{/each}}
+            </div>
+            <button class="item-add" title="{{localize "FI.Add"}}" data-add="spell"><i class="fas fa-plus"></i></button>
+        </section>
+
+        {{!-- Description Tab --}}
+        <section class="sheet-tab tab sheet-description" data-tab="description">
+            <label>{{localize "FI.SpellSheet.Description"}}</label>
+            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+        </section>
     </main>
-    <footer class="sheet-footer">
-        <label>{{localize "FI.SpellSheet.Description"}}</label>
-        <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
-    </footer>
 </form>
 
 <script>
