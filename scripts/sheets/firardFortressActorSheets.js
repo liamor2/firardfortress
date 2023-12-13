@@ -40,6 +40,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         html.find('.add').click(this._onAdd.bind(this));
         html.find('.delete').click(this._onDelete.bind(this));
         html.find('.edit-item').click(this._onEditItem.bind(this));
+        html.find('.move').click(this._onMove.bind(this));
 
         // hover listeners
 
@@ -93,8 +94,35 @@ export default class firardFortressActorSheet extends ActorSheet {
                 }
                 languages.push(newLanguage);
                 updateData = {"system.languages": languages};
+                break;
+            case "Spell":
+                const newSpell = {
+                    name: "New Spell",
+                    type: "Spell",
+                    data: {
+                        name: `${game.i18n.localize("FI.Spell.NewSpell")}`,
+                        spellType: "",
+                        stat: "None",
+                        mpCost: 0,
+                        range: {
+                            min: 0,
+                            max: 0
+                        },
+                        roll: [
+                            {
+                                "dice": "1",
+                                "bonus": 0,
+                                "damageType": ""
+                            }
+                        ],
+                        description: "",
+                        isSpell: true
+                    }
+                }
+                this.actor.createEmbeddedDocuments("Item", [newSpell]);
+                break;
             default:
-                // console.log(dataset.add)
+                console.log(dataset.add)
                 break;
         }
         // console.log(this.object);
@@ -122,6 +150,10 @@ export default class firardFortressActorSheet extends ActorSheet {
                 let language = languages.splice(index, 1);
                 updateData = { "system.languages": languages };
                 break;
+            case "Spell":
+                const item = this.actor.items.get(dataset.id);
+                item.delete();
+                break;
             default:
                 console.log("default: " + dataset.delete);
                 break;
@@ -133,6 +165,24 @@ export default class firardFortressActorSheet extends ActorSheet {
         const item = this.actor.items.get(event.currentTarget.dataset.id);
         console.log(item);
         item.sheet.render(true);
+    }
+
+    _onMove(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+        const dataset = element.dataset;
+
+        switch (dataset.move && dataset.type) {
+            case "Spell" && "up":
+                this.moveItemUp(dataset, "Spell");
+                break;
+            case "Spell" && "down":
+                this.moveItemDown(dataset, "Spell");
+                break;
+            default:
+                console.log(dataset.move);
+                break;
+        }
     }
 
 
@@ -415,7 +465,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         const advancedRoll = data.data.system.displayAdvancedRoll;
         let posture = "";
         let mod = 0;
-        if (typeof dataset.roll === "string") {
+        if (typeof dataset.roll === "string" && !(dataset.roll == "None")) {
             mod = data.data.system.stat[dataset.roll].mod.text;
         } else if (typeof dataset.roll === "number") {
             if (dataset.roll < 0) {
@@ -423,6 +473,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             } else {
                 mod = `+${dataset.roll}`;
             }
+        } else {
+            mod = "";
         }
         if (data.data.system.posture === "Focus" && (dataset.type === "INT" || dataset.type === "WIS" || dataset.type === "CHA" || dataset.type === "WIL")) {
             mod += "+1";
@@ -617,6 +669,32 @@ export default class firardFortressActorSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker(),
             content: `<h2>${game.i18n.localize(`FI.${type}.Roll`)}</h2> <p>${game.i18n.localize(`FI.${type}.RollResult`)} : ${rollString} </p>`
         })
+    }
+
+    // move item
+
+    async moveItemUp(dataset, type) {
+        const data = this.getData(false);
+        const items = data.items;
+        const item = items.find(item => item._id === dataset.id);
+        const itemIndex = items.indexOf(item);
+        const itemBelow = items[itemIndex + 1];
+        console.log(itemIndex);
+        console.log(itemBelow);
+        console.log(items);
+        if (itemIndex === 0) {
+            return;
+        } else {
+            items.splice(itemIndex, 1);
+            items.splice(itemIndex - 1, 0, item);
+        }
+        console.log(items);
+        this.actor.update({"items": items});
+        this.object.update({"items": items});
+        this.render();
+    }
+
+    moveItemDown(dataset, type) {
     }
 
     // stat bar animations
