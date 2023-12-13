@@ -409,16 +409,20 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     // roll functions
-    statRoll(event, dataset, rollType, resolve) {
+    statRoll(event, dataset, rollType) {
         event.preventDefault();
         const data = this.getData(false);
         const advancedRoll = data.data.system.displayAdvancedRoll;
         let posture = "";
         let mod = 0;
-        if (dataset.roll < 0) {
-            mod = dataset.roll;
-        } else {
-            mod = `+${dataset.roll}`;
+        if (typeof dataset.roll === "string") {
+            mod = data.data.system.stat[dataset.roll].mod.text;
+        } else if (typeof dataset.roll === "number") {
+            if (dataset.roll < 0) {
+                mod = dataset.roll;
+            } else {
+                mod = `+${dataset.roll}`;
+            }
         }
         if (data.data.system.posture === "Focus" && (dataset.type === "INT" || dataset.type === "WIS" || dataset.type === "CHA" || dataset.type === "WIL")) {
             mod += "+1";
@@ -432,17 +436,16 @@ export default class firardFortressActorSheet extends ActorSheet {
         } else if (data.data.system.posture === "Concentration" && (dataset.type === "INT" || dataset.type === "WIS" || dataset.type === "CHA" || dataset.type === "WIL")) {
             mod += "-1";
             posture = " (- Concentration)"
-        }
-            
+        }        
 
         if (advancedRoll) {
-            this.advRoll(dataset, rollType, mod, posture, resolve);
+            this.advRoll(dataset, rollType, mod, posture);
         } else {
-            this.renderRollMessage(dataset, rollType, mod, posture, resolve);
+            this.renderRollMessage(dataset, rollType, mod, posture);
         }
     }
 
-    advRoll(dataset, rollType, mod, posture, resolve) {
+    advRoll(dataset, rollType, mod, posture) {
         // new Dialog({title: "Title", content: html_content_to_display, buttons: {confirm:{icon: '<i class="fas fa-check"></i>', label: 'Confirm', callback: (html) => {//Code to do stuff here}}, cancel: {icon: '<i class="fas fa-times"></i>', label: "Cancel"}}}).render(true)
         new Dialog({
             title: `Advanced Roll: ${dataset.label}`,
@@ -476,7 +479,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                         if (rollType === "Main") {
                             this.renderAdvRollMessage(html, dataset, mod, posture);
                         } else if (rollType === "Item") {
-                            this.statRollForItem(dataset, mod, posture, resolve);
+                            this.statRollForItem(dataset, mod, posture);
                         }
                     }
                 },
@@ -489,52 +492,25 @@ export default class firardFortressActorSheet extends ActorSheet {
         }).render(true)
     }
 
-    itemRoll(event, dataset, itemType) {
+    itemRoll(event, dataset) {
         event.preventDefault();
-        const data = this.getData(false);
-        const item = data.items.find(item => item._id === dataset.id);
-        let itemRoll = new Promise((resolve, reject) => {
-            this.statRoll(event, dataset, "Item", resolve);
-        });
-        itemRoll.then((result) => {
-            console.log(result);
-        });
+        this.statRoll(event, dataset, "Item");
     }
 
-    statRollForItem(dataset, mod, posture, resolve) {
-        let roll = new Roll("1d20" + mod).roll();
+    statRollForItem(dataset, mod, posture) {
+        let roll = new Roll("1d20" + mod);
         console.log(roll);
         let label = dataset.label ? `Rolling ${dataset.label}${posture}` : '';
-        const htmlButtons = `
-            <button id="checkButton"><i class="fa-light fa-check"></i></button>
-            <button id="crossButton"><i class="fa-light fa-times"></i></button>
-        `;
-        const html = `
-            <div class="rollResult">
-                <div class="rollLabel">${label}</div>
-                <div class="rollValue">${roll.total}</div>
-                <div class="rollButtons">${htmlButtons}</div>
-            </div>
-        `;
-        ChatMessage.create({
+        this.renderItemRollWindow(dataset, "Item");
+        return roll.toMessage({
             speaker: ChatMessage.getSpeaker({
                 actor: this.actor
             }),
-            flavor: label,
-            content: html,
-            roll: roll
-        });
-        const checkButton = document.querySelector('#checkButton');
-        const crossButton = document.querySelector('#crossButton');
-        checkButton.addEventListener('click', () => {
-            resolve(true);
-        });
-        crossButton.addEventListener('click', () => {
-            resolve(false);
+            flavor: label
         });
     }
 
-    renderRollMessage(dataset, rollType, mod, posture, resolve) {
+    renderRollMessage(dataset, rollType, mod, posture) {
         let roll = new Roll("1d20" + mod);
         let label = dataset.label ? `Rolling ${dataset.label}${posture}` : '';
         if (rollType == "Main") {
@@ -586,6 +562,61 @@ export default class firardFortressActorSheet extends ActorSheet {
                 flavor: label
             });
         }
+    }
+
+    renderItemRollWindow(dataset, mod, posture) {
+        const data = this.getData(false);
+        const item = data.items.find(item => item._id === dataset.id);
+        console.log(item);
+        new Dialog({
+            title: `${game.i18n.localize("FI.Roll.itemRoll")} ${item.name}`,
+            content: 
+            `<div style="display:flex; flex-direction:column; height:50px">
+                <h2>${game.i18n.localize("FI.Roll.launchItemRoll")}</h2>
+            </div>`,
+            buttons: {
+                confirm: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: 'Confirm',
+                    callback: (html) => {
+                        this.renderItemRollMessage(item);
+                    }
+                },
+                cancel: {
+                    icon: '<i class="fas fa-times"></i>',
+                    label: "Cancel"
+                }
+            },
+            default: "confirm"
+        }).render(true)
+    }
+
+    renderItemRollMessage(item) {
+        let type = item.type;
+        let rollList = item.system.roll;
+        let rollString = ``;
+        if (!Array.isArray(rollList)) {
+            rollList =  Object.values(rollList);
+        }
+        console.log(rollList);
+        for (let i = 0; i < rollList.length; i++) {
+            const dice = rollList[i].dice;
+            const type = rollList[i].type;
+            const bonus = rollList[i].bonus;
+            const damageType = rollList[i].damageType;
+            const roll = new Roll(`${dice}${type}`);
+            roll.roll();
+            if (game.dice3d) {
+                game.dice3d.showForRoll(roll)
+            }
+            const result = parseInt(roll.result) + bonus;
+            rollString += `</p> <p> ${dice}${type}+${bonus} = ${result} ${damageType} `;
+        }
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            content: `<h2>${game.i18n.localize(`FI.${type}.Roll`)}</h2> <p>${game.i18n.localize(`FI.${type}.RollResult`)} : ${rollString} </p>`
+        })
     }
 
     // stat bar animations
