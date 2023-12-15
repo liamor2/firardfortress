@@ -9,7 +9,21 @@
             "Min": "Min",
             "Max": "Max",
             "Value": "Valeur",
-            "Bonus": "Bonus"
+            "Temp": "Temp",
+            "Bonus": "Bonus",
+            "Move": "Déplacer",
+            "Delete": "Supprimer",
+            "Name": "Nom",
+            "PlayerName": "Nom du joueur",
+            "Guild": "Guilde",
+            "Class": "Classe",
+            "Race": "Race",
+            "Level": "Niveau",
+            "Main": "Principal",
+            "Proficiencies": "Dons",
+            "Spells": "Sorts/Compétences",
+            "Notes": "Langues/Notes",
+            "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
         },
         "Stat": {
             "STR" : "Force",
@@ -42,6 +56,18 @@
             "Temp": "TMP",
             "Max": "MAX",
             "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
+        },
+        "Description": {
+            "Language": "Languages parlé",
+            "LanguageName": "Nom du language",
+            "Speaking": "Parlé",
+            "Reading": "Lu",
+            "Writing": "Écrit",
+            "Biography": "Biographie",
+            "Personality": "Personnalité",
+            "Appearance": "Apparence",
+            "Background": "Histoire",
+            "Notes": "Notes"
         },
         "SpellType": {
             "Label": {
@@ -80,6 +106,13 @@
             "Name": "Nom",
             "Rolls": "Lancers"
         },
+        "Spell": {
+            "Name": "Nom",
+            "Cost": "PM",
+            "Stat": "Stat",
+            "Roll": "Lancer",
+            "NewSpell": "Nouveau sort"
+        },
         "SkillType": {
             "Label": {
                 "Combat": "Les compétences de combat sont utilisées pour attaquer ou défendre en combat. Elles sont utilisées pour les attaques au corps à corps ou les attaques à distance.",
@@ -105,6 +138,13 @@
             "Name": "Nom",
             "Rolls": "Lancers"
         },
+        "Skill": {
+            "Name": "Nom",
+            "Cost": "PE",
+            "Stat": "Stat",
+            "Roll": "Lancer",
+            "NewSkill": "Nouvelle compétence"
+        },
         "HybridType": {
             "Label": {
                 "Physical": "Les compétences hybrides physiques sont des compétences qui se basent plus sur le combat, mais en y rajoutant un autre élément, par exemple l'utilisation d'une compétence d'épée après y avoir appliqué un enchantement.",
@@ -124,6 +164,13 @@
             "Description": "Description",
             "Name": "Nom",
             "Rolls": "Lancers"
+        },
+        "Hybrid": {
+            "Name": "Nom",
+            "Cost": "PM/PE/PV/Autre",
+            "Stat": "Stat",
+            "Roll": "Lancer",
+            "NewHybrid": "Nouvelle compétence hybride"
         },
         "TransformationType": {
             "Label": {
@@ -145,6 +192,13 @@
             "TransformationType": "Type de compétence de transformation",
             "Name": "Nom"
         },
+        "Transformation": {
+            "Name": "Nom",
+            "Cost": "PM/PE/PV/Autre",
+            "Stat": "Stat",
+            "Roll": "Lancer",
+            "NewTransformation": "Nouvelle transformation"
+        },
         "PassifType": {
             "Label": {
                 "Conditional": "Les compétences passives conditionnelles s'activent et se désactivent automatiquement lorsqu'une condition est remplie.",
@@ -160,6 +214,10 @@
             "PassifType": "Type de compétence passive",
             "Description": "Description",
             "Name": "Nom"
+        },
+        "Passif": {
+            "Name": "Nom",
+            "NewPassif": "Nouveau passif"
         },
         "ProficiencyType": {
             "Label": {
@@ -177,6 +235,13 @@
             "Description": "Description",
             "Name": "Nom"
         },
+        "Proficiency": {
+            "Name": "Nom",
+            "NewProficiency": "Nouveau don",
+            "Stat": "Stat",
+            "Bonus": "Bonus",
+            "Roll": "Lancer"
+        },
         "MoneySheet": {
             "Name": "Nom",
             "Quantity": "Quantité",
@@ -184,6 +249,46 @@
             "Total": "Total",
             "Localisation": "Localisation",
             "Description": "Description"
+        },
+        "Money": {
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Value": "Valeur",
+            "Total": "Total",
+            "Localisation": "Localisation",
+            "Description": "Description",
+            "NewMoney": "Nouvelle monnaie"
+        },
+        "MiscSheet": {
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Value": "Price",
+            "PriceUnit": "PO",
+            "Weight": "Poids",
+            "WeightUnit": "kg",
+            "Rarity": "Rareté",
+            "Description": "Description"
+        },
+        "Misc": {
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Value": "Price",
+            "PriceUnit": "PO",
+            "Weight": "Poids",
+            "WeightUnit": "kg",
+            "Rarity": "Rareté",
+            "Description": "Description",
+            "NewMisc": "Nouvel objet"
+        },
+        "Rarity": {
+            "Common": "Commun",
+            "Uncommon": "Peu commun",
+            "Special": "Spécial",
+            "Rare": "Rare",
+            "Unique": "Unique",
+            "Legendary": "Légendaire",
+            "Genesis": "Génèse",
+            "Artifact": "Artefact"
         }
     }
 }

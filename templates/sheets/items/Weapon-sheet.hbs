@@ -1,0 +1,229 @@
+<form class="{{cssClass}} item-sheet weapon" autocomplete="off">
+    <script>
+        if (typeof inputs === 'undefined') {
+            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        }
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="sheet-header">
+        <div class="sheet-header-1">
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.WeaponSheet.Name"}}">{{data.system.name}}</textarea>
+        </div>
+        <table class="sheet-header-2">
+            <tr class="top">
+                <td class="weaponType" {{#if data.system.ranged}} colspan="3" {{else}} colspan="2" {{/if}}>
+                    <label>{{localize "FI.WeaponSheet.WeaponType"}}</label>
+                    <div class="weaponTypeDiv" title="{{localize "FI.WeaponSheet.WeaponType"}}">
+                        <i class="fas fa-sword"></i>
+                        <input type="text" name="system.weaponType" value="{{data.system.weaponType}}" list="weaponTypes" title="{{localize "FI.WeaponSheet.WeaponType"}}"/>
+                        <script>
+                            var descriptionButton = document.createElement('i');
+                            var weaponTypeList = document.querySelector('#weaponTypes');
+                            var translatedWeaponTypes = [];
+                            for (let i = 0; i < weaponTypeList.options.length; i++) {
+                                translatedWeaponTypes.push(game.i18n.localize(`FI.WeaponType.${weaponTypeList.options[i].title}`));
+                            }
+                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
+                            descriptionButton.title = '';
+                            descriptionButton.addEventListener('mouseover', () => {
+                                const weaponType = document.querySelector('input[name="system.weaponType"]').value;
+                                if (translatedWeaponTypes.includes(weaponType)) {
+                                    const title = weaponTypeList.querySelector(`option[value="${weaponType}"]`).title;
+                                    const description = game.i18n.localize(`FI.WeaponType.Label.${title}`);
+                                    descriptionButton.title = description;
+                                } else {
+                                    descriptionButton.title = game.i18n.localize('FI.WeaponType.Label.Custom');
+                                }
+                            });
+                            document.querySelector('.weaponTypeDiv').appendChild(descriptionButton);
+                        </script>
+                        <datalist id="weaponTypes">
+                            <option value="{{localize "FI.WeaponType.Axe"}}" title="Axe"/>
+                            <option value="{{localize "FI.WeaponType.Bow"}}" title="Bow"/>
+                            <option value="{{localize "FI.WeaponType.Crossbow"}}" title="Crossbow"/>
+                            <option value="{{localize "FI.WeaponType.Dagger"}}" title="Dagger"/>
+                            <option value="{{localize "FI.WeaponType.Gun"}}" title="Gun"/>
+                            <option value="{{localize "FI.WeaponType.Hammer"}}" title="Hammer"/>
+                            <option value="{{localize "FI.WeaponType.Mace"}}" title="Mace"/>
+                            <option value="{{localize "FI.WeaponType.Martial"}}" title="Martial"/>
+                            <option value="{{localize "FI.WeaponType.Shield"}}" title="Shield"/>
+                            <option value="{{localize "FI.WeaponType.Spear"}}" title="Spear"/>
+                            <option value="{{localize "FI.WeaponType.Staff"}}" title="Staff"/>
+                            <option value="{{localize "FI.WeaponType.Sword"}}" title="Sword"/>
+                        </datalist>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="ranged" {{#if ranged}} colspan="2" {{/if}}>
+                    <label>{{localize "FI.WeaponSheet.isRanged"}}</label>
+                    <input type="checkbox" name="system.ranged" {{#if data.system.ranged}} checked {{/if}}/>
+                </td>
+                {{#if data.system.ranged}}
+                    <td class="range">
+                        <div>
+                            <p>{{localize "FI.System.Min"}}</p>
+                            <label>{{localize "FI.WeaponSheet.WeaponRange"}}</label>
+                            <p>{{localize "FI.System.Max"}}</p>
+                        </div>
+                        <div>
+                            <input type="number" name="system.range.min" value="{{data.system.range.min}}"/>
+                            <span>-</span>
+                            <input type="number" name="system.range.max" value="{{data.system.range.max}}"/>
+                        </div>
+                    </td>
+                {{/if}}
+                <td class="equipped">
+                    <label>{{localize "FI.WeaponSheet.isEquipped"}}</label>
+                    <input type="checkbox" name="system.equipped" {{#if data.system.equipped}} checked {{/if}}/>
+                    {{log data.system.equipped}}
+                </td>
+            </tr>
+            <tr>
+                <td class="stat">
+                    <label>{{localize "FI.Stat.Label"}}</label>
+                    <select name="system.stat" value="{{data.system.stat}}">
+                        <option value="None">{{localize "FI.Stat.None"}}</option>
+                        <option value="STR">{{localize "FI.Stat.STR"}}</option>
+                        <option value="DEX">{{localize "FI.Stat.DEX"}}</option>
+                        <option value="CON">{{localize "FI.Stat.CON"}}</option>
+                        <option value="INT">{{localize "FI.Stat.INT"}}</option>
+                        <option value="WIS">{{localize "FI.Stat.WIS"}}</option>
+                        <option value="CHA">{{localize "FI.Stat.CHA"}}</option>
+                        <option value="LUK">{{localize "FI.Stat.LUK"}}</option>
+                        <option value="WIL">{{localize "FI.Stat.WIL"}}</option>
+                        <option value="HON">{{localize "FI.Stat.HON"}}</option>
+                        <script>
+                                document.querySelector('select[name="system.stat"]').value = '{{data.system.stat}}';
+                        </script>
+                    </select>
+                </td>
+                <td class="value">
+                    <label>{{localize "FI.System.Value"}}</label>
+                    <input type="text" name="system.value" value="{{data.system.value}}"/>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <ul>
+            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
+            <li><a class="item" data-tab="description">{{localize "FI.Description"}}</a></li>
+        </ul>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+
+        {{!-- Main Tab --}}
+        <section class="sheet-tab tab" data-tab="main">
+            <div class="rolls-label">
+                <label>{{localize "FI.WeaponSheet.Rolls"}}</label>
+                <a class="item-roll rollable" title="{{localize "FI.Roll"}}" data-type="Weapon"><i class="fa-duotone fa-dice-d20"></i></a>
+            </div>
+            <div class="rolls">
+                {{#each data.system.roll as |roll|}}
+                    <div class="roll">
+                        <input class="number" type="number" name="system.roll.{{@index}}.dice" value="{{roll.dice}}" title="{{localize "FI.WeaponSheet.Dice"}}"/>
+                        <input class="dice" name="system.roll.{{@index}}.type" value="{{roll.type}}" title="{{localize "FI.WeaponSheet.DiceType"}}" list="diceTypes"/>
+                        <datalist id="diceTypes">
+                            <option value="d4"/>
+                            <option value="d6"/>
+                            <option value="d8"/>
+                            <option value="d10"/>
+                            <option value="d12"/>
+                            <option value="d20"/>
+                            <option value="d100"/>
+                        </datalist>
+                        <span>+</span>
+                        <input class="number" type="number" name="system.roll.{{@index}}.bonus" value="{{roll.bonus}}" title="{{localize "FI.WeaponSheet.Bonus"}}"/>
+                        <input class="text" type="text" name="system.roll.{{@index}}.damageType" value="{{roll.damageType}}" title="{{localize "FI.WeaponSheet.DamageType"}}"/>
+                        <button class="roll-delete" title="{{localize "FI.Delete"}}" data-index="{{@index}}"><i class="fas fa-trash"></i></button>
+                    </div>
+                {{/each}}
+            </div>
+            <button class="item-add" title="{{localize "FI.Add"}}" data-add="weapon"><i class="fas fa-plus"></i></button>
+            <table class="sheet-main">
+                <tr class="top">
+                    <td class="weaponQuantity">
+                        <label>{{localize "FI.WeaponSheet.Quantity"}}</label>
+                        <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize "FI.WeaponSheet.Quantity"}}"/>
+                    </td>
+                    <td class="weaponWeight">
+                        <label>{{localize "FI.WeaponSheet.Weight"}}</label>
+                        <input type="number" name="system.weight" value="{{data.system.weight}}" title="{{localize "FI.WeaponSheet.WeightDescription"}}"/>
+                        <p>{{localize "FI.WeaponSheet.WeightUnit"}}</p>
+                    </td>
+                </tr>
+                <tr class="bottom">
+                    <td class="weaponPrice">
+                        <label>{{localize "FI.WeaponSheet.Price"}}</label>
+                        <input type="number" name="system.price" value="{{data.system.price}}" title="{{localize "FI.WeaponSheet.Price"}}"/>
+                        <p>{{localize "FI.WeaponSheet.PriceUnit"}}</p>
+                    </td>
+                    <td class="weaponRarity">
+                        <label>{{localize "FI.WeaponSheet.Rarity"}}</label>
+                        <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize "FI.WeaponSheet.Rarity"}}" list="rarity"/>
+                        <script>
+                            var descriptionButton = document.createElement('i');
+                            var rarityList = document.querySelector('#rarity');
+                            var translatedRarities = [];
+                            for (let i = 0; i < rarityList.options.length; i++) {
+                                translatedRarities.push(game.i18n.localize(`FI.Rarity.${rarityList.options[i].title}`));
+                            }
+                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
+                            descriptionButton.title = '';
+                            descriptionButton.addEventListener('mouseover', () => {
+                                const rarity = document.querySelector('input[name="system.rarity"]').value;
+                                if (translatedRarities.includes(rarity)) {
+                                    const title = rarityList.querySelector(`option[value="${rarity}"]`).title;
+                                    const description = game.i18n.localize(`FI.Rarity.Label.${title}`);
+                                    descriptionButton.title = description;
+                                } else {
+                                    descriptionButton.title = game.i18n.localize('FI.Rarity.Label.Custom');
+                                }
+                            });
+                            document.querySelector('.weaponRarity').appendChild(descriptionButton);
+                        </script>
+                        <datalist id="rarity">
+                            <option value="{{localize "FI.Rarity.Common"}}" title="Common"/>
+                            <option value="{{localize "FI.Rarity.Uncommon"}}" title="Uncommon"/>
+                            <option value="{{localize "FI.Rarity.Special"}}" title="Special"/>
+                            <option value="{{localize "FI.Rarity.Rare"}}" title="Rare"/>
+                            <option value="{{localize "FI.Rarity.Unique"}}" title="Unique"/>
+                            <option value="{{localize "FI.Rarity.Legendary"}}" title="Legendary"/>
+                            <option value="{{localize "FI.Rarity.Genesis"}}" title="Genesis"/>
+                            <option value="{{localize "FI.Rarity.Artifact"}}" title="Artifact"/>
+                        </datalist>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        {{!-- Description Tab --}}
+        <section class="sheet-tab tab sheet-description" data-tab="description">
+            <label>{{localize "FI.WeaponSheet.Description"}}</label>
+            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+        </section>
+    </main>
+</form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

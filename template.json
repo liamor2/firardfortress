@@ -150,7 +150,10 @@
     },
     "Equipment": {
         "templates": ["general", "items", "equippable"],
-        "isEquipment": true
+        "isEquipment": true,
+        "PA": 0,
+        "MA": 0,
+        "equipmentType": ""
     },
     "Weapon": {
         "templates": ["general", "items", "equippable", "statLinked"],

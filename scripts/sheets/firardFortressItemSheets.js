@@ -11,9 +11,8 @@ export default class firardFortressItemSheet extends ItemSheet {
         const data = super.getData();
         data.config = CONFIG.firardFortress;
         this.createCalculatedData(data);
-        console.log(data);
-        console.log(this);
         data.isGM = game.user.isGM;
+        console.log(data);
         return data;
     }
 
@@ -51,7 +50,6 @@ export default class firardFortressItemSheet extends ItemSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        console.log(dataset);
         const item = this.object;
         
         let rolls = item.system.roll;
@@ -280,7 +278,6 @@ export default class firardFortressItemSheet extends ItemSheet {
     }
 
     addSpellRoll(data, damageType) {
-        console.log(data);
         let rolls = data.data.system.roll;
         if (!Array.isArray(rolls)) {
             rolls =  Object.values(rolls);

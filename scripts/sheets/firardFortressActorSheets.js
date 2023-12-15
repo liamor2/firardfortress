@@ -28,6 +28,7 @@ export default class firardFortressActorSheet extends ActorSheet {
             }
         }
         this.verifyData(data, verify);
+        this.initTinyMCE();
         console.log(data);
         return data;
     }
@@ -112,7 +113,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                             {
                                 "dice": "1",
                                 "bonus": 0,
-                                "damageType": ""
+                                "damageType": `${game.i18n.localize("FI.Spell.DefaultDamageType")}`
                             }
                         ],
                         description: "",
@@ -120,6 +121,107 @@ export default class firardFortressActorSheet extends ActorSheet {
                     }
                 }
                 this.actor.createEmbeddedDocuments("Item", [newSpell]);
+                break;
+            case "Skill":
+                const newSkill = {
+                    name: "New Skill",
+                    type: "Skill",
+                    data: {
+                        name: `${game.i18n.localize("FI.Skill.NewSkill")}`,
+                        skillType: "",
+                        stat: "None",
+                        spCost: 0,
+                        range: {
+                            min: 0,
+                            max: 0
+                        },
+                        roll: [
+                            {
+                                "dice": "1",
+                                "bonus": 0,
+                                "damageType": `${game.i18n.localize("FI.Skill.DefaultDamageType")}`
+                            }
+                        ],
+                        description: "",
+                        isSKill: true
+                    }
+                }
+                this.actor.createEmbeddedDocuments("Item", [newSkill]);
+                break;
+            case "Hybrid":
+                const newHybrid = {
+                    name: "New Hybrid",
+                    type: "Hybrid",
+                    data: {
+                        name: `${game.i18n.localize("FI.Hybrid.NewHybrid")}`,
+                        hybridType: "",
+                        stat: "None",
+                        mpCost: 0,
+                        spCost: 0,
+                        hpCost: 0,
+                        otherCost: "",
+                        range: {
+                            min: 0,
+                            max: 0
+                        },
+                        roll: [
+                            {
+                                "dice": "1",
+                                "bonus": 0,
+                                "damageType": `${game.i18n.localize("FI.Hybrid.DefaultDamageType")}`
+                            }
+                        ],
+                        description: "",
+                        isHybrid: true
+                    }
+                }
+                this.actor.createEmbeddedDocuments("Item", [newHybrid]);
+                break;
+            case "Transformation":
+                const newTransformation = {
+                    name: "New Transformation",
+                    type: "Transformation",
+                    data: {
+                        name: `${game.i18n.localize("FI.Transformation.NewTransformation")}`,
+                        transformationType: "",
+                        stat: "None",
+                        mpCost: 0,
+                        spCost: 0,
+                        hpCost: 0,
+                        otherCost: "",
+                        description: "",
+                        isTransformation: true
+                    }
+                }
+                this.actor.createEmbeddedDocuments("Item", [newTransformation]);
+                break;
+            case "Passif":
+                const newPassif = {
+                    name: "New Passif",
+                    type: "Passif",
+                    data: {
+                        name: `${game.i18n.localize("FI.Passif.NewPassif")}`,
+                        passifType: "",
+                        stat: "None",
+                        description: "",
+                        isPassif: true
+                    }
+                }
+                this.actor.createEmbeddedDocuments("Item", [newPassif]);
+                break;
+            case "Proficiency":
+                const newProficiency = {
+                    name: "New Proficiency",
+                    type: "Proficiency",
+                    data: {
+                        name: `${game.i18n.localize("FI.Proficiency.NewProficiency")}`,
+                        proficiencyType: "",
+                        stat: "None",
+                        description: "",
+                        isProficiency: true
+                    }
+                }
+                this.actor.createEmbeddedDocuments("Item", [newProficiency]);
                 break;
             default:
                 console.log(dataset.add)
@@ -151,8 +253,28 @@ export default class firardFortressActorSheet extends ActorSheet {
                 updateData = { "system.languages": languages };
                 break;
             case "Spell":
-                const item = this.actor.items.get(dataset.id);
-                item.delete();
+                const spell = this.actor.items.get(dataset.id);
+                spell.delete();
+                break;
+            case "Skill":
+                const skill = this.actor.items.get(dataset.id);
+                skill.delete();
+                break;
+            case "Hybrid":
+                const hybrid = this.actor.items.get(dataset.id);
+                hybrid.delete();
+                break;
+            case "Transformation":
+                const transformation = this.actor.items.get(dataset.id);
+                transformation.delete();
+                break;
+            case "Passif":
+                const passif = this.actor.items.get(dataset.id);
+                passif.delete();
+                break;
+            case "Proficiency":
+                const proficiency = this.actor.items.get(dataset.id);
+                proficiency.delete();
                 break;
             default:
                 console.log("default: " + dataset.delete);
@@ -171,18 +293,12 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-
-        switch (dataset.move && dataset.type) {
-            case "Spell" && "up":
-                this.moveItemUp(dataset, "Spell");
-                break;
-            case "Spell" && "down":
-                this.moveItemDown(dataset, "Spell");
-                break;
-            default:
-                console.log(dataset.move);
-                break;
+        if (dataset.type === "up") {
+            this.moveItemUp(dataset, dataset.move);
+        } else if (dataset.type === "down") {
+            this.moveItemDown(dataset, dataset.move);
         }
+
     }
 
 
@@ -673,28 +789,67 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     // move item
 
-    async moveItemUp(dataset, type) {
+    moveItemUp(dataset, type) {
+        console.log(type);
         const data = this.getData(false);
         const items = data.items;
         const item = items.find(item => item._id === dataset.id);
-        const itemIndex = items.indexOf(item);
-        const itemBelow = items[itemIndex + 1];
-        console.log(itemIndex);
-        console.log(itemBelow);
-        console.log(items);
-        if (itemIndex === 0) {
-            return;
-        } else {
-            items.splice(itemIndex, 1);
-            items.splice(itemIndex - 1, 0, item);
+        const itemsOfType = items.filter(item => item.type === type);
+        console.log(itemsOfType);
+        const index = itemsOfType.findIndex(i => i._id === item._id);
+        if (index > 0) {
+            const temp = itemsOfType[index - 1];
+            itemsOfType[index - 1] = item;
+            itemsOfType[index] = temp;
         }
-        console.log(items);
-        this.actor.update({"items": items});
-        this.object.update({"items": items});
+    
+        const updates = itemsOfType.map((item, index) => ({
+            _id: item._id,
+            sort: index
+        }));
+    
+        this.actor.updateEmbeddedDocuments("Item", updates);
+    
         this.render();
     }
 
     moveItemDown(dataset, type) {
+        const data = this.getData(false);
+        const items = data.items;
+        const item = items.find(item => item._id === dataset.id);
+        const itemsOfType = items.filter(item => item.type === type);
+        const index = itemsOfType.findIndex(i => i._id === item._id);
+        if (index < itemsOfType.length - 1) {
+            const temp = itemsOfType[index + 1];
+            itemsOfType[index + 1] = item;
+            itemsOfType[index] = temp;
+        }
+    
+        const updates = itemsOfType.map((item, index) => ({
+            _id: item._id,
+            sort: index
+        }));
+    
+        this.actor.updateEmbeddedDocuments("Item", updates);
+    
+        this.render();
+    }
+
+    // init tinyMCE
+    initTinyMCE() {
+        tinymce.init({
+            selector: '.richTextArea',
+            menubar: false,
+            toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+            plugins: 'lists',
+            min_height: 150,
+            height: 150,
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
+        });
     }
 
     // stat bar animations
