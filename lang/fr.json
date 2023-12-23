@@ -1,13 +1,14 @@
 {
     "FI": {
         "System": {
-            "HP": "HP",
-            "MP": "MP",
-            "SP": "SP",
-            "PA": "PA",
-            "MA": "MA",
+            "HP": "PV",
+            "MP": "PM",
+            "SP": "PE",
+            "PA": "AP",
+            "MA": "AM",
             "Min": "Min",
             "Max": "Max",
+            "SC": "PA",
             "Value": "Valeur",
             "Temp": "Temp",
             "Bonus": "Bonus",
@@ -23,7 +24,29 @@
             "Proficiencies": "Dons",
             "Spells": "Sorts/Compétences",
             "Notes": "Langues/Notes",
-            "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
+            "AdvancedRolling": "Lancer avancé",
+            "DisplayAdvancedRoll": "Afficher les options de lancer avancées",
+            "Description": "Description",
+            "Normal": "Normal",
+            "Advantage": "Avantage",
+            "Disadvantage": "Désavantage",
+            "Custom": "Personnalisé",
+            "CustomRoll": "Formule",
+            "CustomRollPlaceholder": "Exemple : 1d20+5",
+            "Spell": "Sort",
+            "Skill": "Compétence",
+            "Hybrid": "Compétence hybride",
+            "Passif": "Compétence passive",
+            "Transformation": "Compétence de transformation",
+            "Rolling": "Lancé : ",
+            "Quantity": "Quantité",
+            "Equipped": "Équipé",
+            "BaseSpeed": "Vitesse de base",
+            "RealSpeed": "Vitesse réelle",
+            "ItemWeight": "Poids",
+            "ItemMaxWeight": "Poids maximum",
+            "SpeedUnit": "m",
+            "Initiative": "Initiative"
         },
         "Stat": {
             "STR" : "Force",
@@ -55,11 +78,13 @@
             "Value": "VAl",
             "Temp": "TMP",
             "Max": "MAX",
-            "DisplayAdvancedRoll": "Afficher les options de lancer avancées"
+            "DisplayAdvancedRoll": "Afficher les options de lancer avancées",
+            "launchItemRoll": "Voulez vous lancer le jet associé ?"
         },
         "Description": {
             "Language": "Languages parlé",
             "LanguageName": "Nom du language",
+            "NewLanguage": "Nouveau language",
             "Speaking": "Parlé",
             "Reading": "Lu",
             "Writing": "Écrit",
@@ -111,7 +136,10 @@
             "Cost": "PM",
             "Stat": "Stat",
             "Roll": "Lancer",
-            "NewSpell": "Nouveau sort"
+            "NewSpell": "Nouveau sort",
+            "DefaultDamageType": "Feu",
+            "Image": "Img",
+            "RollResult": "Résultat du lancer"
         },
         "SkillType": {
             "Label": {
@@ -143,7 +171,10 @@
             "Cost": "PE",
             "Stat": "Stat",
             "Roll": "Lancer",
-            "NewSkill": "Nouvelle compétence"
+            "NewSkill": "Nouvelle compétence",
+            "DefaultDamageType": "Tranchant",
+            "Image": "Img",
+            "RollResult": "Résultat du lancer"
         },
         "HybridType": {
             "Label": {
@@ -170,7 +201,10 @@
             "Cost": "PM/PE/PV/Autre",
             "Stat": "Stat",
             "Roll": "Lancer",
-            "NewHybrid": "Nouvelle compétence hybride"
+            "NewHybrid": "Nouvelle compétence hybride",
+            "DefaultDamageType": "Psychique",
+            "Image": "Img",
+            "RollResult": "Résultat du lancer"
         },
         "TransformationType": {
             "Label": {
@@ -197,7 +231,8 @@
             "Cost": "PM/PE/PV/Autre",
             "Stat": "Stat",
             "Roll": "Lancer",
-            "NewTransformation": "Nouvelle transformation"
+            "NewTransformation": "Nouvelle transformation",
+            "Image": "Img"
         },
         "PassifType": {
             "Label": {
@@ -217,16 +252,17 @@
         },
         "Passif": {
             "Name": "Nom",
-            "NewPassif": "Nouveau passif"
+            "NewPassif": "Nouveau passif",
+            "Image": "Img"
         },
         "ProficiencyType": {
             "Label": {
-                "Physcial": "Les dons physiques donnent des bonus lors d'actions liés aux statistiques physiques (FOR/CON/DEX).",
+                "Physical": "Les dons physiques donnent des bonus lors d'actions liés aux statistiques physiques (FOR/CON/DEX).",
                 "Social": "Les dons sociaux donnent des bonus lors d'actions liés aux statistiques sociales (CHA/LUK/HON).",
-                "Mental": "Les dons mentaux donnent des bonus lors d'actions liés aux statistiques mentales (INT/WIS/WIL).",
+                "Mental": "Les dons mentaux donnent des bonus lors d'actions liés aux statistiques mentales (INT/SAG/VOL).",
                 "Custom": "Vous avez sélectionné un type de don personnalisé, il n'y a donc pas de description détaillées disponible."
             },
-            "Physcial": "Physique",
+            "Physical": "Physique",
             "Social": "Social",
             "Mental": "Mental"
         },
@@ -240,7 +276,8 @@
             "NewProficiency": "Nouveau don",
             "Stat": "Stat",
             "Bonus": "Bonus",
-            "Roll": "Lancer"
+            "Roll": "Lancer",
+            "Image": "Img"
         },
         "MoneySheet": {
             "Name": "Nom",
@@ -248,7 +285,8 @@
             "Value": "Valeur",
             "Total": "Total",
             "Localisation": "Localisation",
-            "Description": "Description"
+            "Description": "Description",
+            "ValueDescription": "PA"
         },
         "Money": {
             "Name": "Nom",
@@ -257,12 +295,14 @@
             "Total": "Total",
             "Localisation": "Localisation",
             "Description": "Description",
-            "NewMoney": "Nouvelle monnaie"
+            "NewMoney": "Nouvelle monnaie",
+            "Image": "Img",
+            "Label": "Monnaie"
         },
         "MiscSheet": {
             "Name": "Nom",
             "Quantity": "Quantité",
-            "Value": "Price",
+            "Price": "Prix",
             "PriceUnit": "PO",
             "Weight": "Poids",
             "WeightUnit": "kg",
@@ -278,7 +318,9 @@
             "WeightUnit": "kg",
             "Rarity": "Rareté",
             "Description": "Description",
-            "NewMisc": "Nouvel objet"
+            "NewMisc": "Nouvel objet",
+            "Image": "Img",
+            "Label": "Objet"
         },
         "Rarity": {
             "Common": "Commun",
@@ -289,6 +331,133 @@
             "Legendary": "Légendaire",
             "Genesis": "Génèse",
             "Artifact": "Artefact"
+        },
+        "WeaponType": {
+            "Label": {
+                "Axe": "Les haches sont des armes à une ou main qui peuvent être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Bow": "Les arcs sont des armes à une ou deux mains qui ne peuvent pas être utilisées avec un bouclier. Elles sont utilisées pour attaquer à distance.",
+                "Crossbow": "Les arbalètes sont des armes à deux mains qui ne peuvent pas être utilisées avec un bouclier. Elles sont utilisées pour attaquer à distance.",
+                "Dagger": "Les dagues sont des armes à une main qui peuvent être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Gun": "Les armes à feu sont des armes à une ou deux mains qui ne peuvent pas être utilisées avec un bouclier. Elles sont utilisées pour attaquer à distance.",
+                "Hammer": "Les marteaux sont des armes à deux mains qui ne peuvent pas être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Mace": "Les masses sont des armes à une ou deux mains qui peuvent être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Martial": "Les armes martiales sont des armes portées sur les poings ou les pieds. Elles sont utilisées pour attaquer ou défendre.",
+                "Spear": "Les lances sont des armes à deux mains qui ne peuvent pas être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Staff": "Les bâtons sont des armes à deux mains qui ne peuvent pas être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Sword": "Les épées sont des armes à une ou deux mains qui peuvent être utilisées avec un bouclier. Elles sont utilisées pour attaquer ou défendre.",
+                "Custom": "Vous avez sélectionné un type d'arme personnalisé, il n'y a donc pas de description détaillées disponible."
+                },
+            "Axe": "Hache",
+            "Bow": "Arc",
+            "Crossbow": "Arbalète",
+            "Dagger": "Dague",
+            "Gun": "Arme à feu",
+            "Hammer": "Marteau",
+            "Mace": "Massue",
+            "Martial": "Martial",
+            "Spear": "Lance",
+            "Staff": "Bâton",
+            "Sword": "Épée"
+        },
+        "WeaponSheet": {
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Price": "Prix",
+            "PriceUnit": "PO",
+            "Weight": "Poids",
+            "WeightUnit": "kg",
+            "Rarity": "Rareté",
+            "Description": "Description",
+            "Damage": "Dégâts",
+            "DamageType": "Type de dégâts",
+            "WeaponRange": "Portée",
+            "RangeUnit": "m",
+            "WeaponType": "Type d'arme",
+            "isRanged": "Arme à distance",
+            "isEquipped": "Équipé",
+            "Unit": "m",
+            "Rolls": "Lancers"
+        },
+        "Weapon": {
+            "Image": "Img",
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Stat": "Stat",
+            "Roll": "Lancer",
+            "NewWeapon": "Nouvelle arme",
+            "Label": "Arme",
+            "DefaultDamageType": "Tranchant",
+            "RollResult": "Résultat du lancer"
+        },
+        "Adventure": {
+            "GroupLabel": "Groupe",
+            "heroBalance": "Dés d'aventures des joueurs",
+            "GMBalance": "Dés d'aventures du MJ",
+            "AdventureRollLabel": "Lancer un dés d'aventures",
+            "AdventureDiceBalance": "Balance des dés d'aventures",
+            "DiceRoll": "Lancé de dés d'aventures",
+            "DiceRollResult": "Résultat du lancé de dés d'aventures : ",
+            "DiceRollNoBalance": "Vous n'avez pas assez de dés d'aventures pour lancer ce dé.",
+            "DiceRollResult1": "Vous obtenez un bonus de Mouvement ! Vous pouvez vous déplacer gratuitement sans dépenser d'actions.",
+            "DiceRollResult2": "Vous obtenez un bonus de Posture ! Vous pouvez changer de posture gratuitement sans dépenser d'actions.",
+            "DiceRollResult3": "Vous obtenez un bonus Extremis ! Le seuil de difficulté de votre prochain jet est baissé de 3 points.",
+            "DiceRollResult4": "Vous obtenez un bonus de Substitution ! Vous pouvez utilisé une statistiques différentes de celle demandée pour votre prochain jet."
+        },
+        "EquipmentType": {
+            "Label": {
+                "Armor": "Les armures sont des équipements qui peuvent être portés sur le corps. Elles sont utilisées pour se protéger.",
+                "Head": "Tout type d'équipement qui peut être porté sur la tête.",
+                "Torso": "Tout type d'équipement qui peut être porté sur le torse.",
+                "Arms": "Tout type d'équipement qui peut être porté sur les bras.",
+                "Hands": "Tout type d'équipement qui peut être porté sur les mains.",
+                "Legs": "Tout type d'équipement qui peut être porté sur les jambes.",
+                "Feet": "Tout type d'équipement qui peut être porté sur les pieds.",
+                "Shield": "Les boucliers sont des équipements qui peuvent être portés sur les bras.",
+                "Trinket": "Les accessoires sont des équipements qui peuvent être portés sur le corps. Ils sont utilisés pour donner des bonus ou des propriétés magiques.",
+                "Ring": "Tout type d'équipement qui peut être porté sur les doigts.",
+                "Necklace": "Tout type d'équipement qui peut être porté sur le cou.",
+                "Belt": "Tout type d'équipement qui peut être porté sur la taille.",
+                "Cloak": "Tout type d'équipement qui peut être porté sur les épaules.",
+                "Custom": "Vous avez sélectionné un type d'équipement personnalisé, il n'y a donc pas de description détaillées disponible."
+            },
+            "Armor": "-Armure-",
+            "Head": "Tête",
+            "Torso": "Torse",
+            "Arms": "Bras",
+            "Hands": "Mains",
+            "Legs": "Jambes",
+            "Feet": "Pieds",
+            "Shield": "Bouclier",
+            "Trinket": "-Accessoire-",
+            "Ring": "Anneau",
+            "Necklace": "Collier",
+            "Belt": "Ceinture",
+            "Cloak": "Cape"
+        },
+        "EquipmentSheet": {
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Price": "Prix",
+            "PriceUnit": "PO",
+            "Weight": "Poids",
+            "WeightUnit": "kg",
+            "Rarity": "Rareté",
+            "Description": "Description",
+            "isEquipped": "Équipé",
+            "Unit": "m",
+            "EquipmentType": "Type d'équipement",
+            "ArmorGiven": "Armure"
+        },
+        "Equipment": {
+            "Image": "Img",
+            "Name": "Nom",
+            "Quantity": "Quantité",
+            "Stat": "Stat",
+            "Roll": "Lancer",
+            "NewEquipment": "Nouvel équipement",
+            "ArmorGiven": "Armure",
+            "Type": "Type",
+            "Label": "Équipement"
         }
     }
 }

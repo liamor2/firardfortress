@@ -9,7 +9,7 @@
     </script>
     <header class="sheet-header">
         <div class="sheet-header-1">
-            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
             <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.MiscSheet.Name"}}">{{data.system.name}}</textarea>
         </div>
     </header>
@@ -25,39 +25,18 @@
                 <td class="miscWeight">
                     <label>{{localize "FI.MiscSheet.Weight"}}</label>
                     <input type="number" name="system.weight" value="{{data.system.weight}}" title="{{localize "FI.MiscSheet.WeightDescription"}}"/>
-                    <p>{{localize "FI.MiscSheet.WeightUnit"}}</p>
+                    {{localize "FI.MiscSheet.WeightUnit"}}
                 </td>
             </tr>
             <tr class="bottom">
                 <td class="miscPrice">
                     <label>{{localize "FI.MiscSheet.Price"}}</label>
-                    <input type="number" name="system.price" value="{{data.system.price}}" title="{{localize "FI.MiscSheet.Price"}}"/>
-                    <p>{{localize "FI.MiscSheet.PriceUnit"}}</p>
+                    <input type="number" name="system.price" value="{{data.system.price}}" title="{{localize "FI.MiscSheet.Price"}}" placeholder="{{localize "FI.MiscSheet.Price"}}"/>
+                    <i class="fa-duotone fa-coins"></i>
                 </td>
                 <td class="miscRarity">
                     <label>{{localize "FI.MiscSheet.Rarity"}}</label>
-                    <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize "FI.MiscSheet.Rarity"}}" list="rarity"/>
-                    <script>
-                        var descriptionButton = document.createElement('i');
-                        var rarityList = document.querySelector('#rarity');
-                        var translatedRarities = [];
-                        for (let i = 0; i < rarityList.options.length; i++) {
-                            translatedRarities.push(game.i18n.localize(`FI.Rarity.${rarityList.options[i].title}`));
-                        }
-                        descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
-                        descriptionButton.title = '';
-                        descriptionButton.addEventListener('mouseover', () => {
-                            const rarity = document.querySelector('input[name="system.rarity"]').value;
-                            if (translatedRarities.includes(rarity)) {
-                                const title = rarityList.querySelector(`option[value="${rarity}"]`).title;
-                                const description = game.i18n.localize(`FI.Rarity.Label.${title}`);
-                                descriptionButton.title = description;
-                            } else {
-                                descriptionButton.title = game.i18n.localize('FI.Rarity.Label.Custom');
-                            }
-                        });
-                        document.querySelector('.miscRarity').appendChild(descriptionButton);
-                    </script>
+                    <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize "FI.MiscSheet.Rarity"}}" list="rarity" placeholder="{{localize "FI.MiscSheet.Rarity"}}"/>
                     <datalist id="rarity">
                         <option value="{{localize "FI.Rarity.Common"}}" title="Common"/>
                         <option value="{{localize "FI.Rarity.Uncommon"}}" title="Uncommon"/>
@@ -89,6 +68,9 @@
         height: 150,
         setup: function (editor) {
             editor.on('change', function () {
+                editor.save();
+            });
+            editor.on('close', function () {
                 editor.save();
             });
         }

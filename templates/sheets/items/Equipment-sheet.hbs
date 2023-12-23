@@ -1,0 +1,153 @@
+<form class="{{cssClass}} item-sheet equipment" autocomplete="off">
+    <script>
+        if (typeof inputs === 'undefined') {
+            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        }
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="sheet-header">
+        <div class="sheet-header-1">
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
+            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.EquipmentSheet.Name"}}">{{data.system.name}}</textarea>
+        </div>
+        <table class="sheet-header-2">
+            <tr class="top">
+                <td class="equipmentType" colspan="2">
+                    <label>{{localize "FI.EquipmentSheet.EquipmentType"}}</label>
+                    <div class="equipmentTypeDiv" title="{{localize "FI.EquipmentSheet.EquipmentType"}}">
+                        <i class="fas fa-shield"></i>
+                        <input type="text" name="system.equipmentType" value="{{data.system.equipmentType}}" list="equipmentTypes" title="{{localize "FI.EquipmentSheet.EquipmentType"}}"/>
+                        <script>
+                            var descriptionButton = document.createElement('i');
+                            var equipmentTypeList = document.querySelector('#equipmentTypes');
+                            var translatedEquipmentTypes = [];
+                            for (let i = 0; i < equipmentTypeList.options.length; i++) {
+                                translatedEquipmentTypes.push(game.i18n.localize(`FI.EquipmentType.${equipmentTypeList.options[i].title}`));
+                            }
+                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
+                            descriptionButton.title = '';
+                            descriptionButton.addEventListener('mouseover', () => {
+                                const equipmentType = document.querySelector('input[name="system.equipmentType"]').value;
+                                if (translatedEquipmentTypes.includes(equipmentType)) {
+                                    const title = equipmentTypeList.querySelector(`option[value="${equipmentType}"]`).title;
+                                    const description = game.i18n.localize(`FI.EquipmentType.Label.${title}`);
+                                    descriptionButton.title = description;
+                                } else {
+                                    descriptionButton.title = game.i18n.localize('FI.EquipmentType.Label.Custom');
+                                }
+                            });
+                            document.querySelector('.equipmentTypeDiv').appendChild(descriptionButton);
+                        </script>
+                        <datalist id="equipmentTypes">
+                            <option value="{{localize "FI.EquipmentType.Armor"}}" title="Armor"/>
+                            <option value="{{localize "FI.EquipmentType.Head"}}" title="Head"/>
+                            <option value="{{localize "FI.EquipmentType.Torso"}}" title="Torso"/>
+                            <option value="{{localize "FI.EquipmentType.Arms"}}" title="Arms"/>
+                            <option value="{{localize "FI.EquipmentType.Legs"}}" title="Legs"/>
+                            <option value="{{localize "FI.EquipmentType.Feet"}}" title="Feet"/>
+                            <option value="{{localize "FI.EquipmentType.Hands"}}" title="Hands"/>
+                            <option value="{{localize "FI.EquipmentType.Shield"}}" title="Shield"/>
+                            <option value="{{localize "FI.EquipmentType.Trinket"}}" title="Trinket"/>
+                            <option value="{{localize "FI.EquipmentType.Ring"}}" title="Ring"/>
+                            <option value="{{localize "FI.EquipmentType.Necklace"}}" title="Necklace"/>
+                            <option value="{{localize "FI.EquipmentType.Belt"}}" title="Belt"/>
+                            <option value="{{localize "FI.EquipmentType.Cloak"}}" title="Cloak"/>
+                        </datalist>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="equipped">
+                    <label>{{localize "FI.EquipmentSheet.isEquipped"}}</label>
+                    <input type="checkbox" name="system.equipped" {{#if data.system.equipped}} checked {{/if}}/>
+                </td>
+                <td class="armor-given">
+                    <label>{{localize "FI.EquipmentSheet.ArmorGiven"}}</label>
+                    <div>
+                        <input type="number" name="system.PA" value="{{data.system.PA}}" title="{{localize "FI.EquipmentSheet.PArmorGiven"}}"/>
+                        <p>{{localize "FI.System.PA"}}</p>
+                        <span>/</span>
+                        <input type="number" name="system.MA" value="{{data.system.MA}}" title="{{localize "FI.EquipmentSheet.MArmorGiven"}}"/>
+                        <p>{{localize "FI.System.MA"}}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <ul>
+            <li><a class="item" data-tab="main">{{localize "FI.System.Main"}}</a></li>
+            <li><a class="item" data-tab="description">{{localize "FI.System.Description"}}</a></li>
+        </ul>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+
+        {{!-- Main Tab --}}
+        <section class="sheet-tab tab" data-tab="main">
+            <table class="sheet-main">
+                <tr class="top">
+                    <td class="equipmentQuantity">
+                        <label>{{localize "FI.EquipmentSheet.Quantity"}}</label>
+                        <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize "FI.EquipmentSheet.Quantity"}}"/>
+                    </td>
+                    <td class="equipmentWeight">
+                        <label>{{localize "FI.EquipmentSheet.Weight"}}</label>
+                        <input type="number" name="system.weight" value="{{data.system.weight}}" title="{{localize "FI.EquipmentSheet.WeightDescription"}}"/>
+                        {{localize "FI.EquipmentSheet.WeightUnit"}}
+                    </td>
+                </tr>
+                <tr class="bottom">
+                    <td class="equipmentPrice">
+                        <label>{{localize "FI.EquipmentSheet.Price"}}</label>
+                        <input type="number" name="system.price" value="{{data.system.price}}" title="{{localize "FI.EquipmentSheet.Price"}}"/>
+                        <i class="fa-duotone fa-coins"></i>
+                    </td>
+                    <td class="equipmentRarity">
+                        <label>{{localize "FI.EquipmentSheet.Rarity"}}</label>
+                        <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize "FI.EquipmentSheet.Rarity"}}" list="rarity"/>
+                        <datalist id="rarity">
+                            <option value="{{localize "FI.Rarity.Common"}}" title="Common"/>
+                            <option value="{{localize "FI.Rarity.Uncommon"}}" title="Uncommon"/>
+                            <option value="{{localize "FI.Rarity.Special"}}" title="Special"/>
+                            <option value="{{localize "FI.Rarity.Rare"}}" title="Rare"/>
+                            <option value="{{localize "FI.Rarity.Unique"}}" title="Unique"/>
+                            <option value="{{localize "FI.Rarity.Legendary"}}" title="Legendary"/>
+                            <option value="{{localize "FI.Rarity.Genesis"}}" title="Genesis"/>
+                            <option value="{{localize "FI.Rarity.Artifact"}}" title="Artifact"/>
+                        </datalist>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        {{!-- Description Tab --}}
+        <section class="sheet-tab tab sheet-description" data-tab="description">
+            <label>{{localize "FI.EquipmentSheet.Description"}}</label>
+            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+        </section>
+    </main>
+</form>
+
+<script>
+    // TinyMCE init
+    tinymce.init({
+        selector: '.richTextArea',
+        menubar: false,
+        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+        plugins: 'lists',
+        min_height: 150,
+        height: 150,
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+            editor.on('close', function () {
+                editor.save();
+            });
+        }
+    });
+</script>

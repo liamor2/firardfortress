@@ -8,10 +8,10 @@
         });
     </script>
     <header class="sheet-header">
-        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" width="5px" height="5px"/>
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.group}}" width="5px" height="5px"/>
         <h1>{{data.name}}</h1>
         <div>
-            <label>{{localize "FI.GroupLabel"}}</label>
+            <label>{{localize "FI.Adventure.GroupLabel"}}</label>
             {{#if isGM}}
                 <input type="text" name="system.group" value="{{data.system.group}}"/>
             {{else}}
@@ -21,7 +21,7 @@
     </header>
     <div class="sheet-body">
         <div class="sheet-left">
-            <label>{{localize "FI.heroBalance"}}</label>
+            <label>{{localize "FI.Adventure.heroBalance"}}</label>
             {{#if isGM}}
                 <input type="number" name="system.heroBalance" value="{{data.system.heroBalance}}"/>
             {{else}}
@@ -29,11 +29,11 @@
             {{/if}}
         </div>
         <div class="sheet-center">
-            <label>{{localize "FI.AdventureRollLabel"}}</label>
-            <a class="item-roll rollable" title="{{localize "FI.Roll"}}" data-roll="AdventureDiceTable"><i class="fa-duotone fa-dice-d8"></i></a>
+            <label>{{localize "FI.Adventure.AdventureRollLabel"}}</label>
+            <a class="item-roll rollable" title="{{localize "FI.Adventure.Roll"}}" data-roll="AdventureDiceTable"><i class="fa-duotone fa-dice-d8"></i></a>
         </div>
         <div class="sheet-right">
-            <label>{{localize "FI.GMBalance"}}</label>
+            <label>{{localize "FI.Adventure.GMBalance"}}</label>
             {{#if isGM}}
                 <input type="number" name="system.GMBalance" value="{{data.system.GMBalance}}"/>
             {{else}}
@@ -42,7 +42,7 @@
         </div>
         <div class="sheet-bottom">
             <fieldset class="clock-frame">
-                <legend>{{localize "FI.AdventureDiceBalance"}}</legend>
+                <legend>{{localize "FI.Adventure.AdventureDiceBalance"}}</legend>
                 <div class="clock" data-segments="{{data.system.total}}">
                     {{#each data.system.segments}}
                         {{#if this}}

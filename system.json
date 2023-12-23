@@ -2,7 +2,7 @@
     "id": "firardfortress",
     "title": "Firard System: Fortress version",
     "description": "A custom system inspired by many others like DnD5 or Aventures, this system is made to play with friends in a casual and narrative way.",
-    "version": "0.0.17",
+    "version": "0.1.3",
     "compatibility": {
         "minimum": "10",
         "verified": "11",

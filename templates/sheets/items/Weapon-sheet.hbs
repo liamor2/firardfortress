@@ -9,12 +9,12 @@
     </script>
     <header class="sheet-header">
         <div class="sheet-header-1">
-            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
             <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.WeaponSheet.Name"}}">{{data.system.name}}</textarea>
         </div>
         <table class="sheet-header-2">
             <tr class="top">
-                <td class="weaponType" {{#if data.system.ranged}} colspan="3" {{else}} colspan="2" {{/if}}>
+                <td class="weaponType" colspan="2">
                     <label>{{localize "FI.WeaponSheet.WeaponType"}}</label>
                     <div class="weaponTypeDiv" title="{{localize "FI.WeaponSheet.WeaponType"}}">
                         <i class="fas fa-sword"></i>
@@ -49,7 +49,6 @@
                             <option value="{{localize "FI.WeaponType.Hammer"}}" title="Hammer"/>
                             <option value="{{localize "FI.WeaponType.Mace"}}" title="Mace"/>
                             <option value="{{localize "FI.WeaponType.Martial"}}" title="Martial"/>
-                            <option value="{{localize "FI.WeaponType.Shield"}}" title="Shield"/>
                             <option value="{{localize "FI.WeaponType.Spear"}}" title="Spear"/>
                             <option value="{{localize "FI.WeaponType.Staff"}}" title="Staff"/>
                             <option value="{{localize "FI.WeaponType.Sword"}}" title="Sword"/>
@@ -58,12 +57,18 @@
                 </td>
             </tr>
             <tr>
-                <td class="ranged" {{#if ranged}} colspan="2" {{/if}}>
+                <td class="ranged">
                     <label>{{localize "FI.WeaponSheet.isRanged"}}</label>
                     <input type="checkbox" name="system.ranged" {{#if data.system.ranged}} checked {{/if}}/>
                 </td>
-                {{#if data.system.ranged}}
-                    <td class="range">
+                <td class="equipped">
+                    <label>{{localize "FI.WeaponSheet.isEquipped"}}</label>
+                    <input type="checkbox" name="system.equipped" {{#if data.system.equipped}} checked {{/if}}/>
+                </td>
+            </tr>
+            {{#if data.system.ranged}}
+                <tr>
+                    <td class="range" colspan="2">
                         <div>
                             <p>{{localize "FI.System.Min"}}</p>
                             <label>{{localize "FI.WeaponSheet.WeaponRange"}}</label>
@@ -71,17 +76,14 @@
                         </div>
                         <div>
                             <input type="number" name="system.range.min" value="{{data.system.range.min}}"/>
+                            <p class="unit">{{localize "FI.WeaponSheet.Unit"}}</p>
                             <span>-</span>
                             <input type="number" name="system.range.max" value="{{data.system.range.max}}"/>
+                            <p class="unit">{{localize "FI.WeaponSheet.Unit"}}</p>
                         </div>
                     </td>
-                {{/if}}
-                <td class="equipped">
-                    <label>{{localize "FI.WeaponSheet.isEquipped"}}</label>
-                    <input type="checkbox" name="system.equipped" {{#if data.system.equipped}} checked {{/if}}/>
-                    {{log data.system.equipped}}
-                </td>
-            </tr>
+                </tr>
+            {{/if}}
             <tr>
                 <td class="stat">
                     <label>{{localize "FI.Stat.Label"}}</label>
@@ -110,8 +112,8 @@
     </header>
     <nav class="sheet-tabs tabs" data-group="primary">
         <ul>
-            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
-            <li><a class="item" data-tab="description">{{localize "FI.Description"}}</a></li>
+            <li><a class="item" data-tab="main">{{localize "FI.System.Main"}}</a></li>
+            <li><a class="item" data-tab="description">{{localize "FI.System.Description"}}</a></li>
         </ul>
     </nav>
 
@@ -167,27 +169,6 @@
                     <td class="weaponRarity">
                         <label>{{localize "FI.WeaponSheet.Rarity"}}</label>
                         <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize "FI.WeaponSheet.Rarity"}}" list="rarity"/>
-                        <script>
-                            var descriptionButton = document.createElement('i');
-                            var rarityList = document.querySelector('#rarity');
-                            var translatedRarities = [];
-                            for (let i = 0; i < rarityList.options.length; i++) {
-                                translatedRarities.push(game.i18n.localize(`FI.Rarity.${rarityList.options[i].title}`));
-                            }
-                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
-                            descriptionButton.title = '';
-                            descriptionButton.addEventListener('mouseover', () => {
-                                const rarity = document.querySelector('input[name="system.rarity"]').value;
-                                if (translatedRarities.includes(rarity)) {
-                                    const title = rarityList.querySelector(`option[value="${rarity}"]`).title;
-                                    const description = game.i18n.localize(`FI.Rarity.Label.${title}`);
-                                    descriptionButton.title = description;
-                                } else {
-                                    descriptionButton.title = game.i18n.localize('FI.Rarity.Label.Custom');
-                                }
-                            });
-                            document.querySelector('.weaponRarity').appendChild(descriptionButton);
-                        </script>
                         <datalist id="rarity">
                             <option value="{{localize "FI.Rarity.Common"}}" title="Common"/>
                             <option value="{{localize "FI.Rarity.Uncommon"}}" title="Uncommon"/>
@@ -222,6 +203,9 @@
         height: 150,
         setup: function (editor) {
             editor.on('change', function () {
+                editor.save();
+            });
+            editor.on('close', function () {
                 editor.save();
             });
         }

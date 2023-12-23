@@ -15,4 +15,9 @@ Hooks.once('init', async function() {
 
 Hooks.once('ready', async function() {
     console.log('firardFortress | Ready');
+
+    CONFIG.Combat.initiative = {
+        formula: "1d20",
+        decimals: 2
+    };
 });

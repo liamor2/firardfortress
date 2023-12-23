@@ -9,7 +9,7 @@
     </script>
     <header class="sheet-header">
         <div class="sheet-header-1">
-            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
             <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.SpellSheet.Name"}}">{{data.system.name}}</textarea>
         </div>
         <table class="sheet-header-2">
@@ -104,8 +104,8 @@
     </header>
     <nav class="sheet-tabs tabs" data-group="primary">
         <ul>
-            <li><a class="item" data-tab="main">{{localize "FI.Main"}}</a></li>
-            <li><a class="item" data-tab="description">{{localize "FI.Description"}}</a></li>
+            <li><a class="item" data-tab="main">{{localize "FI.System.Main"}}</a></li>
+            <li><a class="item" data-tab="description">{{localize "FI.System.Description"}}</a></li>
         </ul>
     </nav>
 
@@ -161,6 +161,9 @@
         height: 150,
         setup: function (editor) {
             editor.on('change', function () {
+                editor.save();
+            });
+            editor.on('close', function () {
                 editor.save();
             });
         }

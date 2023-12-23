@@ -9,7 +9,7 @@
     </script>
     <header class="sheet-header">
         <div class="sheet-header-1">
-            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
             <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.MoneySheet.Name"}}">{{data.system.name}}</textarea>
         </div>
     </header>
@@ -25,6 +25,7 @@
                 <td class="moneyValue">
                     <label>{{localize "FI.MoneySheet.Value"}}</label>
                     <input type="number" name="system.value" value="{{data.system.value}}" title="{{localize "FI.MoneySheet.ValueDescription"}}"/>
+                    <p>{{localize "FI.System.SC"}}</p>
                 </td>
             </tr>
             <tr class="bottom">
@@ -56,6 +57,9 @@
         height: 150,
         setup: function (editor) {
             editor.on('change', function () {
+                editor.save();
+            });
+            editor.on('close', function () {
                 editor.save();
             });
         }

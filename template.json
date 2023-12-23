@@ -86,7 +86,6 @@
                 "value": 0,
                 "temp": 0
             },
-            "baseSpeed": 10,
             "posture": "",
             "displayAdvancedRoll": true
         },
@@ -95,12 +94,9 @@
             "race": "",
             "class": "",
             "level": 1,
-            "languages": [{
-                "name": "Common",
-                "speaking": true,
-                "reading": true,
-                "writing": true
-            }]
+            "baseSpeed": 10,
+            "realSpeed": 10,
+            "maxWeight": 10
         },
         "description": {
             "biography": "",
@@ -263,7 +259,11 @@
         "isAdventureDice": true
     },
     "Language": {
-        "name": ""
+        "name": "",
+        "isLanguage": true,
+        "speaking": false,
+        "reading": false,
+        "writing": false
     }
 }
 }

@@ -12,6 +12,7 @@ export default class firardFortressItemSheet extends ItemSheet {
         data.config = CONFIG.firardFortress;
         this.createCalculatedData(data);
         data.isGM = game.user.isGM;
+        this.verifyData(data);
         console.log(data);
         return data;
     }
@@ -28,9 +29,15 @@ export default class firardFortressItemSheet extends ItemSheet {
         });
     }
 
+    async close(options = {}) {
+        tinymce.remove();
+        return super.close(options);
+    }
+
     activateListeners(html) {
         super.activateListeners(html);
 
+        // click listeners
         html.find('.item-roll').click(this._onItemRoll.bind(this));
         html.find('.item-delete').click(this._onItemDelete.bind(this));
         html.find('.roll-delete').click(this._onRollDelete.bind(this));
@@ -76,6 +83,9 @@ export default class firardFortressItemSheet extends ItemSheet {
                 break;
             case 'hybrid':
                 this.addSpellRoll(data, "Piercing");
+                break;
+            case 'weapon':
+                this.addSpellRoll(data, "Slashing");
                 break;
             default:
                 break;
@@ -128,9 +138,18 @@ export default class firardFortressItemSheet extends ItemSheet {
             case 'Hybrid':
                 this.spellRoll(event, item, dataset, "Hybrid");
                 break;
+            case 'Weapon':
+                this.spellRoll(event, item, dataset, "Weapon");
+                break;
             default:
                 break;
         }
+    }
+
+    verifyData(data) {
+        data.data.name = data.data.system.name;
+        data.document.name = data.data.system.name;
+        data.item.name = data.data.system.name;
     }
 
     adventureDiceRoll(event, item, dataset) {
@@ -144,7 +163,7 @@ export default class firardFortressItemSheet extends ItemSheet {
             ChatMessage.create({
                 user: game.user._id,
                 speaker: ChatMessage.getSpeaker(),
-                content: `<h2>${game.i18n.localize("FI.AdventureDiceRoll")}</h2> <p>${game.i18n.localize("FI.AdventureDiceRollNoBalance")}</p>`,
+                content: `<h2>${game.i18n.localize("FI.Adventure.DiceRoll")}</h2> <p>${game.i18n.localize("FI.Adventure.DiceRollNoBalance")}</p>`,
             })
             return;
         }
@@ -166,14 +185,14 @@ export default class firardFortressItemSheet extends ItemSheet {
             game.dice3d.showForRoll(roll).then(displayed => ChatMessage.create({
                 user: game.user._id,
                 speaker: ChatMessage.getSpeaker(),
-                content: `<h2>${game.i18n.localize("FI.AdventureDiceRoll")}</h2> <p>${game.i18n.localize(`FI.AdventureDiceRollResult${result}`)}</p>`,
+                content: `<h2>${game.i18n.localize("FI.Adventure.DiceRoll")}</h2> <p>${game.i18n.localize(`FI.Adventure.DiceRollResult${result}`)}</p>`,
                 roll
             }));
         } else {
             ChatMessage.create({
                 user: game.user._id,
                 speaker: ChatMessage.getSpeaker(),
-                content: `<h2>${game.i18n.localize("FI.AdventureDiceRoll")}</h2> <p>${game.i18n.localize(`FI.AdventureDiceRollResult${result}`)}</p>`,
+                content: `<h2>${game.i18n.localize("FI.Adventure.DiceRoll")}</h2> <p>${game.i18n.localize(`FI.Adventure.DiceRollResult${result}`)}</p>`,
                 roll
             })
         }
@@ -204,7 +223,6 @@ export default class firardFortressItemSheet extends ItemSheet {
             content: `<h2>${game.i18n.localize(`FI.${type}.Roll`)}</h2> <p>${game.i18n.localize(`FI.${type}.RollResult`)} : ${rollString} </p>`
         })
     }
-
 
     createCalculatedData(data) {
         switch (this.item.type) {
