@@ -305,13 +305,18 @@ form.actor-sheet header div.header-right label svg {
 /* ----------------------------------------------------------------------------------------------------------- */
 
 nav.sheet-tabs.tabs ul {
+    width: 100%;
     display: flex;
     list-style-type: none;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 nav.sheet-tabs.tabs ul li {
-    margin: 0 10px;
+    margin: 0 7px;
+}
+
+main {
+    overflow: hidden;
 }
 
 
@@ -769,9 +774,9 @@ form.actor-sheet section div.description div.description-language tr td input {
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet footer.footer {
-    position: sticky;
+    position: absolute;
     bottom: 0;
-    width: 99%;
+    width: 100%;
     height: 35px;
     display: block;
     padding: 10px 20px;
@@ -781,6 +786,7 @@ form.actor-sheet footer.footer {
     align-items: right;
     font-size: 0.7em;
     z-index: 2;
+    transform: translateX(-8px);
 }
 
 form.actor-sheet footer span.sheet-footer-right {
@@ -792,6 +798,10 @@ form.actor-sheet footer span.sheet-footer-right {
 form.actor-sheet footer span.sheet-footer-right input {
     width: 12px;
     height: 12px;
+}
+
+.window-resizable-handle {
+    z-index: 3;
 }
 
 
@@ -1220,7 +1230,7 @@ form.item-sheet.spell section.sheet-description{
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.skill {
-    width: 400px;
+    width: 450px;
     height: 800px;
 }
 
@@ -1453,7 +1463,7 @@ form.item-sheet.skill section.sheet-description{
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.hybrid {
-    width: 400px;
+    width: 500px;
     height: 800px;
 }
 
@@ -1686,7 +1696,7 @@ form.item-sheet.hybrid section.sheet-description{
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.transformation {
-    width: 435px;
+    width: 450px;
     height: 800px;
 }
 
@@ -2013,7 +2023,7 @@ form.item-sheet.proficiency section.sheet-description{
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.money {
-    width: 400px;
+    width: 450px;
     height: 800px;
 }
 

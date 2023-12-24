@@ -135,11 +135,11 @@
                         <span>+</span>
                         <input class="number" type="number" name="system.roll.{{@index}}.bonus" value="{{roll.bonus}}" title="{{localize "FI.SpellSheet.Bonus"}}"/>
                         <input class="text" type="text" name="system.roll.{{@index}}.damageType" value="{{roll.damageType}}" title="{{localize "FI.SpellSheet.DamageType"}}"/>
-                        <button class="roll-delete" title="{{localize "FI.Delete"}}" data-index="{{@index}}"><i class="fas fa-trash"></i></button>
+                        <button class="roll-delete" title="{{localize "FI.System.Delete"}}" data-index="{{@index}}"><i class="fas fa-trash"></i></button>
                     </div>
                 {{/each}}
             </div>
-            <button class="item-add" title="{{localize "FI.Add"}}" data-add="spell"><i class="fas fa-plus"></i></button>
+            <button class="item-add" title="{{localize "FI.System.Add"}}" data-add="spell"><i class="fas fa-plus"></i></button>
         </section>
 
         {{!-- Description Tab --}}

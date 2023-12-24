@@ -13,7 +13,7 @@ export default class firardFortressItemSheet extends ItemSheet {
         this.createCalculatedData(data);
         data.isGM = game.user.isGM;
         this.verifyData(data);
-        console.log(data);
+        // console.log(data);
         return data;
     }
 
@@ -234,6 +234,9 @@ export default class firardFortressItemSheet extends ItemSheet {
                 break;
             case "Skill":
                 this.createSkillData(data);
+            case "Money":
+                this.createMoneyData(data);
+                break
             default:
                 break;
         }
@@ -293,6 +296,11 @@ export default class firardFortressItemSheet extends ItemSheet {
         if (data.data.system.range.min < 0) data.data.system.range.min = 0;
         if (data.data.system.range.max < 0) data.data.system.range.max = 0;
         if (data.data.system.range.min > data.data.system.range.max) data.data.system.range.min = data.data.system.range.max;
+    }
+
+    createMoneyData(data) {
+        if (data.data.system.value == null) data.data.system.value = 0;
+        data.data.system.total = data.data.system.value * data.data.system.quantity;
     }
 
     addSpellRoll(data, damageType) {

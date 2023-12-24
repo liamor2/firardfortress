@@ -37,7 +37,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.verifyData(data, verify);
         this.initTinyMCE();
         this.dataHasBeenUpdated = JSON.stringify(data) !== JSON.stringify(this.oldData);
-        console.log(data);
+        // console.log(data);
         return data;
     }
 
@@ -59,6 +59,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         html.find('.edit-item').click(this._onEditItem.bind(this));
         html.find('.item-checkbox').click(this._onEquipItem.bind(this));
         html.find('.move').click(this._onMove.bind(this));
+        html.find('.item').click(this.navBarAnimation.bind(this));
 
         // hover listeners
 
@@ -419,12 +420,9 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const itemId = element.dataset.id;
-        console.log(itemId);
         const item = this.actor.items.get(itemId);
         const field = element.dataset.field;
-        console.log(field);
         const value = element.value;
-        console.log(value);
 
         return item.update({ [field]: value });
     }
@@ -434,7 +432,6 @@ export default class firardFortressActorSheet extends ActorSheet {
         const element = event.currentTarget;
         const item = this.actor.items.get(element.dataset.id);
         const type = `system.${element.dataset.type}`
-        console.log(item.system[element.dataset.type]);
         item.update({ [type]: !item.system[element.dataset.type] });
     }
 
@@ -685,11 +682,17 @@ export default class firardFortressActorSheet extends ActorSheet {
         const items = data.items;
         let weight = 0;
         let maxWeight = data.data.system.maxWeight;
+        data.data.system.totalMoney = 0;
+        data.data.system.totalWorth = 0;
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
             if (item.type === "Equipment" || item.type === "Weapon" || item.type === "Misc") {
                 weight += item.system.weight;
+                data.data.system.totalWorth += parseFloat(item.system.price) * parseFloat(item.system.quantity);
+            }
+            if (item.type === "Money") {
+                data.data.system.totalMoney += parseFloat(item.system.value) * parseFloat(item.system.quantity);
             }
         }
 
@@ -1051,11 +1054,10 @@ export default class firardFortressActorSheet extends ActorSheet {
             const statMax = data.data.system[stat].max;
             const statValue = data.data.system[stat].value;
             const statTemp = data.data.system[stat].temp;
-            const statBarValue = document.querySelector(`.${stat}barValue`);
-            const statBarTemp = document.querySelector(`.${stat}barTemp`);
-            const statBarMax = document.querySelector(`.${stat}bar`);
+            const statBarValue = this.element.find(`.${stat}barValue`)[0];
+            const statBarTemp = this.element.find(`.${stat}barTemp`)[0];
+            const statBarMax = this.element.find(`.${stat}bar`)[0];
 
-            // set the bars value and temp to the size of the oldData to apply the animation after
             if (oldData !== null) {
                 const oldStatMax = oldData.data.system[stat].max;
                 const oldStatValue = oldData.data.system[stat].value;
@@ -1133,5 +1135,116 @@ export default class firardFortressActorSheet extends ActorSheet {
             }
         }
         this.oldData = data;
+    }
+
+    // navigation bar animations
+    navBarAnimation() {
+        const navBar = this.element.find("nav.sheet-tabs")[0];
+        const tabList = ["main", "proficiencies", "spells", "notes"]
+        const oldActiveLI = navBar.querySelector(".active");
+        const oldActive = this.element.find(`.sheet-body .tab[data-tab="${oldActiveLI.dataset.tab}"]`)[0];
+        const tabs = this.element.find(".sheet-body .tab");
+        for (let i = 0; i < tabs.length; i++) {
+            if (tabs[i] !== oldActive) {
+                tabs[i].style.display = "none";
+            }
+        }
+        setTimeout(() => {
+            const activeLI = navBar.querySelector(".active");
+            const tabContent = this.element.find(".sheet-body .tab.active")[0];
+            const ul = navBar.querySelector("ul");
+            const activeIndex = tabList.indexOf(activeLI.dataset.tab);
+            const oldIndex = tabList.indexOf(oldActiveLI.dataset.tab);
+            if (tabContent !== oldActive) {
+                if (activeIndex == 3) {
+                    tinymce.remove();
+                    tinymce.init({
+                        selector: '.richTextArea',
+                        menubar: false,
+                        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
+                        plugins: 'lists',
+                        min_height: 150,
+                        height: 150,
+                        setup: function (editor) {
+                            editor.on('change', function () {
+                                editor.save();
+                            });
+                            editor.on('close', function () {
+                                editor.save();
+                            });
+                        }
+                    });
+                }
+                if (activeIndex < oldIndex) {
+                    gsap.to(ul, {
+                        x: -activeLI.offsetLeft + (navBar.offsetWidth / 2) - (activeLI.offsetWidth / 2),
+                        duration: 0.5,
+                        ease: "power2.inOut"
+                    });
+                    gsap.fromTo(oldActive, {
+                        opacity: 1,
+                        scale: 1,
+                        display: "block",
+                        x: 0
+                    }, {
+                        opacity: 0,
+                        scale: 0,
+                        display: "none",
+                        duration: 0.2,
+                        ease: "power2.inOut",
+                        x: 1000
+                    });
+                    setTimeout(() => {
+                        gsap.fromTo(tabContent, {
+                            opacity: 0,
+                            scale: 0,
+                            display: "none",
+                            x: -1000
+                        }, {
+                            opacity: 1,
+                            scale: 1,
+                            display: "block",
+                            duration: 0.2,
+                            ease: "power2.inOut",
+                            x: 0
+                        });
+                    }, 200);
+                } else {
+                    gsap.to(ul, {
+                        x: -activeLI.offsetLeft + (navBar.offsetWidth / 2) - (activeLI.offsetWidth / 2),
+                        duration: 0.5,
+                        ease: "power2.inOut"
+                    });
+                    gsap.fromTo(oldActive, {
+                        opacity: 1,
+                        scale: 1,
+                        display: "block",
+                        x: 0
+                    }, {
+                        opacity: 0,
+                        scale: 0,
+                        display: "none",
+                        duration: 0.2,
+                        ease: "power2.inOut",
+                        x: -1000
+                    });
+                    setTimeout(() => {
+                        gsap.fromTo(tabContent, {
+                            opacity: 0,
+                            scale: 0,
+                            display: "none",
+                            x: 1000
+                        }, {
+                            opacity: 1,
+                            scale: 1,
+                            display: "block",
+                            duration: 0.2,
+                            ease: "power2.inOut",
+                            x: 0
+                        });
+                    }, 200);
+                }
+            }
+        }, 1);
     }
 }

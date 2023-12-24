@@ -46,7 +46,11 @@
             "ItemWeight": "Poids",
             "ItemMaxWeight": "Poids maximum",
             "SpeedUnit": "m",
-            "Initiative": "Initiative"
+            "Initiative": "Initiative",
+            "Roll": "Lancer",
+            "Add": "Ajouter",
+            "TotalMoney": "Total de l'argent",
+            "TotalWorth": "Valeur des objets"
         },
         "Stat": {
             "STR" : "Force",
@@ -129,7 +133,11 @@
             "SpellRange": "Portée",
             "Description": "Description",
             "Name": "Nom",
-            "Rolls": "Lancers"
+            "Rolls": "Lancers",
+            "Dice":"Nombre de dés",
+            "DiceType":"Type de dés",
+            "Bonus":"Bonus",
+            "DamageType":"Type de dégâts"
         },
         "Spell": {
             "Name": "Nom",
@@ -164,7 +172,11 @@
             "SkillRange": "Portée",
             "Description": "Description",
             "Name": "Nom",
-            "Rolls": "Lancers"
+            "Rolls": "Lancers",
+            "Dice":"Nombre de dés",
+            "DiceType":"Type de dés",
+            "Bonus":"Bonus",
+            "DamageType":"Type de dégâts"
         },
         "Skill": {
             "Name": "Nom",
@@ -194,7 +206,11 @@
             "HybridRange": "Portée",
             "Description": "Description",
             "Name": "Nom",
-            "Rolls": "Lancers"
+            "Rolls": "Lancers",
+            "Dice":"Nombre de dés",
+            "DiceType":"Type de dés",
+            "Bonus":"Bonus",
+            "DamageType":"Type de dégâts"
         },
         "Hybrid": {
             "Name": "Nom",
@@ -303,17 +319,18 @@
             "Name": "Nom",
             "Quantity": "Quantité",
             "Price": "Prix",
-            "PriceUnit": "PO",
+            "PriceUnit": "PA",
             "Weight": "Poids",
             "WeightUnit": "kg",
             "Rarity": "Rareté",
-            "Description": "Description"
+            "Description": "Description",
+            "WeightDescription": "Poids de l'objet"
         },
         "Misc": {
             "Name": "Nom",
             "Quantity": "Quantité",
             "Value": "Price",
-            "PriceUnit": "PO",
+            "PriceUnit": "PA",
             "Weight": "Poids",
             "WeightUnit": "kg",
             "Rarity": "Rareté",
@@ -363,7 +380,7 @@
             "Name": "Nom",
             "Quantity": "Quantité",
             "Price": "Prix",
-            "PriceUnit": "PO",
+            "PriceUnit": "PA",
             "Weight": "Poids",
             "WeightUnit": "kg",
             "Rarity": "Rareté",
@@ -376,7 +393,11 @@
             "isRanged": "Arme à distance",
             "isEquipped": "Équipé",
             "Unit": "m",
-            "Rolls": "Lancers"
+            "Rolls": "Lancers",
+            "Dice": "Nombre de dés",
+            "DiceType": "Type de dés",
+            "Bonus": "Bonus",
+            "WeightDescription": "Poids de l'arme"
         },
         "Weapon": {
             "Image": "Img",
@@ -438,7 +459,7 @@
             "Name": "Nom",
             "Quantity": "Quantité",
             "Price": "Prix",
-            "PriceUnit": "PO",
+            "PriceUnit": "PA",
             "Weight": "Poids",
             "WeightUnit": "kg",
             "Rarity": "Rareté",
@@ -446,7 +467,10 @@
             "isEquipped": "Équipé",
             "Unit": "m",
             "EquipmentType": "Type d'équipement",
-            "ArmorGiven": "Armure"
+            "ArmorGiven": "Armure",
+            "PArmorGiven": "Armure physique",
+            "MArmorGiven": "Armure magique",
+            "WeightDescription": "Poids de l'équipement"
         },
         "Equipment": {
             "Image": "Img",

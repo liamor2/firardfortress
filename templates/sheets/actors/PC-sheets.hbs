@@ -472,6 +472,16 @@
                                         {{/if}}
                                     {{/each}}
                                     <tr>
+                                        <td colspan="2">
+                                            <label>{{localize "FI.System.TotalMoney"}}</label>
+                                            <p>{{data.system.totalMoney}} {{localize "FI.System.SC"}}</p>
+                                        </td>
+                                        <td colspan="2">
+                                            <label>{{localize "FI.System.TotalWorth"}}</label>
+                                            <p>{{data.system.totalWorth}} {{localize "FI.System.SC"}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="4">
                                             <button class="add" data-add="Money"><i class="fa-duotone fa-plus"></i></button>
                                         </td>
