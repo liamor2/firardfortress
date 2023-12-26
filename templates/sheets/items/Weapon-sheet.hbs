@@ -190,6 +190,16 @@
             <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
         </section>
     </main>
+
+    {{!-- Sheet Footer --}}
+    {{#if isGM}}
+        <footer class="sheet-footer footer">
+            <span class="sheet-footer-right">
+                <label>{{localize "FI.System.CustomImage"}}</label>
+                <input type="checkbox" name="system.customImage" {{#if data.system.customImage}}checked{{/if}}/>
+            </span>
+        </footer>
+    {{/if}}
 </form>
 
 <script>

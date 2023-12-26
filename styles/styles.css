@@ -22,6 +22,15 @@ form.actor-sheet header img.profile-img {
     max-width: 150px;
 }
 
+form.actor-sheet header div.header-top-left div input {
+    width: 100%;
+    max-width: 150px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.2em;
+}
+
 form.actor-sheet header div.header-left {
     display: block;
     justify-content: space-between;
@@ -288,6 +297,12 @@ form.actor-sheet header div.header-right label {
 form.actor-sheet header div.header-right label svg {
     height: 17px;
     width: auto;
+}
+
+form.actor-sheet header div.header-right label img {
+    height: 17px;
+    width: auto;
+    border: none;
 }
 
 .tox-statusbar__branding {
@@ -773,7 +788,7 @@ form.actor-sheet section div.description div.description-language tr td input {
 /* footer */
 /* ----------------------------------------------------------------------------------------------------------- */
 
-form.actor-sheet footer.footer {
+form footer.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -789,13 +804,13 @@ form.actor-sheet footer.footer {
     transform: translateX(-8px);
 }
 
-form.actor-sheet footer span.sheet-footer-right {
+form footer span.sheet-footer-right {
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
-form.actor-sheet footer span.sheet-footer-right input {
+form footer span.sheet-footer-right input {
     width: 12px;
     height: 12px;
 }

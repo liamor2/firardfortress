@@ -13,7 +13,7 @@ export default class firardFortressItemSheet extends ItemSheet {
         this.createCalculatedData(data);
         data.isGM = game.user.isGM;
         this.verifyData(data);
-        // console.log(data);
+        console.log(data);
         return data;
     }
 
@@ -147,9 +147,9 @@ export default class firardFortressItemSheet extends ItemSheet {
     }
 
     verifyData(data) {
-        data.data.name = data.data.system.name;
-        data.document.name = data.data.system.name;
-        data.item.name = data.data.system.name;
+        if (data.item.type == "AdventureDice" || data.data.system.name == "") return;
+        let item = data.item;
+        item.update({ "name": data.data.system.name});
     }
 
     adventureDiceRoll(event, item, dataset) {
