@@ -13,6 +13,7 @@ form.actor-sheet header.header {
     padding: 10px 20px;
     background-color: #ffffff1f;
     border-bottom: 1px solid #ccc;
+    margin-top: 15px;
 }
 
 form.actor-sheet header img.profile-img {
@@ -189,14 +190,13 @@ form.actor-sheet header div.header-top div.header-top-left {
     display: block;
     align-items: center;
     width: 33%;
-    height: 127px;
 }
 
 form.actor-sheet header div.header-top div.header-top-right {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 67%;
+    width: 66%;
 }
 
 form.actor-sheet header div.header-bottom {
@@ -209,7 +209,7 @@ form.actor-sheet header div.header-bottom {
     display: block;
     align-items: center;
     width: 95%;
-    margin-top: 75px;
+    margin-top: 40px;
 }
 
 form.actor-sheet header div.header-bottom table {
