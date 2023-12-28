@@ -1368,7 +1368,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         const ul = navBar.querySelector("ul");
         const activeIndex = tabList.indexOf(activeLI.dataset.tab);
         gsap.to(ul, {
-            x: -activeLI.offsetLeft + (navBar.offsetWidth / 2) - (activeLI.offsetWidth / 2),
+            x: -activeLI.offsetLeft + (navBar.offsetWidth / 2) - (activeLI.offsetWidth / 2) + 8,
             duration: 0
         });
         gsap.fromTo(tabContent, {
