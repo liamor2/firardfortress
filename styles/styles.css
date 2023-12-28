@@ -638,6 +638,115 @@ form.actor-sheet section div.spell-tab table tr td div {
 /* notes tab */
 /* ----------------------------------------------------------------------------------------------------------- */
 
+form.actor-sheet section div.description div.description-language {
+    width: 66%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff1f;
+    font-size: 1.2em;
+}
+
+form.actor-sheet section div.description div.description-alignment {
+    width: 180px;
+    height: 210px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff1f;
+    font-size: 0.6em;
+    overflow: hidden;
+}
+
+form.actor-sheet section div.description div.description-alignment label {
+    padding: 0 0 0 5px;
+}
+
+form.actor-sheet section div.description div.description-alignment label p {
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    text-shadow: #000000 1px 1px;
+    color: #6c0000;
+    font-weight: bold;
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds {
+    width: 160px;
+    height: 160px;
+    padding: 5px;
+    margin: 5px;
+    position: relative;
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div#marker-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 5px;
+    background-image: url('../../../systems/firardfortress/icons/alignmentBackground.png');
+    background-color: #0000001f;
+    transition: all 0.1s ease-in-out;
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div#marker-container:hover {
+    background-color: #0000003f;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div#marker-container div#marker {
+    position: relative;
+    background-color: black;
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: #000000 1px 1px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#lawful {
+    color: #00ff00;
+    text-align: left;
+    transform: translate(10px, 65px);
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#chaotic {
+    color: #ff0000;
+    text-align: right;
+    transform: translate(-10px, 65px);
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#good {
+    color: #ffff00;
+    text-align: center;
+    transform: rotate(90deg) translate(20px, -15px);
+}
+
+form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#evil {
+    color: #0000ff;
+    text-align: center;
+    transform: rotate(90deg) translate(120px, -15px);
+}
+
 form.actor-sheet section div.description table {
     width: 100%;
     border-collapse: collapse;
@@ -711,16 +820,6 @@ form.actor-sheet section div.description {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #ffffff1f;
-    resize: none;
-    overflow: auto;
-    font-size: 1.2em;
-}
-
-form.actor-sheet section div.description div.description-language {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: transparent;
     resize: none;
     overflow: auto;
     font-size: 1.2em;

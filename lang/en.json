@@ -422,7 +422,12 @@
             "Personality": "Personality",
             "Appearance": "Appearance",
             "Background": "Background",
-            "Notes": "Notes"
+            "Notes": "Notes",
+            "Lawful": "Lawful",
+            "Chaotic": "Chaotic",
+            "Good": "Good",
+            "Evil": "Evil",
+            "Alignment": "Alignment"
         },
         "EquipmentType": {
             "Label": {

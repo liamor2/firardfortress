@@ -37,7 +37,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.verifyData(data, verify);
         this.initTinyMCE();
         this.dataHasBeenUpdated = JSON.stringify(data) !== JSON.stringify(this.oldData);
-        // console.log(data);
+        console.log(data);
         return data;
     }
 
@@ -60,6 +60,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         html.find('.item-checkbox').click(this._onEquipItem.bind(this));
         html.find('.move').click(this._onMove.bind(this));
         html.find('.item').click(this.navBarAnimation.bind(this));
+        html.find('#marker-container').click(this.alignmentSlider.bind(this));
 
         // hover listeners
 
@@ -72,9 +73,11 @@ export default class firardFortressActorSheet extends ActorSheet {
 
         // other listeners
         if (!this.hasBeenRendered || this.dataHasBeenUpdated) {
-            this.statBar();
+            this.statBar(); 
             this.hasBeenRendered = true;
         }
+        this.alignmentAnimation();
+        this.navBarAnimationDefault();
     }
 
     _onRoll(event) {
@@ -992,7 +995,6 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     // calculate mod
-
     calculateMod(dataset, data) {
         let mod = 0;
         let posture = "";
@@ -1021,6 +1023,76 @@ export default class firardFortressActorSheet extends ActorSheet {
             posture = " (- Concentration)"
         }
         return {mod: mod, posture: posture};
+    }
+
+    // alignement slider
+    alignmentSlider(event) {
+        const data = this.getData(false);
+        const alignment = data.data.system.alignment;
+        const alignmentSlider = this.element.find("#marker-container")[0];
+        const alignmentMarker = this.element.find("#marker")[0];
+        const lawfulText = this.element.find("#lawful")[0];
+        const chaoticText = this.element.find("#chaotic")[0];
+        const goodText = this.element.find("#good")[0];
+        const evilText = this.element.find("#evil")[0];
+        const cursorWidth = 14;
+        const cursorHeight = 14;
+        const position = {
+            x: event.clientX - alignmentSlider.getBoundingClientRect().left - cursorWidth / 2,
+            y: event.clientY - alignmentSlider.getBoundingClientRect().top - cursorHeight / 2
+        };
+        const max = 145;
+
+        if (position.x < 0) {
+            position.x = 0;
+        } else if (position.x > max) {
+            position.x = max;
+        }
+        if (position.y < 0) {
+            position.y = 0;
+        } else if (position.y > max) {
+            position.y = max;
+        }
+        console.log(position);
+        
+        gsap.to(alignmentMarker, {
+            x: position.x,
+            y: position.y,
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+        gsap.to(alignmentSlider, {
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+
+        gsap.to(lawfulText, {
+            opacity: 1 - (position.x / max),
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+        gsap.to(chaoticText, {
+            opacity: position.x / max,
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+        gsap.to(goodText, {
+            opacity: 1 - (position.y / max),
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+        gsap.to(evilText, {
+            opacity: position.y / max,
+            duration: 0.5,
+            ease: "power2.inOut"
+        });
+
+        alignment.x = position.x;
+        alignment.y = position.y;
+
+        setTimeout(() => {
+            this.actor.update({ "system.alignment": alignment });
+        }, 500);
     }
 
     // init tinyMCE
@@ -1137,6 +1209,45 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.oldData = data;
     }
 
+    // alignment animation
+    alignmentAnimation() {
+        const data = this.getData(false);
+        const alignment = data.data.system.alignment;
+        const position = {
+            x: alignment.x,
+            y: alignment.y
+        };
+        const max = 145;
+        const alignmentMarker = this.element.find("#marker")[0];
+        const lawfulText = this.element.find("#lawful")[0];
+        const chaoticText = this.element.find("#chaotic")[0];
+        const goodText = this.element.find("#good")[0];
+        const evilText = this.element.find("#evil")[0];
+
+        gsap.to(alignmentMarker, {
+            x: position.x,
+            y: position.y,
+            duration: 0
+        });
+
+        gsap.to(lawfulText, {
+            opacity: 1 - (position.x / max),
+            duration: 0
+        });
+        gsap.to(chaoticText, {
+            opacity: position.x / max,
+            duration: 0
+        });
+        gsap.to(goodText, {
+            opacity: 1 - (position.y / max),
+            duration: 0
+        });
+        gsap.to(evilText, {
+            opacity: position.y / max,
+            duration: 0
+        });
+    }
+
     // navigation bar animations
     navBarAnimation() {
         const navBar = this.element.find("nav.sheet-tabs")[0];
@@ -1246,5 +1357,31 @@ export default class firardFortressActorSheet extends ActorSheet {
                 }
             }
         }, 1);
+    }
+
+    // navigation bar animations default
+    navBarAnimationDefault() {
+        const navBar = this.element.find("nav.sheet-tabs")[0];
+        const tabList = ["main", "proficiencies", "spells", "notes"]
+        const activeLI = navBar.querySelector(".active");
+        const tabContent = this.element.find(".sheet-body .tab.active")[0];
+        const ul = navBar.querySelector("ul");
+        const activeIndex = tabList.indexOf(activeLI.dataset.tab);
+        gsap.to(ul, {
+            x: -activeLI.offsetLeft + (navBar.offsetWidth / 2) - (activeLI.offsetWidth / 2),
+            duration: 0
+        });
+        gsap.fromTo(tabContent, {
+            opacity: 0,
+            scale: 0,
+            display: "none",
+            x: 1000
+        }, {
+            opacity: 1,
+            scale: 1,
+            display: "block",
+            duration: 0,
+            x: 0
+        });
     }
 }

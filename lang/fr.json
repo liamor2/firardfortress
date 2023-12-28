@@ -96,7 +96,12 @@
             "Personality": "Personnalité",
             "Appearance": "Apparence",
             "Background": "Histoire",
-            "Notes": "Notes"
+            "Notes": "Notes",
+            "Lawful": "Loyal",
+            "Chaotic": "Chaotique",
+            "Good": "Bon",
+            "Evil": "Mauvais",
+            "Alignment": "Alignement"
         },
         "SpellType": {
             "Label": {

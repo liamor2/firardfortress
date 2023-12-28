@@ -103,24 +103,24 @@
             "appearance": "",
             "personality": "",
             "background": "",
-            "notes": ""
+            "notes": "",
+            "alignment": {
+                "x": 0,
+                "y": 0
+            }
         }
     },
     "PC": {
         "templates": ["mainStat", "subStat", "description"],
         "guild": "",
-        "playerName": "",
-        "alignment": "",
-        "size": ""
+        "playerName": ""
     },
     "NPC": {
         "templates": ["mainStat"]
     },
     "followerNPC": {
         "templates": ["mainStat", "subStat", "description"],
-        "PCaffiliation": "",
-        "alignment": "",
-        "size": ""
+        "PCaffiliation": ""
     }
 },
 "Item": {

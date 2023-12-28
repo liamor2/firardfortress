@@ -441,6 +441,7 @@
                                 </label>
                                 <table class="money-tab">
                                     <tr>
+                                        <th class="image">{{localize "FI.Money.Image"}}</th>
                                         <th>{{localize "FI.Money.Name"}}</th>
                                         <th>{{localize "FI.Money.Value"}}</th>
                                         <th>{{localize "FI.System.Quantity"}}</th>
@@ -450,6 +451,9 @@
                                     {{#each items as |money index|}}
                                         {{#if money.system.isMoney}}
                                             <tr>
+                                                <td class="edit-item" data-id="{{money._id}}">
+                                                    <img src="{{money.img}}" alt="{{money.system.name}}"/>
+                                                </td>
                                                 <td class="edit-item" data-id="{{money._id}}">
                                                     <p>{{money.system.name}}</p>
                                                 </td>
@@ -865,6 +869,20 @@
                         </script>
                     </datalist>
                     <button class="add language-add" data-add="Language"><i class="fa-duotone fa-plus"></i></button>
+                </div>
+                <div class="description-alignment">
+                    <label>
+                        <p>{{localize "FI.Description.Alignment"}}</p>
+                    </label>
+                    <div id="marker-bounds">
+                        <div id="marker-container">
+                            <p id="lawful">{{localize "FI.Description.Lawful"}}</p>
+                            <p id="chaotic">{{localize "FI.Description.Chaotic"}}</p>
+                            <p id="good">{{localize "FI.Description.Good"}}</p>
+                            <p id="evil">{{localize "FI.Description.Evil"}}</p>
+                            <div id="marker"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="description-left">
                     <div class="description-biography">
