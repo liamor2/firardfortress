@@ -50,7 +50,8 @@
             "Roll": "Lancer",
             "Add": "Ajouter",
             "TotalMoney": "Total de l'argent",
-            "TotalWorth": "Valeur des objets"
+            "TotalWorth": "Valeur des objets",
+            "PCAffiliation": "Affiliation"
         },
         "Stat": {
             "STR" : "Force",
@@ -71,7 +72,8 @@
             "Offensive": "Offensif",
             "Defensive": "Défensif",
             "Focus": "Focus",
-            "Concentration": "Concentration"
+            "Concentration": "Concentration",
+            "Elemental": "Élémentaire"
         },
         "Roll": {
             "Label": "Lancer",

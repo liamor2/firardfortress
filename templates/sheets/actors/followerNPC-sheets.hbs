@@ -1,0 +1,922 @@
+<form class="{{cssClass}} actor-sheet PC-sheet" autocomplete="off">
+    <script>
+        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+        inputs.forEach(input => {
+            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+        });
+    </script>
+    <header class="header">
+        <div class="header-left">
+            <div class="header-top">
+                <div class="header-top-left">
+                    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
+                    <div>
+                        <label>{{localize "FI.System.Name"}}</label>
+                        <input type="text" name="name" value="{{data.name}}"/>
+                    </div>
+                </div>
+                <div class="header-top-right">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <label>{{localize "FI.System.PCAffiliation"}}</label>
+                                <input type="text" name="system.PCaffiliation" value="{{data.system.PCaffiliation}}" placeholder="{{localize "FI.System.PCAffiliation"}}"/>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.System.Level"}}</label>
+                                <input type="number" name="system.level" value="{{data.system.level}}" placeholder="{{localize "FI.System.Level"}}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>{{localize "FI.System.Class"}}</label>
+                                <input type="text" name="system.class" value="{{data.system.class}}" placeholder="{{localize "FI.System.Class"}}"/>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.System.Race"}}</label>
+                                <input type="text" name="system.race" value="{{data.system.race}}" placeholder="{{localize "FI.System.Race"}}"/>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.Posture.Label"}}</label>
+                                <select name="system.posture">
+                                    <option {{#if (eq data.system.posture "")}}selected{{/if}} disabled>{{localize "FI.Posture.Select"}}</option>
+                                    <option value="Offensive" {{#if (eq data.system.posture "Offensive")}}selected{{/if}}>{{localize "FI.Posture.Offensive"}}</option>
+                                    <option value="Defensive" {{#if (eq data.system.posture "Defensive")}}selected{{/if}}>{{localize "FI.Posture.Defensive"}}</option>
+                                    <option value="Focus" {{#if (eq data.system.posture "Focus")}}selected{{/if}}>{{localize "FI.Posture.Focus"}}</option>
+                                    <option value="Concentration" {{#if (eq data.system.posture "Concentration")}}selected{{/if}}>{{localize "FI.Posture.Concentration"}}</option>
+                                    <option value="Elemental" {{#if (eq data.system.posture "Elemental")}}selected{{/if}}>{{localize "FI.Posture.Elemental"}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="header-bottom">
+                            <td class="weight">
+                                <label><strong>{{localize "FI.System.ItemWeight"}}</strong></label>
+                                <span>/</span>
+                                <label>{{localize "FI.System.ItemMaxWeight"}}</label>
+                                <div class="weight">
+                                    <input type="number" name="system.weight.value" value="{{data.system.weight.value}}" disabled/>
+                                    {{localize "FI.Misc.WeightUnit"}}
+                                    <span>/</span>
+                                    <input type="number" name="system.weight.max" value="{{data.system.weight.max}}" placeholder="{{localize "FI.System.ItemMaxWeight"}}"/>
+                                    {{localize "FI.Misc.WeightUnit"}}
+                                </div>
+                                <div class="bar weightBar">
+                                    <div class="barValue weightBarValue"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <label>{{localize "FI.System.BaseSpeed"}}</label>
+                                <input type="number" name="system.speed.base" value="{{data.system.speed.base}}" placeholder="{{localize "FI.System.BaseSpeed"}}"/>
+                                {{localize "FI.System.SpeedUnit"}}
+                            </td>
+                            <td>
+                                <label><strong>{{localize "FI.System.RealSpeed"}}</strong></label>
+                                <input type="number" name="system.speed.value" value="{{data.system.speed.value}}" disabled/>
+                                <strong>{{localize "FI.System.SpeedUnit"}}</strong>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <table>
+                    <tr>
+                        <td colspan="4">{{localize "FI.Stat.STR"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.DEX"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.CON"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.INT"}}</td>
+                        <td colspan="4">{{localize "FI.Stat.WIS"}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.STR.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.STR.mod.num}}" data-roll="{{data.system.stat.STR.mod.num}}" data-label="{{localize "FI.Stat.STR"}}" data-type="STR" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.DEX.value" value="{{data.system.stat.DEX.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.DEX.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.DEX.mod.num}}" data-roll="{{data.system.stat.DEX.mod.num}}" data-label="{{localize "FI.Stat.DEX"}}" data-type="DEX" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.CON.value" value="{{data.system.stat.CON.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.CON.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.CON.mod.num}}" data-roll="{{data.system.stat.CON.mod.num}}" data-label="{{localize "FI.Stat.CON"}}" data-type="CON" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.INT.value" value="{{data.system.stat.INT.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.INT.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.INT.mod.num}}" data-roll="{{data.system.stat.INT.mod.num}}" data-label="{{localize "FI.Stat.INT"}}" data-type="INT" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="4" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.WIS.value" value="{{data.system.stat.WIS.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.WIS.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIS.mod.num}}" data-roll="{{data.system.stat.WIS.mod.num}}" data-label="{{localize "FI.Stat.WIS"}}" data-type="WIS" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">{{localize "FI.Stat.WIL"}}</td>
+                        <td colspan="5">{{localize "FI.Stat.CHA"}}</td>
+                        <td colspan="5">{{localize "FI.Stat.LUK"}}</td>
+                        <td colspan="5">{{localize "FI.Stat.HON"}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.WIL.value" value="{{data.system.stat.WIL.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.WIL.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIL.mod.num}}" data-roll="{{data.system.stat.WIL.mod.num}}" data-label="{{localize "FI.Stat.WIL"}}" data-type="WIL" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.CHA.value" value="{{data.system.stat.CHA.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.CHA.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.CHA.mod.num}}" data-roll="{{data.system.stat.CHA.mod.num}}" data-label="{{localize "FI.Stat.CHA"}}" data-type="CHA" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.LUK.value" value="{{data.system.stat.LUK.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.LUK.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.LUK.mod.num}}" data-roll="{{data.system.stat.LUK.mod.num}}" data-label="{{localize "FI.Stat.LUK"}}" data-type="LUK" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.HON.value" value="{{data.system.stat.HON.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.HON.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.HON.mod.num}}" data-roll="{{data.system.stat.HON.mod.num}}" data-label="{{localize "FI.Stat.HON"}}" data-type="HON" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="stat-container header-right">
+            <div class="stat label">
+                <p>{{localize "FI.System.Value"}}</p>
+                <span>/</span>
+                <p>{{localize "FI.System.Temp"}}</p>
+                <span>/</span>
+                <p>{{localize "FI.System.Max"}}</p>
+            </div>
+            <label>
+                <i class="fa-solid fa-heart-half-stroke"></i>
+                {{localize "FI.System.HP"}}
+            </label>
+            <div class="bar HPbar">
+                <div class="barValue HPbarValue"></div>
+                <div class="barValue barTemp HPbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
+            </div>
+            <label>
+                <img src="systems/firardfortress/icons/mana.png" alt="MP"/>
+                {{localize "FI.System.MP"}}
+            </label>
+            <div class="bar MPbar">
+                <div class="barValue MPbarValue"></div>
+                <div class="barValue barTemp MPbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.MP.value" value="{{data.system.MP.value}}" max="{{data.system.MP.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.MP.temp" value="{{data.system.MP.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.MP.max" value="{{data.system.MP.max}}"/>
+            </div>
+            <label>
+                <i class="fa-solid fa-bolt"></i>
+                {{localize "FI.System.SP"}}
+            </label>
+            <div class="bar SPbar">
+                <div class="barValue SPbarValue"></div>
+                <div class="barValue barTemp SPbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.SP.value" value="{{data.system.SP.value}}" max="{{data.system.SP.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.SP.temp" value="{{data.system.SP.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.SP.max" value="{{data.system.SP.max}}"/>
+            </div>
+            <label>
+                <i class="fa-duotone fa-shield-halved"></i>
+                {{localize "FI.System.PA"}}
+            </label>
+            <div class="bar PAbar">
+                <div class="barValue PAbarValue"></div>
+                <div class="barValue barTemp PAbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.PA.value" value="{{data.system.PA.value}}" max="{{data.system.PA.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.PA.temp" value="{{data.system.PA.temp}}"/>
+                <span>/</span>
+                <input type="number" name="system.PA.max" value="{{data.system.PA.max}}" disabled/>
+            </div>
+            <label>
+                <img src="systems/firardfortress/icons/magicShield.png" alt="MA"/>
+                {{localize "FI.System.MA"}}
+            </label>
+            <div class="bar MAbar">
+                <div class="barValue MAbarValue"></div>
+                <div class="barValue barTemp MAbarTemp"></div>
+            </div>
+            <div class="stat">
+                <input type="number" name="system.MA.value" value="{{data.system.MA.value}}" max="{{data.system.MA.max}}"/>
+                <span>/</span>
+                <input type="number" name="system.MA.temp" value="{{data.system.MA.temp}}" min="0"/>
+                <span>/</span>
+                <input type="number" name="system.MA.max" value="{{data.system.MA.max}}" disabled/>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Nav --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <ul>
+            <li><a class="item" data-tab="main">{{localize "FI.System.Main"}}</a></li>
+            <li><a class="item" data-tab="proficiencies">{{localize "FI.System.Proficiencies"}}</a></li>
+            <li><a class="item" data-tab="spells">{{localize "FI.System.Spells"}}</a></li>
+            <li><a class="item" data-tab="notes">{{localize "FI.System.Notes"}}</a></li>
+        </ul>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <main class="sheet-body">
+
+        {{!-- Main Tab --}}
+        <section class="sheet-tab tab" data-tab="main">
+            <div class="main-tab">
+                <table class="main-tab">
+                    <tr>
+                        <td colspan="2">
+                            <div class="container weapon">
+                                <label class="weapon-label container-label">
+                                    <p>{{localize "FI.Weapon.Label"}}</p>
+                                </label>
+                                <table class="weapon-tab">
+                                    <tr>
+                                        <th class="image">{{localize "FI.Weapon.Image"}}</th>
+                                        <th>{{localize "FI.Weapon.Name"}}</th>
+                                        <th class="medium">{{localize "FI.Weapon.Stat"}}</th>
+                                        <th class="small">{{localize "FI.System.Equipped"}}</th>
+                                        <th class="small">{{localize "FI.Weapon.Quantity"}}</th>
+                                        <th class="small">{{localize "FI.Weapon.Roll"}}</th>
+                                        <th class="small">{{localize "FI.System.Move"}}</th>
+                                        <th class="small">{{localize "FI.System.Delete"}}</th>
+                                    </tr>
+                                    {{#each items as |weapon index|}}
+                                        {{#if weapon.system.isWeapon}}
+                                            <tr>
+                                                <td class="edit-item" data-id="{{weapon._id}}">
+                                                    <img src="{{weapon.img}}" alt="{{weapon.system.name}}"/>
+                                                </td>
+                                                <td class="edit-item" data-id="{{weapon._id}}">
+                                                    <p>{{weapon.system.name}}</p>
+                                                </td>
+                                                <td class="edit-item medium" data-id="{{weapon._id}}">
+                                                    <p>{{localize (concat "FI.Stat." weapon.system.stat)}}</p>
+                                                </td>
+                                                <td class="small">
+                                                    {{#if weapon.system.equipped}}
+                                                        <i class="fa-solid fa-check item-checkbox" data-id="{{weapon._id}}" data-type="equipped"></i>
+                                                    {{else}}
+                                                        <i class="fa-solid fa-times item-checkbox" data-id="{{weapon._id}}" data-type="equipped"></i>
+                                                    {{/if}}
+                                                </td>
+                                                <td class="small">
+                                                    <input class="item-input"type="number" name="system.weapons.{{index}}.quantity" value="{{weapon.system.quantity}}" data-id="{{weapon._id}}" data-field="system.quantity"/>
+                                                </td>
+                                                <td>
+                                                    <a class="item-roll rollable" title="{{localize "FI.System.Roll"}}" data-id="{{weapon._id}}" data-label="{{weapon.system.name}}" data-type="{{weapon.system.stat}}" data-rollType="Weapon" data-roll="{{weapon.system.stat}}"><i class="fa-duotone fa-dice-d20"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a class="move small" data-type="up" data-move="Weapon" data-id="{{weapon._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                                    <a class="move small" data-type="down" data-move="Weapon" data-id="{{weapon._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a class="delete small" data-delete="Weapon" data-id="{{weapon._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        {{/if}}
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="6">
+                                            <button class="add" data-add="Weapon"><i class="fa-duotone fa-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="container equipment">
+                                <label class="equipment-label container-label">
+                                    <p>{{localize "FI.Equipment.Label"}}</p>
+                                </label>
+                                <table class="equipment-tab">
+                                    <tr>
+                                        <th class="image">{{localize "FI.Equipment.Image"}}</th>
+                                        <th>{{localize "FI.Equipment.Name"}}</th>
+                                        <th class="medium">{{localize "FI.Equipment.ArmorGiven"}}</th>
+                                        <th class="medium">{{localize "FI.Equipment.Type"}}</th>
+                                        <th class="small">{{localize "FI.System.Equipped"}}</th>
+                                        <th class="small">{{localize "FI.System.Quantity"}}</th>
+                                        <th class="small">{{localize "FI.System.Move"}}</th>
+                                        <th class="small">{{localize "FI.System.Delete"}}</th>
+                                    </tr>
+                                    {{#each items as |equipment index|}}
+                                        {{#if equipment.system.isEquipment}}
+                                            <tr>
+                                                <td class="edit-item" data-id="{{equipment._id}}">
+                                                    <img src="{{equipment.img}}" alt="{{equipment.system.name}}"/>
+                                                </td>
+                                                <td class="edit-item" data-id="{{equipment._id}}">
+                                                    <p>{{equipment.system.name}}</p>
+                                                </td>
+                                                <td class="edit-item medium armor" data-id="{{equipment._id}}">
+                                                    <p>{{equipment.system.PA}}</p>{{localize "FI.System.PA"}}
+                                                    <span>/</span>
+                                                    <p>{{equipment.system.MA}}</p>{{localize "FI.System.MA"}}
+                                                </td>
+                                                <td class="edit-item medium" data-id="{{equipment._id}}">
+                                                    <p>{{equipment.system.equipmentType}}</p>
+                                                </td>
+                                                <td class="small" data-id="{{equipment._id}}">
+                                                    {{#if equipment.system.equipped}}
+                                                        <i class="fa-solid fa-check item-checkbox" data-id="{{equipment._id}}" data-type="equipped"></i>
+                                                    {{else}}
+                                                        <i class="fa-solid fa-times item-checkbox" data-id="{{equipment._id}}" data-type="equipped"></i>
+                                                    {{/if}}
+                                                </td>
+                                                <td class="small" data-id="{{equipment._id}}">
+                                                    <input class="item-input" type="number" name="system.equipment.{{index}}.quantity" value="{{equipment.system.quantity}}" data-id="{{equipment._id}}" data-field="system.quantity"/>
+                                                </td>
+                                                <td>
+                                                    <a class="move small" data-type="up" data-move="Equipment" data-id="{{equipment._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                                    <a class="move small" data-type="down" data-move="Equipment" data-id="{{equipment._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a class="delete small" data-delete="Equipment" data-id="{{equipment._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        {{/if}}
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="6">
+                                            <button class="add" data-add="Equipment"><i class="fa-duotone fa-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="container misc">
+                                <label class="misc-label container-label">
+                                    <p>{{localize "FI.Misc.Label"}}</p>
+                                </label>
+                                <table class="misc-tab">
+                                    <tr>
+                                        <th class="image">{{localize "FI.Misc.Image"}}</th>
+                                        <th>{{localize "FI.Misc.Name"}}</th>
+                                        <th class="small">{{localize "FI.System.Quantity"}}</th>
+                                        <th class="small">{{localize "FI.System.Move"}}</th>
+                                        <th class="small">{{localize "FI.System.Delete"}}</th>
+                                    </tr>
+                                    {{#each items as |misc index|}}
+                                        {{#if misc.system.isMisc}}
+                                            <tr>
+                                                <td class="edit-item" data-id="{{misc._id}}">
+                                                    <img src="{{misc.img}}" alt="{{misc.system.name}}"/>
+                                                </td>
+                                                <td class="edit-item" data-id="{{misc._id}}">
+                                                    <p>{{misc.system.name}}</p>
+                                                </td>
+                                                <td class="small" data-id="{{misc._id}}">
+                                                    <input type="number" name="system.misc.{{index}}.quantity" value="{{misc.system.quantity}}"/>
+                                                </td>
+                                                <td class="small" data-id="{{misc._id}}">
+                                                    <a class="move small" data-type="up" data-move="Misc" data-id="{{misc._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                                    <a class="move small" data-type="down" data-move="Misc" data-id="{{misc._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                                </td>
+                                                <td class="small" data-id="{{misc._id}}">
+                                                    <a class="delete small" data-delete="Misc" data-id="{{misc._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        {{/if}}
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="4">
+                                            <button class="add" data-add="Misc"><i class="fa-duotone fa-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container money">
+                                <label class="money-label container-label">
+                                    <p>{{localize "FI.Money.Label"}}</p>
+                                </label>
+                                <table class="money-tab">
+                                    <tr>
+                                        <th class="image">{{localize "FI.Money.Image"}}</th>
+                                        <th>{{localize "FI.Money.Name"}}</th>
+                                        <th>{{localize "FI.Money.Value"}}</th>
+                                        <th>{{localize "FI.System.Quantity"}}</th>
+                                        <th class="small">{{localize "FI.System.Move"}}</th>
+                                        <th class="small">{{localize "FI.System.Delete"}}</th>
+                                    </tr>
+                                    {{#each items as |money index|}}
+                                        {{#if money.system.isMoney}}
+                                            <tr>
+                                                <td class="edit-item" data-id="{{money._id}}">
+                                                    <img src="{{money.img}}" alt="{{money.system.name}}"/>
+                                                </td>
+                                                <td class="edit-item" data-id="{{money._id}}">
+                                                    <p>{{money.system.name}}</p>
+                                                </td>
+                                                <td class="edit-item" data-id="{{money._id}}">
+                                                    <p>{{money.system.value}} {{localize "FI.System.SC"}}</p>
+                                                </td>
+                                                <td class="edit-item" data-id="{{money._id}}">
+                                                    <input type="number" name="system.money.{{index}}.quantity" value="{{money.system.quantity}}"/>
+                                                </td>
+                                                <td>
+                                                    <a class="move small" data-type="up" data-move="Money" data-id="{{money._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                                    <a class="move small" data-type="down" data-move="Money" data-id="{{money._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a class="delete small" data-delete="Money" data-id="{{money._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        {{/if}}
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="2">
+                                            <label>{{localize "FI.System.TotalMoney"}}</label>
+                                            <p>{{data.system.money.value}} {{localize "FI.System.SC"}}</p>
+                                        </td>
+                                        <td colspan="2">
+                                            <label>{{localize "FI.System.TotalWorth"}}</label>
+                                            <p>{{data.system.money.worth}} {{localize "FI.System.SC"}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <button class="add" data-add="Money"><i class="fa-duotone fa-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        {{!-- Proficiencies Tab --}}
+        <section class="sheet-tab tab" data-tab="proficiencies">
+            <div class="proficiency-tab">
+                <table class="proficiency-table container-label">
+                    <tr>
+                        <th class="image">{{localize "FI.Proficiency.Image"}}</th>
+                        <th>{{localize "FI.Proficiency.Name"}}</th>
+                        <th class="medium">{{localize "FI.Proficiency.Stat"}}</th>
+                        <th class="medium">{{localize "FI.Proficiency.Bonus"}}</th>
+                        <th class="small">{{localize "FI.Proficiency.Roll"}}</th>
+                        <th class="small">{{localize "FI.System.Move"}}</th>
+                        <th class="small">{{localize "FI.System.Delete"}}</th>
+                    </tr>
+                    {{#each items as |proficiency index|}}
+                        {{#if proficiency.system.isProficiency}}
+                            <tr>
+                                <td class="edit-item" data-id="{{proficiency._id}}">
+                                    <img src="{{proficiency.img}}" alt="{{proficiency.system.name}}"/>
+                                </td>
+                                <td class="edit-item" data-id="{{proficiency._id}}">
+                                    <p>{{proficiency.system.name}}</p>
+                                </td>
+                                <td class="edit-item medium" data-id="{{proficiency._id}}">
+                                    <p>{{localize (concat "FI.Stat." proficiency.system.stat)}}</p>
+                                </td>
+                                <td class="edit-item medium" data-id="{{proficiency._id}}">
+                                    <p>{{proficiency.system.value}}</p>
+                                </td>
+                                <td>
+                                    <a class="item-roll rollable" title="{{localize "FI.System.Roll"}}" data-id="{{proficiency._id}}" data-label="{{proficiency.system.name}}" data-type="{{proficiency.system.stat}}" data-rollType="Proficiency" data-roll="{{proficiency.system.value}}"><i class="fa-duotone fa-dice-d20"></i></a>
+                                </td>
+                                <td>
+                                    <a class="move small" data-type="up" data-move="Proficiency" data-id="{{proficiency._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                    <a class="move small" data-type="down" data-move="Proficiency" data-id="{{proficiency._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                </td>
+                                <td>
+                                    <a class="delete small" data-delete="Proficiency" data-id="{{proficiency._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {{/if}}
+                    {{/each}}
+                    <tr>
+                        <td class="add-item" colspan="6">
+                            <button class="add" data-add="Proficiency"><i class="fa-duotone fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        {{!-- Spells Tab --}}
+        <section class="sheet-tab tab" data-tab="spells">
+            <div class="spell-tab">
+                <div class="spell-table">
+                    <label class="spell-label container-label">
+                        <p>{{localize "FI.System.Spell"}}</p>
+                    </label>
+                    <table class="spell-table">
+                        <tr>
+                            <th class="image">{{localize "FI.Spell.Image"}}</th>
+                            <th>{{localize "FI.Spell.Name"}}</th>
+                            <th class="medium">{{localize "FI.Spell.Cost"}}</th>
+                            <th class="medium">{{localize "FI.Spell.Stat"}}</th>
+                            <th class="small">{{localize "FI.Spell.Roll"}}</th>
+                            <th class="small">{{localize "FI.System.Move"}}</th>
+                            <th class="small">{{localize "FI.System.Delete"}}</th>
+                        </tr>
+                        {{#each items as |spell index|}}
+                            {{#if spell.system.isSpell}}
+                                <tr>
+                                    <td class="edit-item" data-id="{{spell._id}}">
+                                        <img src="{{spell.img}}" alt="{{spell.system.name}}"/>
+                                    </td>
+                                    <td class="edit-item" data-id="{{spell._id}}">
+                                        <p>{{spell.system.name}}</p>
+                                    </td>
+                                    <td class="edit-item" data-id="{{spell._id}}">
+                                        <p>{{spell.system.mpCost}} {{localize "FI.System.MP"}}</p>
+                                    </td>
+                                    <td class="edit-item" data-id="{{spell._id}}">
+                                        <p>{{localize (concat "FI.Stat." spell.system.stat)}}</p>
+                                    </td>
+                                    <td>
+                                        <a class="item-roll rollable" title="{{localize "FI.System.Roll"}}" data-id="{{spell._id}}" data-label="{{spell.name}}" data-type="{{spell.system.stat}}" data-rollType="Spell" data-roll="{{spell.system.stat}}"><i class="fa-duotone fa-dice-d20"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="move small" data-type="up" data-move="Spell" data-id="{{spell._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                        <a class="move small" data-type="down" data-move="Spell" data-id="{{spell._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="delete small" data-delete="Spell" data-id="{{spell._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                        <tr>
+                            <td class="add-item" colspan="6">
+                                <button class="add" data-add="Spell"><i class="fa-duotone fa-plus"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="skill-table">
+                    <label class="skill-label container-label">
+                        <p>{{localize "FI.System.Skill"}}</p>
+                    </label>
+                    <table class="skill-table">
+                        <tr>
+                            <th class="image">{{localize "FI.Skill.Image"}}</th>
+                            <th>{{localize "FI.Skill.Name"}}</th>
+                            <th class="medium">{{localize "FI.Skill.Cost"}}</th>
+                            <th class="medium">{{localize "FI.Skill.Stat"}}</th>
+                            <th class="small">{{localize "FI.Skill.Roll"}}</th>
+                            <th class="small">{{localize "FI.System.Move"}}</th>
+                            <th class="small">{{localize "FI.System.Delete"}}</th>
+                        </tr>
+                        {{#each items as |skill index|}}
+                            {{#if skill.system.isSkill}}
+                                <tr>
+                                    <td class="edit-item" data-id="{{skill._id}}">
+                                        <img src="{{skill.img}}" alt="{{skill.system.name}}"/>
+                                    </td>
+                                    <td class="edit-item" data-id="{{skill._id}}">
+                                        <p>{{skill.system.name}}</p>
+                                    </td>
+                                    <td class="edit-item" data-id="{{skill._id}}">
+                                        <p>{{skill.system.spCost}} {{localize "FI.System.SP"}}</p>
+                                    </td>
+                                    <td class="edit-item" data-id="{{skill._id}}">
+                                        <p>{{localize (concat "FI.Stat." skill.system.stat)}}</p>
+                                    </td>
+                                    <td>
+                                        <a class="item-roll rollable" title="{{localize "FI.System.Roll"}}" data-id="{{skill._id}}" data-label="{{skill.name}}" data-type="{{skill.system.stat}}" data-rollType="Skill" data-roll="{{skill.system.stat}}"><i class="fa-duotone fa-dice-d20"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="move " data-type="up" data-move="Skill" data-id="{{skill._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                        <a class="move small" data-type="down" data-move="Skill" data-id="{{skill._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="delete small" data-delete="Skill" data-id="{{skill._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                        <tr>
+                            <td class="add-item" colspan="6">
+                                <button class="add" data-add="Skill"><i class="fa-duotone fa-plus"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="hybrid-table">
+                    <label class="hybrid-label container-label">
+                        <p>{{localize "FI.System.Hybrid"}}</p>
+                    </label>
+                    <table class="hybrid-table">
+                        <tr>
+                            <th class="image">{{localize "FI.Hybrid.Image"}}</th>
+                            <th>{{localize "FI.Hybrid.Name"}}</th>
+                            <th class="medium">{{localize "FI.Hybrid.Cost"}}</th>
+                            <th class="medium">{{localize "FI.Hybrid.Stat"}}</th>
+                            <th class="small">{{localize "FI.Hybrid.Roll"}}</th>
+                            <th class="small">{{localize "FI.System.Move"}}</th>
+                            <th class="small">{{localize "FI.System.Delete"}}</th>
+                        </tr>
+                        {{#each items as |hybrid index|}}
+                            {{#if hybrid.system.isHybrid}}
+                                <tr>
+                                    <td class="edit-item" data-id="{{hybrid._id}}">
+                                        <img src="{{hybrid.img}}" alt="{{hybrid.system.name}}"/>
+                                    </td>
+                                    <td class="edit-item" data-id="{{hybrid._id}}">
+                                        <p>{{hybrid.system.name}}</p>
+                                    </td>
+                                    <td class="edit-item" data-id="{{hybrid._id}}">
+                                        <div>
+                                            <p>{{hybrid.system.mpCost}} {{localize "FI.System.MP"}}</p>
+                                            <p>{{hybrid.system.spCost}} {{localize "FI.System.SP"}}</p>
+                                            <p>{{hybrid.system.hpCost}} {{localize "FI.System.HP"}}</p>
+                                            {{#if hybrid.system.otherCost}}
+                                                <p>+</p>
+                                            {{/if}}
+                                        </div>
+                                    </td>
+                                    <td class="edit-item" data-id="{{hybrid._id}}">
+                                        <p>{{localize (concat "FI.Stat." hybrid.system.stat)}}</p>
+                                    </td>
+                                    <td>
+                                        <a class="item-roll rollable" title="{{localize "FI.System.Roll"}}" data-id="{{hybrid._id}}" data-label="{{hybrid.name}}" data-type="{{hybrid.system.stat}}" data-rollType="Hybrid" data-roll="{{hybrid.system.stat}}"><i class="fa-duotone fa-dice-d20"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="move small" data-type="up" data-move="Hybrid" data-id="{{hybrid._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                        <a class="move small" data-type="down" data-move="Hybrid" data-id="{{hybrid._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="delete small" data-delete="Hybrid" data-id="{{hybrid._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                        <tr>
+                            <td class="add-item" colspan="6">
+                                <button class="add" data-add="Hybrid"><i class="fa-duotone fa-plus"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="transformation-table">
+                    <label class="transformation-label container-label">
+                        <p>{{localize "FI.System.Transformation"}}</p>
+                    </label>
+                    <table class="transformation-table">
+                        <tr>
+                            <th class="image">{{localize "FI.Transformation.Image"}}</th>
+                            <th>{{localize "FI.Transformation.Name"}}</th>
+                            <th class="medium">{{localize "FI.Transformation.Cost"}}</th>
+                            <th class="medium">{{localize "FI.Transformation.Stat"}}</th>
+                            <th class="small">{{localize "FI.System.Move"}}</th>
+                            <th class="small">{{localize "FI.System.Delete"}}</th>
+                        </tr>
+                        {{#each items as |transformation index|}}
+                            {{#if transformation.system.isTransformation}}
+                                <tr>
+                                    <td class="edit-item" data-id="{{transformation._id}}">
+                                        <img src="{{transformation.img}}" alt="{{transformation.system.name}}"/>
+                                    </td>
+                                    <td class="edit-item" data-id="{{transformation._id}}">
+                                        <p>{{transformation.system.name}}</p>
+                                    </td>
+                                    <td class="edit-item" data-id="{{transformation._id}}">
+                                        <div>
+                                            <p>{{transformation.system.mpCost}} {{localize "FI.System.MP"}}</p>
+                                            <p>{{transformation.system.spCost}} {{localize "FI.System.SP"}}</p>
+                                            <p>{{transformation.system.hpCost}} {{localize "FI.System.HP"}}</p>
+                                            {{#if transformation.system.otherCost}}
+                                                <p>+</p>
+                                            {{/if}}
+                                        </div>
+                                    </td>
+                                    <td class="edit-item" data-id="{{transformation._id}}">
+                                        <p>{{localize (concat "FI.Stat." transformation.system.stat)}}</p>
+                                    </td>
+                                    <td>
+                                        <a class="move small" data-type="up" data-move="Transformation" data-id="{{transformation._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                        <a class="move small" data-type="down" data-move="Transformation" data-id="{{transformation._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="delete" data-delete="Transformation" data-id="{{transformation._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                        <tr>
+                            <td class="add-item" colspan="6">
+                                <button class="add" data-add="Transformation"><i class="fa-duotone fa-plus"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="passif-table">
+                    <label class="passif-label container-label">
+                        <p>{{localize "FI.System.Passif"}}</p>
+                    </label>
+                    <table class="passif-table">
+                        <tr>
+                            <th class="image">{{localize "FI.Passif.Image"}}</th>
+                            <th>{{localize "FI.Passif.Name"}}</th>
+                            <th class="small">{{localize "FI.System.Move"}}</th>
+                            <th class="small">{{localize "FI.System.Delete"}}</th>
+                        </tr>
+                        {{#each items as |passif index|}}
+                            {{#if passif.system.isPassif}}
+                                <tr>
+                                    <td class="edit-item" data-id="{{passif._id}}">
+                                        <img src="{{passif.img}}" alt="{{passif.system.name}}"/>
+                                    </td>
+                                    <td class="edit-item" data-id="{{passif._id}}">
+                                        <p>{{passif.system.name}}</p>
+                                    </td>
+                                    <td>
+                                        <a class="move small" data-type="up" data-move="Passif" data-id="{{passif._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                        <a class="move small" data-type="down" data-move="Passif" data-id="{{passif._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="delete small" data-delete="Passif" data-id="{{passif._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                        <tr>
+                            <td class="add-item" colspan="6">
+                                <button class="add" data-add="Passif"><i class="fa-duotone fa-plus"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <script>
+                    $("td.edit-item").hover(
+                        function() {
+                            $(this).parent().css("background-color", "rgba(68, 68, 68, 0.122)");
+                        },
+                        function() {
+                            $(this).parent().css("background-color", "");
+                        }
+                    );
+                </script>
+            </div>
+        </section>
+
+        {{!-- Notes Tab --}}
+        <section class="sheet-tab tab" data-tab="notes">
+            <div class="description">
+                <div class="description-language">
+                    <table>
+                        <tr>
+                            <th>{{localize "FI.Description.Language"}}</th>
+                            <th class="small">{{localize "FI.Description.Speaking"}}</th>
+                            <th class="small">{{localize "FI.Description.Reading"}}</th>
+                            <th class="small">{{localize "FI.Description.Writing"}}</th>
+                            <th class="small">{{localize "FI.System.Move"}}</th>
+                            <th class="small">{{localize "FI.System.Delete"}}</th>
+                        </tr>
+                            {{#each items as |language index|}}
+                                {{#if language.system.isLanguage}}
+                                    <tr>
+                                        <td data-id="{{language._id}}">
+                                            <input class="item-input" type="text" name="system.languages.{{index}}.name" value="{{language.system.name}}" list="languageList" data-id="{{language._id}}" data-field="system.name"/>
+                                        </td>
+                                        <td>
+                                            {{#if language.system.speaking}}
+                                                <i class="fa-duotone fa-check item-checkbox" data-id="{{language._id}}" data-type="speaking"></i>
+                                            {{else}}
+                                                <i class="fa-duotone fa-times item-checkbox" data-id="{{language._id}}" data-type="speaking"></i>
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            {{#if language.system.reading}}
+                                                <i class="fa-duotone fa-check item-checkbox" data-id="{{language._id}}" data-type="reading"></i>
+                                            {{else}}
+                                                <i class="fa-duotone fa-times item-checkbox" data-id="{{language._id}}" data-type="reading"></i>
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            {{#if language.system.writing}}
+                                                <i class="fa-duotone fa-check item-checkbox" data-id="{{language._id}}" data-type="writing"></i>
+                                            {{else}}
+                                                <i class="fa-duotone fa-times item-checkbox" data-id="{{language._id}}" data-type="writing"></i>
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            <a class="move small" data-type="up" data-move="Language" data-id="{{language._id}}"><i class="fa-duotone fa-arrow-up"></i></a>
+                                            <a class="move small" data-type="down" data-move="Language" data-id="{{language._id}}"><i class="fa-duotone fa-arrow-down"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="delete small" data-delete="Language" data-id="{{language._id}}"><i class="fa-duotone fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}
+                    </table>
+                    <datalist id="languageList">
+                        <script>
+                            if (typeof game.settings.get("polyglot", "customLanguages") !== "undefined") {
+                                var customLanguageList = game.settings.get("polyglot", "customLanguages").split(",");
+                            }
+                            for (let i = 0; i < customLanguageList.length; i++) {
+                                var option = document.createElement("option");
+                                option.value = customLanguageList[i];
+                                document.getElementById("languageList").appendChild(option);
+                            }
+                        </script>
+                    </datalist>
+                    <button class="add language-add" data-add="Language"><i class="fa-duotone fa-plus"></i></button>
+                </div>
+                <div class="description-alignment">
+                    <label>
+                        <p>{{localize "FI.Description.Alignment"}}</p>
+                    </label>
+                    <div id="marker-bounds">
+                        <div id="marker-container">
+                            <p id="lawful">{{localize "FI.Description.Lawful"}}</p>
+                            <p id="chaotic">{{localize "FI.Description.Chaotic"}}</p>
+                            <p id="good">{{localize "FI.Description.Good"}}</p>
+                            <p id="evil">{{localize "FI.Description.Evil"}}</p>
+                            <div id="marker"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description-left">
+                    <div class="description-biography">
+                        <label>{{localize "FI.Description.Biography"}}</label>
+                        <textarea class="richTextArea" name="system.biography">{{data.system.biography}}</textarea>
+                    </div>
+                    <div class="description-appearance">
+                        <label>{{localize "FI.Description.Appearance"}}</label>
+                        <textarea class="richTextArea" name="system.appearance">{{data.system.appearance}}</textarea>
+                    </div>
+                </div>
+                <div class="description-right">
+                    <div class="description-personality">
+                        <label>{{localize "FI.Description.Personality"}}</label>
+                        <textarea class="richTextArea" name="system.personality">{{data.system.personality}}</textarea>
+                    </div>
+                    <div class="description-background">
+                        <label>{{localize "FI.Description.Background"}}</label>
+                        <textarea class="richTextArea" name="system.background">{{data.system.background}}</textarea>
+                    </div>
+                </div>
+                <div class="description-notes">
+                    <label>{{localize "FI.Description.Notes"}}</label>
+                    <textarea class="richTextArea" name="system.notes">{{data.system.notes}}</textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{!-- Sheet Footer --}}
+    <footer class="sheet-footer footer">
+        <span class="sheet-footer-right">
+            <label>{{localize "FI.System.DisplayAdvancedRoll"}}</label>
+            <input type="checkbox" name="system.displayAdvancedRoll" {{#if data.system.displayAdvancedRoll}}checked{{/if}}/>
+        </span>
+    </footer>
+</form>

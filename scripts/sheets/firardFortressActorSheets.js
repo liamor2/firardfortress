@@ -24,17 +24,8 @@ export default class firardFortressActorSheet extends ActorSheet {
         });
     }
 
-    getData(verify) {
+    getData() {
         const data = super.getData();
-        for (let [key, value] of Object.entries(data.data.system.stat)) {
-            value.mod.num = Math.floor((value.value - 10) / 2);
-            if (value.mod.num >= 0) {
-                value.mod.text = `+${value.mod.num}`;
-            } else {
-                value.mod.text = `${value.mod.num}`;
-            }
-        }
-        this.verifyData(data, verify);
         this.initTinyMCE();
         this.dataHasBeenUpdated = JSON.stringify(data) !== JSON.stringify(this.oldData);
         console.log(data);
@@ -113,7 +104,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        const data = this.getData(false);
+        const data = this.getData();
         let updateData = {};
 
         switch (dataset.add) {
@@ -358,7 +349,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         let dataset = element.dataset;
-        const data = this.getData(true);
+        const data = this.getData();
         let updateData = {};
         let index = 0;
 
@@ -455,271 +446,10 @@ export default class firardFortressActorSheet extends ActorSheet {
         ev.preventDefault();
     }
 
-
-
-    verifyData(data, verify) {
-        this.verifyMP(data);
-        this.verifySP(data);
-        this.verifyPA(data);
-        this.verifyMA(data);
-        this.verifyHP(data);
-        this.verifySpeedAndWeight(data);
-        if (verify && this.actor.type !== "NPC") {
-            this.verifyLanguages(data);
-        }
-    }
-        
-
-
-
-    // verify HP
-    verifyHP(data) {
-        const HPmax = data.data.system.HP.max;
-        let HPvalue = data.data.system.HP.value;
-        let HPtemp = data.data.system.HP.temp;
-
-        if (HPvalue === null) {
-            data.data.system.HP.value = 0;
-            HPvalue = 0;
-        }
-        if (HPtemp === null) {
-            data.data.system.HP.temp = 0;
-            HPtemp = 0;
-        }
-        if (HPmax === null) {
-            data.data.system.HP.max = 0;
-        }
-
-        if (HPvalue != HPmax && HPtemp > 0) {
-            while (HPvalue < HPmax && HPtemp > 0) {
-                data.data.system.HP.value = HPvalue + 1;
-                data.data.system.HP.temp = HPtemp - 1;
-                HPvalue = data.data.system.HP.value;
-                HPtemp = data.data.system.HP.temp;
-            }
-        }
-        if (HPvalue > HPmax) {
-            data.data.system.HP.value = HPmax;
-        } else if (HPvalue < -HPmax) {
-            data.data.system.HP.value = -HPmax;
-        }
-        if (HPtemp < 0) {
-            data.data.system.HP.temp = 0;
-        }
-    }
-
-    // verify MP
-    verifyMP(data) {
-        const MPmax = data.data.system.MP.max;
-        let MPvalue = data.data.system.MP.value;
-        let MPtemp = data.data.system.MP.temp;
-        let HPvalue = data.data.system.HP.value;
-
-        if (MPvalue === null) {
-            data.data.system.MP.value = 0;
-            MPvalue = 0;
-        }
-        if (MPtemp === null) {
-            data.data.system.MP.temp = 0;
-            MPtemp = 0;
-        }
-        if (MPmax === null) {
-            data.data.system.MP.max = 0;
-        }
-
-        if (MPvalue != MPmax && MPtemp > 0) {
-            while (MPvalue < MPmax && MPtemp > 0) {
-                data.data.system.MP.value = MPvalue + 1;
-                data.data.system.MP.temp = MPtemp - 1;
-                MPvalue = data.data.system.MP.value;
-                MPtemp = data.data.system.MP.temp;
-            }
-        }
-        if (MPvalue > MPmax) {
-            data.data.system.MP.value = MPmax;
-        } else if (MPvalue < 0) {
-            data.data.system.MP.value = 0;
-            data.data.system.HP.value = HPvalue + MPvalue;
-        }
-        if (MPtemp < 0) {
-            data.data.system.MP.temp = 0;
-        }
-    }
-
-    // verify SP
-    verifySP(data) {
-        const SPmax = data.data.system.SP.max;
-        let SPvalue = data.data.system.SP.value;
-        let SPtemp = data.data.system.SP.temp;
-        let HPvalue = data.data.system.HP.value;
-
-        if (SPvalue === null) {
-            data.data.system.SP.value = 0;
-            SPvalue = 0;
-        }
-        if (SPtemp === null) {
-            data.data.system.SP.temp = 0;
-            SPtemp = 0;
-        }
-        if (SPmax === null) {
-            data.data.system.SP.max = 0;
-        }
-
-        if (SPvalue != SPmax && SPtemp > 0) {
-            while (SPvalue < SPmax && SPtemp > 0) {
-                data.data.system.SP.value = SPvalue + 1;
-                data.data.system.SP.temp = SPtemp - 1;
-                SPvalue = data.data.system.SP.value;
-                SPtemp = data.data.system.SP.temp;
-            }
-        }
-        if (SPvalue > SPmax) {
-            data.data.system.SP.value = SPmax;
-        } else if (SPvalue < 0) {
-            data.data.system.SP.value = 0;
-            data.data.system.HP.value = HPvalue + SPvalue;
-        }
-        if (SPtemp < 0) {
-            data.data.system.SP.temp = 0;
-        }
-    }
-
-    // verify PA
-    verifyPA(data) {
-        let PAmax = 0;
-        let PAvalue = data.data.system.PA.value;
-        let PAtemp = data.data.system.PA.temp;
-        let items = data.items;
-
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            if (item.type === "Equipment" && item.system.equipped) {
-                PAmax += item.system.PA;
-            }
-        }
-        data.data.system.PA.max = PAmax;
-
-        if (PAvalue === null) {
-            data.data.system.PA.value = 0;
-            PAvalue = 0;
-        }
-        if (PAtemp === null) {
-            data.data.system.PA.temp = 0;
-            PAtemp = 0;
-        }
-        if (PAmax === null) {
-            data.data.system.PA.max = 0;
-        }
-
-        if (PAvalue > PAmax) {
-            data.data.system.PA.value = PAmax;
-        } else if (PAvalue < 0) {
-            data.data.system.PA.value = 0;
-        }
-        if (PAtemp < 0) {
-            data.data.system.PA.temp = 0;
-        }
-    }
-
-    // verify MA
-    verifyMA(data) {
-        let MAmax = 0;
-        let MAvalue = data.data.system.MA.value;
-        let MAtemp = data.data.system.MA.temp;
-        let items = data.items;
-
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            if (item.type === "Equipment" && item.system.equipped) {
-                MAmax += item.system.MA;
-            }
-        }
-        data.data.system.MA.max = MAmax;
-
-        if (MAvalue === null) {
-            data.data.system.MA.value = 0;
-            MAvalue = 0;
-        }
-        if (MAtemp === null) {
-            data.data.system.MA.temp = 0;
-            MAtemp = 0;
-        }
-        if (MAmax === null) {
-            data.data.system.MA.max = 0;
-        }
-
-        if (MAvalue > MAmax) {
-            data.data.system.MA.value = MAmax;
-        } else if (MAvalue < 0) {
-            data.data.system.MA.value = 0;
-        }
-        if (MAtemp < 0) {
-            data.data.system.MA.temp = 0;
-        }
-    }
-
-    // verify Languages
-    verifyLanguages(data) {
-        const items = data.items;
-        const languages = items.filter(item => item.type === "Language");
-
-        for (let i = 0; i < languages.length; i++) {
-            const language = languages[i];
-            if (language.system.speaking === null) {
-                language.system.speaking = true;
-            }
-            if (language.system.reading === null) {
-                language.system.reading = true;
-            }
-            if (language.system.writing === null) {
-                language.system.writing = true;
-            }
-            language.name = `Language(${language.system.name})`;
-        }
-
-        this.actor.updateEmbeddedDocuments("Item", languages);
-    }
-
-    // verify speed and weight
-    verifySpeedAndWeight(data) {
-        const items = data.items;
-        let weight = 0;
-        let maxWeight = data.data.system.maxWeight;
-        data.data.system.totalMoney = 0;
-        data.data.system.totalWorth = 0;
-
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            if (item.type === "Equipment" || item.type === "Weapon" || item.type === "Misc") {
-                weight += item.system.weight;
-                data.data.system.totalWorth += parseFloat(item.system.price) * parseFloat(item.system.quantity);
-            }
-            if (item.type === "Money") {
-                data.data.system.totalMoney += parseFloat(item.system.value) * parseFloat(item.system.quantity);
-            }
-        }
-
-        if (maxWeight === null) {
-            data.data.system.maxWeight = 0;
-        }
-
-        if (weight > maxWeight) {
-            data.data.system.realSpeed = (data.data.system.baseSpeed - ((weight - maxWeight) / (10 + (data.data.system.stat.STR.mod.num) + (data.data.system.stat.CON.mod.num * 2)))).toFixed(2);
-        } else {
-            data.data.system.realSpeed = data.data.system.baseSpeed;
-        }
-
-        if (data.data.system.realSpeed < 0) {
-            data.data.system.realSpeed = 0;
-        }
-        
-        data.data.system.weight = weight;
-    }
-
     // roll functions
     statRoll(event, dataset, rollType) {
         event.preventDefault();
-        const data = this.getData(false);
+        const data = this.getData();
         const advancedRoll = data.data.system.displayAdvancedRoll;
         let modif = this.calculateMod(dataset, data);
         let mod = modif.mod;
@@ -786,7 +516,7 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     proficiencyRoll(event, dataset) {
         event.preventDefault();
-        let data = this.getData(false);
+        let data = this.getData();
         let stat = dataset.type;
         let modif = this.calculateMod(dataset, data);
         let mod = modif.mod + `+${dataset.roll}`;
@@ -896,7 +626,7 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     renderItemRollWindow(dataset, mod, posture) {
-        const data = this.getData(false);
+        const data = this.getData();
         const item = data.items.find(item => item._id === dataset.id);
         new Dialog({
             title: `${game.i18n.localize("FI.Roll.itemRoll")} ${item.name}`,
@@ -951,7 +681,7 @@ export default class firardFortressActorSheet extends ActorSheet {
     // move item
 
     moveItemUp(dataset, type) {
-        const data = this.getData(false);
+        const data = this.getData();
         const items = data.items;
         const item = items.find(item => item._id === dataset.id);
         const itemsOfType = items.filter(item => item.type === type);
@@ -973,7 +703,7 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     moveItemDown(dataset, type) {
-        const data = this.getData(false);
+        const data = this.getData();
         const items = data.items;
         const item = items.find(item => item._id === dataset.id);
         const itemsOfType = items.filter(item => item.type === type);
@@ -1027,7 +757,7 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     // alignement slider
     alignmentSlider(event) {
-        const data = this.getData(false);
+        const data = this.getData();
         const alignment = data.data.system.alignment;
         const alignmentSlider = this.element.find("#marker-container")[0];
         const alignmentMarker = this.element.find("#marker")[0];
@@ -1053,7 +783,6 @@ export default class firardFortressActorSheet extends ActorSheet {
         } else if (position.y > max) {
             position.y = max;
         }
-        console.log(position);
         
         gsap.to(alignmentMarker, {
             x: position.x,
@@ -1117,7 +846,7 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     // stat bar animations
     statBar() {
-        const data = this.getData(false);
+        const data = this.getData();
         const statList = ["HP", "MP", "SP", "PA", "MA"];
         const oldData = this.oldData;
 
@@ -1206,12 +935,65 @@ export default class firardFortressActorSheet extends ActorSheet {
                 });
             }
         }
+
+        if (data.actor.type !== "NPC") {
+            const weight = data.data.system.weight;
+            const maxWeight = weight.max;
+            const weightBarMax = this.element.find(".weightBar")[0];
+            const weightBarValue = this.element.find(".weightBarValue")[0];
+
+            if (oldData !== null) {
+                const oldWeight = oldData.data.system.weight;
+                const oldMaxWeight = oldWeight.max;
+
+                if (oldMaxWeight === 0) {
+                    weightBarValue.style.width = "0%";
+                    weightBarMax.style.backgroundColor = "#808080";
+                    weightBarMax.style.opacity = "0.2";
+                }
+
+                if (oldWeight.value >= 0 && (oldWeight.value / oldMaxWeight) * 100 <= 100) {
+                    weightBarValue.style.width = `${(oldWeight.value / oldMaxWeight) * 100}%`;
+                } else if (oldWeight.value < 0 && (oldWeight.value / -oldMaxWeight) * 100 <= 100) {
+                    weightBarValue.style.width = "100%";
+                }
+
+
+                if (oldWeight.value === 0) {
+                    weightBarValue.style.width = "0%";
+                }
+            }
+
+            if (weight.value >= 0) {
+                if (weight.over) {
+                    gsap.to(weightBarValue, {
+                        delay: 0.1,
+                        width: "100%",
+                        backgroundColor: "#991313",
+                        duration: 1,
+                        ease: "power2.inOut",
+                        yoyo: true,
+                        repeat: -1
+                    });
+                } else {
+                    gsap.to(weightBarValue, {
+                        delay : 0.1,
+                        width: `${(weight.value / maxWeight) * 100}%`,
+                        duration: 0.5,
+                        ease: "power2.inOut"
+                    });
+                }
+            }
+        }
+
         this.oldData = data;
     }
 
     // alignment animation
     alignmentAnimation() {
-        const data = this.getData(false);
+        const data = this.getData();
+
+        if (data.actor.type === "NPC") return;
         const alignment = data.data.system.alignment;
         const position = {
             x: alignment.x,
@@ -1250,6 +1032,8 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     // navigation bar animations
     navBarAnimation() {
+        const data = this.getData();
+        if (data.actor.type === "NPC") return;
         const navBar = this.element.find("nav.sheet-tabs")[0];
         const tabList = ["main", "proficiencies", "spells", "notes"]
         const oldActiveLI = navBar.querySelector(".active");
@@ -1361,6 +1145,8 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     // navigation bar animations default
     navBarAnimationDefault() {
+        const data = this.getData();
+        if (data.actor.type === "NPC") return;
         const navBar = this.element.find("nav.sheet-tabs")[0];
         const tabList = ["main", "proficiencies", "spells", "notes"]
         const activeLI = navBar.querySelector(".active");

@@ -48,6 +48,7 @@
                                     <option value="Defensive" {{#if (eq data.system.posture "Defensive")}}selected{{/if}}>{{localize "FI.Posture.Defensive"}}</option>
                                     <option value="Focus" {{#if (eq data.system.posture "Focus")}}selected{{/if}}>{{localize "FI.Posture.Focus"}}</option>
                                     <option value="Concentration" {{#if (eq data.system.posture "Concentration")}}selected{{/if}}>{{localize "FI.Posture.Concentration"}}</option>
+                                    <option value="Elemental" {{#if (eq data.system.posture "Elemental")}}selected{{/if}}>{{localize "FI.Posture.Elemental"}}</option>
                                 </select>
                             </td>
                         </tr>
@@ -57,21 +58,24 @@
                                 <span>/</span>
                                 <label>{{localize "FI.System.ItemMaxWeight"}}</label>
                                 <div class="weight">
-                                    <input type="number" name="system.weight" value="{{data.system.weight}}" disabled/>
+                                    <input type="number" name="system.weight.value" value="{{data.system.weight.value}}" disabled/>
                                     {{localize "FI.Misc.WeightUnit"}}
                                     <span>/</span>
-                                    <input type="number" name="system.maxWeight" value="{{data.system.maxWeight}}" placeholder="{{localize "FI.System.ItemMaxWeight"}}"/>
+                                    <input type="number" name="system.weight.max" value="{{data.system.weight.max}}" placeholder="{{localize "FI.System.ItemMaxWeight"}}"/>
                                     {{localize "FI.Misc.WeightUnit"}}
+                                </div>
+                                <div class="bar weightBar">
+                                    <div class="barValue weightBarValue"></div>
                                 </div>
                             </td>
                             <td>
                                 <label>{{localize "FI.System.BaseSpeed"}}</label>
-                                <input type="number" name="system.baseSpeed" value="{{data.system.baseSpeed}}" placeholder="{{localize "FI.System.BaseSpeed"}}"/>
+                                <input type="number" name="system.speed.base" value="{{data.system.speed.base}}" placeholder="{{localize "FI.System.BaseSpeed"}}"/>
                                 {{localize "FI.System.SpeedUnit"}}
                             </td>
                             <td>
                                 <label><strong>{{localize "FI.System.RealSpeed"}}</strong></label>
-                                <input type="number" name="system.realSpeed" value="{{data.system.realSpeed}}" disabled/>
+                                <input type="number" name="system.speed.value" value="{{data.system.speed.value}}" disabled/>
                                 <strong>{{localize "FI.System.SpeedUnit"}}</strong>
                             </td>
                         </tr>
@@ -125,12 +129,19 @@
                         </td>
                     </tr>
                     <tr>
+                        <td colspan="5">{{localize "FI.Stat.WIL"}}</td>
                         <td colspan="5">{{localize "FI.Stat.CHA"}}</td>
                         <td colspan="5">{{localize "FI.Stat.LUK"}}</td>
-                        <td colspan="5">{{localize "FI.Stat.WIL"}}</td>
                         <td colspan="5">{{localize "FI.Stat.HON"}}</td>
                     </tr>
                     <tr>
+                        <td colspan="5" class="stat-input">
+                            <div>
+                                <div class="stat mainStat"><input type="number" name="system.stat.WIL.value" value="{{data.system.stat.WIL.value}}"/></div>
+                                <div class="stat modStat"><p>{{data.system.stat.WIL.mod.text}}</p></div>
+                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIL.mod.num}}" data-roll="{{data.system.stat.WIL.mod.num}}" data-label="{{localize "FI.Stat.WIL"}}" data-type="WIL" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                            </div>
+                        </td>
                         <td colspan="5" class="stat-input">
                             <div>
                                 <div class="stat mainStat"><input type="number" name="system.stat.CHA.value" value="{{data.system.stat.CHA.value}}"/></div>
@@ -143,13 +154,6 @@
                                 <div class="stat mainStat"><input type="number" name="system.stat.LUK.value" value="{{data.system.stat.LUK.value}}"/></div>
                                 <div class="stat modStat"><p>{{data.system.stat.LUK.mod.text}}</p></div>
                                 <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.LUK.mod.num}}" data-roll="{{data.system.stat.LUK.mod.num}}" data-label="{{localize "FI.Stat.LUK"}}" data-type="LUK" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="5" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.WIL.value" value="{{data.system.stat.WIL.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.WIL.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIL.mod.num}}" data-roll="{{data.system.stat.WIL.mod.num}}" data-label="{{localize "FI.Stat.WIL"}}" data-type="WIL" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
                             </div>
                         </td>
                         <td colspan="5" class="stat-input">
@@ -413,7 +417,7 @@
                                                 <td class="edit-item" data-id="{{misc._id}}">
                                                     <p>{{misc.system.name}}</p>
                                                 </td>
-                                                <td class="edit-item small" data-id="{{misc._id}}">
+                                                <td class="small" data-id="{{misc._id}}">
                                                     <input type="number" name="system.misc.{{index}}.quantity" value="{{misc.system.quantity}}"/>
                                                 </td>
                                                 <td class="small" data-id="{{misc._id}}">
@@ -476,11 +480,11 @@
                                     <tr>
                                         <td colspan="2">
                                             <label>{{localize "FI.System.TotalMoney"}}</label>
-                                            <p>{{data.system.totalMoney}} {{localize "FI.System.SC"}}</p>
+                                            <p>{{data.system.money.value}} {{localize "FI.System.SC"}}</p>
                                         </td>
                                         <td colspan="2">
                                             <label>{{localize "FI.System.TotalWorth"}}</label>
-                                            <p>{{data.system.totalWorth}} {{localize "FI.System.SC"}}</p>
+                                            <p>{{data.system.money.worth}} {{localize "FI.System.SC"}}</p>
                                         </td>
                                     </tr>
                                     <tr>

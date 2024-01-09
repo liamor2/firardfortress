@@ -1,12 +1,42 @@
 import firardFortressActorSheet from "./sheets/firardFortressActorSheets.js";
+import firardFortressNPCSheet from "./sheets/firardFortressNPCSheets.js";
 import firardFortressItemSheet from "./sheets/firardFortressItemSheets.js";
+import firardFortressActor from "./objects/firardFortressActor.js";
 
 Hooks.once('init', async function() {
     console.log('firardFortress | Initializing firardFortress');
 
+    CONFIG.Actor.documentClass = firardFortressActor;
+
+    CONFIG.statusEffects.push({
+        id: "Offensive",
+        label: "Posture: Offensive",
+        icon: "systems/firardfortress/icons/Offensive.png"
+    },
+    {
+        id: "Defensive",
+        label: "Posture: Defensive",
+        icon: "systems/firardfortress/icons/Defensive.png"
+    },
+    {
+        id: "Focus",
+        label: "Posture: Focus",
+        icon: "systems/firardfortress/icons/Focus.png"
+    },
+    {
+        id: "Concentration",
+        label: "Posture: Concentration",
+        icon: "systems/firardfortress/icons/Concentration.png"
+    },
+    {
+        id: "Elemental",
+        label: "Posture: Elemental",
+        icon: "systems/firardfortress/icons/Elemental.png"
+    });
 
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("firardFortress", firardFortressActorSheet, { makeDefault: true });
+    Actors.registerSheet("firardFortress", firardFortressNPCSheet, { types: ["NPC"], makeDefault: true });
 
 
     Items.unregisterSheet("core", ItemSheet);
@@ -17,7 +47,7 @@ Hooks.once('ready', async function() {
     console.log('firardFortress | Ready');
 
     CONFIG.Combat.initiative = {
-        formula: "1d20",
+        formula: "@initiative.formula",
         decimals: 2
     };
 });

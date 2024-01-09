@@ -94,9 +94,12 @@
             "race": "",
             "class": "",
             "level": 1,
-            "baseSpeed": 10,
-            "realSpeed": 10,
-            "maxWeight": 10
+            "speed" :{
+                "base": 10
+            },
+            "weight": {
+                "base": 10
+            }
         },
         "description": {
             "biography": "",

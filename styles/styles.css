@@ -81,12 +81,12 @@ form.actor-sheet header div.header-left table tr.header-bottom td.weight input {
     font-size: 1em;
 }
 
-form.actor-sheet header div.stat-container {
+form.actor-sheet header {
     display: block;
     text-align: center;
 }
 
-form.actor-sheet header div.stat-container div.bar {
+form.actor-sheet header div.bar {
     position: relative;
     width: 100%;
     height: 9px;
@@ -96,7 +96,7 @@ form.actor-sheet header div.stat-container div.bar {
     margin: 2px 0;
 }
 
-form.actor-sheet header div.stat-container div.bar div.barValue {
+form.actor-sheet header div.bar div.barValue {
     position: absolute;
     height: 5px;
     border-radius: 5px;
@@ -176,6 +176,11 @@ form.actor-sheet header div.stat-container div.bar div.barValue.MAbarTemp {
     width: 0%;
 }
 
+form.actor-sheet header div.bar div.barValue.weightBarValue {
+    background-color: #000000;
+    width: 100%;
+}
+
 form.actor-sheet header div.stat-container div.stat {
     display: flex;
     justify-content: space-between;
@@ -206,6 +211,10 @@ form.actor-sheet header div.header-top div.header-top-right {
     justify-content: space-between;
     align-items: center;
     width: 66%;
+}
+
+form.actor-sheet.NPC-sheet header div.header-top div.header-top-right {
+    width: 50%;
 }
 
 form.actor-sheet header div.header-bottom {

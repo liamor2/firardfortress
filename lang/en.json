@@ -50,7 +50,8 @@
             "Roll": "Roll",
             "Add": "Add",
             "TotalMoney": "Total Money",
-            "TotalWorth": "Items Worth"
+            "TotalWorth": "Items Worth",
+            "PCAffiliation": "Affiliation"
         },
         "Stat": {
             "STR" : "Strength",
@@ -71,7 +72,8 @@
             "Offensive": "Offensive",
             "Defensive": "Defensive",
             "Focus": "Focus",
-            "Concentration": "Concentration"
+            "Concentration": "Concentration",
+            "Elemental": "Elemental"
         },
         "Roll": {
             "Label": "Roll",
