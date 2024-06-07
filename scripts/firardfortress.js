@@ -3,6 +3,15 @@ import firardFortressNPCSheet from "./sheets/firardFortressNPCSheets.js";
 import firardFortressItemSheet from "./sheets/firardFortressItemSheets.js";
 import firardFortressActor from "./objects/firardFortressActor.js";
 
+async function preloadHandlebarsPartials() {
+    const templatePaths = [
+        "systems/firardfortressdev/templates/parts/actors/header/subStat.hbs",
+        "systems/firardfortressdev/templates/parts/actors/header/mainStat.hbs",
+    ];
+
+    return loadTemplates(templatePaths);
+}
+
 Hooks.once('init', async function() {
     console.log('firardFortress | Initializing firardFortress');
 
@@ -41,6 +50,8 @@ Hooks.once('init', async function() {
 
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("firardFortress", firardFortressItemSheet, { makeDefault: true });
+
+    await preloadHandlebarsPartials();
 });
 
 Hooks.once('ready', async function() {

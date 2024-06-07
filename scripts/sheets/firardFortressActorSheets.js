@@ -1,4 +1,6 @@
-import { gsap } from "/scripts/greensock/esm/all.js";
+import { gsap } from "/scripts/greensock/esm/all.js"
+import { Draggable } from "/scripts/greensock/esm/Draggable.js"
+gsap.registerPlugin(Draggable);
 
 export default class firardFortressActorSheet extends ActorSheet {
     constructor(...args) {
@@ -11,7 +13,7 @@ export default class firardFortressActorSheet extends ActorSheet {
     get template() {
         console.log(`Firard Fortress | Loading ${this.actor.type} sheet`);
 
-        return `systems/firardfortress/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
+        return `systems/firardfortressdev/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
     }
 
     static get defaultOptions() { 
@@ -24,16 +26,14 @@ export default class firardFortressActorSheet extends ActorSheet {
         });
     }
 
-    getData() {
+    async getData() {
         const data = super.getData();
-        this.initTinyMCE();
         this.dataHasBeenUpdated = JSON.stringify(data) !== JSON.stringify(this.oldData);
         console.log(data);
         return data;
     }
 
     async close(options = {}) {
-        tinymce.remove();
         this.hasBeenRendered = false;
         this.dataHasBeenUpdated = false;
         this.oldData = null;
@@ -51,7 +51,6 @@ export default class firardFortressActorSheet extends ActorSheet {
         html.find('.item-checkbox').click(this._onEquipItem.bind(this));
         html.find('.move').click(this._onMove.bind(this));
         html.find('.item').click(this.navBarAnimation.bind(this));
-        html.find('#marker-container').click(this.alignmentSlider.bind(this));
 
         // hover listeners
 
@@ -69,6 +68,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         }
         this.alignmentAnimation();
         this.navBarAnimationDefault();
+        this.registerGlobalAnimations();
     }
 
     _onRoll(event) {
@@ -104,7 +104,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        const data = this.getData();
+        const data = await this.getData();
         let updateData = {};
 
         switch (dataset.add) {
@@ -345,11 +345,11 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.object.update(updateData);
     }
 
-    _onDelete(event) {
+    async _onDelete(event) {
         event.preventDefault();
         const element = event.currentTarget;
         let dataset = element.dataset;
-        const data = this.getData();
+        const data = await this.getData();
         let updateData = {};
         let index = 0;
 
@@ -447,9 +447,9 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     // roll functions
-    statRoll(event, dataset, rollType) {
+    async statRoll(event, dataset, rollType) {
         event.preventDefault();
-        const data = this.getData();
+        const data = await this.getData();
         const advancedRoll = data.data.system.displayAdvancedRoll;
         let modif = this.calculateMod(dataset, data);
         let mod = modif.mod;
@@ -514,9 +514,9 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.statRoll(event, dataset, "Item");
     }
 
-    proficiencyRoll(event, dataset) {
+    async proficiencyRoll(event, dataset) {
         event.preventDefault();
-        let data = this.getData();
+        let data = await this.getData();
         let stat = dataset.type;
         let modif = this.calculateMod(dataset, data);
         let mod = modif.mod + `+${dataset.roll}`;
@@ -625,8 +625,8 @@ export default class firardFortressActorSheet extends ActorSheet {
         }
     }
 
-    renderItemRollWindow(dataset, mod, posture) {
-        const data = this.getData();
+    async renderItemRollWindow(dataset, mod, posture) {
+        const data = await this.getData();
         const item = data.items.find(item => item._id === dataset.id);
         new Dialog({
             title: `${game.i18n.localize("FI.Roll.itemRoll")} ${item.name}`,
@@ -680,8 +680,8 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     // move item
 
-    moveItemUp(dataset, type) {
-        const data = this.getData();
+    async moveItemUp(dataset, type) {
+        const data = await this.getData();
         const items = data.items;
         const item = items.find(item => item._id === dataset.id);
         const itemsOfType = items.filter(item => item.type === type);
@@ -702,8 +702,8 @@ export default class firardFortressActorSheet extends ActorSheet {
         this.render();
     }
 
-    moveItemDown(dataset, type) {
-        const data = this.getData();
+    async moveItemDown(dataset, type) {
+        const data = await this.getData();
         const items = data.items;
         const item = items.find(item => item._id === dataset.id);
         const itemsOfType = items.filter(item => item.type === type);
@@ -755,98 +755,55 @@ export default class firardFortressActorSheet extends ActorSheet {
         return {mod: mod, posture: posture};
     }
 
-    // alignement slider
-    alignmentSlider(event) {
-        const data = this.getData();
-        const alignment = data.data.system.alignment;
-        const alignmentSlider = this.element.find("#marker-container")[0];
-        const alignmentMarker = this.element.find("#marker")[0];
-        const lawfulText = this.element.find("#lawful")[0];
-        const chaoticText = this.element.find("#chaotic")[0];
-        const goodText = this.element.find("#good")[0];
-        const evilText = this.element.find("#evil")[0];
-        const cursorWidth = 14;
-        const cursorHeight = 14;
-        const position = {
-            x: event.clientX - alignmentSlider.getBoundingClientRect().left - cursorWidth / 2,
-            y: event.clientY - alignmentSlider.getBoundingClientRect().top - cursorHeight / 2
-        };
-        const max = 145;
+    // register draggables
+    async registerGlobalAnimations() {
+        const data = await this.getData();
+        const actor = this.actor;
+        Draggable.create("#marker", {
+            type: "x,y",
+            bounds: "#marker-container",
+            onDrag: function() {
+                const lawfulText = document.getElementById("lawful");
+                const chaoticText = document.getElementById("chaotic");
+                const goodText = document.getElementById("good");
+                const evilText = document.getElementById("evil");
+                const max = 145;
 
-        if (position.x < 0) {
-            position.x = 0;
-        } else if (position.x > max) {
-            position.x = max;
-        }
-        if (position.y < 0) {
-            position.y = 0;
-        } else if (position.y > max) {
-            position.y = max;
-        }
-        
-        gsap.to(alignmentMarker, {
-            x: position.x,
-            y: position.y,
-            duration: 0.5,
-            ease: "power2.inOut"
-        });
-        gsap.to(alignmentSlider, {
-            duration: 0.5,
-            ease: "power2.inOut"
-        });
-
-        gsap.to(lawfulText, {
-            opacity: 1 - (position.x / max),
-            duration: 0.5,
-            ease: "power2.inOut"
-        });
-        gsap.to(chaoticText, {
-            opacity: position.x / max,
-            duration: 0.5,
-            ease: "power2.inOut"
-        });
-        gsap.to(goodText, {
-            opacity: 1 - (position.y / max),
-            duration: 0.5,
-            ease: "power2.inOut"
-        });
-        gsap.to(evilText, {
-            opacity: position.y / max,
-            duration: 0.5,
-            ease: "power2.inOut"
-        });
-
-        alignment.x = position.x;
-        alignment.y = position.y;
-
-        setTimeout(() => {
-            this.actor.update({ "system.alignment": alignment });
-        }, 500);
-    }
-
-    // init tinyMCE
-    initTinyMCE() {
-        tinymce.init({
-            selector: '.richTextArea',
-            menubar: false,
-            toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
-            plugins: 'lists',
-            min_height: 150,
-            height: 150,
-            setup: function (editor) {
-                editor.on('change', function () {
-                    editor.save();
+                gsap.to(lawfulText, {
+                    opacity: 1 - (this.x / max),
+                    duration: 0.1,
+                    ease: "power2.inOut"
                 });
-                editor.on('close', function () {
-                    editor.save();
+                gsap.to(chaoticText, {
+                    opacity: this.x / max,
+                    duration: 0.1,
+                    ease: "power2.inOut"
                 });
+                gsap.to(goodText, {
+                    opacity: 1 - (this.y / max),
+                    duration: 0.1,
+                    ease: "power2.inOut"
+                });
+                gsap.to(evilText, {
+                    opacity: this.y / max,
+                    duration: 0.1,
+                    ease: "power2.inOut"
+                });
+            },
+            onDragEnd: function() {
+                const alignment = data.data.system.alignment;
+
+                alignment.x = this.x;
+                alignment.y = this.y;
+
+                actor.update({ "system.alignment": alignment });
             }
         });
     }
 
     // stat bar animations
-    statBar() {
-        const data = this.getData();
+    async statBar() {
+        const data = await this.getData();
         const statList = ["HP", "MP", "SP", "PA", "MA"];
         const oldData = this.oldData;
 
@@ -990,8 +947,8 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     // alignment animation
-    alignmentAnimation() {
-        const data = this.getData();
+    async alignmentAnimation() {
+        const data = await this.getData();
 
         if (data.actor.type === "NPC") return;
         const alignment = data.data.system.alignment;
@@ -1031,8 +988,8 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     // navigation bar animations
-    navBarAnimation() {
-        const data = this.getData();
+    async navBarAnimation() {
+        const data = await this.getData();
         if (data.actor.type === "NPC") return;
         const navBar = this.element.find("nav.sheet-tabs")[0];
         const tabList = ["main", "proficiencies", "spells", "notes"]
@@ -1051,25 +1008,6 @@ export default class firardFortressActorSheet extends ActorSheet {
             const activeIndex = tabList.indexOf(activeLI.dataset.tab);
             const oldIndex = tabList.indexOf(oldActiveLI.dataset.tab);
             if (tabContent !== oldActive) {
-                if (activeIndex == 3) {
-                    tinymce.remove();
-                    tinymce.init({
-                        selector: '.richTextArea',
-                        menubar: false,
-                        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
-                        plugins: 'lists',
-                        min_height: 150,
-                        height: 150,
-                        setup: function (editor) {
-                            editor.on('change', function () {
-                                editor.save();
-                            });
-                            editor.on('close', function () {
-                                editor.save();
-                            });
-                        }
-                    });
-                }
                 if (activeIndex < oldIndex) {
                     gsap.to(ul, {
                         x: -activeLI.offsetLeft + (navBar.offsetWidth / 2) - (activeLI.offsetWidth / 2),
@@ -1144,8 +1082,8 @@ export default class firardFortressActorSheet extends ActorSheet {
     }
 
     // navigation bar animations default
-    navBarAnimationDefault() {
-        const data = this.getData();
+    async navBarAnimationDefault() {
+        const data = await this.getData();
         if (data.actor.type === "NPC") return;
         const navBar = this.element.find("nav.sheet-tabs")[0];
         const tabList = ["main", "proficiencies", "spells", "notes"]

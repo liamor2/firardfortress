@@ -153,27 +153,12 @@
         {{!-- Description Tab --}}
         <section class="sheet-tab tab sheet-description" data-tab="description">
             <label>{{localize "FI.HybridSheet.Description"}}</label>
-            <textarea class="richTextArea" name="system.description">{{data.system.description}}</textarea>
+            {{editor
+                data.system.description
+                target="system.description"
+                button=true
+                editable=editable
+            }}
         </section>
     </main>
 </form>
-
-<script>
-    // TinyMCE init
-    tinymce.init({
-        selector: '.richTextArea',
-        menubar: false,
-        toolbar: 'bold italic underline forecolor backcolor | fontfamily fontsize | alignleft aligncenter alignright alignjustify | bullist outdent indent | undo redo | removeformat',
-        plugins: 'lists',
-        min_height: 150,
-        height: 150,
-        setup: function (editor) {
-            editor.on('change', function () {
-                editor.save();
-            });
-            editor.on('close', function () {
-                editor.save();
-            });
-        }
-    });
-</script>

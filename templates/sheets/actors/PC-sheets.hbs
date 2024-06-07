@@ -1,255 +1,16 @@
-<form class="{{cssClass}} actor-sheet PC-sheet" autocomplete="off">
+<form class="{{cssClass}} actor-sheet PC-sheet" id="smooth-wrapper" autocomplete="off">
     <script>
         var inputs = document.querySelectorAll('input:not([type="checkbox"])');
         inputs.forEach(input => {
             input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
         });
     </script>
+<div id="smooth-content">
+    {{!-- Sheet Header --}}
     <header class="header">
         <div class="header-left">
-            <div class="header-top">
-                <div class="header-top-left">
-                    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-                    <div>
-                        <label>{{localize "FI.System.Name"}}</label>
-                        <input type="text" name="name" value="{{data.name}}"/>
-                    </div>
-                </div>
-                <div class="header-top-right">
-                    <table>
-                        <tr>
-                            <td>
-                                <label>{{localize "FI.System.PlayerName"}}</label>
-                                <input type="text" name="system.playerName" value="{{data.system.playerName}}" placeholder="{{localize "FI.System.PlayerName"}}"/>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.System.Guild"}}</label>
-                                <input type="text" name="system.guild" value="{{data.system.guild}}" placeholder="{{localize "FI.System.Guild"}}"/>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.System.Level"}}</label>
-                                <input type="number" name="system.level" value="{{data.system.level}}" placeholder="{{localize "FI.System.Level"}}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>{{localize "FI.System.Class"}}</label>
-                                <input type="text" name="system.class" value="{{data.system.class}}" placeholder="{{localize "FI.System.Class"}}"/>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.System.Race"}}</label>
-                                <input type="text" name="system.race" value="{{data.system.race}}" placeholder="{{localize "FI.System.Race"}}"/>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.Posture.Label"}}</label>
-                                <select name="system.posture">
-                                    <option {{#if (eq data.system.posture "")}}selected{{/if}} disabled>{{localize "FI.Posture.Select"}}</option>
-                                    <option value="Offensive" {{#if (eq data.system.posture "Offensive")}}selected{{/if}}>{{localize "FI.Posture.Offensive"}}</option>
-                                    <option value="Defensive" {{#if (eq data.system.posture "Defensive")}}selected{{/if}}>{{localize "FI.Posture.Defensive"}}</option>
-                                    <option value="Focus" {{#if (eq data.system.posture "Focus")}}selected{{/if}}>{{localize "FI.Posture.Focus"}}</option>
-                                    <option value="Concentration" {{#if (eq data.system.posture "Concentration")}}selected{{/if}}>{{localize "FI.Posture.Concentration"}}</option>
-                                    <option value="Elemental" {{#if (eq data.system.posture "Elemental")}}selected{{/if}}>{{localize "FI.Posture.Elemental"}}</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="header-bottom">
-                            <td class="weight">
-                                <label><strong>{{localize "FI.System.ItemWeight"}}</strong></label>
-                                <span>/</span>
-                                <label>{{localize "FI.System.ItemMaxWeight"}}</label>
-                                <div class="weight">
-                                    <input type="number" name="system.weight.value" value="{{data.system.weight.value}}" disabled/>
-                                    {{localize "FI.Misc.WeightUnit"}}
-                                    <span>/</span>
-                                    <input type="number" name="system.weight.max" value="{{data.system.weight.max}}" placeholder="{{localize "FI.System.ItemMaxWeight"}}"/>
-                                    {{localize "FI.Misc.WeightUnit"}}
-                                </div>
-                                <div class="bar weightBar">
-                                    <div class="barValue weightBarValue"></div>
-                                </div>
-                            </td>
-                            <td>
-                                <label>{{localize "FI.System.BaseSpeed"}}</label>
-                                <input type="number" name="system.speed.base" value="{{data.system.speed.base}}" placeholder="{{localize "FI.System.BaseSpeed"}}"/>
-                                {{localize "FI.System.SpeedUnit"}}
-                            </td>
-                            <td>
-                                <label><strong>{{localize "FI.System.RealSpeed"}}</strong></label>
-                                <input type="number" name="system.speed.value" value="{{data.system.speed.value}}" disabled/>
-                                <strong>{{localize "FI.System.SpeedUnit"}}</strong>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="header-bottom">
-                <table>
-                    <tr>
-                        <td colspan="4">{{localize "FI.Stat.STR"}}</td>
-                        <td colspan="4">{{localize "FI.Stat.DEX"}}</td>
-                        <td colspan="4">{{localize "FI.Stat.CON"}}</td>
-                        <td colspan="4">{{localize "FI.Stat.INT"}}</td>
-                        <td colspan="4">{{localize "FI.Stat.WIS"}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.STR.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.STR.mod.num}}" data-roll="{{data.system.stat.STR.mod.num}}" data-label="{{localize "FI.Stat.STR"}}" data-type="STR" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="4" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.DEX.value" value="{{data.system.stat.DEX.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.DEX.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.DEX.mod.num}}" data-roll="{{data.system.stat.DEX.mod.num}}" data-label="{{localize "FI.Stat.DEX"}}" data-type="DEX" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="4" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.CON.value" value="{{data.system.stat.CON.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.CON.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.CON.mod.num}}" data-roll="{{data.system.stat.CON.mod.num}}" data-label="{{localize "FI.Stat.CON"}}" data-type="CON" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="4" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.INT.value" value="{{data.system.stat.INT.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.INT.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.INT.mod.num}}" data-roll="{{data.system.stat.INT.mod.num}}" data-label="{{localize "FI.Stat.INT"}}" data-type="INT" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="4" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.WIS.value" value="{{data.system.stat.WIS.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.WIS.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIS.mod.num}}" data-roll="{{data.system.stat.WIS.mod.num}}" data-label="{{localize "FI.Stat.WIS"}}" data-type="WIS" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">{{localize "FI.Stat.WIL"}}</td>
-                        <td colspan="5">{{localize "FI.Stat.CHA"}}</td>
-                        <td colspan="5">{{localize "FI.Stat.LUK"}}</td>
-                        <td colspan="5">{{localize "FI.Stat.HON"}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.WIL.value" value="{{data.system.stat.WIL.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.WIL.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIL.mod.num}}" data-roll="{{data.system.stat.WIL.mod.num}}" data-label="{{localize "FI.Stat.WIL"}}" data-type="WIL" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="5" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.CHA.value" value="{{data.system.stat.CHA.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.CHA.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.CHA.mod.num}}" data-roll="{{data.system.stat.CHA.mod.num}}" data-label="{{localize "FI.Stat.CHA"}}" data-type="CHA" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="5" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.LUK.value" value="{{data.system.stat.LUK.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.LUK.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.LUK.mod.num}}" data-roll="{{data.system.stat.LUK.mod.num}}" data-label="{{localize "FI.Stat.LUK"}}" data-type="LUK" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                        <td colspan="5" class="stat-input">
-                            <div>
-                                <div class="stat mainStat"><input type="number" name="system.stat.HON.value" value="{{data.system.stat.HON.value}}"/></div>
-                                <div class="stat modStat"><p>{{data.system.stat.HON.mod.text}}</p></div>
-                                <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.HON.mod.num}}" data-roll="{{data.system.stat.HON.mod.num}}" data-label="{{localize "FI.Stat.HON"}}" data-type="HON" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="stat-container header-right">
-            <div class="stat label">
-                <p>{{localize "FI.System.Value"}}</p>
-                <span>/</span>
-                <p>{{localize "FI.System.Temp"}}</p>
-                <span>/</span>
-                <p>{{localize "FI.System.Max"}}</p>
-            </div>
-            <label>
-                <i class="fa-solid fa-heart-half-stroke"></i>
-                {{localize "FI.System.HP"}}
-            </label>
-            <div class="bar HPbar">
-                <div class="barValue HPbarValue"></div>
-                <div class="barValue barTemp HPbarTemp"></div>
-            </div>
-            <div class="stat">
-                <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
-                <span>/</span>
-                <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}" min="0"/>
-                <span>/</span>
-                <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
-            </div>
-            <label>
-                <img src="systems/firardfortress/icons/mana.png" alt="MP"/>
-                {{localize "FI.System.MP"}}
-            </label>
-            <div class="bar MPbar">
-                <div class="barValue MPbarValue"></div>
-                <div class="barValue barTemp MPbarTemp"></div>
-            </div>
-            <div class="stat">
-                <input type="number" name="system.MP.value" value="{{data.system.MP.value}}" max="{{data.system.MP.max}}"/>
-                <span>/</span>
-                <input type="number" name="system.MP.temp" value="{{data.system.MP.temp}}" min="0"/>
-                <span>/</span>
-                <input type="number" name="system.MP.max" value="{{data.system.MP.max}}"/>
-            </div>
-            <label>
-                <i class="fa-solid fa-bolt"></i>
-                {{localize "FI.System.SP"}}
-            </label>
-            <div class="bar SPbar">
-                <div class="barValue SPbarValue"></div>
-                <div class="barValue barTemp SPbarTemp"></div>
-            </div>
-            <div class="stat">
-                <input type="number" name="system.SP.value" value="{{data.system.SP.value}}" max="{{data.system.SP.max}}"/>
-                <span>/</span>
-                <input type="number" name="system.SP.temp" value="{{data.system.SP.temp}}" min="0"/>
-                <span>/</span>
-                <input type="number" name="system.SP.max" value="{{data.system.SP.max}}"/>
-            </div>
-            <label>
-                <i class="fa-duotone fa-shield-halved"></i>
-                {{localize "FI.System.PA"}}
-            </label>
-            <div class="bar PAbar">
-                <div class="barValue PAbarValue"></div>
-                <div class="barValue barTemp PAbarTemp"></div>
-            </div>
-            <div class="stat">
-                <input type="number" name="system.PA.value" value="{{data.system.PA.value}}" max="{{data.system.PA.max}}"/>
-                <span>/</span>
-                <input type="number" name="system.PA.temp" value="{{data.system.PA.temp}}"/>
-                <span>/</span>
-                <input type="number" name="system.PA.max" value="{{data.system.PA.max}}" disabled/>
-            </div>
-            <label>
-                <img src="systems/firardfortress/icons/magicShield.png" alt="MA"/>
-                {{localize "FI.System.MA"}}
-            </label>
-            <div class="bar MAbar">
-                <div class="barValue MAbarValue"></div>
-                <div class="barValue barTemp MAbarTemp"></div>
-            </div>
-            <div class="stat">
-                <input type="number" name="system.MA.value" value="{{data.system.MA.value}}" max="{{data.system.MA.max}}"/>
-                <span>/</span>
-                <input type="number" name="system.MA.temp" value="{{data.system.MA.temp}}" min="0"/>
-                <span>/</span>
-                <input type="number" name="system.MA.max" value="{{data.system.MA.max}}" disabled/>
-            </div>
+            {{> "systems/firardfortressdev/templates/parts/actors/header/subStat.hbs" data=data}}
+            {{> "systems/firardfortressdev/templates/parts/actors/header/attributes.hbs" data=data}}
         </div>
     </header>
 
@@ -889,28 +650,53 @@
                     </div>
                 </div>
                 <div class="description-left">
-                    <div class="description-biography">
+                    <div class="description-field description-biography">
                         <label>{{localize "FI.Description.Biography"}}</label>
-                        <textarea class="richTextArea" name="system.biography">{{data.system.biography}}</textarea>
+                        {{editor
+                            data.system.biography
+                            target="system.biography"
+                            button=true
+                            editable=editable
+                        }}
                     </div>
-                    <div class="description-appearance">
+                    <div class="description-field description-appearance">
                         <label>{{localize "FI.Description.Appearance"}}</label>
-                        <textarea class="richTextArea" name="system.appearance">{{data.system.appearance}}</textarea>
+                        {{editor
+                            data.system.appearance
+                            target="system.appearance"
+                            button=true
+                            editable=editable
+                        }}
                     </div>
                 </div>
-                <div class="description-right">
+                <div class="description-field description-right">
                     <div class="description-personality">
                         <label>{{localize "FI.Description.Personality"}}</label>
-                        <textarea class="richTextArea" name="system.personality">{{data.system.personality}}</textarea>
+                        {{editor
+                            data.system.personality
+                            target="system.personality"
+                            button=true
+                            editable=editable
+                        }}
                     </div>
-                    <div class="description-background">
+                    <div class="description-field description-background">
                         <label>{{localize "FI.Description.Background"}}</label>
-                        <textarea class="richTextArea" name="system.background">{{data.system.background}}</textarea>
+                        {{editor
+                            data.system.background
+                            target="system.background"
+                            button=true
+                            editable=editable
+                        }}
                     </div>
                 </div>
-                <div class="description-notes">
+                <div class="description-field description-notes">
                     <label>{{localize "FI.Description.Notes"}}</label>
-                    <textarea class="richTextArea" name="system.notes">{{data.system.notes}}</textarea>
+                    {{editor
+                        data.system.notes
+                        target="system.notes"
+                        button=true
+                        editable=editable
+                    }}
                 </div>
             </div>
         </section>
@@ -923,4 +709,5 @@
             <input type="checkbox" name="system.displayAdvancedRoll" {{#if data.system.displayAdvancedRoll}}checked{{/if}}/>
         </span>
     </footer>
+</div>
 </form>

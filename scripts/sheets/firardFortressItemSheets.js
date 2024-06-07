@@ -4,10 +4,10 @@ export default class firardFortressItemSheet extends ItemSheet {
     get template() {
         console.log(`firardFortress | Loading ${this.item.type} sheet`);
 
-        return `systems/firardfortress/templates/sheets/items/${this.item.type}-sheet.hbs`;
+        return `systems/firardfortressdev/templates/sheets/items/${this.item.type}-sheet.hbs`;
     }
 
-    getData() {
+    async getData() {
         const data = super.getData();
         data.config = CONFIG.firardFortress;
         this.createCalculatedData(data);
@@ -30,7 +30,7 @@ export default class firardFortressItemSheet extends ItemSheet {
     }
 
     async close(options = {}) {
-        tinymce.remove();
+        // tinymce.remove();
         return super.close(options);
     }
 
@@ -68,11 +68,11 @@ export default class firardFortressItemSheet extends ItemSheet {
         this.render();
     }
 
-    _onItemAdd(event) {
+    async _onItemAdd(event) {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
-        const data = this.getData();
+        const data = await this.getData();
 
         switch (dataset.add) {
             case 'spell':

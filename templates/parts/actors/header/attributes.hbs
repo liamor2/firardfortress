@@ -1,0 +1,84 @@
+<div class="header-bottom">
+    <table>
+        <tr>
+            <td colspan="4">{{localize "FI.Stat.STR"}}</td>
+            <td colspan="4">{{localize "FI.Stat.DEX"}}</td>
+            <td colspan="4">{{localize "FI.Stat.CON"}}</td>
+            <td colspan="4">{{localize "FI.Stat.INT"}}</td>
+            <td colspan="4">{{localize "FI.Stat.WIS"}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.STR.value" value="{{data.system.stat.STR.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.STR.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.STR.mod.num}}" data-roll="{{data.system.stat.STR.mod.num}}" data-label="{{localize "FI.Stat.STR"}}" data-type="STR" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="4" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.DEX.value" value="{{data.system.stat.DEX.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.DEX.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.DEX.mod.num}}" data-roll="{{data.system.stat.DEX.mod.num}}" data-label="{{localize "FI.Stat.DEX"}}" data-type="DEX" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="4" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.CON.value" value="{{data.system.stat.CON.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.CON.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.CON.mod.num}}" data-roll="{{data.system.stat.CON.mod.num}}" data-label="{{localize "FI.Stat.CON"}}" data-type="CON" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="4" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.INT.value" value="{{data.system.stat.INT.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.INT.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.INT.mod.num}}" data-roll="{{data.system.stat.INT.mod.num}}" data-label="{{localize "FI.Stat.INT"}}" data-type="INT" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="4" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.WIS.value" value="{{data.system.stat.WIS.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.WIS.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIS.mod.num}}" data-roll="{{data.system.stat.WIS.mod.num}}" data-label="{{localize "FI.Stat.WIS"}}" data-type="WIS" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">{{localize "FI.Stat.WIL"}}</td>
+            <td colspan="5">{{localize "FI.Stat.CHA"}}</td>
+            <td colspan="5">{{localize "FI.Stat.LUK"}}</td>
+            <td colspan="5">{{localize "FI.Stat.HON"}}</td>
+        </tr>
+        <tr>
+            <td colspan="5" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.WIL.value" value="{{data.system.stat.WIL.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.WIL.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.WIL.mod.num}}" data-roll="{{data.system.stat.WIL.mod.num}}" data-label="{{localize "FI.Stat.WIL"}}" data-type="WIL" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="5" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.CHA.value" value="{{data.system.stat.CHA.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.CHA.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.CHA.mod.num}}" data-roll="{{data.system.stat.CHA.mod.num}}" data-label="{{localize "FI.Stat.CHA"}}" data-type="CHA" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="5" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.LUK.value" value="{{data.system.stat.LUK.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.LUK.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.LUK.mod.num}}" data-roll="{{data.system.stat.LUK.mod.num}}" data-label="{{localize "FI.Stat.LUK"}}" data-type="LUK" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+            <td colspan="5" class="stat-input">
+                <div>
+                    <div class="stat mainStat"><input type="number" name="system.stat.HON.value" value="{{data.system.stat.HON.value}}"/></div>
+                    <div class="stat modStat"><p>{{data.system.stat.HON.mod.text}}</p></div>
+                    <div class="stat"><a class="item-roll rollable" title="{{localize "FI.System.Roll"}} 1d20+{{data.system.stat.HON.mod.num}}" data-roll="{{data.system.stat.HON.mod.num}}" data-label="{{localize "FI.Stat.HON"}}" data-type="HON" data-rollType="Stat"><i class="fa-duotone fa-dice-d20"></i></a></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
