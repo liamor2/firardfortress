@@ -1,0 +1,348 @@
+<section class="sheet-tab tab" data-tab="main">
+  <div class="main-tab">
+    <table class="main-tab">
+      <tr>
+        <td colspan="2">
+          <div class="container weapon">
+            <label class="weapon-label container-label">
+              <p>{{localize "FI.Weapon.Label"}}</p>
+            </label>
+            <table class="weapon-tab">
+              <tr>
+                <th class="image">{{localize "FI.Weapon.Image"}}</th>
+                <th>{{localize "FI.Weapon.Name"}}</th>
+                <th class="medium">{{localize "FI.Weapon.Stat"}}</th>
+                <th class="small">{{localize "FI.System.Equipped"}}</th>
+                <th class="small">{{localize "FI.Weapon.Quantity"}}</th>
+                <th class="small">{{localize "FI.Weapon.Roll"}}</th>
+                <th class="small">{{localize "FI.System.Move"}}</th>
+                <th class="small">{{localize "FI.System.Delete"}}</th>
+              </tr>
+              {{#each items as |weapon index|}}
+                {{#if weapon.system.isWeapon}}
+                  <tr>
+                    <td class="edit-item" data-id="{{weapon._id}}">
+                      <img src="{{weapon.img}}" alt="{{weapon.system.name}}" />
+                    </td>
+                    <td class="edit-item" data-id="{{weapon._id}}">
+                      <p>{{weapon.system.name}}</p>
+                    </td>
+                    <td class="edit-item medium" data-id="{{weapon._id}}">
+                      <p>{{localize (concat "FI.Stat." weapon.system.stat)}}</p>
+                    </td>
+                    <td class="small">
+                      {{#if weapon.system.equipped}}
+                        <i
+                          class="fa-solid fa-check item-checkbox"
+                          data-id="{{weapon._id}}"
+                          data-type="equipped"
+                        ></i>
+                      {{else}}
+                        <i
+                          class="fa-solid fa-times item-checkbox"
+                          data-id="{{weapon._id}}"
+                          data-type="equipped"
+                        ></i>
+                      {{/if}}
+                    </td>
+                    <td class="small">
+                      <input
+                        class="item-input"
+                        type="number"
+                        name="system.weapons.{{index}}.quantity"
+                        value="{{weapon.system.quantity}}"
+                        data-id="{{weapon._id}}"
+                        data-field="system.quantity"
+                      />
+                    </td>
+                    <td>
+                      <a
+                        class="item-roll rollable"
+                        title="{{localize 'FI.System.Roll'}}"
+                        data-id="{{weapon._id}}"
+                        data-label="{{weapon.system.name}}"
+                        data-type="{{weapon.system.stat}}"
+                        data-rollType="Weapon"
+                        data-roll="{{weapon.system.stat}}"
+                      ><i class="fa-duotone fa-dice-d20"></i></a>
+                    </td>
+                    <td>
+                      <a
+                        class="move small"
+                        data-type="up"
+                        data-move="Weapon"
+                        data-id="{{weapon._id}}"
+                      ><i class="fa-duotone fa-arrow-up"></i></a>
+                      <a
+                        class="move small"
+                        data-type="down"
+                        data-move="Weapon"
+                        data-id="{{weapon._id}}"
+                      ><i class="fa-duotone fa-arrow-down"></i></a>
+                    </td>
+                    <td>
+                      <a
+                        class="delete small"
+                        data-delete="Weapon"
+                        data-id="{{weapon._id}}"
+                      ><i class="fa-duotone fa-trash"></i></a>
+                    </td>
+                  </tr>
+                {{/if}}
+              {{/each}}
+              <tr>
+                <td colspan="6">
+                  <button class="add" data-add="Weapon"><i
+                      class="fa-duotone fa-plus"
+                    ></i></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="container equipment">
+            <label class="equipment-label container-label">
+              <p>{{localize "FI.Equipment.Label"}}</p>
+            </label>
+            <table class="equipment-tab">
+              <tr>
+                <th class="image">{{localize "FI.Equipment.Image"}}</th>
+                <th>{{localize "FI.Equipment.Name"}}</th>
+                <th class="medium">{{localize "FI.Equipment.ArmorGiven"}}</th>
+                <th class="medium">{{localize "FI.Equipment.Type"}}</th>
+                <th class="small">{{localize "FI.System.Equipped"}}</th>
+                <th class="small">{{localize "FI.System.Quantity"}}</th>
+                <th class="small">{{localize "FI.System.Move"}}</th>
+                <th class="small">{{localize "FI.System.Delete"}}</th>
+              </tr>
+              {{#each items as |equipment index|}}
+                {{#if equipment.system.isEquipment}}
+                  <tr>
+                    <td class="edit-item" data-id="{{equipment._id}}">
+                      <img
+                        src="{{equipment.img}}"
+                        alt="{{equipment.system.name}}"
+                      />
+                    </td>
+                    <td class="edit-item" data-id="{{equipment._id}}">
+                      <p>{{equipment.system.name}}</p>
+                    </td>
+                    <td
+                      class="edit-item medium armor"
+                      data-id="{{equipment._id}}"
+                    >
+                      <p>{{equipment.system.PA}}</p>{{localize "FI.System.PA"}}
+                      <span>/</span>
+                      <p>{{equipment.system.MA}}</p>{{localize "FI.System.MA"}}
+                    </td>
+                    <td class="edit-item medium" data-id="{{equipment._id}}">
+                      <p>{{equipment.system.equipmentType}}</p>
+                    </td>
+                    <td class="small" data-id="{{equipment._id}}">
+                      {{#if equipment.system.equipped}}
+                        <i
+                          class="fa-solid fa-check item-checkbox"
+                          data-id="{{equipment._id}}"
+                          data-type="equipped"
+                        ></i>
+                      {{else}}
+                        <i
+                          class="fa-solid fa-times item-checkbox"
+                          data-id="{{equipment._id}}"
+                          data-type="equipped"
+                        ></i>
+                      {{/if}}
+                    </td>
+                    <td class="small" data-id="{{equipment._id}}">
+                      <input
+                        class="item-input"
+                        type="number"
+                        name="system.equipment.{{index}}.quantity"
+                        value="{{equipment.system.quantity}}"
+                        data-id="{{equipment._id}}"
+                        data-field="system.quantity"
+                      />
+                    </td>
+                    <td>
+                      <a
+                        class="move small"
+                        data-type="up"
+                        data-move="Equipment"
+                        data-id="{{equipment._id}}"
+                      ><i class="fa-duotone fa-arrow-up"></i></a>
+                      <a
+                        class="move small"
+                        data-type="down"
+                        data-move="Equipment"
+                        data-id="{{equipment._id}}"
+                      ><i class="fa-duotone fa-arrow-down"></i></a>
+                    </td>
+                    <td>
+                      <a
+                        class="delete small"
+                        data-delete="Equipment"
+                        data-id="{{equipment._id}}"
+                      ><i class="fa-duotone fa-trash"></i></a>
+                    </td>
+                  </tr>
+                {{/if}}
+              {{/each}}
+              <tr>
+                <td colspan="6">
+                  <button class="add" data-add="Equipment"><i
+                      class="fa-duotone fa-plus"
+                    ></i></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="container misc">
+            <label class="misc-label container-label">
+              <p>{{localize "FI.Misc.Label"}}</p>
+            </label>
+            <table class="misc-tab">
+              <tr>
+                <th class="image">{{localize "FI.Misc.Image"}}</th>
+                <th>{{localize "FI.Misc.Name"}}</th>
+                <th class="small">{{localize "FI.System.Quantity"}}</th>
+                <th class="small">{{localize "FI.System.Move"}}</th>
+                <th class="small">{{localize "FI.System.Delete"}}</th>
+              </tr>
+              {{#each items as |misc index|}}
+                {{#if misc.system.isMisc}}
+                  <tr>
+                    <td class="edit-item" data-id="{{misc._id}}">
+                      <img src="{{misc.img}}" alt="{{misc.system.name}}" />
+                    </td>
+                    <td class="edit-item" data-id="{{misc._id}}">
+                      <p>{{misc.system.name}}</p>
+                    </td>
+                    <td class="small" data-id="{{misc._id}}">
+                      <input
+                        type="number"
+                        name="system.misc.{{index}}.quantity"
+                        value="{{misc.system.quantity}}"
+                      />
+                    </td>
+                    <td class="small" data-id="{{misc._id}}">
+                      <a
+                        class="move small"
+                        data-type="up"
+                        data-move="Misc"
+                        data-id="{{misc._id}}"
+                      ><i class="fa-duotone fa-arrow-up"></i></a>
+                      <a
+                        class="move small"
+                        data-type="down"
+                        data-move="Misc"
+                        data-id="{{misc._id}}"
+                      ><i class="fa-duotone fa-arrow-down"></i></a>
+                    </td>
+                    <td class="small" data-id="{{misc._id}}">
+                      <a
+                        class="delete small"
+                        data-delete="Misc"
+                        data-id="{{misc._id}}"
+                      ><i class="fa-duotone fa-trash"></i></a>
+                    </td>
+                  </tr>
+                {{/if}}
+              {{/each}}
+              <tr>
+                <td colspan="4">
+                  <button class="add" data-add="Misc"><i
+                      class="fa-duotone fa-plus"
+                    ></i></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+        <td>
+          <div class="container money">
+            <label class="money-label container-label">
+              <p>{{localize "FI.Money.Label"}}</p>
+            </label>
+            <table class="money-tab">
+              <tr>
+                <th class="image">{{localize "FI.Money.Image"}}</th>
+                <th>{{localize "FI.Money.Name"}}</th>
+                <th>{{localize "FI.Money.Value"}}</th>
+                <th>{{localize "FI.System.Quantity"}}</th>
+                <th class="small">{{localize "FI.System.Move"}}</th>
+                <th class="small">{{localize "FI.System.Delete"}}</th>
+              </tr>
+              {{#each items as |money index|}}
+                {{#if money.system.isMoney}}
+                  <tr>
+                    <td class="edit-item" data-id="{{money._id}}">
+                      <img src="{{money.img}}" alt="{{money.system.name}}" />
+                    </td>
+                    <td class="edit-item" data-id="{{money._id}}">
+                      <p>{{money.system.name}}</p>
+                    </td>
+                    <td class="edit-item" data-id="{{money._id}}">
+                      <p>{{money.system.value}} {{localize "FI.System.SC"}}</p>
+                    </td>
+                    <td class="small" data-id="{{money._id}}">
+                      <input
+                        type="number"
+                        name="system.money.{{index}}.quantity"
+                        value="{{money.system.quantity}}"
+                      />
+                    </td>
+                    <td>
+                      <a
+                        class="move small"
+                        data-type="up"
+                        data-move="Money"
+                        data-id="{{money._id}}"
+                      ><i class="fa-duotone fa-arrow-up"></i></a>
+                      <a
+                        class="move small"
+                        data-type="down"
+                        data-move="Money"
+                        data-id="{{money._id}}"
+                      ><i class="fa-duotone fa-arrow-down"></i></a>
+                    </td>
+                    <td>
+                      <a
+                        class="delete small"
+                        data-delete="Money"
+                        data-id="{{money._id}}"
+                      ><i class="fa-duotone fa-trash"></i></a>
+                    </td>
+                  </tr>
+                {{/if}}
+              {{/each}}
+              <tr>
+                <td colspan="2">
+                  <label>{{localize "FI.System.TotalMoney"}}</label>
+                  <p>{{data.system.money.value}} {{localize "FI.System.SC"}}</p>
+                </td>
+                <td colspan="2">
+                  <label>{{localize "FI.System.TotalWorth"}}</label>
+                  <p>{{data.system.money.worth}} {{localize "FI.System.SC"}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <button class="add" data-add="Money"><i
+                      class="fa-duotone fa-plus"
+                    ></i></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>

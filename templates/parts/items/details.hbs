@@ -1,0 +1,35 @@
+<table class="sheet-main">
+  <tr class="top">
+    <td class="{{cssClassPrefix}}Quantity">
+      <label>{{localize quantityLabel}}</label>
+      <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize quantityLabel}}" />
+    </td>
+    <td class="{{cssClassPrefix}}Weight">
+      <label>{{localize weightLabel}}</label>
+      <input type="number" name="system.weight" value="{{data.system.weight}}" title="{{localize weightDescription}}" />
+      <p>{{localize weightUnit}}</p>
+    </td>
+  </tr>
+  <tr class="bottom">
+    <td class="{{cssClassPrefix}}Price">
+      <label>{{localize priceLabel}}</label>
+      <input type="number" name="system.price" value="{{data.system.price}}" title="{{localize priceLabel}}" />
+      <p>{{localize priceUnit}}</p>
+    </td>
+    <td class="{{cssClassPrefix}}Rarity">
+      <label>{{localize rarityLabel}}</label>
+      <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize rarityLabel}}"
+        list="rarity" />
+      <datalist id="rarity">
+        <option value="{{localize " FI.Rarity.Common"}}" title="Common" />
+        <option value="{{localize " FI.Rarity.Uncommon"}}" title="Uncommon" />
+        <option value="{{localize " FI.Rarity.Special"}}" title="Special" />
+        <option value="{{localize " FI.Rarity.Rare"}}" title="Rare" />
+        <option value="{{localize " FI.Rarity.Unique"}}" title="Unique" />
+        <option value="{{localize " FI.Rarity.Legendary"}}" title="Legendary" />
+        <option value="{{localize " FI.Rarity.Genesis"}}" title="Genesis" />
+        <option value="{{localize " FI.Rarity.Artifact"}}" title="Artifact" />
+      </datalist>
+    </td>
+  </tr>
+</table>

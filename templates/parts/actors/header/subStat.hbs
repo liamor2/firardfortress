@@ -1,75 +1,123 @@
 <div class="header-top">
-    <div class="header-top-left">
-        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}"/>
-        <div>
-            <label>{{localize "FI.System.Name"}}</label>
-            <input type="text" name="name" value="{{data.name}}"/>
-        </div>
+  <div class="header-top-left">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" />
+    <div>
+      <label>{{localize "FI.System.Name"}}</label>
+      <input type="text" name="name" value="{{data.name}}" />
     </div>
-    <div class="header-top-right">
-        <table>
-            <tr>
-                <td>
-                    <label>{{localize "FI.System.PlayerName"}}</label>
-                    <input type="text" name="system.playerName" value="{{data.system.playerName}}" placeholder="{{localize "FI.System.PlayerName"}}"/>
-                </td>
-                <td>
-                    <label>{{localize "FI.System.Guild"}}</label>
-                    <input type="text" name="system.guild" value="{{data.system.guild}}" placeholder="{{localize "FI.System.Guild"}}"/>
-                </td>
-                <td>
-                    <label>{{localize "FI.System.Level"}}</label>
-                    <input type="number" name="system.level" value="{{data.system.level}}" placeholder="{{localize "FI.System.Level"}}"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{localize "FI.System.Class"}}</label>
-                    <input type="text" name="system.class" value="{{data.system.class}}" placeholder="{{localize "FI.System.Class"}}"/>
-                </td>
-                <td>
-                    <label>{{localize "FI.System.Race"}}</label>
-                    <input type="text" name="system.race" value="{{data.system.race}}" placeholder="{{localize "FI.System.Race"}}"/>
-                </td>
-                <td>
-                    <label>{{localize "FI.Posture.Label"}}</label>
-                    <select name="system.posture">
-                        <option {{#if (eq data.system.posture "")}}selected{{/if}} disabled>{{localize "FI.Posture.Select"}}</option>
-                        <option value="Offensive" {{#if (eq data.system.posture "Offensive")}}selected{{/if}}>{{localize "FI.Posture.Offensive"}}</option>
-                        <option value="Defensive" {{#if (eq data.system.posture "Defensive")}}selected{{/if}}>{{localize "FI.Posture.Defensive"}}</option>
-                        <option value="Focus" {{#if (eq data.system.posture "Focus")}}selected{{/if}}>{{localize "FI.Posture.Focus"}}</option>
-                        <option value="Concentration" {{#if (eq data.system.posture "Concentration")}}selected{{/if}}>{{localize "FI.Posture.Concentration"}}</option>
-                        <option value="Elemental" {{#if (eq data.system.posture "Elemental")}}selected{{/if}}>{{localize "FI.Posture.Elemental"}}</option>
-                    </select>
-                </td>
-            </tr>
-            <tr class="header-bottom">
-                <td class="weight">
-                    <label><strong>{{localize "FI.System.ItemWeight"}}</strong></label>
-                    <span>/</span>
-                    <label>{{localize "FI.System.ItemMaxWeight"}}</label>
-                    <div class="weight">
-                        <input type="number" name="system.weight.value" value="{{data.system.weight.value}}" disabled/>
-                        {{localize "FI.Misc.WeightUnit"}}
-                        <span>/</span>
-                        <input type="number" name="system.weight.max" value="{{data.system.weight.max}}" placeholder="{{localize "FI.System.ItemMaxWeight"}}"/>
-                        {{localize "FI.Misc.WeightUnit"}}
-                    </div>
-                    <div class="bar weightBar">
-                        <div class="barValue weightBarValue"></div>
-                    </div>
-                </td>
-                <td>
-                    <label>{{localize "FI.System.BaseSpeed"}}</label>
-                    <input type="number" name="system.speed.base" value="{{data.system.speed.base}}" placeholder="{{localize "FI.System.BaseSpeed"}}"/>
-                    {{localize "FI.System.SpeedUnit"}}
-                </td>
-                <td>
-                    <label><strong>{{localize "FI.System.RealSpeed"}}</strong></label>
-                    <input type="number" name="system.speed.value" value="{{data.system.speed.value}}" disabled/>
-                    <strong>{{localize "FI.System.SpeedUnit"}}</strong>
-                </td>
-            </tr>
-        </table>
-    </div>
+  </div>
+  <div class="header-top-right">
+    <table>
+      {{#if (eq data.type "NPC")}}
+      <tr>
+        <td>
+          <label>{{localize "FI.System.Class"}}</label>
+          <input type="text" name="system.class" value="{{data.system.class}}" placeholder="{{localize "FI.System.Class"}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{{localize "FI.System.Race"}}</label>
+          <input type="text" name="system.race" value="{{data.system.race}}" placeholder="{{localize "FI.System.Race"}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{{localize "FI.System.Stance"}}</label>
+          <select name="system.stance">
+            <option {{#if (eq data.system.stance "" )}}selected{{/if}} disabled>{{localize "FI.Stance.Select"}}
+            </option>
+            <option value="Offensive" {{#if (eq data.system.stance "Offensive" )}}selected{{/if}}>{{localize
+              "FI.Stance.Offensive"}}</option>
+            <option value="Defensive" {{#if (eq data.system.stance "Defensive" )}}selected{{/if}}>{{localize
+              "FI.Stance.Defensive"}}</option>
+            <option value="Focus" {{#if (eq data.system.stance "Focus" )}}selected{{/if}}>{{localize
+              "FI.Stance.Focus"}}</option>
+            <option value="Concentration" {{#if (eq data.system.stance "Concentration" )}}selected{{/if}}>{{localize
+              "FI.Stance.Concentration"}}</option>
+            <option value="Elemental" {{#if (eq data.system.stance "Elemental" )}}selected{{/if}}>{{localize
+              "FI.Stance.Elemental"}}</option>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        {{#if (eq data.type "PC")}}
+        <td>
+          <label>{{localize "FI.System.PlayerName"}}</label>
+          <input type="text" name="system.playerName" value="{{data.system.playerName}}" placeholder="{{localize "FI.System.PlayerName"}}" />
+        </td>
+        <td>
+          <label>{{localize "FI.System.Guild"}}</label>
+          <input type="text" name="system.guild" value="{{data.system.guild}}" placeholder="{{localize "FI.System.Guild"}}" />
+        </td>
+        {{else if (eq data.type "followerNPC")}}
+        <td colspan="2">
+          <label>{{localize "FI.System.PCAffiliation"}}</label>
+          <input type="text" name="system.PCaffiliation" value="{{data.system.PCaffiliation}}" placeholder="{{localize "FI.System.PCAffiliation"}}" />
+        </td>
+        {{/if}}
+        <td>
+          <label>{{localize "FI.System.Level"}}</label>
+          <input type="number" name="system.level" value="{{data.system.level}}" placeholder="{{localize "FI.System.Level"}}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{{localize "FI.System.Class"}}</label>
+          <input type="text" name="system.class" value="{{data.system.class}}" placeholder="{{localize "FI.System.Class"}}" />
+        </td>
+        <td>
+          <label>{{localize "FI.System.Race"}}</label>
+          <input type="text" name="system.race" value="{{data.system.race}}" placeholder="{{localize "FI.System.Race"}}" />
+        </td>
+        <td>
+          <label>{{localize "FI.Stance.Label"}}</label>
+          <select name="system.stance">
+            <option {{#if (eq data.system.stance "" )}}selected{{/if}} disabled>{{localize "FI.Stance.Select"}}
+            </option>
+            <option value="Offensive" {{#if (eq data.system.stance "Offensive" )}}selected{{/if}}>{{localize
+              "FI.Stance.Offensive"}}</option>
+            <option value="Defensive" {{#if (eq data.system.stance "Defensive" )}}selected{{/if}}>{{localize
+              "FI.Stance.Defensive"}}</option>
+            <option value="Focus" {{#if (eq data.system.stance "Focus" )}}selected{{/if}}>{{localize
+              "FI.Stance.Focus"}}</option>
+            <option value="Concentration" {{#if (eq data.system.stance "Concentration" )}}selected{{/if}}>{{localize
+              "FI.Stance.Concentration"}}</option>
+            <option value="Elemental" {{#if (eq data.system.stance "Elemental" )}}selected{{/if}}>{{localize
+              "FI.Stance.Elemental"}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr class="header-bottom">
+        <td class="weight">
+          <label><strong>{{localize "FI.System.ItemWeight"}}</strong></label>
+          <span>/</span>
+          <label>{{localize "FI.System.ItemMaxWeight"}}</label>
+          <div class="weight">
+            <input type="number" name="system.weight.value" value="{{data.system.weight.value}}" disabled />
+            {{localize "FI.Misc.WeightUnit"}}
+            <span>/</span>
+            <input type="number" name="system.weight.max" value="{{data.system.weight.max}}" placeholder="{{localize "
+              FI.System.ItemMaxWeight"}}" />
+            {{localize "FI.Misc.WeightUnit"}}
+          </div>
+          <div class="bar weightBar">
+            <div class="barValue weightBarValue"></div>
+          </div>
+        </td>
+        <td>
+          <label>{{localize "FI.System.BaseSpeed"}}</label>
+          <input type="number" name="system.speed.base" value="{{data.system.speed.base}}" placeholder="{{localize "
+            FI.System.BaseSpeed"}}" />
+          {{localize "FI.System.SpeedUnit"}}
+        </td>
+        <td>
+          <label><strong>{{localize "FI.System.RealSpeed"}}</strong></label>
+          <input type="number" name="system.speed.value" value="{{data.system.speed.value}}" disabled />
+          <strong>{{localize "FI.System.SpeedUnit"}}</strong>
+        </td>
+      </tr>
+      {{/if}}
+    </table>
+  </div>
 </div>

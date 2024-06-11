@@ -1,0 +1,176 @@
+<section class="sheet-tab tab" data-tab="notes">
+  <div class="description">
+    <div class="description-language">
+      <table>
+        <tr>
+          <th>{{localize "FI.Description.Language"}}</th>
+          <th class="small">{{localize "FI.Description.Speaking"}}</th>
+          <th class="small">{{localize "FI.Description.Reading"}}</th>
+          <th class="small">{{localize "FI.Description.Writing"}}</th>
+          <th class="small">{{localize "FI.System.Move"}}</th>
+          <th class="small">{{localize "FI.System.Delete"}}</th>
+        </tr>
+        {{#each items as |language index|}}
+          {{#if language.system.isLanguage}}
+            <tr>
+              <td data-id="{{language._id}}">
+                <input
+                  class="item-input"
+                  type="text"
+                  name="system.languages.{{index}}.name"
+                  value="{{language.system.name}}"
+                  list="languageList"
+                  data-id="{{language._id}}"
+                  data-field="system.name"
+                />
+              </td>
+              <td>
+                {{#if language.system.speaking}}
+                  <i
+                    class="fa-duotone fa-check item-checkbox"
+                    data-id="{{language._id}}"
+                    data-type="speaking"
+                  ></i>
+                {{else}}
+                  <i
+                    class="fa-duotone fa-times item-checkbox"
+                    data-id="{{language._id}}"
+                    data-type="speaking"
+                  ></i>
+                {{/if}}
+              </td>
+              <td>
+                {{#if language.system.reading}}
+                  <i
+                    class="fa-duotone fa-check item-checkbox"
+                    data-id="{{language._id}}"
+                    data-type="reading"
+                  ></i>
+                {{else}}
+                  <i
+                    class="fa-duotone fa-times item-checkbox"
+                    data-id="{{language._id}}"
+                    data-type="reading"
+                  ></i>
+                {{/if}}
+              </td>
+              <td>
+                {{#if language.system.writing}}
+                  <i
+                    class="fa-duotone fa-check item-checkbox"
+                    data-id="{{language._id}}"
+                    data-type="writing"
+                  ></i>
+                {{else}}
+                  <i
+                    class="fa-duotone fa-times item-checkbox"
+                    data-id="{{language._id}}"
+                    data-type="writing"
+                  ></i>
+                {{/if}}
+              </td>
+              <td>
+                <a
+                  class="move small"
+                  data-type="up"
+                  data-move="Language"
+                  data-id="{{language._id}}"
+                ><i class="fa-duotone fa-arrow-up"></i></a>
+                <a
+                  class="move small"
+                  data-type="down"
+                  data-move="Language"
+                  data-id="{{language._id}}"
+                ><i class="fa-duotone fa-arrow-down"></i></a>
+              </td>
+              <td>
+                <a
+                  class="delete small"
+                  data-delete="Language"
+                  data-id="{{language._id}}"
+                ><i class="fa-duotone fa-trash"></i></a>
+              </td>
+            </tr>
+          {{/if}}
+        {{/each}}
+      </table>
+      <datalist id="languageList">
+        <script>
+          if (typeof game.settings.get("polyglot", "customLanguages") !==
+          "undefined") { var customLanguageList = game.settings.get("polyglot",
+          "customLanguages").split(","); } for (let i = 0; i <
+          customLanguageList.length; i++) { var option =
+          document.createElement("option"); option.value =
+          customLanguageList[i];
+          document.getElementById("languageList").appendChild(option); }
+        </script>
+      </datalist>
+      <button class="add language-add" data-add="Language"><i
+          class="fa-duotone fa-plus"
+        ></i></button>
+    </div>
+    <div class="description-alignment">
+      <label>
+        <p>{{localize "FI.Description.Alignment"}}</p>
+      </label>
+      <div id="marker-bounds">
+        <div id="marker-container">
+          <p id="lawful">{{localize "FI.Description.Lawful"}}</p>
+          <p id="chaotic">{{localize "FI.Description.Chaotic"}}</p>
+          <p id="good">{{localize "FI.Description.Good"}}</p>
+          <p id="evil">{{localize "FI.Description.Evil"}}</p>
+          <div id="marker"></div>
+        </div>
+      </div>
+    </div>
+    <div class="description-left">
+      <div class="description-field description-biography">
+        <label>{{localize "FI.Description.Biography"}}</label>
+        {{editor
+          data.system.biography
+          target="system.biography"
+          button=true
+          editable=editable
+        }}
+      </div>
+      <div class="description-field description-appearance">
+        <label>{{localize "FI.Description.Appearance"}}</label>
+        {{editor
+          data.system.appearance
+          target="system.appearance"
+          button=true
+          editable=editable
+        }}
+      </div>
+    </div>
+    <div class="description-field description-right">
+      <div class="description-personality">
+        <label>{{localize "FI.Description.Personality"}}</label>
+        {{editor
+          data.system.personality
+          target="system.personality"
+          button=true
+          editable=editable
+        }}
+      </div>
+      <div class="description-field description-background">
+        <label>{{localize "FI.Description.Background"}}</label>
+        {{editor
+          data.system.background
+          target="system.background"
+          button=true
+          editable=editable
+        }}
+      </div>
+    </div>
+    <div class="description-field description-notes">
+      <label>{{localize "FI.Description.Notes"}}</label>
+      {{editor
+        data.system.notes
+        target="system.notes"
+        button=true
+        editable=editable
+      }}
+    </div>
+  </div>
+</section>

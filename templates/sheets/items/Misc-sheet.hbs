@@ -1,63 +1,29 @@
 <form class="{{cssClass}} item-sheet misc" autocomplete="off">
-    <script>
-        if (typeof inputs === 'undefined') {
-            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-        }
-        inputs.forEach(input => {
-            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-        });
+  <script>
+      if (typeof inputs === 'undefined') {
+        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+      }
+      inputs.forEach(input => {
+        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+      });
     </script>
-    <header class="sheet-header">
-        <div class="sheet-header-1">
-            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
-            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.MiscSheet.Name"}}">{{data.system.name}}</textarea>
-        </div>
-    </header>
+  <header class="sheet-header">
+    {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
+  </header>
 
-    {{!-- Sheet Body --}}
-    <main class="sheet-body">
-        <table class="sheet-main">
-            <tr class="top">
-                <td class="miscQuantity">
-                    <label>{{localize "FI.MiscSheet.Quantity"}}</label>
-                    <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize "FI.MiscSheet.Quantity"}}"/>
-                </td>
-                <td class="miscWeight">
-                    <label>{{localize "FI.MiscSheet.Weight"}}</label>
-                    <input type="number" name="system.weight" value="{{data.system.weight}}" title="{{localize "FI.MiscSheet.WeightDescription"}}"/>
-                    {{localize "FI.MiscSheet.WeightUnit"}}
-                </td>
-            </tr>
-            <tr class="bottom">
-                <td class="miscPrice">
-                    <label>{{localize "FI.MiscSheet.Price"}}</label>
-                    <input type="number" name="system.price" value="{{data.system.price}}" title="{{localize "FI.MiscSheet.Price"}}" placeholder="{{localize "FI.MiscSheet.Price"}}"/>
-                    <i class="fa-duotone fa-coins"></i>
-                </td>
-                <td class="miscRarity">
-                    <label>{{localize "FI.MiscSheet.Rarity"}}</label>
-                    <input type="text" name="system.rarity" value="{{data.system.rarity}}" title="{{localize "FI.MiscSheet.Rarity"}}" list="rarity" placeholder="{{localize "FI.MiscSheet.Rarity"}}"/>
-                    <datalist id="rarity">
-                        <option value="{{localize "FI.Rarity.Common"}}" title="Common"/>
-                        <option value="{{localize "FI.Rarity.Uncommon"}}" title="Uncommon"/>
-                        <option value="{{localize "FI.Rarity.Special"}}" title="Special"/>
-                        <option value="{{localize "FI.Rarity.Rare"}}" title="Rare"/>
-                        <option value="{{localize "FI.Rarity.Unique"}}" title="Unique"/>
-                        <option value="{{localize "FI.Rarity.Legendary"}}" title="Legendary"/>
-                        <option value="{{localize "FI.Rarity.Genesis"}}" title="Genesis"/>
-                        <option value="{{localize "FI.Rarity.Artifact"}}" title="Artifact"/>
-                    </datalist>
-                </td>
-            </tr>
-        </table>
-        <section class="sheet-description" data-tab="description">
-            <label>{{localize "FI.MiscSheet.Description"}}</label>
-            {{editor
-                data.system.description
-                target="system.description"
-                button=true
-                editable=editable
-            }}
-        </section>
-    </main>
+  {{!-- Sheet Body --}}
+  <main class="sheet-body">
+    {{> "systems/firardfortressdev/templates/parts/items/details.hbs"
+    cssClassPrefix="misc"
+    quantityLabel="FI.MiscSheet.Quantity"
+    weightLabel="FI.MiscSheet.Weight"
+    weightDescription="FI.MiscSheet.WeightDescription"
+    weightUnit="FI.MiscSheet.WeightUnit"
+    priceLabel="FI.MiscSheet.Price"
+    priceUnit="FI.MiscSheet.PriceUnit"
+    rarityLabel="FI.MiscSheet.Rarity" }}
+    <section class="sheet-description">
+      {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
+    </section>
+  </main>
 </form>

@@ -1,0 +1,63 @@
+<div class="rolls-label">
+  <label>{{localize "FI.WeaponSheet.Rolls"}}</label>
+  <a
+    class="item-roll rollable"
+    title="{{localize ' FI.System.Roll'}}"
+    data-type="Weapon"
+  ><i class="fa-duotone fa-dice-d20"></i></a>
+</div>
+<div class="rolls">
+  {{#each data.system.roll as |roll|}}
+    <div class="roll">
+      <input
+        class="number"
+        type="number"
+        name="system.roll.{{@index}}.dice"
+        value="{{roll.dice}}"
+        title="{{localize '
+      FI.WeaponSheet.Dice'}}"
+      />
+      <input
+        class="dice"
+        name="system.roll.{{@index}}.type"
+        value="{{roll.type}}"
+        title="{{localize '
+      FI.WeaponSheet.DiceType'}}"
+        list="diceTypes"
+      />
+      <datalist id="diceTypes">
+        <option value="d4" />
+        <option value="d6" />
+        <option value="d8" />
+        <option value="d10" />
+        <option value="d12" />
+        <option value="d20" />
+        <option value="d100" />
+      </datalist>
+      <span>+</span>
+      <input
+        class="number"
+        type="number"
+        name="system.roll.{{@index}}.bonus"
+        value="{{roll.bonus}}"
+        title="{{localize '
+      FI.WeaponSheet.Bonus'}}"
+      />
+      <input
+        class="text"
+        type="text"
+        name="system.roll.{{@index}}.damageType"
+        value="{{roll.damageType}}"
+        title="{{localize ' FI.WeaponSheet.DamageType'}}"
+      />
+      <button
+        class="roll-delete"
+        title="{{localize ' FI.System.Delete'}}"
+        data-index="{{@index}}"
+      ><i class="fas fa-trash"></i></button>
+    </div>
+  {{/each}}
+</div>
+<button class="item-add" title="{{localize 'FI.System.Add'}}"><i
+    class="fas fa-plus"
+  ></i></button>

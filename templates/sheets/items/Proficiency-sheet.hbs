@@ -1,90 +1,34 @@
 <form class="{{cssClass}} item-sheet proficiency" autocomplete="off">
-    <script>
-        if (typeof inputs === 'undefined') {
-            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-        }
-        inputs.forEach(input => {
-            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-        });
+  <script>
+      if (typeof inputs === 'undefined') {
+        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+      }
+      inputs.forEach(input => {
+        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+      });
     </script>
-    <header class="sheet-header">
-        <div class="sheet-header-1">
-            <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.name}}"/>
-            <textarea type="text" name="system.name" value="{{data.system.name}}" placeholder="{{localize "FI.ProficiencySheet.Name"}}">{{data.system.name}}</textarea>
-        </div>
-    </header>
-    
-    {{!-- Sheet Body --}}
-    <main class="sheet-body">
-        <table class="sheet-main">
-            <tr class="top">
-                <td class="proficiencyType" colspan="2">
-                    <label>{{localize "FI.ProficiencySheet.ProficiencyType"}}</label>
-                    <div class="proficiencyTypeDiv" title="{{localize "FI.ProficiencySheet.ProficiencyType"}}">
-                        <i class="fas fa-magic"></i>
-                        <input type="text" name="system.proficiencyType" value="{{data.system.proficiencyType}}" list="proficiencyTypes" title="{{localize "FI.ProficiencySheet.ProficiencyType"}}"/>
-                        <script>
-                            var descriptionButton = document.createElement('i');
-                            var proficiencyTypeList = document.querySelector('#proficiencyTypes');
-                            var translatedProficiencyTypes = [];
-                            for (let i = 0; i < proficiencyTypeList.options.length; i++) {
-                                translatedProficiencyTypes.push(game.i18n.localize(`FI.ProficiencyType.${proficiencyTypeList.options[i].title}`));
-                            }
-                            descriptionButton.classList.add('fas', 'fa-regular', 'fa-circle-question');
-                            descriptionButton.title = '';
-                            descriptionButton.addEventListener('mouseover', () => {
-                                const proficiencyType = document.querySelector('input[name="system.proficiencyType"]').value;
-                                if (translatedProficiencyTypes.includes(proficiencyType)) {
-                                    const title = proficiencyTypeList.querySelector(`option[value="${proficiencyType}"]`).title;
-                                    const description = game.i18n.localize(`FI.ProficiencyType.Label.${title}`);
-                                    descriptionButton.title = description;
-                                } else {
-                                    descriptionButton.title = game.i18n.localize('FI.ProficiencyType.Label.Custom');
-                                }
-                            });
-                            document.querySelector('.proficiencyTypeDiv').appendChild(descriptionButton);
-                        </script>
-                        <datalist id="proficiencyTypes">
-                            <option value="{{localize "FI.ProficiencyType.Physical"}}" title="Physical"/>
-                            <option value="{{localize "FI.ProficiencyType.Social"}}" title="Social"/>
-                            <option value="{{localize "FI.ProficiencyType.Mental"}}" title="Mental"/>
-                        </datalist>
-                    </div>
-                </td>
-            </tr>
-            <tr class="bottom">
-                <td class="stat">
-                    <label>{{localize "FI.Stat.Label"}}</label>
-                    <select name="system.stat" value="{{data.system.stat}}">
-                        <option value="None">{{localize "FI.Stat.None"}}</option>
-                        <option value="STR">{{localize "FI.Stat.STR"}}</option>
-                        <option value="DEX">{{localize "FI.Stat.DEX"}}</option>
-                        <option value="CON">{{localize "FI.Stat.CON"}}</option>
-                        <option value="INT">{{localize "FI.Stat.INT"}}</option>
-                        <option value="WIS">{{localize "FI.Stat.WIS"}}</option>
-                        <option value="CHA">{{localize "FI.Stat.CHA"}}</option>
-                        <option value="LUK">{{localize "FI.Stat.LUK"}}</option>
-                        <option value="WIL">{{localize "FI.Stat.WIL"}}</option>
-                        <option value="HON">{{localize "FI.Stat.HON"}}</option>
-                        <script>
-                            document.querySelector('select[name="system.stat"]').value = '{{data.system.stat}}';
-                        </script>
-                    </select>
-                </td>
-                <td class="value">
-                    <label>{{localize "FI.System.Bonus"}}</label>
-                    <input type="text" name="system.value" value="{{data.system.value}}"/>
-                </td>
-            </tr>
-        </table>
-        <section class="sheet-description">
-            <label>{{localize "FI.ProficiencySheet.Description"}}</label>
-            {{editor
-                data.system.description
-                target="system.description"
-                button=true
-                editable=editable
-            }}
-        </section>
-    </main>
+  <header class="sheet-header">
+    {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
+  </header>
+
+  {{!-- Sheet Body --}}
+  <main class="sheet-body">
+    <table class="sheet-main">
+      {{> "systems/firardfortressdev/templates/parts/items/typeInput.hbs"
+      cssClass="proficiencyType"
+      labelKey="FI.ProficiencySheet.ProficiencyType"
+      divClass="proficiencyTypeDiv"
+      iconClass="fa-shield"
+      inputName="system.proficiencyType"
+      inputValue= data.system.proficiencyType
+      datalistId="proficiencyTypes"
+      tooltipKey="FI.ProficiencySheet.ProficiencyType"
+      localizePrefix="FI.ProficiencyType"
+      fallbackLocalizationKey="FI.ProficiencyType.Label.Custom" }}
+      {{> "systems/firardfortressdev/templates/parts/items/statInput.hbs"}}
+    </table>
+    <section class="sheet-description">
+      {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
+    </section>
+  </main>
 </form>

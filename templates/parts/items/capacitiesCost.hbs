@@ -1,0 +1,56 @@
+<tr>
+  {{#if (or (eq data.type "Hybrid") (eq data.type "Transformation") (eq data.type "Spell"))}}
+  <td class="MPCost">
+    <label>{{localize "FI.HybridSheet.MPCost"}}</label>
+    <input type="number" name="system.mpCost" value="{{data.system.mpCost}}" title="{{localize "
+      FI.HybridSheet.MPCost"}}" />
+    <label>{{localize "FI.System.MP"}}</label>
+  </td>
+  {{/if}}
+  {{#if (or (eq data.type "Hybrid") (eq data.type "Transformation") (eq data.type "Skill"))}}
+  <td class="SPCost">
+    <label>{{localize "FI.HybridSheet.SPCost"}}</label>
+    <input type="number" name="system.spCost" value="{{data.system.spCost}}" title="{{localize "
+      FI.HybridSheet.SPCost"}}" />
+    <label>{{localize "FI.System.SP"}}</label>
+  </td>
+  {{/if}}
+{{#if (or (eq data.type "Hybrid") (eq data.type "Transformation"))}}
+  </tr>
+  <tr>
+{{/if}}
+{{#if (or (eq data.type "Hybrid") (eq data.type "Transformation"))}}
+  <td class="HPCost">
+    <label>{{localize "FI.HybridSheet.HPCost"}}</label>
+    <input type="number" name="system.hpCost" value="{{data.system.hpCost}}" title="{{localize "
+      FI.HybridSheet.HPCost"}}" />
+    <label>{{localize "FI.System.HP"}}</label>
+  </td>
+  <td class="otherCost">
+    <label>{{localize "FI.HybridSheet.OtherCost"}}</label>
+    <input type="text" name="system.otherCost" value="{{data.system.otherCost}}" title="{{localize "
+      FI.HybridSheet.OtherCost"}}" />
+  </td>
+{{/if}}
+{{#if (or (eq data.type "Hybrid") (eq data.type "Transformation"))}}
+</tr>
+<tr>
+{{/if}}
+{{#if (or (eq data.type "Hybrid") (eq data.type "Skill") (eq data.type "Spell"))}}
+  <td class="range" {{#if (eq data.type "Hybrid")}}colspan="2"{{/if}}>
+    <div>
+      <p>{{localize "FI.System.Min"}}</p>
+      <label>{{localize "FI.HybridSheet.HybridRange"}}</label>
+      <p>{{localize "FI.System.Max"}}</p>
+    </div>
+    <div>
+      <input type="number" name="system.range.min" value="{{data.system.range.min}}" />
+      <span>-</span>
+      <input type="number" name="system.range.max" value="{{data.system.range.max}}" />
+    </div>
+  </td>
+{{/if}}
+</tr>
+{{#if (or (eq data.type "Hybrid") (eq data.type "Spell") (eq data.type "Skill"))}}
+{{> "systems/firardfortressdev/templates/parts/items/statInput.hbs"}}
+{{/if}}

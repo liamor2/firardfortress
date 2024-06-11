@@ -1,71 +1,73 @@
 <form class="{{cssClass}} item-sheet adventure-dice" autocomplete="off">
-    <script>
-        if (typeof inputs === 'undefined') {
-            var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-        }
-        inputs.forEach(input => {
-            input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-        });
-    </script>
-    <header class="sheet-header">
-        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.group}}" width="5px" height="5px"/>
-        <h1>{{data.name}}</h1>
-        <div>
-            <label>{{localize "FI.Adventure.GroupLabel"}}</label>
-            {{#if isGM}}
-                <input type="text" name="system.group" value="{{data.system.group}}"/>
-            {{else}}
-                <input type="text" name="system.group" value="{{data.system.group}}" disabled/>
-            {{/if}}
-        </div>
-    </header>
-    <div class="sheet-body">
-        <div class="sheet-left">
-            <label>{{localize "FI.Adventure.heroBalance"}}</label>
-            {{#if isGM}}
-                <input type="number" name="system.heroBalance" value="{{data.system.heroBalance}}"/>
-            {{else}}
-                <input type="number" name="system.heroBalance" value="{{data.system.heroBalance}}" disabled/>
-            {{/if}}
-        </div>
-        <div class="sheet-center">
-            <label>{{localize "FI.Adventure.AdventureRollLabel"}}</label>
-            <a class="item-roll rollable" title="{{localize "FI.Adventure.Roll"}}" data-roll="AdventureDiceTable"><i class="fa-duotone fa-dice-d8"></i></a>
-        </div>
-        <div class="sheet-right">
-            <label>{{localize "FI.Adventure.GMBalance"}}</label>
-            {{#if isGM}}
-                <input type="number" name="system.GMBalance" value="{{data.system.GMBalance}}"/>
-            {{else}}
-                <input type="number" name="system.GMBalance" value="{{data.system.GMBalance}}" disabled/>
-            {{/if}}
-        </div>
-        <div class="sheet-bottom">
-            <fieldset class="clock-frame">
-                <legend>{{localize "FI.Adventure.AdventureDiceBalance"}}</legend>
-                <div class="clock" data-segments="{{data.system.total}}">
-                    {{#each data.system.segments}}
-                        {{#if this}}
-                            <meter class="clock-segment filled">
-                                <label for="system.segments.{{@index}}">{{@index}}/{{../data.system.total}}</label>
-                            </meter>
-                        {{else}}
-                            <meter class="clock-segment">
-                                <label for="system.segments.{{@index}}">{{@index}}/{{../data.system.total}}</label>
-                            </meter>
-                        {{/if}}
-                    {{/each}}
-                </div>
-                <script>
-                    var segmentAngle = 360 / {{data.system.total}};
-                    var segments = document.querySelector('div.clock').dataset.segments;
-                    document.querySelectorAll('meter.clock-segment').forEach((segment, index) => {
-                        segment.style.setProperty('--segmentAngle', segmentAngle + 'deg');
-                        segment.style.setProperty('--angle', segmentAngle + 'deg');
-                        segment.style.setProperty('--index', index);
-                    });
-                </script>
-            </fieldset>
-        </div>
+  <script>
+    if (typeof inputs === 'undefined') {
+      var inputs = document.querySelectorAll('input:not([type="checkbox"])');
+    }
+    inputs.forEach(input => {
+      input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
+    });
+  </script>
+  <header class="sheet-header">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.system.group}}" width="5px"
+      height="5px" />
+    <h1>{{data.name}}</h1>
+    <div>
+      <label>{{localize "FI.Adventure.GroupLabel"}}</label>
+      {{#if isGM}}
+      <input type="text" name="system.group" value="{{data.system.group}}" />
+      {{else}}
+      <input type="text" name="system.group" value="{{data.system.group}}" disabled />
+      {{/if}}
     </div>
+  </header>
+  <div class="sheet-body">
+    <div class="sheet-left">
+      <label>{{localize "FI.Adventure.heroBalance"}}</label>
+      {{#if isGM}}
+      <input type="number" name="system.heroBalance" value="{{data.system.heroBalance}}" />
+      {{else}}
+      <input type="number" name="system.heroBalance" value="{{data.system.heroBalance}}" disabled />
+      {{/if}}
+    </div>
+    <div class="sheet-center">
+      <label>{{localize "FI.Adventure.AdventureRollLabel"}}</label>
+      <a class="item-roll rollable" title="{{localize " FI.Adventure.Roll"}}" data-roll="AdventureDiceTable"><i
+          class="fa-duotone fa-dice-d8"></i></a>
+    </div>
+    <div class="sheet-right">
+      <label>{{localize "FI.Adventure.GMBalance"}}</label>
+      {{#if isGM}}
+      <input type="number" name="system.GMBalance" value="{{data.system.GMBalance}}" />
+      {{else}}
+      <input type="number" name="system.GMBalance" value="{{data.system.GMBalance}}" disabled />
+      {{/if}}
+    </div>
+    <div class="sheet-bottom">
+      <fieldset class="clock-frame">
+        <legend>{{localize "FI.Adventure.AdventureDiceBalance"}}</legend>
+        <div class="clock" data-segments="{{data.system.total}}">
+          {{#each data.system.segments}}
+          {{#if this}}
+          <meter class="clock-segment filled">
+            <label for="system.segments.{{@index}}">{{@index}}/{{../data.system.total}}</label>
+          </meter>
+          {{else}}
+          <meter class="clock-segment">
+            <label for="system.segments.{{@index}}">{{@index}}/{{../data.system.total}}</label>
+          </meter>
+          {{/if}}
+          {{/each}}
+        </div>
+        <script>
+          var segmentAngle = 360 / {{ data.system.total }};
+          var segments = document.querySelector('div.clock').dataset.segments;
+          document.querySelectorAll('meter.clock-segment').forEach((segment, index) => {
+            segment.style.setProperty('--segmentAngle', segmentAngle + 'deg');
+            segment.style.setProperty('--angle', segmentAngle + 'deg');
+            segment.style.setProperty('--index', index);
+          });
+        </script>
+      </fieldset>
+    </div>
+  </div>
 </form>

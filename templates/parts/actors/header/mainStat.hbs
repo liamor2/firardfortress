@@ -1,84 +1,84 @@
 <div class="stat-container header-right">
-    <div class="stat label">
-        <p>{{localize "FI.System.Value"}}</p>
-        <span>/</span>
-        <p>{{localize "FI.System.Temp"}}</p>
-        <span>/</span>
-        <p>{{localize "FI.System.Max"}}</p>
-    </div>
-    <label>
-        <i class="fa-solid fa-heart-half-stroke"></i>
-        {{localize "FI.System.HP"}}
-    </label>
-    <div class="bar HPbar">
-        <div class="barValue HPbarValue"></div>
-        <div class="barValue barTemp HPbarTemp"></div>
-    </div>
-    <div class="stat">
-        <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}"/>
-        <span>/</span>
-        <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}" min="0"/>
-        <span>/</span>
-        <input type="number" name="system.HP.max" value="{{data.system.HP.max}}"/>
-    </div>
-    <label>
-        <img src="systems/firardfortress/icons/mana.png" alt="MP"/>
-        {{localize "FI.System.MP"}}
-    </label>
-    <div class="bar MPbar">
-        <div class="barValue MPbarValue"></div>
-        <div class="barValue barTemp MPbarTemp"></div>
-    </div>
-    <div class="stat">
-        <input type="number" name="system.MP.value" value="{{data.system.MP.value}}" max="{{data.system.MP.max}}"/>
-        <span>/</span>
-        <input type="number" name="system.MP.temp" value="{{data.system.MP.temp}}" min="0"/>
-        <span>/</span>
-        <input type="number" name="system.MP.max" value="{{data.system.MP.max}}"/>
-    </div>
-    <label>
-        <i class="fa-solid fa-bolt"></i>
-        {{localize "FI.System.SP"}}
-    </label>
-    <div class="bar SPbar">
-        <div class="barValue SPbarValue"></div>
-        <div class="barValue barTemp SPbarTemp"></div>
-    </div>
-    <div class="stat">
-        <input type="number" name="system.SP.value" value="{{data.system.SP.value}}" max="{{data.system.SP.max}}"/>
-        <span>/</span>
-        <input type="number" name="system.SP.temp" value="{{data.system.SP.temp}}" min="0"/>
-        <span>/</span>
-        <input type="number" name="system.SP.max" value="{{data.system.SP.max}}"/>
-    </div>
-    <label>
-        <i class="fa-duotone fa-shield-halved"></i>
-        {{localize "FI.System.PA"}}
-    </label>
-    <div class="bar PAbar">
-        <div class="barValue PAbarValue"></div>
-        <div class="barValue barTemp PAbarTemp"></div>
-    </div>
-    <div class="stat">
-        <input type="number" name="system.PA.value" value="{{data.system.PA.value}}" max="{{data.system.PA.max}}"/>
-        <span>/</span>
-        <input type="number" name="system.PA.temp" value="{{data.system.PA.temp}}"/>
-        <span>/</span>
-        <input type="number" name="system.PA.max" value="{{data.system.PA.max}}" disabled/>
-    </div>
-    <label>
-        <img src="systems/firardfortress/icons/magicShield.png" alt="MA"/>
-        {{localize "FI.System.MA"}}
-    </label>
-    <div class="bar MAbar">
-        <div class="barValue MAbarValue"></div>
-        <div class="barValue barTemp MAbarTemp"></div>
-    </div>
-    <div class="stat">
-        <input type="number" name="system.MA.value" value="{{data.system.MA.value}}" max="{{data.system.MA.max}}"/>
-        <span>/</span>
-        <input type="number" name="system.MA.temp" value="{{data.system.MA.temp}}" min="0"/>
-        <span>/</span>
-        <input type="number" name="system.MA.max" value="{{data.system.MA.max}}" disabled/>
-    </div>
+  <div class="stat label">
+    <p>{{localize "FI.System.Value"}}</p>
+    <span>/</span>
+    <p>{{localize "FI.System.Temp"}}</p>
+    <span>/</span>
+    <p>{{localize "FI.System.Max"}}</p>
+  </div>
+  <label>
+    <i class="fa-solid fa-heart-half-stroke"></i>
+    {{localize "FI.System.HP"}}
+  </label>
+  <div class="bar HPbar">
+    <div class="barValue HPbarValue"></div>
+    <div class="barValue barTemp HPbarTemp"></div>
+  </div>
+  <div class="stat">
+    <input type="number" name="system.HP.value" value="{{data.system.HP.value}}" max="{{data.system.HP.max}}" />
+    <span>/</span>
+    <input type="number" name="system.HP.temp" value="{{data.system.HP.temp}}" min="0" />
+    <span>/</span>
+    <input type="number" name="system.HP.max" value="{{data.system.HP.max}}" />
+  </div>
+  <label>
+    <img src="systems/firardfortress/icons/mana.png" alt="MP" />
+    {{localize "FI.System.MP"}}
+  </label>
+  <div class="bar MPbar">
+    <div class="barValue MPbarValue"></div>
+    <div class="barValue barTemp MPbarTemp"></div>
+  </div>
+  <div class="stat">
+    <input type="number" name="system.MP.value" value="{{data.system.MP.value}}" max="{{data.system.MP.max}}" />
+    <span>/</span>
+    <input type="number" name="system.MP.temp" value="{{data.system.MP.temp}}" min="0" />
+    <span>/</span>
+    <input type="number" name="system.MP.max" value="{{data.system.MP.max}}" />
+  </div>
+  <label>
+    <i class="fa-solid fa-bolt"></i>
+    {{localize "FI.System.SP"}}
+  </label>
+  <div class="bar SPbar">
+    <div class="barValue SPbarValue"></div>
+    <div class="barValue barTemp SPbarTemp"></div>
+  </div>
+  <div class="stat">
+    <input type="number" name="system.SP.value" value="{{data.system.SP.value}}" max="{{data.system.SP.max}}" />
+    <span>/</span>
+    <input type="number" name="system.SP.temp" value="{{data.system.SP.temp}}" min="0" />
+    <span>/</span>
+    <input type="number" name="system.SP.max" value="{{data.system.SP.max}}" />
+  </div>
+  <label>
+    <i class="fa-duotone fa-shield-halved"></i>
+    {{localize "FI.System.PA"}}
+  </label>
+  <div class="bar PAbar">
+    <div class="barValue PAbarValue"></div>
+    <div class="barValue barTemp PAbarTemp"></div>
+  </div>
+  <div class="stat">
+    <input type="number" name="system.PA.value" value="{{data.system.PA.value}}" max="{{data.system.PA.max}}" />
+    <span>/</span>
+    <input type="number" name="system.PA.temp" value="{{data.system.PA.temp}}" />
+    <span>/</span>
+    <input type="number" name="system.PA.max" value="{{data.system.PA.max}}" {{#if (eq data.type "NPC")}}{{else}}disabled{{/if}} />
+  </div>
+  <label>
+    <img src="systems/firardfortress/icons/magicShield.png" alt="MA" />
+    {{localize "FI.System.MA"}}
+  </label>
+  <div class="bar MAbar">
+    <div class="barValue MAbarValue"></div>
+    <div class="barValue barTemp MAbarTemp"></div>
+  </div>
+  <div class="stat">
+    <input type="number" name="system.MA.value" value="{{data.system.MA.value}}" max="{{data.system.MA.max}}" />
+    <span>/</span>
+    <input type="number" name="system.MA.temp" value="{{data.system.MA.temp}}" min="0" />
+    <span>/</span>
+    <input type="number" name="system.MA.max" value="{{data.system.MA.max}}" {{#if (eq data.type "NPC")}}{{else}}disabled{{/if}} />
+  </div>
 </div>

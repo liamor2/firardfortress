@@ -1,0 +1,37 @@
+<tr class="top">
+  <td class="{{cssClass}}" colspan="2">
+    <label>{{localize labelKey}}</label>
+    <div class="{{divClass}}" title="{{localize tooltipKey}}">
+      <i class="fas {{iconClass}}"></i>
+      <input type="text" name="{{inputName}}" value="{{inputValue}}" list="{{datalistId}}"
+        title="{{localize tooltipKey}}" />
+      <script>
+        var descriptionButton = document.createElement('i'); var typeList =
+          document.querySelector('#{{datalistId}}'); var translatedTypes = []; for
+          (let i = 0; i < typeList.options.length; i++) {
+          translatedTypes.push(game.i18n.localize(`{{localizePrefix}}.${typeList.options[i].title}`));
+        } descriptionButton.classList.add('fas', 'fa-regular',
+          'fa-circle-question'); descriptionButton.title = '';
+        descriptionButton.addEventListener('mouseover', () => {
+          const typeValue =
+            document.querySelector('input[name="{{inputName}}"]').value; if
+            (translatedTypes.includes(typeValue)) {
+              const title =
+                typeList.querySelector(`option[value="${typeValue}"]`).title; const
+                  description = game.i18n.localize(`{{localizePrefix}}.Label.${title}`);
+            descriptionButton.title = description;
+          } else {
+            descriptionButton.title =
+            game.i18n.localize('{{fallbackLocalizationKey}}');
+          }
+        });
+        document.querySelector('.{{divClass}}').appendChild(descriptionButton);
+      </script>
+      <datalist id="{{datalistId}}">
+        {{#each itemOptions}}
+        <option value="{{localize this.value}}" title="{{this.title}}" />
+        {{/each}}
+      </datalist>
+    </div>
+  </td>
+</tr>

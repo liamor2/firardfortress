@@ -5,369 +5,403 @@
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet header.header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
-    margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
+  margin-top: 15px;
 }
 
 form.actor-sheet header img.profile-img {
-    height: 100%;
-    width: auto;
-    max-width: 150px;
+  height: 100%;
+  width: auto;
+  max-width: 150px;
 }
 
 form.actor-sheet header div.header-top-left div input {
-    width: 100%;
-    max-width: 150px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 100%;
+  max-width: 150px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.actor-sheet header div.header-left {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    width: 85%;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
 }
 
 form.actor-sheet header div.header-left table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.actor-sheet header div.header-left table tr td select {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.actor-sheet header div.header-left table tr td input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.actor-sheet header div.header-left table tr.header-bottom td label {
-    width: 100%;
-    font-size: 1em;
+  width: 100%;
+  font-size: 1em;
 }
 
 form.actor-sheet header div.header-left table tr.header-bottom td input {
-    width: 80%;
-    font-size: 1.2em;
+  width: 80%;
+  font-size: 1.2em;
 }
 
 form.actor-sheet header div.header-left table tr.header-bottom td.weight label {
-    width: 45%;
-    font-size: 0.65em;
+  width: 45%;
+  font-size: 0.65em;
 }
 
 form.actor-sheet header div.header-left table tr.header-bottom td.weight input {
-    width: 30%;
-    font-size: 1em;
+  width: 30%;
+  font-size: 1em;
 }
 
 form.actor-sheet header {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 form.actor-sheet header div.bar {
-    position: relative;
-    width: 100%;
-    height: 9px;
-    padding: 1px;
-    border: 1px solid #0000001f;
-    border-radius: 5px;
-    margin: 2px 0;
+  position: relative;
+  width: 100%;
+  height: 9px;
+  padding: 1px;
+  border: 1px solid #0000001f;
+  border-radius: 5px;
+  margin: 2px 0;
 }
 
 form.actor-sheet header div.bar div.barValue {
-    position: absolute;
-    height: 5px;
-    border-radius: 5px;
+  position: absolute;
+  height: 5px;
+  border-radius: 5px;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barTemp {
-    z-index: 1;
+  z-index: 1;
 }
 
-form.actor-sheet header div.stat-container div.bar.HPbar{
-    background-color: #ff00002f;
+form.actor-sheet header div.stat-container div.bar.HPbar {
+  background-color: #ff00002f;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.HPbarValue {
-    background-color: #ff0000;
-    width: 100%;
+  background-color: #ff0000;
+  width: 100%;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.HPbarTemp {
-    background-color: #a10000;
-    width: 0%;
+  background-color: #a10000;
+  width: 0%;
 }
 
 form.actor-sheet header div.stat-container div.bar.MPbar {
-    background-color: #0000ff2f;
+  background-color: #0000ff2f;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.MPbarValue {
-    background-color: #0000ff;
-    width: 100%;
+  background-color: #0000ff;
+  width: 100%;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.MPbarTemp {
-    background-color: #0000a1;
-    width: 0%;
+  background-color: #0000a1;
+  width: 0%;
 }
 
 form.actor-sheet header div.stat-container div.bar.SPbar {
-    background-color: #00ff002f;
+  background-color: #00ff002f;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.SPbarValue {
-    background-color: #00ff00;
-    width: 100%;
+  background-color: #00ff00;
+  width: 100%;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.SPbarTemp {
-    background-color: #00a100;
-    width: 0%;
+  background-color: #00a100;
+  width: 0%;
 }
 
 form.actor-sheet header div.stat-container div.bar.PAbar {
-    background-color: #ffff002f;
+  background-color: #ffff002f;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.PAbarValue {
-    background-color: #ffff00;
-    width: 100%;
+  background-color: #ffff00;
+  width: 100%;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.PAbarTemp {
-    background-color: #a1a100;
-    width: 0%;
+  background-color: #a1a100;
+  width: 0%;
 }
 
 form.actor-sheet header div.stat-container div.bar.MAbar {
-    background-color: #ff00ff2f;
+  background-color: #ff00ff2f;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.MAbarValue {
-    background-color: #ff00ff;
-    width: 100%;
+  background-color: #ff00ff;
+  width: 100%;
 }
 
 form.actor-sheet header div.stat-container div.bar div.barValue.MAbarTemp {
-    background-color: #a100a1;
-    width: 0%;
+  background-color: #a100a1;
+  width: 0%;
 }
 
 form.actor-sheet header div.bar div.barValue.weightBarValue {
-    background-color: #000000;
-    width: 100%;
+  background-color: #000000;
+  width: 100%;
 }
 
 form.actor-sheet header div.stat-container div.stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
 }
 
 form.actor-sheet header div.stat-container div.stat.label {
-    font-size: small;
+  font-size: small;
 }
 
 form.actor-sheet header div.header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 130px;
-    width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 130px;
+  width: 95%;
 }
 
 form.actor-sheet header div.header-top div.header-top-left {
-    display: block;
-    align-items: center;
-    width: 33%;
+  display: block;
+  align-items: center;
+  width: 33%;
 }
 
 form.actor-sheet header div.header-top div.header-top-right {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 66%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 66%;
 }
 
 form.actor-sheet.NPC-sheet header div.header-top div.header-top-right {
-    width: 50%;
+  width: 50%;
 }
 
 form.actor-sheet header div.header-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 form.actor-sheet header div.header-bottom {
-    display: block;
-    align-items: center;
-    width: 95%;
-    margin-top: 40px;
+  display: block;
+  align-items: center;
+  width: 95%;
+  margin-top: 40px;
 }
 
 form.actor-sheet header div.header-bottom table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.actor-sheet header div.header-bottom table tr {
-    border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 form.actor-sheet header div.header-bottom table tr td {
-    padding: 5px;
-    border: black 1px solid;
+  padding: 5px;
+  border: black 1px solid;
 }
 
 form.actor-sheet header div.header-bottom table tr td.stat-input div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50%;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50%;
+  width: 100%;
 }
 
 form.actor-sheet header div.header-bottom table tr td.stat-input div.mainStat {
-    width: 150px;
+  width: 150px;
 }
 
 form.actor-sheet header div.header-bottom table tr td.stat-input div .stat {
-    padding: 0 5px;
-    border-right: #00000059 1px solid;
+  padding: 0 5px;
+  border-right: #00000059 1px solid;
 }
 
-form.actor-sheet header div.header-bottom table tr td.stat-input div .stat:last-child {
-    width: 20px;
-    border-right: none;
+form.actor-sheet
+  header
+  div.header-bottom
+  table
+  tr
+  td.stat-input
+  div
+  .stat:last-child {
+  width: 20px;
+  border-right: none;
 }
 
-form.actor-sheet header div.header-bottom table tr td.stat-input div .stat input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+form.actor-sheet
+  header
+  div.header-bottom
+  table
+  tr
+  td.stat-input
+  div
+  .stat
+  input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
-form.actor-sheet header div.header-bottom table tr td.stat-input div .stat input:focus {
-    outline: none;
+form.actor-sheet
+  header
+  div.header-bottom
+  table
+  tr
+  td.stat-input
+  div
+  .stat
+  input:focus {
+  outline: none;
 }
 
 form.actor-sheet header div.header-bottom table tr td.stat-input div .stat p {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-    color: #a10000;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
+  color: #a10000;
 }
 
 form.actor-sheet header div.header-right {
-    justify-content: space-between;
-    align-items: center;
-    width: 15%;
+  justify-content: space-between;
+  align-items: center;
+  width: 15%;
 }
 
 form.actor-sheet header div.header-right label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 form.actor-sheet header div.header-right label svg {
-    height: 17px;
-    width: auto;
+  height: 17px;
+  width: auto;
 }
 
 form.actor-sheet header div.header-right label img {
-    height: 17px;
-    width: auto;
-    border: none;
+  height: 17px;
+  width: auto;
+  border: none;
 }
 
 .tox-statusbar__branding {
-    display: none;
+  display: none;
 }
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* nav */
 /* ----------------------------------------------------------------------------------------------------------- */
 
+nav.sheet-tabs.tabs {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
+}
+
 nav.sheet-tabs.tabs ul {
-    width: 100%;
-    display: flex;
-    list-style-type: none;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
 }
 
 nav.sheet-tabs.tabs ul li {
-    margin: 0 7px;
+  margin: 0 7px;
+}
+
+nav.sheet-tabs.tabs ul li img {
+  height: 20px;
+  width: auto;
+  max-width: 20px;
+  border: none;
+  margin: 0 1px;
+  cursor: pointer;
+  transform: translateY(-2px) rotate(90deg);
+  vertical-align: middle;
+  opacity: 0;
 }
 
 main {
-    overflow: hidden;
+  overflow: hidden;
 }
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* body */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 label.container-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 label.container-label p {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-    text-shadow: #000000 1px 1px;
-    color: #a10000;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
+  text-shadow: #000000 1px 1px;
+  color: #a10000;
 }
 
 /* ----------------------------------------------------------------------------------------------------------- */
@@ -375,2524 +409,2520 @@ label.container-label p {
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet section div.main-tab {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.actor-sheet section div.main-tab table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
-    border: none;
-    background-color: transparent;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
+  border: none;
+  background-color: transparent;
 }
 
 form.actor-sheet section div.main-tab table div.container {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.actor-sheet section div.main-tab table table tr {
-    border-bottom: black 1px solid;
+  border-bottom: black 1px solid;
 }
 
 form.actor-sheet section div.main-tab table table tr:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-form.actor-sheet section div.main-tab table table tr th.image{
-    width: 30px;
-    height: 30px;
+form.actor-sheet section div.main-tab table table tr th.image {
+  width: 30px;
+  height: 30px;
 }
 
-form.actor-sheet section div.main-tab table table tr th{
-    width: 100%;
-    height: 30px;
+form.actor-sheet section div.main-tab table table tr th {
+  width: 100%;
+  height: 30px;
 }
 
 form.actor-sheet section div.main-tab table table tr th.small {
-    width: 30px;
-    font-size: 0.7em;
-    transform: rotate(25deg);
-    text-indent: -20px;
-    padding-top: 13px;
+  width: 30px;
+  font-size: 0.7em;
+  transform: rotate(25deg);
+  text-indent: -20px;
+  padding-top: 13px;
 }
 
 form.actor-sheet section div.main-tab table table tr th.medium {
-    width: 100px;
+  width: 100px;
 }
 
 form.actor-sheet section div.main-tab table table tr td {
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
 }
 
 form.actor-sheet section div.main-tab table table tr td i.item-checkbox {
-    transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 form.actor-sheet section div.main-tab table table tr td i.item-checkbox:hover {
-    color: #a10000;
-    cursor: pointer;
-    transform: scale(1.2);
-    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.267));
-    transition: all 0.1s ease-in-out;
+  color: #a10000;
+  cursor: pointer;
+  transform: scale(1.2);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.267));
+  transition: all 0.1s ease-in-out;
 }
 
 form.actor-sheet section div.main-tab table table.equipment-tab tr td.armor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 form.actor-sheet section div.main-tab table div.weapon {
-    background-color: rgba(255, 0, 0, 0.3);
-    border-radius: 10px;
+  background-color: rgba(255, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
 form.actor-sheet section div.main-tab table div.equipment {
-    background-color: rgba(117, 117, 117, 0.3);
-    border-radius: 10px;
+  background-color: rgba(117, 117, 117, 0.3);
+  border-radius: 10px;
 }
 
 form.actor-sheet section div.main-tab table div.misc {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 form.actor-sheet section div.main-tab table div.money {
-    background-color: rgba(255, 251, 0, 0.3);
-    border-radius: 10px;
+  background-color: rgba(255, 251, 0, 0.3);
+  border-radius: 10px;
 }
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* proficiency tab */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet section div.proficiency-tab {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.actor-sheet section div.proficiency-tab table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.actor-sheet section div.proficiency-tab table tr {
-    border-bottom: black 1px solid;
+  border-bottom: black 1px solid;
 }
 
 form.actor-sheet section div.proficiency-tab table tr:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-form.actor-sheet section div.proficiency-tab table tr th{
-    width: 100%;
-    height: 30px;
+form.actor-sheet section div.proficiency-tab table tr th {
+  width: 100%;
+  height: 30px;
 }
 
 form.actor-sheet section div.proficiency-tab table tr th.small {
-    width: 30px;
-    font-size: 0.7em;
-    transform: rotate(25deg);
-    text-indent: -20px;
-    padding-top: 13px;
+  width: 30px;
+  font-size: 0.7em;
+  transform: rotate(25deg);
+  text-indent: -20px;
+  padding-top: 13px;
 }
 
-form.actor-sheet section div.proficiency-tab table tr th.image{
-    width: 30px;
-    height: 30px;
+form.actor-sheet section div.proficiency-tab table tr th.image {
+  width: 30px;
+  height: 30px;
 }
 
 form.actor-sheet section div.proficiency-tab table tr td {
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
 }
 
 form.actor-sheet section div.proficiency-tab table tr td.small {
-    width: 30px;
+  width: 30px;
 }
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* spell tab */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet section div.spell-tab {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.actor-sheet section div.spell-tab div.spell-table {
-    background-color: rgba(0, 174, 255, 0.30);
-    border-radius: 10px;
-    margin: 5px 0px;
+  background-color: rgba(0, 174, 255, 0.3);
+  border-radius: 10px;
+  margin: 5px 0px;
 }
 
 form.actor-sheet section div.spell-tab div.skill-table {
-    background-color: rgba(0, 255, 0, 0.30);
-    border-radius: 10px;
-    margin: 5px 0px;
+  background-color: rgba(0, 255, 0, 0.3);
+  border-radius: 10px;
+  margin: 5px 0px;
 }
 
 form.actor-sheet section div.spell-tab div.hybrid-table {
-    background-color: rgba(0, 255, 234, 0.30);
-    border-radius: 10px;
-    margin: 5px 0px;
-    width: 100%;
+  background-color: rgba(0, 255, 234, 0.3);
+  border-radius: 10px;
+  margin: 5px 0px;
+  width: 100%;
 }
 
 form.actor-sheet section div.spell-tab div.transformation-table {
-    background-color: rgba(204, 0, 255, 0.30);
-    border-radius: 10px;
-    margin: 5px 0px;
+  background-color: rgba(204, 0, 255, 0.3);
+  border-radius: 10px;
+  margin: 5px 0px;
 }
 
 form.actor-sheet section div.spell-tab div.passif-table {
-    background-color: rgba(255, 0, 76, 0.30);
-    border-radius: 10px;
-    margin: 5px 0px;
+  background-color: rgba(255, 0, 76, 0.3);
+  border-radius: 10px;
+  margin: 5px 0px;
 }
 
 form.actor-sheet section div.spell-tab div {
-    width: 49%;
+  width: 49%;
 }
 
 form.actor-sheet section div.spell-tab table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.actor-sheet section div.spell-tab table tr {
-    border-bottom: black 1px solid;
+  border-bottom: black 1px solid;
 }
 
 form.actor-sheet section div.spell-tab table tr:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-form.actor-sheet section div.spell-tab table tr th{
-    width: 100%;
-    height: 30px;
+form.actor-sheet section div.spell-tab table tr th {
+  width: 100%;
+  height: 30px;
 }
 
 form.actor-sheet section div.spell-tab table tr th.small {
-    width: 30px;
-    font-size: 0.7em;
-    transform: rotate(25deg);
-    text-indent: -20px;
-    padding-top: 13px;
+  width: 30px;
+  font-size: 0.7em;
+  transform: rotate(25deg);
+  text-indent: -20px;
+  padding-top: 13px;
 }
 
-form.actor-sheet section div.spell-tab table tr th.image{
-    width: 30px;
-    height: 30px;
+form.actor-sheet section div.spell-tab table tr th.image {
+  width: 30px;
+  height: 30px;
 }
 
 form.actor-sheet section div.spell-tab table tr td {
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
 }
 
 form.actor-sheet section div.spell-tab table tr td.small {
-    width: 30px;
+  width: 30px;
 }
 
 form.actor-sheet section div.spell-tab table tr td div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* notes tab */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.actor-sheet section div.description div.description-language {
-    width: 66%;
-    height: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff1f;
-    font-size: 1.2em;
+  width: 66%;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff1f;
+  font-size: 1.2em;
 }
 
 form.actor-sheet section div.description div.description-alignment {
-    width: 180px;
-    height: 210px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff1f;
-    font-size: 0.6em;
-    overflow: hidden;
+  width: 180px;
+  height: 210px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff1f;
+  font-size: 0.6em;
+  overflow: hidden;
 }
 
 form.actor-sheet section div.description div.description-alignment label {
-    padding: 0 0 0 5px;
+  padding: 0 0 0 5px;
 }
 
 form.actor-sheet section div.description div.description-alignment label p {
-    font-size: 1em;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    text-shadow: #000000 1px 1px;
-    color: #6c0000;
-    font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  text-shadow: #000000 1px 1px;
+  color: #6c0000;
+  font-weight: bold;
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds {
-    width: 160px;
-    height: 160px;
-    padding: 5px;
-    margin: 5px;
-    position: relative;
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds {
+  width: 160px;
+  height: 160px;
+  padding: 5px;
+  margin: 5px;
+  position: relative;
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div#marker-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding: 0px;
-    margin: 0px;
-    border-radius: 5px;
-    background-image: url('../../../systems/firardfortress/icons/alignmentBackground.png');
-    background-color: #0000001f;
-    transition: all 0.1s ease-in-out;
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div#marker-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 5px;
+  background-image: url("../../../systems/firardfortress/icons/alignmentBackground.png");
+  background-color: #0000001f;
+  transition: all 0.1s ease-in-out;
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div#marker-container div#marker {
-    position: relative;
-    background-color: black;
-    width: 14px;
-    height: 14px;
-    border-radius: 100px;
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div#marker-container
+  div#marker {
+  position: relative;
+  background-color: black;
+  width: 14px;
+  height: 14px;
+  border-radius: 100px;
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div p {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 1em;
-    font-weight: bold;
-    text-shadow: #000000 1px 1px;
-    color: #ffffff;
-    text-transform: uppercase;
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div
+  p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: #000000 1px 1px;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#lawful {
-    color: #00ff00;
-    text-align: left;
-    transform: translate(10px, 65px);
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div
+  p#lawful {
+  color: #00ff00;
+  text-align: left;
+  transform: translate(10px, 65px);
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#chaotic {
-    color: #ff0000;
-    text-align: right;
-    transform: translate(-10px, 65px);
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div
+  p#chaotic {
+  color: #ff0000;
+  text-align: right;
+  transform: translate(-10px, 65px);
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#good {
-    color: #ffff00;
-    text-align: center;
-    transform: rotate(90deg) translate(20px, -15px);
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div
+  p#good {
+  color: #ffff00;
+  text-align: center;
+  transform: rotate(90deg) translate(20px, -15px);
 }
 
-form.actor-sheet section div.description div.description-alignment div#marker-bounds div p#evil {
-    color: #0000ff;
-    text-align: center;
-    transform: rotate(90deg) translate(120px, -15px);
+form.actor-sheet
+  section
+  div.description
+  div.description-alignment
+  div#marker-bounds
+  div
+  p#evil {
+  color: #0000ff;
+  text-align: center;
+  transform: rotate(90deg) translate(120px, -15px);
 }
 
 form.actor-sheet section div.description table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
-    border: none;
-    background-color: transparent;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
+  border: none;
+  background-color: transparent;
 }
 
 form.actor-sheet section div.description table div.container {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.actor-sheet section div.description table tr {
-    border-bottom: black 1px solid;
+  border-bottom: black 1px solid;
 }
 
 form.actor-sheet section div.description table tr:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
-form.actor-sheet section div.description table tr th.image{
-    width: 30px;
-    height: 30px;
+form.actor-sheet section div.description table tr th.image {
+  width: 30px;
+  height: 30px;
 }
 
-form.actor-sheet section div.description table tr th{
-    width: 100%;
-    height: 30px;
+form.actor-sheet section div.description table tr th {
+  width: 100%;
+  height: 30px;
 }
 
 form.actor-sheet section div.description table tr th.small {
-    width: 30px;
-    font-size: 0.7em;
-    transform: rotate(25deg);
-    text-indent: -20px;
-    padding-top: 13px;
+  width: 30px;
+  font-size: 0.7em;
+  transform: rotate(25deg);
+  text-indent: -20px;
+  padding-top: 13px;
 }
 
 form.actor-sheet section div.description table tr th.medium {
-    width: 100px;
+  width: 100px;
 }
 
 form.actor-sheet section div.description table tr td {
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
 }
 
 form.actor-sheet section div.description table tr td i.item-checkbox {
-    transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 form.actor-sheet section div.description table tr td i.item-checkbox:hover {
-    color: #a10000;
-    cursor: pointer;
-    transform: scale(1.2);
-    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.267));
-    transition: all 0.1s ease-in-out;
+  color: #a10000;
+  cursor: pointer;
+  transform: scale(1.2);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.267));
+  transition: all 0.1s ease-in-out;
 }
 
 form.actor-sheet section div.description {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff1f;
-    resize: none;
-    overflow: auto;
-    font-size: 1.2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff1f;
+  resize: none;
+  overflow: auto;
+  font-size: 1.2em;
 }
 
 form.actor-sheet section div.description div.description-left {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    width: 49%;
-    height: 100%;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  width: 49%;
+  height: 100%;
 }
 
 form.actor-sheet section div.description div.description-right {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    width: 49%;
-    height: 100%;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  width: 49%;
+  height: 100%;
 }
 
 form.actor-sheet section div.description div.description-notes {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 form.actor-sheet section div.description div.description-language tr {
-    border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 form.actor-sheet section div.description div.description-language tr td {
-    padding: 5px;
-    border: black 1px solid;
+  padding: 5px;
+  border: black 1px solid;
 }
 
 form.actor-sheet section div.description div.description-language tr td input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* footer */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form footer.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 35px;
-    display: block;
-    padding: 10px 20px;
-    background-color: #ffffff75;
-    border-top: 1px solid #ccc;
-    text-shadow: #000000;
-    align-items: right;
-    font-size: 0.7em;
-    z-index: 2;
-    transform: translateX(-8px);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 35px;
+  display: block;
+  padding: 10px 20px;
+  background-color: #ffffff75;
+  border-top: 1px solid #ccc;
+  text-shadow: #000000;
+  align-items: right;
+  font-size: 0.7em;
+  z-index: 2;
+  transform: translateX(-8px);
 }
 
 form footer span.sheet-footer-right {
-    display: flex;
-    justify-content: right;
-    align-items: center;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 form footer span.sheet-footer-right input {
-    width: 12px;
-    height: 12px;
+  width: 12px;
+  height: 12px;
 }
 
 .window-resizable-handle {
-    z-index: 3;
+  z-index: 3;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Item sheet */
 /* ----------------------------------------------------------------------------------------------------------- */
 
+form.item-sheet header table tr td.notes aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+form.item-sheet header table tr td.notes aside p {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
+  text-shadow: #000000 1px 1px;
+  color: #a10000;
+}
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* AdventureDice */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.adventure-dice {
-    width: 500px;
-    height: 280px;
+  width: 500px;
+  height: 280px;
 }
 
 form.item-sheet.adventure-dice header.header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.adventure-dice div.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.adventure-dice div.sheet-body div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 33%;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  text-align: center;
 }
 
 form.item-sheet.adventure-dice div.sheet-body div label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 form.item-sheet.adventure-dice div.sheet-body div input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame {
-    display: inline-flex;
-    flex-direction: column;
-    border-radius: 2%;
-    position: relative;
-    justify-content: center;
-    width: fit-content;
-    padding: 1em;
-    gap: 1em;
+form.item-sheet.adventure-dice
+  div.sheet-body
+  div.sheet-bottom
+  fieldset.clock-frame {
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 2%;
+  position: relative;
+  justify-content: center;
+  width: fit-content;
+  padding: 1em;
+  gap: 1em;
 }
 
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame legend {
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 1em;
+form.item-sheet.adventure-dice
+  div.sheet-body
+  div.sheet-bottom
+  fieldset.clock-frame
+  legend {
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 1em;
 }
 
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock {
-    position: relative;
-    background-color: transparent;
-    width: 4em;
-    height: 4em;
-    overflow: hidden;
-    border: medium solid #666666;
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 0 0 0.5em #666666;
+form.item-sheet.adventure-dice
+  div.sheet-body
+  div.sheet-bottom
+  fieldset.clock-frame
+  div.clock {
+  position: relative;
+  background-color: transparent;
+  width: 4em;
+  height: 4em;
+  overflow: hidden;
+  border: medium solid #666666;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 0.5em #666666;
 }
 
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock label {
-    display: none;
+form.item-sheet.adventure-dice
+  div.sheet-body
+  div.sheet-bottom
+  fieldset.clock-frame
+  div.clock
+  label {
+  display: none;
 }
 
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock meter.clock-segment {
-    appearance: none;
-    display: inline-block;
-    box-sizing: border-box;
-    font-size: inherit;
-    margin: 0;
-    width: 2em;
-    height: 2em;
-    border: solid #666666;
-    border-width: 0.001em;
-    background-color: #eee;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform-origin: 0 2em;
-    transform:rotate(calc(var(--index) * var(--angle))) skewY(calc(var(--segmentAngle) - 90deg)) scale(1.5);
+form.item-sheet.adventure-dice
+  div.sheet-body
+  div.sheet-bottom
+  fieldset.clock-frame
+  div.clock
+  meter.clock-segment {
+  appearance: none;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: inherit;
+  margin: 0;
+  width: 2em;
+  height: 2em;
+  border: solid #666666;
+  border-width: 0.001em;
+  background-color: #eee;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 0 2em;
+  transform: rotate(calc(var(--index) * var(--angle)))
+    skewY(calc(var(--segmentAngle) - 90deg)) scale(1.5);
 }
 
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock meter.filled {
-    background-color: #000000;
+form.item-sheet.adventure-dice
+  div.sheet-body
+  div.sheet-bottom
+  fieldset.clock-frame
+  div.clock
+  meter.filled {
+  background-color: #000000;
 }
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Spells */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.spell {
-    width: 400px;
-    height: 800px;
+  width: 400px;
+  height: 800px;
 }
 
 form.item-sheet.spell header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.spell header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(0, 174, 255, 0.555);
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(0, 174, 255, 0.555);
 }
 
 form.item-sheet.spell header.sheet-header div.sheet-header-1 img {
-    height: 65%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 65%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.spell header.sheet-header div.sheet-header-1 textarea {
-    width: 100%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 100%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
-form.item-sheet.spell header.sheet-header table.sheet-header-2 table.sheet-header-2-1 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+form.item-sheet.spell
+  header.sheet-header
+  table.sheet-header-2
+  table.sheet-header-2-1 {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 tbody {
-    background-color: rgba(0, 174, 255, 0.11);
+  background-color: rgba(0, 174, 255, 0.11);
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td.range div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
 }
 
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td.range div span {
-    border: none;
-    margin: 0 3px;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+form.item-sheet.spell
+  header.sheet-header
+  table.sheet-header-2
+  tr
+  td.range
+  div
+  span {
+  border: none;
+  margin: 0 3px;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.spell main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls-label {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls-label label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 100%;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls-label button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(151, 151, 151, 0.356);
-    border-bottom: #858585 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(151, 151, 151, 0.356);
+  border-bottom: #858585 1px solid;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll:last-child {
-    border-bottom: none;
-    border-radius: 0 0 5px 5px;
+  border-bottom: none;
+  border-radius: 0 0 5px 5px;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll:first-child {
-    border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll input {
-    border: rgba(128, 128, 128, 0.301) 1px solid;
+  border: rgba(128, 128, 128, 0.301) 1px solid;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll input.number {
-    width: 13%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 13%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
-form.item-sheet.spell section.sheet-tab div.rolls div.roll input.number:first-child {
-    text-align: right;
+form.item-sheet.spell
+  section.sheet-tab
+  div.rolls
+  div.roll
+  input.number:first-child {
+  text-align: right;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll span {
-    width: 5%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+  width: 5%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll input.text {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 30%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll input.dice {
-    width: 22%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 22%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
 form.item-sheet.spell section.sheet-tab div.rolls div.roll button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.spell section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.spell section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* skills */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.skill {
-    width: 450px;
-    height: 800px;
+  width: 450px;
+  height: 800px;
 }
 
 form.item-sheet.skill header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.skill header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(0, 255, 0, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(0, 255, 0, 0.555);
 }
 
 form.item-sheet.skill header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.skill header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
-form.item-sheet.skill header.sheet-header table.sheet-header-2 table.sheet-header-2-1 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+form.item-sheet.skill
+  header.sheet-header
+  table.sheet-header-2
+  table.sheet-header-2-1 {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 tbody {
-    background-color: rgba(30, 255, 0, 0.11);
+  background-color: rgba(30, 255, 0, 0.11);
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td.range div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
 }
 
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td.range div span {
-    border: none;
-    margin: 0 3px;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+form.item-sheet.skill
+  header.sheet-header
+  table.sheet-header-2
+  tr
+  td.range
+  div
+  span {
+  border: none;
+  margin: 0 3px;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.skill main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls-label {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls-label label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 100%;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls-label button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(151, 151, 151, 0.356);
-    border-bottom: #858585 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(151, 151, 151, 0.356);
+  border-bottom: #858585 1px solid;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll:last-child {
-    border-bottom: none;
-    border-radius: 0 0 5px 5px;
+  border-bottom: none;
+  border-radius: 0 0 5px 5px;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll:first-child {
-    border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll input {
-    border: rgba(128, 128, 128, 0.301) 1px solid;
+  border: rgba(128, 128, 128, 0.301) 1px solid;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll input.number {
-    width: 13%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 13%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
-form.item-sheet.skill section.sheet-tab div.rolls div.roll input.number:first-child {
-    text-align: right;
+form.item-sheet.skill
+  section.sheet-tab
+  div.rolls
+  div.roll
+  input.number:first-child {
+  text-align: right;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll span {
-    width: 5%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+  width: 5%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll input.text {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 30%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll input.dice {
-    width: 22%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 22%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
 form.item-sheet.skill section.sheet-tab div.rolls div.roll button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.skill section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.skill section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Hybrid */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.hybrid {
-    width: 500px;
-    height: 800px;
+  width: 500px;
+  height: 800px;
 }
 
 form.item-sheet.hybrid header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.hybrid header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(0, 255, 234, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(0, 255, 234, 0.555);
 }
 
 form.item-sheet.hybrid header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.hybrid header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.hybrid header.sheet-header table.sheet-header-2 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 table.sheet-header-2-1 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+form.item-sheet.hybrid
+  header.sheet-header
+  table.sheet-header-2
+  table.sheet-header-2-1 {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tbody {
-    background-color: rgba(0, 255, 179, 0.11);
+  background-color: rgba(0, 255, 179, 0.11);
 }
 
 form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td.range div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.8em;
+form.item-sheet.hybrid
+  header.sheet-header
+  table.sheet-header-2
+  tr
+  td.range
+  div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
 }
 
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td.range div span {
-    border: none;
-    margin: 0 3px;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+form.item-sheet.hybrid
+  header.sheet-header
+  table.sheet-header-2
+  tr
+  td.range
+  div
+  span {
+  border: none;
+  margin: 0 3px;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.hybrid main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls-label {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls-label label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 100%;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls-label button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(151, 151, 151, 0.356);
-    border-bottom: #858585 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(151, 151, 151, 0.356);
+  border-bottom: #858585 1px solid;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll:last-child {
-    border-bottom: none;
-    border-radius: 0 0 5px 5px;
+  border-bottom: none;
+  border-radius: 0 0 5px 5px;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll:first-child {
-    border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input {
-    border: rgba(128, 128, 128, 0.301) 1px solid;
+  border: rgba(128, 128, 128, 0.301) 1px solid;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.number {
-    width: 13%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 13%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.number:first-child {
-    text-align: right;
+form.item-sheet.hybrid
+  section.sheet-tab
+  div.rolls
+  div.roll
+  input.number:first-child {
+  text-align: right;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll span {
-    width: 5%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+  width: 5%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.text {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 30%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.dice {
-    width: 22%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 22%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
 form.item-sheet.hybrid section.sheet-tab div.rolls div.roll button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.hybrid section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.hybrid section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Transformation */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.transformation {
-    width: 450px;
-    height: 800px;
+  width: 450px;
+  height: 800px;
 }
 
 form.item-sheet.transformation header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.transformation header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(204, 0, 255, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(204, 0, 255, 0.555);
 }
 
 form.item-sheet.transformation header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.transformation header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.transformation table.sheet-main {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.transformation table.sheet-main tbody {
-    background-color: rgba(225, 0, 255, 0.11);
+  background-color: rgba(225, 0, 255, 0.11);
 }
 
 form.item-sheet.transformation table.sheet-main tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.transformation table.sheet-main tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.transformation table.sheet-main tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.transformation table.sheet-main tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.transformation main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.transformation section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.transformation section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Passif */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.passif {
-    width: 400px;
-    height: 800px;
+  width: 400px;
+  height: 800px;
 }
 
 form.item-sheet.passif header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.passif header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(255, 0, 76, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(255, 0, 76, 0.555);
 }
 
 form.item-sheet.passif header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.passif header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.passif table.sheet-main {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.passif table.sheet-main tbody {
-    background-color: rgba(255, 0, 76, 0.11);
+  background-color: rgba(255, 0, 76, 0.11);
 }
 
 form.item-sheet.passif table.sheet-main tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.passif table.sheet-main tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.passif table.sheet-main tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.passif table.sheet-main tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.passif main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.passif section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.passif section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Proficiency */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.proficiency {
-    width: 400px;
-    height: 800px;
+  width: 400px;
+  height: 800px;
 }
 
 form.item-sheet.proficiency header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.proficiency header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(255, 123, 0, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(255, 123, 0, 0.555);
 }
 
 form.item-sheet.proficiency header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.proficiency header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.proficiency table.sheet-main {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.proficiency table.sheet-main tbody {
-    background-color: rgba(255, 102, 0, 0.11);
+  background-color: rgba(255, 102, 0, 0.11);
 }
 
 form.item-sheet.proficiency table.sheet-main tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.proficiency table.sheet-main tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.proficiency table.sheet-main tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.proficiency table.sheet-main tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.proficiency main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.proficiency section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.proficiency section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Money */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.money {
-    width: 450px;
-    height: 800px;
+  width: 450px;
+  height: 800px;
 }
 
 form.item-sheet.money header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.money header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(255, 230, 0, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(255, 230, 0, 0.555);
 }
 
 form.item-sheet.money header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000);
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.money header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.money table.sheet-main {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.money table.sheet-main tbody {
-    background-color: rgba(255, 238, 0, 0.11);
+  background-color: rgba(255, 238, 0, 0.11);
 }
 
 form.item-sheet.money table.sheet-main tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.money table.sheet-main tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.money table.sheet-main tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.money table.sheet-main tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.money table.sheet-main tr td.moneyValue {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 form.item-sheet.money table.sheet-main tr td.moneyValue label {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.money table.sheet-main tr td.moneyValue input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.money table.sheet-main tr td.moneyValue p {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.money main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.money section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.money section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Misc */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.misc {
-    width: 400px;
-    height: 800px;
+  width: 400px;
+  height: 800px;
 }
 
 form.item-sheet.misc header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.misc header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(255, 255, 255, 0.555)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(255, 255, 255, 0.555);
 }
 
 form.item-sheet.misc header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.misc header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.misc table.sheet-main {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.misc table.sheet-main tbody {
-    background-color: rgba(255, 255, 255, 0.11);
+  background-color: rgba(255, 255, 255, 0.11);
 }
 
 form.item-sheet.misc table.sheet-main tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.misc table.sheet-main tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.misc table.sheet-main tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.misc table.sheet-main tr td input {
-    width: 60%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 60%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.misc main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.misc section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.misc section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Weapon */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.weapon {
-    width: 400px;
-    height: 800px;
+  width: 400px;
+  height: 800px;
 }
 
 form.item-sheet.weapon header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.weapon header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(228, 0, 0, 0.705)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(228, 0, 0, 0.705);
 }
 
 form.item-sheet.weapon header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.weapon header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.weapon table.sheet-header-2 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tbody {
-    background-color: rgba(255, 0, 0, 0.11);
+  background-color: rgba(255, 0, 0, 0.11);
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td.range div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td.range div p {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-
+  width: 30%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td.range div label {
-    width: 40%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-
-
+  width: 40%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td.range div span {
-    width: 15%;
-    border: none;
-    margin: 0 3px;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+  width: 15%;
+  border: none;
+  margin: 0 3px;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td.range div input {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+  width: 30%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.weapon table.sheet-header-2 tr td.range div p.unit {
-    width: 10%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-
+  width: 10%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.weapon section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.weapon section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
+
 form.item-sheet.weapon section.sheet-tab div.rolls-label {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls-label label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 100%;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls-label button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(151, 151, 151, 0.356);
-    border-bottom: #858585 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(151, 151, 151, 0.356);
+  border-bottom: #858585 1px solid;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll:last-child {
-    border-bottom: none;
-    border-radius: 0 0 5px 5px;
+  border-bottom: none;
+  border-radius: 0 0 5px 5px;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll:first-child {
-    border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll input {
-    border: rgba(128, 128, 128, 0.301) 1px solid;
+  border: rgba(128, 128, 128, 0.301) 1px solid;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.number {
-    width: 13%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 13%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.number:first-child {
-    text-align: right;
+form.item-sheet.weapon
+  section.sheet-tab
+  div.rolls
+  div.roll
+  input.number:first-child {
+  text-align: right;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll span {
-    width: 5%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
+  width: 5%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.text {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 30%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.dice {
-    width: 22%;
-    background-color: transparent;
-    text-align: left;
-    font-size: 1.2em;
+  width: 22%;
+  background-color: transparent;
+  text-align: left;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon section.sheet-tab div.rolls div.roll button {
-    width: 10%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 10%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon section.sheet-tab table.sheet-main {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponQuantity label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2em;
+form.item-sheet.weapon
+  section.sheet-tab
+  table.sheet-main
+  td.weaponQuantity
+  label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponQuantity input {
-    width: 90%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+form.item-sheet.weapon
+  section.sheet-tab
+  table.sheet-main
+  td.weaponQuantity
+  input {
+  width: 90%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponWeight {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponWeight label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2em;
+form.item-sheet.weapon
+  section.sheet-tab
+  table.sheet-main
+  td.weaponWeight
+  label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponWeight input {
-    width: 70%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+form.item-sheet.weapon
+  section.sheet-tab
+  table.sheet-main
+  td.weaponWeight
+  input {
+  width: 70%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponWeight p {
-    width: 20%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 20%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice label{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2em;
+form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice input{
-    width: 70%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice input {
+  width: 70%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice p{
-    width: 20%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice p {
+  width: 20%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponRarity label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2em;
+form.item-sheet.weapon
+  section.sheet-tab
+  table.sheet-main
+  td.weaponRarity
+  label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2em;
 }
 
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponRarity input {
-    width: 100%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+form.item-sheet.weapon
+  section.sheet-tab
+  table.sheet-main
+  td.weaponRarity
+  input {
+  width: 100%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Equipment */
 /* ----------------------------------------------------------------------------------------------------------- */
 
 form.item-sheet.equipment {
-    width: 400px;
-    height: 800px;
+  width: 400px;
+  height: 800px;
 }
 
 form.item-sheet.equipment header.sheet-header {
-    display: block;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
 form.item-sheet.equipment header.sheet-header div.sheet-header-1 {
-    display: flex;
-    flex-direction: wrap;
-    justify-content: left;
-    align-items: center;
-    width: 120%;
-    margin: 0 10px;
-    padding: 10px 30px;
-    border-radius: 15px 0 0 15px;
-    background-color: rgba(122, 122, 122, 0.705)
+  display: flex;
+  flex-direction: wrap;
+  justify-content: left;
+  align-items: center;
+  width: 120%;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 15px 0 0 15px;
+  background-color: rgba(122, 122, 122, 0.705);
 }
 
 form.item-sheet.equipment header.sheet-header div.sheet-header-1 img {
-    height: 100%;
-    width: auto;
-    max-width: 75px;
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    filter: drop-shadow(0px 0px 5px #000)
+  height: 100%;
+  width: auto;
+  max-width: 75px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  filter: drop-shadow(0px 0px 5px #000);
 }
 
 form.item-sheet.equipment header.sheet-header div.sheet-header-1 textarea {
-    width: 65%;
-    height: 80px;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 2em;
-    font-family: "Signika", sans-serif;
-    resize: none;
+  width: 65%;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Signika", sans-serif;
+  resize: none;
 }
 
 form.item-sheet.equipment table.sheet-header-2 {
-    width: 100%;
-    text-align: center;
-    table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tbody {
-    background-color: rgba(122, 122, 122, 0.11);
+  background-color: rgba(122, 122, 122, 0.11);
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr:last-child {
-    border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr td {
-    padding: 5px;
+  padding: 5px;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr td i.fas {
-    width: 5%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 5%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr td input {
-    width: 80%;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr td.armor-given div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr td.armor-given div input {
-    width: 20%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 20%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.equipment table.sheet-header-2 tr td.armor-given div p {
-    width: 20%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
-
+  width: 20%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 form.item-sheet.equipment main.sheet-body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff1f;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #ffffff1f;
+  border-bottom: 1px solid #ccc;
 }
 
-form.item-sheet.equipment section.sheet-description{
-    width: 100%;
-    height: 150px;
+form.item-sheet.equipment section.sheet-description {
+  width: 100%;
+  height: 150px;
 }
 
 form.item-sheet.equipment section.sheet-tab table.sheet-main td label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2em;
 }
 
 form.item-sheet.equipment section.sheet-tab table.sheet-main td input {
-    width: 90%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 1.2em;
+  width: 90%;
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-.editor{
-    width: 100%;
-    height: 100%;
-    min-height: 150px;
+.editor {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
 }
 
-.editor-content{
-    width: 100%;
-    height: 100%;
-    min-height: 150px;
+.editor-content {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
 }

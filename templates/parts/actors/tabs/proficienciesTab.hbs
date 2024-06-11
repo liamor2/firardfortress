@@ -1,0 +1,75 @@
+<section class="sheet-tab tab" data-tab="proficiencies">
+  <div class="proficiency-tab">
+    <table class="proficiency-table container-label">
+      <tr>
+        <th class="image">{{localize "FI.Proficiency.Image"}}</th>
+        <th>{{localize "FI.Proficiency.Name"}}</th>
+        <th class="medium">{{localize "FI.Proficiency.Stat"}}</th>
+        <th class="medium">{{localize "FI.Proficiency.Bonus"}}</th>
+        <th class="small">{{localize "FI.Proficiency.Roll"}}</th>
+        <th class="small">{{localize "FI.System.Move"}}</th>
+        <th class="small">{{localize "FI.System.Delete"}}</th>
+      </tr>
+      {{#each items as |proficiency index|}}
+        {{#if proficiency.system.isProficiency}}
+          <tr>
+            <td class="edit-item" data-id="{{proficiency._id}}">
+              <img
+                src="{{proficiency.img}}"
+                alt="{{proficiency.system.name}}"
+              />
+            </td>
+            <td class="edit-item" data-id="{{proficiency._id}}">
+              <p>{{proficiency.system.name}}</p>
+            </td>
+            <td class="edit-item medium" data-id="{{proficiency._id}}">
+              <p>{{localize (concat "FI.Stat." proficiency.system.stat)}}</p>
+            </td>
+            <td class="edit-item medium" data-id="{{proficiency._id}}">
+              <p>{{proficiency.system.value}}</p>
+            </td>
+            <td>
+              <a
+                class="item-roll rollable"
+                title="{{localize 'FI.System.Roll'}}"
+                data-id="{{proficiency._id}}"
+                data-label="{{proficiency.system.name}}"
+                data-type="{{proficiency.system.stat}}"
+                data-rollType="Proficiency"
+                data-roll="{{proficiency.system.value}}"
+              ><i class="fa-duotone fa-dice-d20"></i></a>
+            </td>
+            <td>
+              <a
+                class="move small"
+                data-type="up"
+                data-move="Proficiency"
+                data-id="{{proficiency._id}}"
+              ><i class="fa-duotone fa-arrow-up"></i></a>
+              <a
+                class="move small"
+                data-type="down"
+                data-move="Proficiency"
+                data-id="{{proficiency._id}}"
+              ><i class="fa-duotone fa-arrow-down"></i></a>
+            </td>
+            <td>
+              <a
+                class="delete small"
+                data-delete="Proficiency"
+                data-id="{{proficiency._id}}"
+              ><i class="fa-duotone fa-trash"></i></a>
+            </td>
+          </tr>
+        {{/if}}
+      {{/each}}
+      <tr>
+        <td class="add-item" colspan="6">
+          <button class="add" data-add="Proficiency"><i
+              class="fa-duotone fa-plus"
+            ></i></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>

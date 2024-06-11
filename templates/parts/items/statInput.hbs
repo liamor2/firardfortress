@@ -1,0 +1,33 @@
+<tr class="bottom">
+  <td class="stat">
+    <label>{{localize "FI.Stat.Label"}}</label>
+    <select name="system.stat" value="{{data.system.stat}}">
+      <option value="None">{{localize "FI.Stat.None"}}</option>
+      <option value="STR">{{localize "FI.Stat.STR"}}</option>
+      <option value="DEX">{{localize "FI.Stat.DEX"}}</option>
+      <option value="CON">{{localize "FI.Stat.CON"}}</option>
+      <option value="INT">{{localize "FI.Stat.INT"}}</option>
+      <option value="WIS">{{localize "FI.Stat.WIS"}}</option>
+      <option value="CHA">{{localize "FI.Stat.CHA"}}</option>
+      <option value="LUK">{{localize "FI.Stat.LUK"}}</option>
+      <option value="WIL">{{localize "FI.Stat.WIL"}}</option>
+      <option value="HON">{{localize "FI.Stat.HON"}}</option>
+      <script>
+        document.querySelector("select[name='system.stat']").value = "{{data.system.stat}}";
+      </script>
+    </select>
+  </td>
+  <td class="value">
+    <label>{{localize "FI.System.Bonus"}}</label>
+    <input type="number" name="system.value" value="{{data.system.value}}" />
+  </td>
+</tr>
+<tr>
+  <td colspan="2" class="notes">
+    <label>{{localize "FI.System.RollFormula"}}</label>
+    <aside>
+      <p>{{data.system.formula}}</p>
+      <a class="rollable" title="{{localize 'FI.System.Roll'}}" data-type="itemRoll" data-id="{{data._id}}" data-owner="{{data.ownership}}" {{log data}}><i class="fa-duotone fa-dice-d20"></i></a>
+    </aside>
+  </td>
+</tr>
