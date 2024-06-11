@@ -1,0 +1,25 @@
+name: Replace Text
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  text-replace:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      
+      - name: Replace text in files
+        run: |
+          find . -type f -name '*.txt' -exec sed -i 's/firardfortressdev/firardfortress/g' {} +
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Replace firardfortressdev with firardfortress" || echo "No changes to commit"
+          git push
