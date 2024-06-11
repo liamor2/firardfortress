@@ -1,5 +1,5 @@
 {
-  "id": "firardfortress",
+  "id": "firardfortressdev",
   "title": "Firard System: Fortress version Dev",
   "description": "A custom system inspired by many others like DnD5 or Aventures, this system is made to play with friends in a casual and narrative way.",
   "version": "1.0.4",
@@ -14,7 +14,7 @@
       "url": "https://foundryvtt.com"
     }
   ],
-  "esmodules": ["scripts/firardfortress.js", "greensock/esm/all.js"],
+  "esmodules": ["scripts/firardfortressdev.js", "greensock/esm/all.js"],
   "styles": ["styles/styles.css"],
   "languages": [
     {
@@ -32,5 +32,5 @@
     "distance": "2",
     "units": "meters"
   },
-  "background": "systems/firardfortress/assets/background.png"
+  "background": "systems/firardfortressdev/assets/background.png"
 }

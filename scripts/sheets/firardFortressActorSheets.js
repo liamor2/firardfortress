@@ -2,7 +2,7 @@ import { gsap } from "/scripts/greensock/esm/all.js";
 import { Draggable } from "/scripts/greensock/esm/Draggable.js";
 gsap.registerPlugin(Draggable);
 
-export default class firardFortressActorSheet extends ActorSheet {
+export default class firardFortressDevActorSheet extends ActorSheet {
   constructor(...args) {
     super(...args);
 
@@ -13,14 +13,14 @@ export default class firardFortressActorSheet extends ActorSheet {
   get template() {
     console.log(`Firard Fortress | Loading ${this.actor.type} sheet`);
 
-    return `systems/firardfortress/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
+    return `systems/firardfortressdev/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
   }
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       width: 800,
       height: 880,
-      classes: ["firardFortress", "sheet", "item"],
+      classes: ["firardFortressDev", "sheet", "item"],
       tabs: [
         {
           navSelector: ".sheet-tabs",

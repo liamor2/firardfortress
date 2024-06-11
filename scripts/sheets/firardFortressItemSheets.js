@@ -19,16 +19,16 @@ import {
 } from "../logic/dataCalculator.js";
 import { handleRoll } from "../logic/roll.js";
 
-export default class firardFortressItemSheet extends ItemSheet {
+export default class firardFortressDevItemSheet extends ItemSheet {
   get template() {
-    console.log(`firardFortress | Loading ${this.item.type} sheet`);
+    console.log(`firardFortressDev | Loading ${this.item.type} sheet`);
 
-    return `systems/firardfortress/templates/sheets/items/${this.item.type}-sheet.hbs`;
+    return `systems/firardfortressdev/templates/sheets/items/${this.item.type}-sheet.hbs`;
   }
 
   async getData() {
     const data = super.getData();
-    data.config = CONFIG.firardFortress;
+    data.config = CONFIG.firardFortressDev;
     data.isGM = game.user.isGM;
 
     data.itemOptions = prepareOptions(data.item.type);

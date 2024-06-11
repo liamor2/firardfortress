@@ -12,7 +12,7 @@ jobs:
 
       - name: Replace 'firardfortressdev' with 'firardfortress'
         run: |
-          find . -type f \( -name "*.js" -o -name "*.json" -o -name "*.hbs" \) -exec sed -i 's/firardfortressdev/firardfortress/g' {} +
+          find . -type f \( -name "*.js" -o -name "*.json" -o -name "*.hbs" -o -name "*.css" \) -exec sed -i 's/firardfortressdev/firardfortress/g' {} +
 
       - name: Commit changes
         run: |
