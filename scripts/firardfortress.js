@@ -1,6 +1,6 @@
 import firardFortressDevActorSheet from "./sheets/firardFortressDevActorSheets.js";
 import firardFortressDevNPCSheet from "./sheets/firardFortressDevNPCSheets.js";
-import firardFortressDevItemSheet from "./sheets/firardFortressDevItemSheets.js";
+import firardFortressDevItemSheet from "./sheets/firardFortressItemSheets.js";
 import firardFortressDevActor from "./objects/firardFortressDevActor.js";
 
 async function preloadHandlebarsPartials() {
