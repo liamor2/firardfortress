@@ -3,7 +3,7 @@ name: Replace Text
 on:
   push:
     branches:
-      - main  # Set this to your default branch
+      - main
 
 jobs:
   text-replace:
