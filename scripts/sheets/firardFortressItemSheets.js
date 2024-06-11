@@ -23,7 +23,7 @@ export default class firardFortressItemSheet extends ItemSheet {
   get template() {
     console.log(`firardFortress | Loading ${this.item.type} sheet`);
 
-    return `systems/firardfortressdev/templates/sheets/items/${this.item.type}-sheet.hbs`;
+    return `systems/firardfortress/templates/sheets/items/${this.item.type}-sheet.hbs`;
   }
 
   async getData() {

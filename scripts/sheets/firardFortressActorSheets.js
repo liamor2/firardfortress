@@ -13,7 +13,7 @@ export default class firardFortressActorSheet extends ActorSheet {
   get template() {
     console.log(`Firard Fortress | Loading ${this.actor.type} sheet`);
 
-    return `systems/firardfortressdev/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
+    return `systems/firardfortress/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
   }
 
   static get defaultOptions() {
@@ -25,10 +25,10 @@ export default class firardFortressActorSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "main"
-        }
+          initial: "main",
+        },
       ],
-      dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }]
+      dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
     });
   }
 
@@ -124,8 +124,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             name: `${game.i18n.localize("FI.Description.NewLanguage")}`,
             speaking: true,
             reading: true,
-            writing: true
-          }
+            writing: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newLanguage]);
         break;
@@ -140,7 +140,7 @@ export default class firardFortressActorSheet extends ActorSheet {
             mpCost: 0,
             range: {
               min: 0,
-              max: 0
+              max: 0,
             },
             roll: [
               {
@@ -148,12 +148,12 @@ export default class firardFortressActorSheet extends ActorSheet {
                 bonus: 0,
                 damageType: `${game.i18n.localize(
                   "FI.Spell.DefaultDamageType"
-                )}`
-              }
+                )}`,
+              },
             ],
             description: "",
-            isSpell: true
-          }
+            isSpell: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newSpell]);
         break;
@@ -168,7 +168,7 @@ export default class firardFortressActorSheet extends ActorSheet {
             spCost: 0,
             range: {
               min: 0,
-              max: 0
+              max: 0,
             },
             roll: [
               {
@@ -176,12 +176,12 @@ export default class firardFortressActorSheet extends ActorSheet {
                 bonus: 0,
                 damageType: `${game.i18n.localize(
                   "FI.Skill.DefaultDamageType"
-                )}`
-              }
+                )}`,
+              },
             ],
             description: "",
-            isSKill: true
-          }
+            isSKill: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newSkill]);
         break;
@@ -199,7 +199,7 @@ export default class firardFortressActorSheet extends ActorSheet {
             otherCost: "",
             range: {
               min: 0,
-              max: 0
+              max: 0,
             },
             roll: [
               {
@@ -207,12 +207,12 @@ export default class firardFortressActorSheet extends ActorSheet {
                 bonus: 0,
                 damageType: `${game.i18n.localize(
                   "FI.Hybrid.DefaultDamageType"
-                )}`
-              }
+                )}`,
+              },
             ],
             description: "",
-            isHybrid: true
-          }
+            isHybrid: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newHybrid]);
         break;
@@ -231,8 +231,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             hpCost: 0,
             otherCost: "",
             description: "",
-            isTransformation: true
-          }
+            isTransformation: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newTransformation]);
         break;
@@ -245,8 +245,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             passifType: "",
             stat: "None",
             description: "",
-            isPassif: true
-          }
+            isPassif: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newPassif]);
         break;
@@ -259,8 +259,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             proficiencyType: "",
             stat: "None",
             description: "",
-            isProficiency: true
-          }
+            isProficiency: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newProficiency]);
         break;
@@ -278,7 +278,7 @@ export default class firardFortressActorSheet extends ActorSheet {
             value: 0,
             range: {
               min: 0,
-              max: 0
+              max: 0,
             },
             roll: [
               {
@@ -286,16 +286,16 @@ export default class firardFortressActorSheet extends ActorSheet {
                 bonus: 0,
                 damageType: `${game.i18n.localize(
                   "FI.Weapon.DefaultDamageType"
-                )}`
-              }
+                )}`,
+              },
             ],
             description: "",
             quantity: 1,
             weight: 0,
             price: 0,
             rarity: "",
-            isWeapon: true
-          }
+            isWeapon: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newWeapon]);
         break;
@@ -316,8 +316,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             weight: 0,
             price: 0,
             rarity: "",
-            isEquipment: true
-          }
+            isEquipment: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newEquipment]);
         break;
@@ -335,8 +335,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             weight: 0,
             price: 0,
             rarity: "",
-            isMisc: true
-          }
+            isMisc: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newMisc]);
         break;
@@ -351,8 +351,8 @@ export default class firardFortressActorSheet extends ActorSheet {
             localisation: "",
             quantity: 1,
             value: 0,
-            isMoney: true
-          }
+            isMoney: true,
+          },
         };
         this.actor.createEmbeddedDocuments("Item", [newMoney]);
         break;
@@ -527,14 +527,14 @@ export default class firardFortressActorSheet extends ActorSheet {
             } else if (rollType === "Item") {
               this.statRollForItem(html, dataset, mod, stance);
             }
-          }
+          },
         },
         cancel: {
           icon: '<i class="fas fa-times"></i>',
-          label: "Cancel"
-        }
+          label: "Cancel",
+        },
       },
-      default: "confirm"
+      default: "confirm",
     }).render(true);
   }
 
@@ -556,9 +556,9 @@ export default class firardFortressActorSheet extends ActorSheet {
       : "";
     return roll.toMessage({
       speaker: ChatMessage.getSpeaker({
-        actor: this.actor
+        actor: this.actor,
       }),
-      flavor: label
+      flavor: label,
     });
   }
 
@@ -573,33 +573,33 @@ export default class firardFortressActorSheet extends ActorSheet {
     if (rollType == "normal") {
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "advantage") {
       roll = new Roll("2d20kh" + mod);
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "disadvantage") {
       roll = new Roll("2d20kl" + mod);
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "custom") {
       roll = new Roll(rollCustom);
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     }
   }
@@ -612,9 +612,9 @@ export default class firardFortressActorSheet extends ActorSheet {
     if (rollType == "Main") {
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "Item") {
       this.renderItemRollWindow(dataset, "Item");
@@ -631,33 +631,33 @@ export default class firardFortressActorSheet extends ActorSheet {
     if (rollType == "normal") {
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "advantage") {
       roll = new Roll("2d20kh" + mod);
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "disadvantage") {
       roll = new Roll("2d20kl" + mod);
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     } else if (rollType == "custom") {
       roll = new Roll(rollCustom);
       return roll.toMessage({
         speaker: ChatMessage.getSpeaker({
-          actor: this.actor
+          actor: this.actor,
         }),
-        flavor: label
+        flavor: label,
       });
     }
   }
@@ -676,14 +676,14 @@ export default class firardFortressActorSheet extends ActorSheet {
           label: "Confirm",
           callback: (html) => {
             this.renderItemRollMessage(item);
-          }
+          },
         },
         cancel: {
           icon: '<i class="fas fa-times"></i>',
-          label: "Cancel"
-        }
+          label: "Cancel",
+        },
       },
-      default: "confirm"
+      default: "confirm",
     }).render(true);
   }
 
@@ -714,7 +714,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         `FI.${type}.Roll`
       )}</h2> <p>${game.i18n.localize(
         `FI.${type}.RollResult`
-      )} : ${rollString} </p>`
+      )} : ${rollString} </p>`,
     });
   }
 
@@ -734,7 +734,7 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     const updates = itemsOfType.map((item, index) => ({
       _id: item._id,
-      sort: index
+      sort: index,
     }));
 
     this.actor.updateEmbeddedDocuments("Item", updates);
@@ -756,7 +756,7 @@ export default class firardFortressActorSheet extends ActorSheet {
 
     const updates = itemsOfType.map((item, index) => ({
       _id: item._id,
-      sort: index
+      sort: index,
     }));
 
     this.actor.updateEmbeddedDocuments("Item", updates);
@@ -839,22 +839,22 @@ export default class firardFortressActorSheet extends ActorSheet {
         gsap.to(lawfulText, {
           opacity: 1 - this.x / max,
           duration: 0.1,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         gsap.to(chaoticText, {
           opacity: this.x / max,
           duration: 0.1,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         gsap.to(goodText, {
           opacity: 1 - this.y / max,
           duration: 0.1,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         gsap.to(evilText, {
           opacity: this.y / max,
           duration: 0.1,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
       },
       onDragEnd: function () {
@@ -864,7 +864,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         alignment.y = this.y;
 
         actor.update({ "system.alignment": alignment });
-      }
+      },
     });
   }
 
@@ -911,7 +911,7 @@ export default class firardFortressActorSheet extends ActorSheet {
           delay: 0.1,
           width: `${(statValue / statMax) * 100}%`,
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
       } else if (statValue < 0) {
         gsap.to(statBarValue, {
@@ -919,7 +919,7 @@ export default class firardFortressActorSheet extends ActorSheet {
           width: `${(statValue / -statMax) * 100}%`,
           duration: 0.5,
           backgroundColor: "#000000",
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
       }
       if (statTemp < statMax) {
@@ -927,14 +927,14 @@ export default class firardFortressActorSheet extends ActorSheet {
           delay: 0.1,
           width: `${(statTemp / statMax) * 100}%`,
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
       } else if (statTemp >= statMax) {
         gsap.to(statBarTemp, {
           delay: 0.1,
           width: "100%",
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
       }
       if (statMax === 0) {
@@ -942,20 +942,20 @@ export default class firardFortressActorSheet extends ActorSheet {
           delay: 0.1,
           width: "0%",
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         gsap.to(statBarTemp, {
           delay: 0.1,
           width: "0%",
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         gsap.to(statBarMax, {
           delay: 0.1,
           backgroundColor: "#808080",
           opacity: 0.2,
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
       }
     }
@@ -1004,14 +1004,14 @@ export default class firardFortressActorSheet extends ActorSheet {
             duration: 1,
             ease: "power2.inOut",
             yoyo: true,
-            repeat: -1
+            repeat: -1,
           });
         } else {
           gsap.to(weightBarValue, {
             delay: 0.1,
             width: `${(weight.value / maxWeight) * 100}%`,
             duration: 0.5,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
           });
         }
       }
@@ -1028,7 +1028,7 @@ export default class firardFortressActorSheet extends ActorSheet {
     const alignment = data.data.system.alignment;
     const position = {
       x: alignment.x,
-      y: alignment.y
+      y: alignment.y,
     };
     const max = 145;
     const alignmentMarker = this.element.find("#marker")[0];
@@ -1040,24 +1040,24 @@ export default class firardFortressActorSheet extends ActorSheet {
     gsap.to(alignmentMarker, {
       x: position.x,
       y: position.y,
-      duration: 0
+      duration: 0,
     });
 
     gsap.to(lawfulText, {
       opacity: 1 - position.x / max,
-      duration: 0
+      duration: 0,
     });
     gsap.to(chaoticText, {
       opacity: position.x / max,
-      duration: 0
+      duration: 0,
     });
     gsap.to(goodText, {
       opacity: 1 - position.y / max,
-      duration: 0
+      duration: 0,
     });
     gsap.to(evilText, {
       opacity: position.y / max,
-      duration: 0
+      duration: 0,
     });
   }
 
@@ -1089,12 +1089,12 @@ export default class firardFortressActorSheet extends ActorSheet {
         gsap.to(oldActiveImg, {
           opacity: 0,
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         gsap.to(navImg, {
           opacity: 1,
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
         if (activeIndex < oldIndex) {
           gsap.to(ul, {
@@ -1103,7 +1103,7 @@ export default class firardFortressActorSheet extends ActorSheet {
               navBar.offsetWidth / 2 -
               activeLI.offsetWidth / 2,
             duration: 0.5,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
           });
           gsap.fromTo(
             oldActive,
@@ -1111,7 +1111,7 @@ export default class firardFortressActorSheet extends ActorSheet {
               opacity: 1,
               scale: 1,
               display: "block",
-              x: 0
+              x: 0,
             },
             {
               opacity: 0,
@@ -1119,7 +1119,7 @@ export default class firardFortressActorSheet extends ActorSheet {
               display: "none",
               duration: 0.2,
               ease: "power2.inOut",
-              x: 1000
+              x: 1000,
             }
           );
           setTimeout(() => {
@@ -1129,7 +1129,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                 opacity: 0,
                 scale: 0,
                 display: "none",
-                x: -1000
+                x: -1000,
               },
               {
                 opacity: 1,
@@ -1137,7 +1137,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                 display: "block",
                 duration: 0.2,
                 ease: "power2.inOut",
-                x: 0
+                x: 0,
               }
             );
           }, 200);
@@ -1148,7 +1148,7 @@ export default class firardFortressActorSheet extends ActorSheet {
               navBar.offsetWidth / 2 -
               activeLI.offsetWidth / 2,
             duration: 0.5,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
           });
           gsap.fromTo(
             oldActive,
@@ -1156,7 +1156,7 @@ export default class firardFortressActorSheet extends ActorSheet {
               opacity: 1,
               scale: 1,
               display: "block",
-              x: 0
+              x: 0,
             },
             {
               opacity: 0,
@@ -1164,7 +1164,7 @@ export default class firardFortressActorSheet extends ActorSheet {
               display: "none",
               duration: 0.2,
               ease: "power2.inOut",
-              x: -1000
+              x: -1000,
             }
           );
           setTimeout(() => {
@@ -1174,7 +1174,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                 opacity: 0,
                 scale: 0,
                 display: "none",
-                x: 1000
+                x: 1000,
               },
               {
                 opacity: 1,
@@ -1182,7 +1182,7 @@ export default class firardFortressActorSheet extends ActorSheet {
                 display: "block",
                 duration: 0.2,
                 ease: "power2.inOut",
-                x: 0
+                x: 0,
               }
             );
           }, 200);
@@ -1204,7 +1204,7 @@ export default class firardFortressActorSheet extends ActorSheet {
     const activeIndex = tabList.indexOf(activeLI.dataset.tab);
     gsap.to(activeImg, {
       opacity: 1,
-      duration: 0
+      duration: 0,
     });
     gsap.to(ul, {
       x:
@@ -1212,7 +1212,7 @@ export default class firardFortressActorSheet extends ActorSheet {
         navBar.offsetWidth / 2 -
         activeLI.offsetWidth / 2 +
         8,
-      duration: 0
+      duration: 0,
     });
     gsap.fromTo(
       tabContent,
@@ -1220,14 +1220,14 @@ export default class firardFortressActorSheet extends ActorSheet {
         opacity: 0,
         scale: 0,
         display: "none",
-        x: 1000
+        x: 1000,
       },
       {
         opacity: 1,
         scale: 1,
         display: "block",
         duration: 0,
-        x: 0
+        x: 0,
       }
     );
   }
