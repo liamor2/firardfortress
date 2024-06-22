@@ -1,12 +1,4 @@
 <form class="{{cssClass}} item-sheet equipment" autocomplete="off">
-  <script>
-    if (typeof inputs === 'undefined') {
-      var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-    }
-    inputs.forEach(input => {
-      input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-    });
-  </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
     <table class="sheet-header-2">
@@ -20,7 +12,8 @@
       datalistId="equipmentTypes"
       tooltipKey="FI.EquipmentSheet.EquipmentType"
       localizePrefix="FI.EquipmentType"
-      fallbackLocalizationKey="FI.EquipmentType.Label.Custom" }}
+      fallbackLocalizationKey="FI.EquipmentType.Label.Custom"
+      data=data }}
       <tr>
         <td class="equipped">
           <label>{{localize "FI.EquipmentSheet.isEquipped"}}</label>
@@ -29,11 +22,11 @@
         <td class="armor-given">
           <label>{{localize "FI.EquipmentSheet.ArmorGiven"}}</label>
           <div>
-            <input type="number" name="system.PA" value="{{data.system.PA}}" title="{{localize "FI.EquipmentSheet.PArmorGiven"}}" />
-            <p>{{localize "FI.System.PA"}}</p>
+            <input type="number" name="system.PA" value="{{data.system.PA}}" title="{{localize "FI.System.Attributes.PArmorGiven"}}" />
+            <p>{{localize "FI.System.Attributes.PA"}}</p>
             <span>/</span>
-            <input type="number" name="system.MA" value="{{data.system.MA}}" title="{{localize "FI.EquipmentSheet.MArmorGiven"}}" />
-            <p>{{localize "FI.System.MA"}}</p>
+            <input type="number" name="system.MA" value="{{data.system.MA}}" title="{{localize "FI.System.Attributes.MArmorGiven"}}" />
+            <p>{{localize "FI.System.Attributes.MA"}}</p>
           </div>
         </td>
       </tr>
@@ -49,7 +42,7 @@
     <section class="sheet-tab tab" data-tab="main">
       {{> "systems/firardfortressdev/templates/parts/items/details.hbs"
       cssClassPrefix="equipment"
-      quantityLabel="FI.EquipmentSheet.Quantity"
+      quantityLabel="FI.System.Misc.Quantity"
       weightLabel="FI.EquipmentSheet.Weight"
       weightDescription="FI.EquipmentSheet.WeightDescription"
       weightUnit="FI.EquipmentSheet.WeightUnit"

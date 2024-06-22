@@ -14,7 +14,7 @@
       "url": "https://foundryvtt.com"
     }
   ],
-  "esmodules": ["scripts/firardfortressdev.js", "greensock/esm/all.js"],
+  "esmodules": ["scripts/firardfortress.js", "greensock/esm/all.js"],
   "styles": ["styles/styles.css"],
   "languages": [
     {

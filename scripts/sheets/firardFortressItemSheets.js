@@ -1,43 +1,12 @@
 import { gsap } from "/scripts/greensock/esm/all.js";
-import { prepareOptions } from "../logic/prepareItemType.js";
-import {
-  validateAdventureDiceData,
-  validateEquipmentData,
-  validateHybridData,
-  validateMiscData,
-  validateMoneyData,
-  validatePassifData,
-  validateProficiencyData,
-  validateSkillData,
-  validateSpellData,
-  validateTransformationData,
-  validateWeaponData,
-} from "../logic/dataValidator.js";
-import {
-  createAdventureDiceData,
-  createMoneyData,
-} from "../logic/dataCalculator.js";
 import { handleRoll } from "../logic/roll.js";
+import { handleAdd, handleDelete } from "../logic/itemManager.js";
 
-export default class firardFortressDevItemSheet extends ItemSheet {
+export default class firardFortressItemSheet extends ItemSheet {
   get template() {
-    console.log(`firardFortressDev | Loading ${this.item.type} sheet`);
+    console.log(`firardFortress | Loading ${this.item.type} sheet`);
 
     return `systems/firardfortressdev/templates/sheets/items/${this.item.type}-sheet.hbs`;
-  }
-
-  async getData() {
-    const data = super.getData();
-    data.config = CONFIG.firardFortressDev;
-    data.isGM = game.user.isGM;
-
-    data.itemOptions = prepareOptions(data.item.type);
-
-    console.log(data);
-    this.verifyData(data);
-    this.createCalculatedData(data.data.system);
-
-    return data;
   }
 
   static get defaultOptions() {
@@ -67,9 +36,17 @@ export default class firardFortressDevItemSheet extends ItemSheet {
 
     // click listeners
     html.find(".rollable").click(handleRoll);
-    html.find(".item-delete").click(this._onItemDelete.bind(this));
-    html.find(".roll-delete").click(this._onRollDelete.bind(this));
-    html.find(".item-add").click(this._onItemAdd.bind(this));
+    html.find(".item-delete").click(handleDelete);
+    html.find(".item-add").click(handleAdd);
+
+    // input listeners
+    document.querySelectorAll('input:not([type="checkbox"])').forEach(inputField => {
+      inputField.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          inputField.blur();
+        }
+      });
+    });
   }
 
   _onItemDelete(event) {
@@ -79,47 +56,6 @@ export default class firardFortressDevItemSheet extends ItemSheet {
     const item = this.actor.items.get(itemId);
 
     item.delete();
-  }
-
-  _onRollDelete(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-    const item = this.object;
-
-    let rolls = item.system.roll;
-    if (!Array.isArray(rolls)) {
-      rolls = Object.values(rolls);
-    }
-    rolls.splice(dataset.index, 1);
-    item.update({
-      "system.roll": rolls,
-    });
-    this.render();
-  }
-
-  async _onItemAdd(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-    const data = await this.getData();
-
-    switch (dataset.add) {
-      case "spell":
-        this.addSpellRoll(data, "Fire");
-        break;
-      case "skill":
-        this.addSpellRoll(data, "Physical");
-        break;
-      case "hybrid":
-        this.addSpellRoll(data, "Piercing");
-        break;
-      case "weapon":
-        this.addSpellRoll(data, "Slashing");
-        break;
-      default:
-        break;
-    }
   }
 
   _updateObject(event, formData) {
@@ -146,28 +82,5 @@ export default class firardFortressDevItemSheet extends ItemSheet {
 
   _onDragEnter(event) {
     event.preventDefault();
-  }
-
-  createCalculatedData(data) {
-    this.data = {
-      AdventureDice: createAdventureDiceData,
-      Money: createMoneyData,
-    }[this.item.type]?.(data);
-  }
-
-  verifyData(data) {
-    this.data = {
-      AdventureDice: validateAdventureDiceData,
-      Equipment: validateEquipmentData,
-      Hybrid: validateHybridData,
-      Misc: validateMiscData,
-      Money: validateMoneyData,
-      Passif: validatePassifData,
-      Proficiency: validateProficiencyData,
-      Skill: validateSkillData,
-      Spell: validateSpellData,
-      Transformation: validateTransformationData,
-      Weapon: validateWeaponData,
-    }[this.item.type]?.(data);
   }
 }

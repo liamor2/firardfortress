@@ -1,12 +1,16 @@
 function validateField(field, defaultValue) {
   if (typeof field === "object" && field !== null && !Array.isArray(field)) {
-    Object.keys(field).forEach((key) => {
-      field[key] = validateField(field[key], defaultValue[key]);
-    });
-    return field;
+    if (field instanceof Object && !(field instanceof Array)) {
+      const result = {};
+      const keys = Object.keys(defaultValue);
+      keys.forEach((key) => {
+        result[key] = validateField(field[key], defaultValue[key]);
+      });
+      return result;
+    }
   } else {
     return field === null || field === undefined || field === ""
-      ? defaultValue
+      ? (typeof defaultValue === 'object' ? JSON.parse(JSON.stringify(defaultValue)) : defaultValue)
       : field;
   }
 }
@@ -19,36 +23,34 @@ function validateAdventureDiceData(data) {
     total: 3,
   };
 
-  var systemData = data.data.system;
-
-  if (!systemData.group) {
-    systemData.group = defaultValues.group;
+  if (!data.group) {
+    data.group = defaultValues.group;
   }
 
   if (
-    systemData.heroBalance < 0 ||
-    systemData.heroBalance == null ||
-    systemData.heroBalance === ""
+    data.heroBalance < 0 ||
+    data.heroBalance == null ||
+    data.heroBalance === ""
   ) {
-    systemData.heroBalance = defaultValues.heroBalance;
+    data.heroBalance = defaultValues.heroBalance;
   }
 
   if (
-    systemData.GMBalance < 0 ||
-    systemData.GMBalance == null ||
-    systemData.GMBalance === ""
+    data.GMBalance < 0 ||
+    data.GMBalance == null ||
+    data.GMBalance === ""
   ) {
-    systemData.GMBalance = defaultValues.GMBalance;
+    data.GMBalance = defaultValues.GMBalance;
   }
 
-  if (systemData.total !== systemData.heroBalance + systemData.GMBalance) {
-    systemData.total = systemData.heroBalance + systemData.GMBalance;
+  if (data.total !== data.heroBalance + data.GMBalance) {
+    data.total = data.heroBalance + data.GMBalance;
   }
 
-  if (systemData.heroBalance + systemData.GMBalance < 1) {
-    systemData.heroBalance = defaultValues.heroBalance;
-    systemData.GMBalance = defaultValues.GMBalance;
-    systemData.total = systemData.heroBalance + systemData.GMBalance;
+  if (data.heroBalance + data.GMBalance < 1) {
+    data.heroBalance = defaultValues.heroBalance;
+    data.GMBalance = defaultValues.GMBalance;
+    data.total = data.heroBalance + data.GMBalance;
   }
 
   return data;
@@ -68,9 +70,7 @@ function validateEquipmentData(data) {
     equipmentType: "",
   };
 
-  var systemData = data.data.system;
-
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateHybridData(data) {
@@ -98,9 +98,19 @@ function validateHybridData(data) {
     },
   };
 
-  var systemData = data.data.system;
+  return validateField(data, defaultData);
+}
 
-  return validateField(systemData, defaultData);
+function validateLanguageData(data) {
+  const defaultData = {
+    name: "",
+    isLanguage: true,
+    speaking: false,
+    reading: false,
+    writing: false
+  };
+
+  return validateField(data, defaultData);
 }
 
 function validateMiscData(data) {
@@ -113,9 +123,8 @@ function validateMiscData(data) {
     rarity: "Common",
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateMoneyData(data) {
@@ -128,9 +137,8 @@ function validateMoneyData(data) {
     total: 0,
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validatePassifData(data) {
@@ -140,9 +148,8 @@ function validatePassifData(data) {
     passifType: "",
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateProficiencyData(data) {
@@ -154,9 +161,8 @@ function validateProficiencyData(data) {
     proficiencyType: "",
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateSkillData(data) {
@@ -171,19 +177,18 @@ function validateSkillData(data) {
       min: 0,
       max: 1,
     },
-    roll: [
-      {
+    roll: {
+      0: {
         dice: 1,
         type: "d6",
         bonus: 0,
         damageType: "",
       },
-    ],
+    }
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateSpellData(data) {
@@ -208,9 +213,8 @@ function validateSpellData(data) {
     },
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateTransformationData(data) {
@@ -225,9 +229,8 @@ function validateTransformationData(data) {
     otherCost: "",
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 function validateWeaponData(data) {
@@ -257,15 +260,15 @@ function validateWeaponData(data) {
     },
   };
 
-  var systemData = data.data.system;
 
-  return validateField(systemData, defaultData);
+  return validateField(data, defaultData);
 }
 
 export {
   validateAdventureDiceData,
   validateEquipmentData,
   validateHybridData,
+  validateLanguageData,
   validateMiscData,
   validateMoneyData,
   validatePassifData,

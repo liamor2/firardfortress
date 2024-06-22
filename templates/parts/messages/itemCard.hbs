@@ -1,0 +1,44 @@
+<div class="item-card">
+  <section>
+    <header>
+      <img src="{{item.img}}" alt="{{item.name}}" />
+      <section>
+        <ul>
+          {{#if item.system.mpCost}}
+            <li class="mana">{{item.system.mpCost}} {{localize "FI.System.Attributes.MP"}}</li>
+          {{/if}}
+          {{#if item.system.spCost}}
+            <li class="stamina">{{item.system.spCost}} {{localize "FI.System.Attributes.SP"}}</li>
+          {{/if}}
+          {{#if item.system.hpCost}}
+            <li class="health">{{item.system.hpCost}} {{localize "FI.System.Attributes.HP"}}</li>
+          {{/if}}
+          {{#if item.system.otherCost}}
+            <li>+</li>
+          {{/if}}
+        </ul>
+        <p>{{item.name}}</p>
+        <p>{{localize (concat "FI.Stat." item.system.stat)}}</p>
+      </section>
+    </header>
+    <main>
+      <article>
+        {{{item.system.description}}}
+      </article>
+    </main>
+    <footer>
+      <button class="rollable" title="{{localize 'FI.System.Rolling.Roll'}}" data-type="itemRoll" data-id="{{item._id}}"
+        data-actor="{{actor._id}}" data-from="itemCard">
+        <i class="fa-duotone fa-dice-d20"></i>
+      </button>
+      {{#if (or item.system.isProficiency item.system.isTransformation) }}
+      {{else}}
+      <button class="rollable" title="{{localize 'FI.System.Rolling.Roll'}}" data-type="attackRoll" data-id="{{item._id}}"
+        data-actor="{{actor._id}}" data-from="itemCard">
+        <i class="fa-duotone fa-swords"></i>
+      </button>
+      {{/if}}
+    </footer>
+  </section>
+  <img src="/systems/firardfortressdev//icons/cardBackground.png" alt="Card Background" />
+</div>

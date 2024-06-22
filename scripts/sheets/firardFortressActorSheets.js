@@ -1,8 +1,12 @@
 import { gsap } from "/scripts/greensock/esm/all.js";
 import { Draggable } from "/scripts/greensock/esm/Draggable.js";
+
+import { handleRoll } from "../logic/roll.js";
+import { handleAddItem, handleDeleteItem } from "../logic/actorManager.js";
+
 gsap.registerPlugin(Draggable);
 
-export default class firardFortressDevActorSheet extends ActorSheet {
+export default class firardFortressActorSheet extends ActorSheet {
   constructor(...args) {
     super(...args);
 
@@ -16,11 +20,19 @@ export default class firardFortressDevActorSheet extends ActorSheet {
     return `systems/firardfortressdev/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
   }
 
+  async getData() {
+    const data = super.getData();
+    this.dataHasBeenUpdated =
+    JSON.stringify(data) !== JSON.stringify(this.oldData);
+
+    return data;
+  }
+
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       width: 800,
       height: 880,
-      classes: ["firardFortressDev", "sheet", "item"],
+      classes: ["firardFortress", "sheet", "item"],
       tabs: [
         {
           navSelector: ".sheet-tabs",
@@ -30,14 +42,6 @@ export default class firardFortressDevActorSheet extends ActorSheet {
       ],
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
     });
-  }
-
-  async getData() {
-    const data = super.getData();
-    this.dataHasBeenUpdated =
-      JSON.stringify(data) !== JSON.stringify(this.oldData);
-    console.log(data);
-    return data;
   }
 
   async close(options = {}) {
@@ -51,9 +55,9 @@ export default class firardFortressDevActorSheet extends ActorSheet {
     super.activateListeners(html);
 
     // click listeners
-    html.find(".rollable").click(this._onRoll.bind(this));
-    html.find(".add").click(this._onAdd.bind(this));
-    html.find(".delete").click(this._onDelete.bind(this));
+    html.find(".rollable").click(handleRoll);
+    html.find(".add").click(handleAddItem);
+    html.find(".delete").click(handleDeleteItem);
     html.find(".edit-item").click(this._onEditItem.bind(this));
     html.find(".item-checkbox").click(this._onEquipItem.bind(this));
     html.find(".move").click(this._onMove.bind(this));
@@ -63,6 +67,13 @@ export default class firardFortressDevActorSheet extends ActorSheet {
 
     // input listeners
     html.find(".item-input").change(this._onUpdateItem.bind(this));
+    document.querySelectorAll('input:not([type="checkbox"])').forEach(inputField => {
+      inputField.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          inputField.blur();
+        }
+      });
+    });
 
     // change listeners
 
@@ -78,289 +89,8 @@ export default class firardFortressDevActorSheet extends ActorSheet {
     this.registerGlobalAnimations();
   }
 
-  _onRoll(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-    console.log(dataset);
-
-    switch (dataset.rolltype) {
-      case "Stat":
-        this.statRoll(event, dataset, "Main");
-        break;
-      case "Spell":
-        this.itemRoll(event, dataset, "Spell");
-        break;
-      case "Skill":
-        this.itemRoll(event, dataset, "Skill");
-        break;
-      case "Hybrid":
-        this.itemRoll(event, dataset, "Hybrid");
-        break;
-      case "Proficiency":
-        this.proficiencyRoll(event, dataset, "Proficiency");
-        break;
-      case "Weapon":
-        this.itemRoll(event, dataset, "Weapon");
-        break;
-      default:
-        break;
-    }
-  }
-
-  async _onAdd(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
-    const data = await this.getData();
-    let updateData = {};
-
-    switch (dataset.add) {
-      case "Language":
-        const newLanguage = {
-          name: "New Language",
-          type: "Language",
-          data: {
-            name: `${game.i18n.localize("FI.Description.NewLanguage")}`,
-            speaking: true,
-            reading: true,
-            writing: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newLanguage]);
-        break;
-      case "Spell":
-        const newSpell = {
-          name: "New Spell",
-          type: "Spell",
-          data: {
-            name: `${game.i18n.localize("FI.Spell.NewSpell")}`,
-            spellType: "",
-            stat: "None",
-            mpCost: 0,
-            range: {
-              min: 0,
-              max: 0,
-            },
-            roll: [
-              {
-                dice: "1",
-                bonus: 0,
-                damageType: `${game.i18n.localize(
-                  "FI.Spell.DefaultDamageType"
-                )}`,
-              },
-            ],
-            description: "",
-            isSpell: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newSpell]);
-        break;
-      case "Skill":
-        const newSkill = {
-          name: "New Skill",
-          type: "Skill",
-          data: {
-            name: `${game.i18n.localize("FI.Skill.NewSkill")}`,
-            skillType: "",
-            stat: "None",
-            spCost: 0,
-            range: {
-              min: 0,
-              max: 0,
-            },
-            roll: [
-              {
-                dice: "1",
-                bonus: 0,
-                damageType: `${game.i18n.localize(
-                  "FI.Skill.DefaultDamageType"
-                )}`,
-              },
-            ],
-            description: "",
-            isSKill: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newSkill]);
-        break;
-      case "Hybrid":
-        const newHybrid = {
-          name: "New Hybrid",
-          type: "Hybrid",
-          data: {
-            name: `${game.i18n.localize("FI.Hybrid.NewHybrid")}`,
-            hybridType: "",
-            stat: "None",
-            mpCost: 0,
-            spCost: 0,
-            hpCost: 0,
-            otherCost: "",
-            range: {
-              min: 0,
-              max: 0,
-            },
-            roll: [
-              {
-                dice: "1",
-                bonus: 0,
-                damageType: `${game.i18n.localize(
-                  "FI.Hybrid.DefaultDamageType"
-                )}`,
-              },
-            ],
-            description: "",
-            isHybrid: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newHybrid]);
-        break;
-      case "Transformation":
-        const newTransformation = {
-          name: "New Transformation",
-          type: "Transformation",
-          data: {
-            name: `${game.i18n.localize(
-              "FI.Transformation.NewTransformation"
-            )}`,
-            transformationType: "",
-            stat: "None",
-            mpCost: 0,
-            spCost: 0,
-            hpCost: 0,
-            otherCost: "",
-            description: "",
-            isTransformation: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newTransformation]);
-        break;
-      case "Passif":
-        const newPassif = {
-          name: "New Passif",
-          type: "Passif",
-          data: {
-            name: `${game.i18n.localize("FI.Passif.NewPassif")}`,
-            passifType: "",
-            stat: "None",
-            description: "",
-            isPassif: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newPassif]);
-        break;
-      case "Proficiency":
-        const newProficiency = {
-          name: "New Proficiency",
-          type: "Proficiency",
-          data: {
-            name: `${game.i18n.localize("FI.Proficiency.NewProficiency")}`,
-            proficiencyType: "",
-            stat: "None",
-            description: "",
-            isProficiency: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newProficiency]);
-        break;
-      case "Weapon":
-        const newWeapon = {
-          name: "New Weapon",
-          type: "Weapon",
-          data: {
-            name: `${game.i18n.localize("FI.Weapon.NewWeapon")}`,
-            weaponType: "",
-            stat: "None",
-            ranged: false,
-            equipped: true,
-            stat: "None",
-            value: 0,
-            range: {
-              min: 0,
-              max: 0,
-            },
-            roll: [
-              {
-                dice: "1",
-                bonus: 0,
-                damageType: `${game.i18n.localize(
-                  "FI.Weapon.DefaultDamageType"
-                )}`,
-              },
-            ],
-            description: "",
-            quantity: 1,
-            weight: 0,
-            price: 0,
-            rarity: "",
-            isWeapon: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newWeapon]);
-        break;
-      case "Equipment":
-        const newEquipment = {
-          name: "New Equipment",
-          type: "Equipment",
-          data: {
-            name: `${game.i18n.localize("FI.Equipment.NewEquipment")}`,
-            equipmentType: "",
-            stat: "None",
-            equipped: true,
-            PA: 0,
-            MA: 0,
-            value: 0,
-            description: "",
-            quantity: 1,
-            weight: 0,
-            price: 0,
-            rarity: "",
-            isEquipment: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newEquipment]);
-        break;
-      case "Misc":
-        const newMisc = {
-          name: "New Misc",
-          type: "Misc",
-          data: {
-            name: `${game.i18n.localize("FI.Misc.NewMisc")}`,
-            miscType: "",
-            stat: "None",
-            value: 0,
-            description: "",
-            quantity: 1,
-            weight: 0,
-            price: 0,
-            rarity: "",
-            isMisc: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newMisc]);
-        break;
-      case "Money":
-        const newMoney = {
-          name: "New Money",
-          type: "Money",
-          data: {
-            name: `${game.i18n.localize("FI.Money.NewMoney")}`,
-            value: 0,
-            description: "",
-            localisation: "",
-            quantity: 1,
-            value: 0,
-            isMoney: true,
-          },
-        };
-        this.actor.createEmbeddedDocuments("Item", [newMoney]);
-        break;
-      default:
-        console.log(`default: ${dataset.add}`);
-        break;
-    }
-    this.object.update(updateData);
+  allowDrop(ev) {
+    ev.preventDefault();
   }
 
   async _onDelete(event) {
@@ -458,266 +188,6 @@ export default class firardFortressDevActorSheet extends ActorSheet {
     }
   }
 
-  allowDrop(ev) {
-    ev.preventDefault();
-  }
-
-  // roll functions
-  async statRoll(event, dataset, rollType) {
-    event.preventDefault();
-    const data = await this.getData();
-    const advancedRoll = data.data.system.displayAdvancedRoll;
-    let modif = this.calculateMod(dataset, data);
-    let mod = modif.mod;
-    let stance = modif.stance;
-
-    if (advancedRoll) {
-      this.advRoll(dataset, rollType, mod, stance);
-    } else {
-      this.renderRollMessage(dataset, rollType, mod, stance);
-    }
-  }
-
-  advRoll(dataset, rollType, mod, stance) {
-    // new Dialog({title: "Title", content: html_content_to_display, buttons: {confirm:{icon: '<i class="fas fa-check"></i>', label: 'Confirm', callback: (html) => {//Code to do stuff here}}, cancel: {icon: '<i class="fas fa-times"></i>', label: "Cancel"}}}).render(true)
-    new Dialog({
-      title: `${game.i18n.localize("FI.System.AdvancedRolling")}: ${
-        dataset.label
-      }`,
-      content: `<div style="display:flex; flex-direction:column; height:50px">
-                <select id="rollType">
-                    <option value="normal">${game.i18n.localize(
-                      "FI.System.Normal"
-                    )}</option>
-                    <option value="advantage">${game.i18n.localize(
-                      "FI.System.Advantage"
-                    )}</option>
-                    <option value="disadvantage">${game.i18n.localize(
-                      "FI.System.Disadvantage"
-                    )}</option>
-                    <option value="custom">${game.i18n.localize(
-                      "FI.System.Custom"
-                    )}</option>
-                </select>
-                <div id="rollCustomDiv" style="display:none">
-                    <label for="rollCustom">${game.i18n.localize(
-                      "FI.System.CustomRoll"
-                    )}</label>
-                    <input id="rollCustom" type="text" placeholder="${game.i18n.localize(
-                      "FI.System.CustomRollPlaceholder"
-                    )}">
-                </div>
-                <script>
-                    document.getElementById("rollType").addEventListener("change", function() {
-                        if (this.value == "custom") {
-                            document.getElementById("rollCustomDiv").style.display = "flex";
-                        } else {
-                            document.getElementById("rollCustomDiv").style.display = "none";
-                        }
-                    });
-                </script>
-            </div>`,
-      buttons: {
-        confirm: {
-          icon: '<i class="fas fa-check"></i>',
-          label: "Confirm",
-          callback: (html) => {
-            if (rollType === "Main") {
-              this.renderAdvRollMessage(html, dataset, mod, stance);
-            } else if (rollType === "Item") {
-              this.statRollForItem(html, dataset, mod, stance);
-            }
-          },
-        },
-        cancel: {
-          icon: '<i class="fas fa-times"></i>',
-          label: "Cancel",
-        },
-      },
-      default: "confirm",
-    }).render(true);
-  }
-
-  itemRoll(event, dataset) {
-    event.preventDefault();
-    this.statRoll(event, dataset, "Item");
-  }
-
-  async proficiencyRoll(event, dataset) {
-    event.preventDefault();
-    let data = await this.getData();
-    let stat = dataset.type;
-    let modif = this.calculateMod(dataset, data);
-    let mod = modif.mod + `+${dataset.roll}`;
-    let stance = modif.stance;
-    let roll = new Roll("1d20" + mod);
-    let label = dataset.label
-      ? `${game.i18n.localize("FI.System.Rolling")} ${dataset.label}${stance}`
-      : "";
-    return roll.toMessage({
-      speaker: ChatMessage.getSpeaker({
-        actor: this.actor,
-      }),
-      flavor: label,
-    });
-  }
-
-  statRollForItem(html, dataset, mod, stance) {
-    const rollType = html.find("#rollType")[0].value;
-    const rollCustom = html.find("#rollCustom")[0].value;
-    let roll = new Roll("1d20" + mod);
-    let label = dataset.label
-      ? `${game.i18n.localize("FI.System.Rolling")} ${dataset.label}${stance}`
-      : "";
-    this.renderItemRollWindow(dataset, "Item");
-    if (rollType == "normal") {
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "advantage") {
-      roll = new Roll("2d20kh" + mod);
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "disadvantage") {
-      roll = new Roll("2d20kl" + mod);
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "custom") {
-      roll = new Roll(rollCustom);
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    }
-  }
-
-  renderRollMessage(dataset, rollType, mod, stance) {
-    let roll = new Roll("1d20" + mod);
-    let label = dataset.label
-      ? `${game.i18n.localize("FI.System.Rolling")} ${dataset.label}${stance}`
-      : "";
-    if (rollType == "Main") {
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "Item") {
-      this.renderItemRollWindow(dataset, "Item");
-    }
-  }
-
-  renderAdvRollMessage(html, dataset, mod, stance) {
-    const rollType = html.find("#rollType")[0].value;
-    const rollCustom = html.find("#rollCustom")[0].value;
-    let roll = new Roll("1d20" + mod);
-    let label = dataset.label
-      ? `${game.i18n.localize("FI.System.Rolling")} ${dataset.label}${stance}`
-      : "";
-    if (rollType == "normal") {
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "advantage") {
-      roll = new Roll("2d20kh" + mod);
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "disadvantage") {
-      roll = new Roll("2d20kl" + mod);
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    } else if (rollType == "custom") {
-      roll = new Roll(rollCustom);
-      return roll.toMessage({
-        speaker: ChatMessage.getSpeaker({
-          actor: this.actor,
-        }),
-        flavor: label,
-      });
-    }
-  }
-
-  async renderItemRollWindow(dataset, mod, stance) {
-    const data = await this.getData();
-    const item = data.items.find((item) => item._id === dataset.id);
-    new Dialog({
-      title: `${game.i18n.localize("FI.Roll.itemRoll")} ${item.name}`,
-      content: `<div style="display:flex; flex-direction:column; height:50px">
-                <h2>${game.i18n.localize("FI.Roll.launchItemRoll")}</h2>
-            </div>`,
-      buttons: {
-        confirm: {
-          icon: '<i class="fas fa-check"></i>',
-          label: "Confirm",
-          callback: (html) => {
-            this.renderItemRollMessage(item);
-          },
-        },
-        cancel: {
-          icon: '<i class="fas fa-times"></i>',
-          label: "Cancel",
-        },
-      },
-      default: "confirm",
-    }).render(true);
-  }
-
-  renderItemRollMessage(item) {
-    let type = item.type;
-    let rollList = item.system.roll;
-    let rollString = ``;
-    if (!Array.isArray(rollList)) {
-      rollList = Object.values(rollList);
-    }
-    for (let i = 0; i < rollList.length; i++) {
-      const dice = rollList[i].dice;
-      const type = rollList[i].type;
-      const bonus = rollList[i].bonus;
-      const damageType = rollList[i].damageType;
-      const roll = new Roll(`${dice}${type}`);
-      roll.roll();
-      if (game.dice3d) {
-        game.dice3d.showForRoll(roll);
-      }
-      const result = parseInt(roll.result) + bonus;
-      rollString += `</p> <p> ${dice}${type}+${bonus} = ${result} ${damageType} `;
-    }
-    ChatMessage.create({
-      user: game.user._id,
-      speaker: ChatMessage.getSpeaker(),
-      content: `<h2>${game.i18n.localize(
-        `FI.${type}.Roll`
-      )}</h2> <p>${game.i18n.localize(
-        `FI.${type}.RollResult`
-      )} : ${rollString} </p>`,
-    });
-  }
-
   // move item
 
   async moveItemUp(dataset, type) {
@@ -762,64 +232,6 @@ export default class firardFortressDevActorSheet extends ActorSheet {
     this.actor.updateEmbeddedDocuments("Item", updates);
 
     this.render();
-  }
-
-  // calculate mod
-  calculateMod(dataset, data) {
-    let mod = 0;
-    let stance = "";
-    if (typeof dataset.type === "string" && !(dataset.type == "None")) {
-      mod = data.data.system.stat[dataset.type].mod.text;
-    } else if (typeof dataset.type === "number") {
-      if (dataset.type < 0) {
-        mod = dataset.type;
-      } else {
-        mod = `+${dataset.type}`;
-      }
-    } else {
-      mod = "";
-    }
-    if (
-      data.data.system.stance === "Focus" &&
-      (dataset.type === "INT" ||
-        dataset.type === "WIS" ||
-        dataset.type === "CHA" ||
-        dataset.type === "WIL")
-    ) {
-      mod += "+1";
-      stance = " (+ Focus)";
-    } else if (
-      data.data.system.stance === "Focus" &&
-      (dataset.type === "DEX" ||
-        dataset.type === "CON" ||
-        dataset.type === "WIS" ||
-        dataset.type === "LUK")
-    ) {
-      mod += "-1";
-      stance = " (- Focus)";
-    } else if (
-      data.data.system.stance === "Concentration" &&
-      (dataset.type === "DEX" ||
-        dataset.type === "CON" ||
-        dataset.type === "STR" ||
-        dataset.type === "LUK")
-    ) {
-      mod += "+1";
-      stance = " (+ Concentration)";
-    } else if (
-      data.data.system.stance === "Concentration" &&
-      (dataset.type === "INT" ||
-        dataset.type === "WIS" ||
-        dataset.type === "CHA" ||
-        dataset.type === "WIL")
-    ) {
-      mod += "-1";
-      stance = " (- Concentration)";
-    } else if (data.data.system.stance === "Elemental") {
-      mod += "+2";
-      stance = " (+ Elemental)";
-    }
-    return { mod: mod, stance: stance };
   }
 
   // register draggables
@@ -889,14 +301,14 @@ export default class firardFortressDevActorSheet extends ActorSheet {
         const oldStatTemp = oldData.data.system[stat].temp;
 
         if (oldStatValue >= 0) {
-          statBarValue.style.width = `${(oldStatValue / oldStatMax) * 100}%`;
+          statBarValue.style.width = `${(oldStatValue / oldStatMax) * 99}%`;
         } else if (oldStatValue < 0) {
-          statBarValue.style.width = `${(oldStatValue / -oldStatMax) * 100}%`;
+          statBarValue.style.width = `${(oldStatValue / -oldStatMax) * 99}%`;
         }
         if (oldStatTemp < oldStatMax) {
-          statBarTemp.style.width = `${(oldStatTemp / oldStatMax) * 100}%`;
+          statBarTemp.style.width = `${(oldStatTemp / oldStatMax) * 99}%`;
         } else if (oldStatTemp >= oldStatMax) {
-          statBarTemp.style.width = "100%";
+          statBarTemp.style.width = "99%";
         }
         if (oldStatMax === 0) {
           statBarValue.style.width = "0%";
@@ -909,14 +321,14 @@ export default class firardFortressDevActorSheet extends ActorSheet {
       if (statValue >= 0) {
         gsap.to(statBarValue, {
           delay: 0.1,
-          width: `${(statValue / statMax) * 100}%`,
+          width: `${(statValue / statMax) * 99}%`,
           duration: 0.5,
           ease: "power2.inOut",
         });
       } else if (statValue < 0) {
         gsap.to(statBarValue, {
           delay: 0.1,
-          width: `${(statValue / -statMax) * 100}%`,
+          width: `${(statValue / -statMax) * 99}%`,
           duration: 0.5,
           backgroundColor: "#000000",
           ease: "power2.inOut",
@@ -925,14 +337,14 @@ export default class firardFortressDevActorSheet extends ActorSheet {
       if (statTemp < statMax) {
         gsap.to(statBarTemp, {
           delay: 0.1,
-          width: `${(statTemp / statMax) * 100}%`,
+          width: `${(statTemp / statMax) * 99}%`,
           duration: 0.5,
           ease: "power2.inOut",
         });
       } else if (statTemp >= statMax) {
         gsap.to(statBarTemp, {
           delay: 0.1,
-          width: "100%",
+          width: "99%",
           duration: 0.5,
           ease: "power2.inOut",
         });
@@ -978,16 +390,16 @@ export default class firardFortressDevActorSheet extends ActorSheet {
 
         if (
           oldWeight.value >= 0 &&
-          (oldWeight.value / oldMaxWeight) * 100 <= 100
+          (oldWeight.value / oldMaxWeight) * 99 <= 99
         ) {
           weightBarValue.style.width = `${
-            (oldWeight.value / oldMaxWeight) * 100
+            (oldWeight.value / oldMaxWeight) * 99
           }%`;
         } else if (
           oldWeight.value < 0 &&
-          (oldWeight.value / -oldMaxWeight) * 100 <= 100
+          (oldWeight.value / -oldMaxWeight) * 99 <= 99
         ) {
-          weightBarValue.style.width = "100%";
+          weightBarValue.style.width = "99%";
         }
 
         if (oldWeight.value === 0) {
@@ -999,7 +411,7 @@ export default class firardFortressDevActorSheet extends ActorSheet {
         if (weight.over) {
           gsap.to(weightBarValue, {
             delay: 0.1,
-            width: "100%",
+            width: "99%",
             backgroundColor: "#991313",
             duration: 1,
             ease: "power2.inOut",
@@ -1009,7 +421,7 @@ export default class firardFortressDevActorSheet extends ActorSheet {
         } else {
           gsap.to(weightBarValue, {
             delay: 0.1,
-            width: `${(weight.value / maxWeight) * 100}%`,
+            width: `${(weight.value / maxWeight) * 99}%`,
             duration: 0.5,
             ease: "power2.inOut",
           });

@@ -1,12 +1,4 @@
 <form class="{{cssClass}} item-sheet spell" autocomplete="off">
-  <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
     <table class="sheet-header-2">
@@ -20,7 +12,8 @@
       datalistId="spellTypes"
       tooltipKey="FI.SpellSheet.SpellType"
       localizePrefix="FI.SpellType"
-      fallbackLocalizationKey="FI.SpellType.Label.Custom" }}
+      fallbackLocalizationKey="FI.SpellType.Label.Custom"
+      data=data }}
       {{> "systems/firardfortressdev/templates/parts/items/capacitiesCost.hbs"}}
     </table>
   </header>

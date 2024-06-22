@@ -1,20 +1,12 @@
 <form class="{{cssClass}} actor-sheet PC-sheet" id="smooth-wrapper" autocomplete="off">
-    <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
-<div id="smooth-content">
+  <div id="smooth-content">
     {{!-- Sheet Header --}}
     <header class="header">
-        <div class="header-left">
-            {{> "systems/firardfortressdev/templates/parts/actors/header/subStat.hbs" data=data}}
-            {{> "systems/firardfortressdev/templates/parts/actors/header/attributes.hbs" data=data}}
-        </div>
-        {{> "systems/firardfortressdev/templates/parts/actors/header/mainStat.hbs" data=data}}
+      <div class="header-left">
+        {{> "systems/firardfortressdev/templates/parts/actors/header/subStat.hbs" data=data}}
+        {{> "systems/firardfortressdev/templates/parts/actors/header/attributes.hbs" data=data}}
+      </div>
+      {{> "systems/firardfortressdev/templates/parts/actors/header/mainStat.hbs" data=data}}
     </header>
 
     {{!-- Sheet Nav --}}
@@ -23,22 +15,22 @@
     {{!-- Sheet Body --}}
     <main class="sheet-body">
 
-        {{!-- Main Tab --}}
-        {{> "systems/firardfortressdev/templates/parts/actors/tabs/mainTab.hbs" data=data}}
+      {{!-- Main Tab --}}
+      {{> "systems/firardfortressdev/templates/parts/actors/tabs/mainTab.hbs" data=data}}
 
-        {{!-- Proficiencies Tab --}}
-        {{> "systems/firardfortressdev/templates/parts/actors/tabs/proficienciesTab.hbs" data=data}}
+      {{!-- Proficiencies Tab --}}
+      {{> "systems/firardfortressdev/templates/parts/actors/tabs/proficienciesTab.hbs" data=data}}
 
-        {{!-- Spells Tab --}}
-        {{> "systems/firardfortressdev/templates/parts/actors/tabs/spellsTab.hbs" data=data}}
+      {{!-- Spells Tab --}}
+      {{> "systems/firardfortressdev/templates/parts/actors/tabs/spellsTab.hbs" data=data}}
 
-        {{!-- Notes Tab --}}
-        {{> "systems/firardfortressdev/templates/parts/actors/tabs/notesTab.hbs" data=data}}
+      {{!-- Notes Tab --}}
+      {{> "systems/firardfortressdev/templates/parts/actors/tabs/notesTab.hbs" data=data}}
     </main>
 
     {{!-- Sheet Footer --}}
-    <footer class="sheet-footer footer">
+    {{!-- <footer class="sheet-footer footer">
       {{> "systems/firardfortressdev/templates/parts/actors/footer/advancedRoll.hbs" data=data}}
-    </footer>
-</div>
+    </footer> --}}
+  </div>
 </form>

@@ -1,2928 +1,1802 @@
-/* Actor sheet */
+form {
+  &.actor-sheet {
+    header {
+      &.header {
+        align-items: center;
+        background-color: #ffffff1f;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding: 10px 20px;
+        width: 100%;
+      }
 
-/* ----------------------------------------------------------------------------------------------------------- */
-/* header */
-/* ----------------------------------------------------------------------------------------------------------- */
+      img.profile-img {
+        height: 100%;
+        max-width: 150px;
+        width: auto;
+      }
 
-form.actor-sheet header.header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-  margin-top: 15px;
+      div {
+        &.header-top-left div input {
+          max-width: 150px;
+        }
+
+        &.header-left {
+          align-items: center;
+          display: block;
+          justify-content: space-between;
+          width: 85%;
+
+          table tr.header-bottom td {
+            label {
+              font-size: 1em;
+              width: 100%;
+            }
+
+            input {
+              font-size: 1.2em;
+              width: 80%;
+            }
+
+            &.weight {
+              label {
+                font-size: .65em;
+                width: 45%;
+              }
+
+              input {
+                font-size: 1em;
+                width: 30%;
+              }
+            }
+          }
+        }
+
+        &.bar {
+          border: 1px solid #0000001f;
+          border-radius: 5px;
+          height: 9px;
+          margin: 2px 0;
+          padding: 1px;
+          position: relative;
+          width: 100%;
+
+          div.barValue {
+            border-radius: 5px;
+            height: 5px;
+            position: absolute;
+          }
+        }
+
+        &.stat-container div.bar {
+          div.barTemp {
+            z-index: 1;
+          }
+
+          &.HPbar {
+            background-color: #ff00002f;
+          }
+
+          div.barValue {
+            &.HPbarValue {
+              background-color: red;
+              width: 100%;
+            }
+
+            &.HPbarTemp {
+              background-color: #a10000;
+              width: 0;
+            }
+          }
+
+          &.MPbar {
+            background-color: #0000ff2f;
+          }
+
+          div.barValue {
+            &.MPbarValue {
+              background-color: #00f;
+              width: 100%;
+            }
+
+            &.MPbarTemp {
+              background-color: #0000a1;
+              width: 0;
+            }
+          }
+
+          &.SPbar {
+            background-color: #00ff002f;
+          }
+
+          div.barValue {
+            &.SPbarValue {
+              background-color: #0f0;
+              width: 100%;
+            }
+
+            &.SPbarTemp {
+              background-color: #00a100;
+              width: 0;
+            }
+          }
+
+          &.PAbar {
+            background-color: #ffff002f;
+          }
+
+          div.barValue {
+            &.PAbarValue {
+              background-color: #ff0;
+              width: 100%;
+            }
+
+            &.PAbarTemp {
+              background-color: #a1a100;
+              width: 0;
+            }
+          }
+
+          &.MAbar {
+            background-color: #ff00ff2f;
+          }
+
+          div.barValue {
+            &.MAbarValue {
+              background-color: #f0f;
+              width: 100%;
+            }
+
+            &.MAbarTemp {
+              background-color: #a100a1;
+              width: 0;
+            }
+          }
+        }
+
+        &.bar div.barValue.weightBarValue {
+          background-color: #000;
+          width: 100%;
+        }
+
+        &.stat-container div.stat {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          margin: 5px 0;
+
+          &.label {
+            font-size: small;
+          }
+        }
+
+        &.header-top {
+          align-items: center;
+          display: flex;
+          height: 130px;
+          justify-content: space-between;
+          width: 95%;
+
+          div.header-top-left {
+            align-items: center;
+            display: block;
+            width: 33%;
+          }
+        }
+
+        &.header-bottom {
+          align-items: center;
+          display: flex;
+          display: block;
+          justify-content: space-between;
+          margin-top: 40px;
+          width: 95%;
+        }
+
+        &.header-top div.header-top-right {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          width: 66%;
+        }
+      }
+
+      display: block;
+      text-align: center;
+    }
+
+    &.NPC-sheet header div.header-top div.header-top-right {
+      width: 50%;
+    }
+
+    header div.header-bottom table tr td.stat-input div {
+      align-items: center;
+      display: flex;
+      height: 50%;
+      justify-content: space-between;
+      width: 100%;
+
+      &.mainStat {
+        width: 150px;
+      }
+
+      .stat {
+        border-right: #00000059 1px solid;
+        padding: 0 5px;
+
+        &:last-child {
+          border-right: none;
+          width: 20px;
+        }
+
+        input {
+          background-color: transparent;
+          border: 0;
+          font-size: 2em;
+          text-align: center;
+          width: 100%;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+
+        p {
+          background-color: transparent;
+          border: 0;
+          color: #a10000;
+          font-size: 1.2em;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &.item-sheet header table tr td.notes aside p, &.item-sheet main table tr td.notes aside p {
+    background-color: transparent;
+    border: 0;
+    color: #a10000;
+    font-size: 1.2em;
+    text-align: center;
+    width: 100%;
+  }
 }
 
-form.actor-sheet header img.profile-img {
-  height: 100%;
-  width: auto;
-  max-width: 150px;
-}
-
-form.actor-sheet header div.header-top-left div input {
-  width: 100%;
-  max-width: 150px;
-  border: none;
+label.container-label p {
   background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.actor-sheet header div.header-left {
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-  width: 85%;
-}
-
-form.actor-sheet header div.header-left table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.actor-sheet header div.header-left table tr td select {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.actor-sheet header div.header-left table tr td input {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.actor-sheet header div.header-left table tr.header-bottom td label {
-  width: 100%;
-  font-size: 1em;
-}
-
-form.actor-sheet header div.header-left table tr.header-bottom td input {
-  width: 80%;
-  font-size: 1.2em;
-}
-
-form.actor-sheet header div.header-left table tr.header-bottom td.weight label {
-  width: 45%;
-  font-size: 0.65em;
-}
-
-form.actor-sheet header div.header-left table tr.header-bottom td.weight input {
-  width: 30%;
-  font-size: 1em;
-}
-
-form.actor-sheet header {
-  display: block;
-  text-align: center;
-}
-
-form.actor-sheet header div.bar {
-  position: relative;
-  width: 100%;
-  height: 9px;
-  padding: 1px;
-  border: 1px solid #0000001f;
-  border-radius: 5px;
-  margin: 2px 0;
-}
-
-form.actor-sheet header div.bar div.barValue {
-  position: absolute;
-  height: 5px;
-  border-radius: 5px;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barTemp {
-  z-index: 1;
-}
-
-form.actor-sheet header div.stat-container div.bar.HPbar {
-  background-color: #ff00002f;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.HPbarValue {
-  background-color: #ff0000;
-  width: 100%;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.HPbarTemp {
-  background-color: #a10000;
-  width: 0%;
-}
-
-form.actor-sheet header div.stat-container div.bar.MPbar {
-  background-color: #0000ff2f;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.MPbarValue {
-  background-color: #0000ff;
-  width: 100%;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.MPbarTemp {
-  background-color: #0000a1;
-  width: 0%;
-}
-
-form.actor-sheet header div.stat-container div.bar.SPbar {
-  background-color: #00ff002f;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.SPbarValue {
-  background-color: #00ff00;
-  width: 100%;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.SPbarTemp {
-  background-color: #00a100;
-  width: 0%;
-}
-
-form.actor-sheet header div.stat-container div.bar.PAbar {
-  background-color: #ffff002f;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.PAbarValue {
-  background-color: #ffff00;
-  width: 100%;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.PAbarTemp {
-  background-color: #a1a100;
-  width: 0%;
-}
-
-form.actor-sheet header div.stat-container div.bar.MAbar {
-  background-color: #ff00ff2f;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.MAbarValue {
-  background-color: #ff00ff;
-  width: 100%;
-}
-
-form.actor-sheet header div.stat-container div.bar div.barValue.MAbarTemp {
-  background-color: #a100a1;
-  width: 0%;
-}
-
-form.actor-sheet header div.bar div.barValue.weightBarValue {
-  background-color: #000000;
-  width: 100%;
-}
-
-form.actor-sheet header div.stat-container div.stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px 0;
-}
-
-form.actor-sheet header div.stat-container div.stat.label {
-  font-size: small;
-}
-
-form.actor-sheet header div.header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 130px;
-  width: 95%;
-}
-
-form.actor-sheet header div.header-top div.header-top-left {
-  display: block;
-  align-items: center;
-  width: 33%;
-}
-
-form.actor-sheet header div.header-top div.header-top-right {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 66%;
-}
-
-form.actor-sheet.NPC-sheet header div.header-top div.header-top-right {
-  width: 50%;
-}
-
-form.actor-sheet header div.header-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-form.actor-sheet header div.header-bottom {
-  display: block;
-  align-items: center;
-  width: 95%;
-  margin-top: 40px;
-}
-
-form.actor-sheet header div.header-bottom table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.actor-sheet header div.header-bottom table tr {
-  border-bottom: 1px solid #ccc;
-}
-
-form.actor-sheet header div.header-bottom table tr td {
-  padding: 5px;
-  border: black 1px solid;
-}
-
-form.actor-sheet header div.header-bottom table tr td.stat-input div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 50%;
-  width: 100%;
-}
-
-form.actor-sheet header div.header-bottom table tr td.stat-input div.mainStat {
-  width: 150px;
-}
-
-form.actor-sheet header div.header-bottom table tr td.stat-input div .stat {
-  padding: 0 5px;
-  border-right: #00000059 1px solid;
-}
-
-form.actor-sheet
-  header
-  div.header-bottom
-  table
-  tr
-  td.stat-input
-  div
-  .stat:last-child {
-  width: 20px;
-  border-right: none;
-}
-
-form.actor-sheet
-  header
-  div.header-bottom
-  table
-  tr
-  td.stat-input
-  div
-  .stat
-  input {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.actor-sheet
-  header
-  div.header-bottom
-  table
-  tr
-  td.stat-input
-  div
-  .stat
-  input:focus {
-  outline: none;
-}
-
-form.actor-sheet header div.header-bottom table tr td.stat-input div .stat p {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
+  border: 0;
   color: #a10000;
+  font-size: 1.2em;
+  text-align: center;
+  width: 100%;
 }
 
-form.actor-sheet header div.header-right {
-  justify-content: space-between;
+form {
+  &.actor-sheet header div.header-right {
+    align-items: center;
+    justify-content: space-between;
+    width: 15%;
+
+    label {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  &.item-sheet {
+    header table tr td.notes aside, &.adventure-dice div.sheet-body div label, main table tr td.notes aside {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+
+label.container-label {
   align-items: center;
-  width: 15%;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 form.actor-sheet header div.header-right label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
+  svg {
+    height: 17px;
+    width: auto;
+  }
 
-form.actor-sheet header div.header-right label svg {
-  height: 17px;
-  width: auto;
-}
-
-form.actor-sheet header div.header-right label img {
-  height: 17px;
-  width: auto;
-  border: none;
+  img {
+    border: 0;
+    height: 17px;
+    width: auto;
+  }
 }
 
 .tox-statusbar__branding {
   display: none;
 }
 
-/* ----------------------------------------------------------------------------------------------------------- */
-/* nav */
-/* ----------------------------------------------------------------------------------------------------------- */
+form {
+  &.item-sheet.adventure-dice div.sheet-body div.sheet-bottom fieldset.clock-frame div.clock label {
+    display: none;
+  }
+
+  &.actor-sheet section div.main-tab {
+    align-items: center;
+    background-color: #ffffff1f;
+    border-bottom: 1px solid #ccc;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 100%;
+  }
+}
 
 nav.sheet-tabs.tabs {
-  display: block;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 10px 20px;
   background-color: #ffffff1f;
   border-bottom: 1px solid #ccc;
-}
-
-nav.sheet-tabs.tabs ul {
+  justify-content: space-between;
+  padding: 10px 20px;
   width: 100%;
-  display: flex;
-  list-style-type: none;
-  justify-content: center;
-}
+  display: block;
 
-nav.sheet-tabs.tabs ul li {
-  margin: 0 7px;
-}
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    width: 100%;
 
-nav.sheet-tabs.tabs ul li img {
-  height: 20px;
-  width: auto;
-  max-width: 20px;
-  border: none;
-  margin: 0 1px;
-  cursor: pointer;
-  transform: translateY(-2px) rotate(90deg);
-  vertical-align: middle;
-  opacity: 0;
+    li {
+      margin: 0 7px;
+
+      img {
+        border: 0;
+        cursor: pointer;
+        height: 20px;
+        margin: 0 1px;
+        max-width: 20px;
+        opacity: 0;
+        transform: translateY(-2px) rotate(90deg);
+        vertical-align: middle;
+        width: auto;
+      }
+    }
+  }
 }
 
 main {
   overflow: hidden;
 }
 
-/* ----------------------------------------------------------------------------------------------------------- */
-/* body */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-label.container-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-label.container-label p {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-  text-shadow: #000000 1px 1px;
-  color: #a10000;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* main tab */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.actor-sheet section div.main-tab {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.actor-sheet section div.main-tab table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  table-layout: fixed;
-  border: none;
-  background-color: transparent;
-}
-
-form.actor-sheet section div.main-tab table div.container {
-  padding: 5px;
-}
-
-form.actor-sheet section div.main-tab table table tr {
-  border-bottom: black 1px solid;
-}
-
-form.actor-sheet section div.main-tab table table tr:last-child {
-  border-bottom: none;
-}
-
-form.actor-sheet section div.main-tab table table tr th.image {
-  width: 30px;
-  height: 30px;
-}
-
-form.actor-sheet section div.main-tab table table tr th {
-  width: 100%;
-  height: 30px;
-}
-
-form.actor-sheet section div.main-tab table table tr th.small {
-  width: 30px;
-  font-size: 0.7em;
-  transform: rotate(25deg);
-  text-indent: -20px;
-  padding-top: 13px;
-}
-
-form.actor-sheet section div.main-tab table table tr th.medium {
-  width: 100px;
-}
-
-form.actor-sheet section div.main-tab table table tr td {
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  width: 100%;
-}
-
-form.actor-sheet section div.main-tab table table tr td i.item-checkbox {
-  transition: all 0.1s ease-in-out;
-}
-
-form.actor-sheet section div.main-tab table table tr td i.item-checkbox:hover {
-  color: #a10000;
-  cursor: pointer;
-  transform: scale(1.2);
-  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.267));
-  transition: all 0.1s ease-in-out;
-}
-
-form.actor-sheet section div.main-tab table table.equipment-tab tr td.armor {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-form.actor-sheet section div.main-tab table div.weapon {
-  background-color: rgba(255, 0, 0, 0.3);
-  border-radius: 10px;
-}
-
-form.actor-sheet section div.main-tab table div.equipment {
-  background-color: rgba(117, 117, 117, 0.3);
-  border-radius: 10px;
-}
-
-form.actor-sheet section div.main-tab table div.misc {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-form.actor-sheet section div.main-tab table div.money {
-  background-color: rgba(255, 251, 0, 0.3);
-  border-radius: 10px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* proficiency tab */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.actor-sheet section div.proficiency-tab {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.actor-sheet section div.proficiency-tab table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.actor-sheet section div.proficiency-tab table tr {
-  border-bottom: black 1px solid;
-}
-
-form.actor-sheet section div.proficiency-tab table tr:last-child {
-  border-bottom: none;
-}
-
-form.actor-sheet section div.proficiency-tab table tr th {
-  width: 100%;
-  height: 30px;
-}
-
-form.actor-sheet section div.proficiency-tab table tr th.small {
-  width: 30px;
-  font-size: 0.7em;
-  transform: rotate(25deg);
-  text-indent: -20px;
-  padding-top: 13px;
-}
-
-form.actor-sheet section div.proficiency-tab table tr th.image {
-  width: 30px;
-  height: 30px;
-}
-
-form.actor-sheet section div.proficiency-tab table tr td {
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  width: 100%;
-}
-
-form.actor-sheet section div.proficiency-tab table tr td.small {
-  width: 30px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* spell tab */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.actor-sheet section div.spell-tab {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.actor-sheet section div.spell-tab div.spell-table {
-  background-color: rgba(0, 174, 255, 0.3);
-  border-radius: 10px;
-  margin: 5px 0px;
-}
-
-form.actor-sheet section div.spell-tab div.skill-table {
-  background-color: rgba(0, 255, 0, 0.3);
-  border-radius: 10px;
-  margin: 5px 0px;
-}
-
-form.actor-sheet section div.spell-tab div.hybrid-table {
-  background-color: rgba(0, 255, 234, 0.3);
-  border-radius: 10px;
-  margin: 5px 0px;
-  width: 100%;
-}
-
-form.actor-sheet section div.spell-tab div.transformation-table {
-  background-color: rgba(204, 0, 255, 0.3);
-  border-radius: 10px;
-  margin: 5px 0px;
-}
-
-form.actor-sheet section div.spell-tab div.passif-table {
-  background-color: rgba(255, 0, 76, 0.3);
-  border-radius: 10px;
-  margin: 5px 0px;
-}
-
-form.actor-sheet section div.spell-tab div {
-  width: 49%;
-}
-
-form.actor-sheet section div.spell-tab table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.actor-sheet section div.spell-tab table tr {
-  border-bottom: black 1px solid;
-}
-
-form.actor-sheet section div.spell-tab table tr:last-child {
-  border-bottom: none;
-}
-
-form.actor-sheet section div.spell-tab table tr th {
-  width: 100%;
-  height: 30px;
-}
-
-form.actor-sheet section div.spell-tab table tr th.small {
-  width: 30px;
-  font-size: 0.7em;
-  transform: rotate(25deg);
-  text-indent: -20px;
-  padding-top: 13px;
-}
-
-form.actor-sheet section div.spell-tab table tr th.image {
-  width: 30px;
-  height: 30px;
-}
-
-form.actor-sheet section div.spell-tab table tr td {
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  width: 100%;
-}
-
-form.actor-sheet section div.spell-tab table tr td.small {
-  width: 30px;
-}
-
-form.actor-sheet section div.spell-tab table tr td div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* notes tab */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.actor-sheet section div.description div.description-language {
-  width: 66%;
-  height: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #ffffff1f;
-  font-size: 1.2em;
-}
-
-form.actor-sheet section div.description div.description-alignment {
-  width: 180px;
-  height: 210px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #ffffff1f;
-  font-size: 0.6em;
-  overflow: hidden;
-}
-
-form.actor-sheet section div.description div.description-alignment label {
-  padding: 0 0 0 5px;
-}
-
-form.actor-sheet section div.description div.description-alignment label p {
-  font-size: 1em;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-  text-shadow: #000000 1px 1px;
-  color: #6c0000;
-  font-weight: bold;
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds {
-  width: 160px;
-  height: 160px;
-  padding: 5px;
-  margin: 5px;
-  position: relative;
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div#marker-container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  padding: 0px;
-  margin: 0px;
-  border-radius: 5px;
-  background-image: url("../../../systems/firardfortressdev/icons/alignmentBackground.png");
-  background-color: #0000001f;
-  transition: all 0.1s ease-in-out;
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div#marker-container
-  div#marker {
-  position: relative;
-  background-color: black;
-  width: 14px;
-  height: 14px;
-  border-radius: 100px;
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div
-  p {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  width: 100%;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
-  font-weight: bold;
-  text-shadow: #000000 1px 1px;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div
-  p#lawful {
-  color: #00ff00;
-  text-align: left;
-  transform: translate(10px, 65px);
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div
-  p#chaotic {
-  color: #ff0000;
-  text-align: right;
-  transform: translate(-10px, 65px);
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div
-  p#good {
-  color: #ffff00;
-  text-align: center;
-  transform: rotate(90deg) translate(20px, -15px);
-}
-
-form.actor-sheet
-  section
-  div.description
-  div.description-alignment
-  div#marker-bounds
-  div
-  p#evil {
-  color: #0000ff;
-  text-align: center;
-  transform: rotate(90deg) translate(120px, -15px);
-}
-
-form.actor-sheet section div.description table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  table-layout: fixed;
-  border: none;
-  background-color: transparent;
-}
-
-form.actor-sheet section div.description table div.container {
-  padding: 5px;
-}
-
-form.actor-sheet section div.description table tr {
-  border-bottom: black 1px solid;
-}
-
-form.actor-sheet section div.description table tr:last-child {
-  border-bottom: none;
-}
-
-form.actor-sheet section div.description table tr th.image {
-  width: 30px;
-  height: 30px;
-}
-
-form.actor-sheet section div.description table tr th {
-  width: 100%;
-  height: 30px;
-}
-
-form.actor-sheet section div.description table tr th.small {
-  width: 30px;
-  font-size: 0.7em;
-  transform: rotate(25deg);
-  text-indent: -20px;
-  padding-top: 13px;
-}
-
-form.actor-sheet section div.description table tr th.medium {
-  width: 100px;
-}
-
-form.actor-sheet section div.description table tr td {
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  width: 100%;
-}
-
-form.actor-sheet section div.description table tr td i.item-checkbox {
-  transition: all 0.1s ease-in-out;
-}
-
-form.actor-sheet section div.description table tr td i.item-checkbox:hover {
-  color: #a10000;
-  cursor: pointer;
-  transform: scale(1.2);
-  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.267));
-  transition: all 0.1s ease-in-out;
-}
-
-form.actor-sheet section div.description {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #ffffff1f;
-  resize: none;
-  overflow: auto;
-  font-size: 1.2em;
-}
-
-form.actor-sheet section div.description div.description-left {
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-  width: 49%;
-  height: 100%;
-}
-
-form.actor-sheet section div.description div.description-right {
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-  width: 49%;
-  height: 100%;
-}
-
-form.actor-sheet section div.description div.description-notes {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-form.actor-sheet section div.description div.description-language tr {
-  border-bottom: 1px solid #ccc;
-}
-
-form.actor-sheet section div.description div.description-language tr td {
-  padding: 5px;
-  border: black 1px solid;
-}
-
-form.actor-sheet section div.description div.description-language tr td input {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* footer */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form footer.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 35px;
-  display: block;
-  padding: 10px 20px;
-  background-color: #ffffff75;
-  border-top: 1px solid #ccc;
-  text-shadow: #000000;
-  align-items: right;
-  font-size: 0.7em;
-  z-index: 2;
-  transform: translateX(-8px);
-}
-
-form footer span.sheet-footer-right {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-form footer span.sheet-footer-right input {
-  width: 12px;
-  height: 12px;
+form.item-sheet header table tr td.notes aside p, label.container-label p, form.item-sheet main table tr td.notes aside p {
+  text-shadow: #000 1px 1px;
+}
+
+form {
+  &.actor-sheet section div {
+    &.main-tab {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+
+      table {
+        background-color: transparent;
+        border: 0;
+        border-collapse: collapse;
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &.description table tr, &.main-tab table table tr, &.proficiency-tab table tr, &.spell-tab table tr {
+      border-bottom: #000 1px solid;
+    }
+
+    &.description table tr:last-child, &.main-tab table table tr:last-child, &.proficiency-tab table tr:last-child, &.spell-tab table tr:last-child {
+      border-bottom: none;
+    }
+
+    &.description table tr th, &.main-tab table table tr th, &.proficiency-tab table tr th, &.spell-tab table tr th {
+      height: 30px;
+      width: 100%;
+    }
+
+    &.description table tr td, &.main-tab table table tr td, &.proficiency-tab table tr td, &.spell-tab table tr td {
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px;
+      width: 100%;
+    }
+
+    &.description table tr td i.item-checkbox, &.main-tab table table tr td i.item-checkbox {
+      transition: all 0.1s ease-in-out;
+    }
+
+    &.description table tr td i.item-checkbox:hover {
+      color: #a10000;
+      cursor: pointer;
+      filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.267));
+      transform: scale(1.2);
+      transition: all 0.1s ease-in-out;
+    }
+
+    &.main-tab table table {
+      tr td i.item-checkbox:hover {
+        color: #a10000;
+        cursor: pointer;
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.267));
+        transform: scale(1.2);
+        transition: all 0.1s ease-in-out;
+      }
+
+      &.equipment-tab tr td.armor {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
+    &.spell-tab table tr td div {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &.main-tab table div {
+      &.weapon {
+        background-color: rgba(255, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      &.equipment {
+        background-color: rgba(117, 117, 117, 0.3);
+        border-radius: 10px;
+      }
+
+      &.misc {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+      }
+
+      &.money {
+        background-color: rgba(255, 251, 0, 0.3);
+        border-radius: 10px;
+      }
+    }
+
+    &.proficiency-tab, &.spell-tab {
+      background-color: #ffffff1f;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      justify-content: space-between;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    &.proficiency-tab table tr td.small {
+      width: 30px;
+    }
+
+    &.spell-tab {
+      table tr td.small {
+        width: 30px;
+      }
+
+      align-items: center;
+
+      div {
+        &.spell-table {
+          background-color: rgba(0, 174, 255, 0.3);
+          border-radius: 10px;
+          margin: 5px 0;
+        }
+
+        &.skill-table {
+          background-color: rgba(0, 255, 0, 0.3);
+          border-radius: 10px;
+          margin: 5px 0;
+        }
+
+        &.hybrid-table {
+          background-color: rgba(0, 255, 234, 0.3);
+          border-radius: 10px;
+          margin: 5px 0;
+          width: 100%;
+        }
+
+        &.transformation-table {
+          background-color: rgba(204, 0, 255, 0.3);
+          border-radius: 10px;
+          margin: 5px 0;
+        }
+
+        &.passif-table {
+          background-color: rgba(255, 0, 76, 0.3);
+          border-radius: 10px;
+          margin: 5px 0;
+        }
+
+        width: 49%;
+      }
+    }
+
+    &.description {
+      background-color: #ffffff1f;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1.2em;
+      height: 100%;
+      padding: 10px;
+      width: 66%;
+
+      div {
+        &.description-language {
+          background-color: #ffffff1f;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 1.2em;
+          height: 100%;
+          padding: 10px;
+          width: 66%;
+        }
+
+        &.description-alignment {
+          background-color: #ffffff1f;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: .6em;
+          height: 210px;
+          overflow: hidden;
+          width: 180px;
+
+          label {
+            padding: 0 0 0 5px;
+
+            p {
+              color: #6c0000;
+              font-size: 1em;
+              font-weight: 700;
+              margin: 0;
+              padding: 0;
+              text-align: center;
+              text-shadow: #000 1px 1px;
+              text-transform: uppercase;
+            }
+          }
+
+          div#marker-bounds {
+            height: 160px;
+            margin: 5px;
+            padding: 5px;
+            position: relative;
+            width: 160px;
+
+            div {
+              &#marker-container {
+                background-color: #0000001f;
+                background-image: url(../../../systems/firardfortressdev/icons/alignmentBackground.png);
+                border-radius: 5px;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                transition: all .1s ease-in-out;
+                width: 100%;
+
+                div#marker {
+                  background-color: #000;
+                  border-radius: 100px;
+                  height: 14px;
+                  position: relative;
+                  width: 14px;
+                }
+              }
+
+              p {
+                color: #fff;
+                display: inline-block;
+                font-size: 1em;
+                font-weight: 700;
+                height: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                text-shadow: #000 1px 1px;
+                text-transform: uppercase;
+                top: 0;
+                width: 100%;
+
+                &#lawful {
+                  color: #0f0;
+                  text-align: left;
+                  transform: translate(10px, 65px);
+                }
+
+                &#chaotic {
+                  color: red;
+                  text-align: right;
+                  transform: translate(-10px, 65px);
+                }
+
+                &#good {
+                  color: #ff0;
+                  text-align: center;
+                  transform: rotate(90deg) translate(20px, -15px);
+                }
+
+                &#evil {
+                  color: #00f;
+                  text-align: center;
+                  transform: rotate(90deg) translate(120px, -15px);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      overflow: auto;
+      resize: none;
+      width: 100%;
+
+      table {
+        background-color: transparent;
+        border: 0;
+        border-collapse: collapse;
+      }
+
+      div {
+        &.description-left, &.description-right {
+          align-items: center;
+          display: block;
+          height: 100%;
+          justify-content: space-between;
+          width: 49%;
+        }
+
+        &.description-notes {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          justify-content: space-between;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  footer {
+    &.footer {
+      align-items: right;
+      background-color: #ffffff75;
+      border-top: 1px solid #ccc;
+      bottom: 0;
+      display: block;
+      font-size: .7em;
+      height: 35px;
+      padding: 10px 20px;
+      position: absolute;
+      text-shadow: #000;
+      transform: translateX(-8px);
+      width: 100%;
+      z-index: 2;
+    }
+
+    span.sheet-footer-right {
+      align-items: center;
+      display: flex;
+      justify-content: right;
+
+      input {
+        height: 12px;
+        width: 12px;
+      }
+    }
+  }
 }
 
 .window-resizable-handle {
   z-index: 3;
 }
 
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Item sheet */
-/* ----------------------------------------------------------------------------------------------------------- */
+form {
+  &.item-sheet {
+    &.adventure-dice {
+      height: 280px;
+      width: 500px;
 
-form.item-sheet header table tr td.notes aside {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+      div.sheet-body div {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        width: 33%;
+
+        &.sheet-bottom {
+          align-items: center;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          text-align: center;
+          width: 33%;
+          width: 100%;
+
+          fieldset.clock-frame {
+            border-radius: 2%;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 1em;
+            justify-content: center;
+            padding: 1em;
+            position: relative;
+            width: fit-content;
+
+            legend {
+              align-items: center;
+              display: flex;
+              font-size: 1.5em;
+              font-weight: 700;
+              height: 100%;
+              justify-content: center;
+              margin-bottom: 1em;
+              text-align: center;
+              width: 100%;
+            }
+
+            div.clock {
+              background-color: transparent;
+              border: medium solid #666;
+              border-radius: 50%;
+              box-shadow: 0 0 .5em #666;
+              height: 4em;
+              margin: 0 auto;
+              overflow: hidden;
+              position: relative;
+              width: 4em;
+
+              meter {
+                &.clock-segment {
+                  appearance: none;
+                  background-color: #eee;
+                  border: solid #666;
+                  border-width: .001em;
+                  bottom: 50%;
+                  box-sizing: border-box;
+                  display: inline-block;
+                  font-size: inherit;
+                  height: 2em;
+                  left: 50%;
+                  margin: 0;
+                  position: absolute;
+                  transform: rotate(calc(var(--index)*var(--angle))) skewY(calc(var(--segmentAngle) - 90deg)) scale(1.5);
+                  transform-origin: 0 2em;
+                  width: 2em;
+                }
+
+                &.filled {
+                  background-color: #000;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.equipment header.sheet-header, &.hybrid header.sheet-header, &.misc header.sheet-header, &.money header.sheet-header, &.passif header.sheet-header, &.proficiency header.sheet-header, &.skill header.sheet-header, &.spell header.sheet-header, &.transformation header.sheet-header, &.weapon header.sheet-header {
+      align-items: center;
+      background-color: #ffffff1f;
+      border-bottom: 1px solid #ccc;
+      display: block;
+      justify-content: space-around;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    &.spell header.sheet-header div.sheet-header-1 {
+      align-items: center;
+      background-color: rgba(0, 174, 255, 0.555);
+      border-radius: 15px 0 0 15px;
+      display: flex;
+      flex-direction: wrap;
+      justify-content: left;
+      margin: 0 10px;
+      padding: 10px 30px;
+      width: 120%;
+
+      img {
+        border: rgba(0, 0, 0, 0.1) 1px solid;
+        filter: drop-shadow(0 0 5px #000);
+        height: 65%;
+        max-width: 75px;
+        width: auto;
+      }
+
+      textarea {
+        background-color: transparent;
+        border: 0;
+        font-family: "Signika",sans-serif;
+        font-size: 2em;
+        height: 80px;
+        resize: none;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  &.actor-sheet section div.description table {
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+  }
+
+  &.item-sheet {
+    &.equipment table.sheet-header-2 {
+      table-layout: fixed;
+      text-align: center;
+      width: 100%;
+    }
+
+    &.hybrid header.sheet-header table.sheet-header-2 {
+      table-layout: fixed;
+      text-align: center;
+      width: 100%;
+
+      table.sheet-header-2-1 {
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &.misc table.sheet-main, &.money table.sheet-main, &.passif table.sheet-main, &.proficiency table.sheet-main {
+      table-layout: fixed;
+      text-align: center;
+      width: 100%;
+    }
+
+    &.skill header.sheet-header table.sheet-header-2, &.spell header.sheet-header table.sheet-header-2 {
+      table-layout: fixed;
+      text-align: center;
+      width: 100%;
+
+      table.sheet-header-2-1 {
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &.transformation table.sheet-main {
+      table-layout: fixed;
+      text-align: center;
+      width: 100%;
+    }
+
+    &.weapon {
+      section.sheet-tab table.sheet-main, table.sheet-header-2 {
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &.spell header.sheet-header table.sheet-header-2 tbody {
+      background-color: rgba(0, 174, 255, 0.11);
+    }
+
+    &.equipment table.sheet-header-2 tr:last-child, &.hybrid header.sheet-header table.sheet-header-2 tr:last-child, &.misc table.sheet-main tr:last-child, &.money table.sheet-main tr:last-child, &.passif table.sheet-main tr:last-child, &.proficiency table.sheet-main tr:last-child, &.skill header.sheet-header table.sheet-header-2 tr:last-child, &.spell header.sheet-header table.sheet-header-2 tr:last-child, &.transformation table.sheet-main tr:last-child, &.weapon table.sheet-header-2 tr:last-child {
+      border-bottom: 1px solid #666;
+    }
+
+    &.equipment table.sheet-header-2 tr td i.fas, &.hybrid header.sheet-header table.sheet-header-2 tr td i.fas, &.misc table.sheet-main tr td i.fas, &.money table.sheet-main tr td i.fas, &.passif table.sheet-main tr td i.fas, &.proficiency table.sheet-main tr td i.fas, &.skill header.sheet-header table.sheet-header-2 tr td i.fas, &.spell header.sheet-header table.sheet-header-2 tr td i.fas, &.transformation table.sheet-main tr td i.fas, &.weapon table.sheet-header-2 tr td i.fas {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.2em;
+      text-align: center;
+      width: 5%;
+    }
+
+    &.hybrid header.sheet-header table.sheet-header-2 tr td.range div, &.skill header.sheet-header table.sheet-header-2 tr td.range div, &.spell header.sheet-header table.sheet-header-2 tr td.range div {
+      align-items: center;
+      display: flex;
+      font-size: .8em;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &.hybrid header.sheet-header table.sheet-header-2 tr td.range div span, &.skill header.sheet-header table.sheet-header-2 tr td.range div span, &.spell header.sheet-header table.sheet-header-2 tr td.range div span {
+      background-color: transparent;
+      border: 0;
+      font-size: 2em;
+      margin: 0 3px;
+      text-align: center;
+    }
+
+    &.hybrid section.sheet-tab div.rolls-label label, &.skill section.sheet-tab div.rolls-label label, &.spell section.sheet-tab div.rolls-label label, &.weapon section.sheet-tab div.rolls-label label {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+      width: 70%;
+    }
+
+    &.hybrid section.sheet-tab div.rolls-label button, &.skill section.sheet-tab div.rolls-label button, &.spell section.sheet-tab div.rolls-label button, &.weapon section.sheet-tab div.rolls-label button {
+      background-color: transparent;
+      border: 0;
+      text-align: center;
+      width: 10%;
+    }
+
+    &.hybrid section.sheet-tab div.rolls div.roll, &.skill section.sheet-tab div.rolls div.roll, &.spell section.sheet-tab div.rolls div.roll, &.weapon section.sheet-tab div.rolls div.roll {
+      align-items: center;
+      background-color: rgba(151, 151, 151, 0.356);
+      border-bottom: #858585 1px solid;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &.hybrid section.sheet-tab div.rolls div.roll input, &.skill section.sheet-tab div.rolls div.roll input, &.spell section.sheet-tab div.rolls div.roll input, &.weapon section.sheet-tab div.rolls div.roll input {
+      border: rgba(128, 128, 128, 0.301) 1px solid;
+    }
+
+    &.hybrid section.sheet-tab div.rolls div.roll input.number:first-child, &.skill section.sheet-tab div.rolls div.roll input.number:first-child, &.spell section.sheet-tab div.rolls div.roll input.number:first-child, &.weapon section.sheet-tab div.rolls div.roll input.number:first-child {
+      text-align: right;
+    }
+
+    &.hybrid section.sheet-tab div.rolls div.roll span, &.skill section.sheet-tab div.rolls div.roll span, &.spell section.sheet-tab div.rolls div.roll span, &.weapon section.sheet-tab div.rolls div.roll span {
+      background-color: transparent;
+      font-size: 2em;
+      text-align: center;
+      width: 5%;
+    }
+
+    &.hybrid section.sheet-tab div.rolls div.roll button, &.money table.sheet-main tr td.moneyValue p, &.skill section.sheet-tab div.rolls div.roll button, &.spell section.sheet-tab div.rolls div.roll button, &.weapon section.sheet-tab div.rolls div.roll button {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.2em;
+      text-align: center;
+      width: 10%;
+    }
+
+    &.equipment section.sheet-description, &.hybrid section.sheet-description, &.misc section.sheet-description, &.money section.sheet-description, &.passif section.sheet-description, &.proficiency section.sheet-description, &.skill section.sheet-description, &.spell section.sheet-description, &.transformation section.sheet-description, &.weapon section.sheet-description {
+      height: 150px;
+      width: 100%;
+    }
+
+    &.skill header.sheet-header div.sheet-header-1 {
+      align-items: center;
+      background-color: rgba(0, 255, 0, 0.555);
+      border-radius: 15px 0 0 15px;
+      display: flex;
+      flex-direction: wrap;
+      justify-content: left;
+      margin: 0 10px;
+      padding: 10px 30px;
+      width: 120%;
+    }
+
+    &.equipment header.sheet-header div.sheet-header-1 img, &.hybrid header.sheet-header div.sheet-header-1 img, &.misc header.sheet-header div.sheet-header-1 img, &.money header.sheet-header div.sheet-header-1 img, &.passif header.sheet-header div.sheet-header-1 img, &.proficiency header.sheet-header div.sheet-header-1 img, &.skill header.sheet-header div.sheet-header-1 img, &.transformation header.sheet-header div.sheet-header-1 img, &.weapon header.sheet-header div.sheet-header-1 img {
+      border: rgba(0, 0, 0, 0.1) 1px solid;
+      filter: drop-shadow(0 0 5px #000);
+      height: 100%;
+      max-width: 75px;
+      width: auto;
+    }
+
+    &.equipment header.sheet-header div.sheet-header-1 textarea, &.hybrid header.sheet-header div.sheet-header-1 textarea, &.misc header.sheet-header div.sheet-header-1 textarea, &.money header.sheet-header div.sheet-header-1 textarea, &.passif header.sheet-header div.sheet-header-1 textarea, &.proficiency header.sheet-header div.sheet-header-1 textarea, &.skill header.sheet-header div.sheet-header-1 textarea, &.transformation header.sheet-header div.sheet-header-1 textarea, &.weapon header.sheet-header div.sheet-header-1 textarea {
+      background-color: transparent;
+      border: 0;
+      font-family: "Signika",sans-serif;
+      font-size: 2em;
+      height: 80px;
+      resize: none;
+      text-align: center;
+      width: 65%;
+    }
+
+    &.skill header.sheet-header table.sheet-header-2 tbody {
+      background-color: rgba(30, 255, 0, 0.11);
+    }
+
+    &.hybrid {
+      height: 800px;
+      width: 500px;
+
+      header.sheet-header {
+        div.sheet-header-1 {
+          align-items: center;
+          background-color: rgba(0, 255, 234, 0.555);
+          border-radius: 15px 0 0 15px;
+          display: flex;
+          flex-direction: wrap;
+          justify-content: left;
+          margin: 0 10px;
+          padding: 10px 30px;
+          width: 120%;
+        }
+
+        table.sheet-header-2 tbody {
+          background-color: rgba(0, 255, 179, 0.11);
+        }
+      }
+    }
+
+    &.misc table.sheet-main tr td input {
+      border: 0;
+      width: 60%;
+    }
+
+    &.transformation {
+      header.sheet-header div.sheet-header-1 {
+        background-color: rgba(204, 0, 255, 0.555);
+      }
+
+      table.sheet-main tbody {
+        background-color: rgba(225, 0, 255, 0.11);
+      }
+    }
+
+    &.passif {
+      header.sheet-header div.sheet-header-1 {
+        background-color: rgba(255, 0, 76, 0.555);
+      }
+
+      table.sheet-main tbody {
+        background-color: rgba(255, 0, 76, 0.11);
+      }
+    }
+
+    &.proficiency {
+      header.sheet-header div.sheet-header-1 {
+        background-color: rgba(255, 123, 0, 0.555);
+      }
+
+      table.sheet-main tbody {
+        background-color: rgba(255, 102, 0, 0.11);
+      }
+    }
+
+    &.misc header.sheet-header div.sheet-header-1 {
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.555);
+      border-radius: 15px 0 0 15px;
+      display: flex;
+      flex-direction: wrap;
+      justify-content: left;
+      margin: 0 10px;
+      padding: 10px 30px;
+      width: 120%;
+    }
+
+    &.money {
+      header.sheet-header div.sheet-header-1 {
+        background-color: rgba(255, 230, 0, 0.555);
+      }
+
+      table.sheet-main {
+        tbody {
+          background-color: rgba(255, 238, 0, 0.11);
+        }
+
+        tr td.moneyValue {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+
+    &.misc table.sheet-main tbody {
+      background-color: rgba(255, 255, 255, 0.11);
+    }
+
+    &.weapon {
+      header.sheet-header div.sheet-header-1 {
+        background-color: rgba(228, 0, 0, 0.705);
+      }
+
+      table.sheet-header-2 tbody {
+        background-color: rgba(255, 0, 0, 0.11);
+      }
+    }
+
+    &.equipment table.sheet-header-2 tr td.armor-given div {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: .8em;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &.weapon table.sheet-header-2 tr td.range div {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: .8em;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+
+      label {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 40%;
+      }
+
+      span {
+        background-color: transparent;
+        border: 0;
+        font-size: 2em;
+        margin: 0 3px;
+        text-align: center;
+        width: 15%;
+      }
+
+      input {
+        background-color: transparent;
+        font-size: 2em;
+        text-align: center;
+        width: 30%;
+      }
+
+      p.unit {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 10%;
+      }
+    }
+
+    &.equipment section.sheet-tab table.sheet-main td label {
+      align-items: center;
+      display: flex;
+      font-size: 1.2em;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &.weapon section.sheet-tab table.sheet-main td {
+      &.weaponPrice label, &.weaponQuantity label, &.weaponRarity label, &.weaponWeight label {
+        align-items: center;
+        display: flex;
+        font-size: 1.2em;
+        height: 100%;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
+    &.equipment section.sheet-tab table.sheet-main td input {
+      background-color: transparent;
+      font-size: 1.2em;
+      text-align: center;
+      width: 90%;
+    }
+
+    &.weapon section.sheet-tab table.sheet-main td {
+      &.weaponQuantity input {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 90%;
+      }
+
+      &.weaponPrice, &.weaponWeight {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      &.weaponPrice input, &.weaponWeight input {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 70%;
+      }
+    }
+
+    &.equipment table.sheet-header-2 tr td.armor-given div {
+      input, p {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 20%;
+      }
+    }
+
+    &.weapon section.sheet-tab table.sheet-main td {
+      &.weaponPrice p, &.weaponWeight p {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 20%;
+      }
+
+      &.weaponRarity input {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &.equipment {
+      header.sheet-header div.sheet-header-1 {
+        align-items: center;
+        background-color: rgba(122, 122, 122, 0.705);
+        border-radius: 15px 0 0 15px;
+        display: flex;
+        flex-direction: wrap;
+        justify-content: left;
+        margin: 0 10px;
+        padding: 10px 30px;
+        width: 120%;
+      }
+
+      table.sheet-header-2 tbody {
+        background-color: rgba(122, 122, 122, 0.11);
+      }
+    }
+  }
+}
+
+.editor, .editor-content {
   height: 100%;
-}
-
-form.item-sheet header table tr td.notes aside p {
+  min-height: 150px;
   width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-  text-shadow: #000000 1px 1px;
-  color: #a10000;
 }
 
-/* ----------------------------------------------------------------------------------------------------------- */
-/* AdventureDice */
-/* ----------------------------------------------------------------------------------------------------------- */
+form {
+  &.actor-sheet {
+    header div {
+      &.header-bottom table, &.header-left table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+      }
+    }
 
-form.item-sheet.adventure-dice {
-  width: 500px;
-  height: 280px;
+    section div {
+      &.proficiency-tab table, &.spell-tab table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    header div {
+      &.header-left table tr td {
+        input, select {
+          background-color: transparent;
+          border: 0;
+          font-size: 1.2em;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      &.header-top-left div input {
+        background-color: transparent;
+        border: 0;
+        font-size: 1.2em;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    section div.description div.description-language tr td input {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.2em;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  &.item-sheet {
+    &.adventure-dice div.sheet-body div input, &.money table.sheet-main tr td.moneyValue label {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.2em;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  &.actor-sheet {
+    header div.header-bottom table tr, section div.description div.description-language tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    header div.header-bottom table tr td {
+      border: #000 1px solid;
+      padding: 5px;
+    }
+
+    section div {
+      &.description div.description-language tr td {
+        border: #000 1px solid;
+        padding: 5px;
+      }
+
+      &.main-tab table div.container, &.description table div.container {
+        padding: 5px;
+      }
+    }
+  }
+
+  &.item-sheet {
+    &.equipment table.sheet-header-2 tr td, &.hybrid header.sheet-header table.sheet-header-2 tr td, &.misc table.sheet-main tr td, &.money table.sheet-main tr td, &.passif table.sheet-main tr td, &.proficiency table.sheet-main tr td, &.skill header.sheet-header table.sheet-header-2 tr td, &.spell header.sheet-header table.sheet-header-2 tr td, &.transformation table.sheet-main tr td, &.weapon table.sheet-header-2 tr td {
+      padding: 5px;
+    }
+  }
+
+  &.actor-sheet section div {
+    &.main-tab table table tr th.image, &.proficiency-tab table tr th.image, &.description table tr th.image, &.spell-tab table tr th.image {
+      height: 30px;
+      width: 30px;
+    }
+
+    &.main-tab table table tr th.small, &.proficiency-tab table tr th.small, &.spell-tab table tr th.small, &.description table tr th.small {
+      font-size: .7em;
+      padding-top: 13px;
+      text-indent: -20px;
+      transform: rotate(25deg);
+      width: 30px;
+    }
+
+    &.main-tab table table tr th.medium, &.description table tr th.medium {
+      width: 100px;
+    }
+  }
+
+  &.item-sheet {
+    &.adventure-dice {
+      div.sheet-body, header.header {
+        align-items: center;
+        background-color: #ffffff1f;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 100%;
+      }
+    }
+
+    &.spell main.sheet-body, &.skill main.sheet-body {
+      align-items: center;
+      background-color: #ffffff1f;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    &.spell section.sheet-tab div {
+      &.rolls, &.rolls-label {
+        align-items: center;
+        background-color: #ffffff1f;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 100%;
+      }
+    }
+
+    &.hybrid main.sheet-body {
+      align-items: center;
+      background-color: #ffffff1f;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    &.skill section.sheet-tab div {
+      &.rolls, &.rolls-label {
+        align-items: center;
+        background-color: #ffffff1f;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 100%;
+      }
+    }
+
+    &.hybrid section.sheet-tab div {
+      &.rolls, &.rolls-label {
+        align-items: center;
+        background-color: #ffffff1f;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 100%;
+      }
+    }
+
+    &.misc main.sheet-body, &.money main.sheet-body, &.passif main.sheet-body, &.proficiency main.sheet-body, &.transformation main.sheet-body, &.weapon main.sheet-body, &.equipment main.sheet-body {
+      align-items: center;
+      background-color: #ffffff1f;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    &.weapon section.sheet-tab div {
+      &.rolls, &.rolls-label {
+        align-items: center;
+        background-color: #ffffff1f;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 100%;
+      }
+    }
+
+    &.spell, &.passif, &.proficiency, &.equipment, &.misc, &.weapon {
+      height: 800px;
+      width: 400px;
+    }
+
+    &.hybrid header.sheet-header table.sheet-header-2 tr td input {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.2em;
+      text-align: center;
+      width: 80%;
+    }
+
+    &.money table.sheet-main tr td {
+      input, &.moneyValue input {
+        background-color: transparent;
+        border: 0;
+        font-size: 1.2em;
+        text-align: center;
+        width: 80%;
+      }
+    }
+
+    &.passif table.sheet-main tr td input, &.proficiency table.sheet-main tr td input, &.skill header.sheet-header table.sheet-header-2 tr td input, &.spell header.sheet-header table.sheet-header-2 tr td input, &.transformation table.sheet-main tr td input, &.equipment table.sheet-header-2 tr td input, &.weapon table.sheet-header-2 tr td input {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.2em;
+      text-align: center;
+      width: 80%;
+    }
+
+    &.spell section.sheet-tab div.rolls div.roll:last-child, &.skill section.sheet-tab div.rolls div.roll:last-child, &.hybrid section.sheet-tab div.rolls div.roll:last-child, &.weapon section.sheet-tab div.rolls div.roll:last-child {
+      border-bottom: none;
+      border-radius: 0 0 5px 5px;
+    }
+
+    &.spell section.sheet-tab div.rolls div.roll:first-child, &.skill section.sheet-tab div.rolls div.roll:first-child, &.hybrid section.sheet-tab div.rolls div.roll:first-child, &.weapon section.sheet-tab div.rolls div.roll:first-child {
+      border-radius: 5px 5px 0 0;
+    }
+
+    &.spell section.sheet-tab div.rolls div.roll input.number, &.skill section.sheet-tab div.rolls div.roll input.number, &.hybrid section.sheet-tab div.rolls div.roll input.number, &.weapon section.sheet-tab div.rolls div.roll input.number {
+      background-color: transparent;
+      font-size: 1.2em;
+      text-align: left;
+      width: 13%;
+    }
+
+    &.spell section.sheet-tab div.rolls div.roll input.text, &.skill section.sheet-tab div.rolls div.roll input.text, &.hybrid section.sheet-tab div.rolls div.roll input.text, &.misc table.sheet-main tr td input {
+      background-color: transparent;
+      font-size: 1.2em;
+      text-align: center;
+      width: 30%;
+    }
+
+    &.weapon {
+      table.sheet-header-2 tr td.range div p, section.sheet-tab div.rolls div.roll input.text {
+        background-color: transparent;
+        font-size: 1.2em;
+        text-align: center;
+        width: 30%;
+      }
+    }
+
+    &.spell section.sheet-tab div.rolls div.roll input.dice, &.skill section.sheet-tab div.rolls div.roll input.dice, &.hybrid section.sheet-tab div.rolls div.roll input.dice, &.weapon section.sheet-tab div.rolls div.roll input.dice {
+      background-color: transparent;
+      font-size: 1.2em;
+      text-align: left;
+      width: 22%;
+    }
+
+    &.skill, &.transformation, &.money {
+      height: 800px;
+      width: 450px;
+    }
+
+    &.passif header.sheet-header div.sheet-header-1, &.proficiency header.sheet-header div.sheet-header-1, &.transformation header.sheet-header div.sheet-header-1, &.money header.sheet-header div.sheet-header-1, &.weapon header.sheet-header div.sheet-header-1 {
+      align-items: center;
+      border-radius: 15px 0 0 15px;
+      display: flex;
+      flex-direction: wrap;
+      justify-content: left;
+      margin: 0 10px;
+      padding: 10px 30px;
+      width: 120%;
+    }
+  }
 }
 
-form.item-sheet.adventure-dice header.header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.adventure-dice div.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.adventure-dice div.sheet-body div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 33%;
-  text-align: center;
-}
-
-form.item-sheet.adventure-dice div.sheet-body div label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-form.item-sheet.adventure-dice div.sheet-body div.sheet-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-}
-
-form.item-sheet.adventure-dice div.sheet-body div input {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.adventure-dice
-  div.sheet-body
-  div.sheet-bottom
-  fieldset.clock-frame {
-  display: inline-flex;
-  flex-direction: column;
-  border-radius: 2%;
+.item-card {
   position: relative;
-  justify-content: center;
-  width: fit-content;
-  padding: 1em;
-  gap: 1em;
-}
-
-form.item-sheet.adventure-dice
-  div.sheet-body
-  div.sheet-bottom
-  fieldset.clock-frame
-  legend {
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 1em;
-}
-
-form.item-sheet.adventure-dice
-  div.sheet-body
-  div.sheet-bottom
-  fieldset.clock-frame
-  div.clock {
-  position: relative;
-  background-color: transparent;
-  width: 4em;
-  height: 4em;
   overflow: hidden;
-  border: medium solid #666666;
-  border-radius: 50%;
-  margin: 0 auto;
-  box-shadow: 0 0 0.5em #666666;
-}
-
-form.item-sheet.adventure-dice
-  div.sheet-body
-  div.sheet-bottom
-  fieldset.clock-frame
-  div.clock
-  label {
-  display: none;
-}
-
-form.item-sheet.adventure-dice
-  div.sheet-body
-  div.sheet-bottom
-  fieldset.clock-frame
-  div.clock
-  meter.clock-segment {
-  appearance: none;
-  display: inline-block;
-  box-sizing: border-box;
-  font-size: inherit;
-  margin: 0;
-  width: 2em;
-  height: 2em;
-  border: solid #666666;
-  border-width: 0.001em;
-  background-color: #eee;
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  transform-origin: 0 2em;
-  transform: rotate(calc(var(--index) * var(--angle)))
-    skewY(calc(var(--segmentAngle) - 90deg)) scale(1.5);
-}
-
-form.item-sheet.adventure-dice
-  div.sheet-body
-  div.sheet-bottom
-  fieldset.clock-frame
-  div.clock
-  meter.filled {
-  background-color: #000000;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Spells */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.spell {
-  width: 400px;
-  height: 800px;
-}
-
-form.item-sheet.spell header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.spell header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(0, 174, 255, 0.555);
-}
-
-form.item-sheet.spell header.sheet-header div.sheet-header-1 img {
-  height: 65%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.spell header.sheet-header div.sheet-header-1 textarea {
-  width: 100%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.spell
-  header.sheet-header
-  table.sheet-header-2
-  table.sheet-header-2-1 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tbody {
-  background-color: rgba(0, 174, 255, 0.11);
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td {
-  padding: 5px;
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.spell header.sheet-header table.sheet-header-2 tr td.range div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 0.8em;
-}
-
-form.item-sheet.spell
-  header.sheet-header
-  table.sheet-header-2
-  tr
-  td.range
-  div
-  span {
-  border: none;
-  margin: 0 3px;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.spell main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls-label {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls-label label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls-label button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(151, 151, 151, 0.356);
-  border-bottom: #858585 1px solid;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll:last-child {
-  border-bottom: none;
-  border-radius: 0 0 5px 5px;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll:first-child {
-  border-radius: 5px 5px 0 0;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll input {
-  border: rgba(128, 128, 128, 0.301) 1px solid;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll input.number {
-  width: 13%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.spell
-  section.sheet-tab
-  div.rolls
-  div.roll
-  input.number:first-child {
-  text-align: right;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll span {
-  width: 5%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll input.text {
-  width: 30%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll input.dice {
-  width: 22%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.spell section.sheet-tab div.rolls div.roll button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.spell section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* skills */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.skill {
-  width: 450px;
-  height: 800px;
-}
-
-form.item-sheet.skill header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.skill header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(0, 255, 0, 0.555);
-}
-
-form.item-sheet.skill header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.skill header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.skill
-  header.sheet-header
-  table.sheet-header-2
-  table.sheet-header-2-1 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tbody {
-  background-color: rgba(30, 255, 0, 0.11);
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td {
-  padding: 5px;
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.skill header.sheet-header table.sheet-header-2 tr td.range div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 0.8em;
-}
-
-form.item-sheet.skill
-  header.sheet-header
-  table.sheet-header-2
-  tr
-  td.range
-  div
-  span {
-  border: none;
-  margin: 0 3px;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.skill main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls-label {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls-label label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls-label button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(151, 151, 151, 0.356);
-  border-bottom: #858585 1px solid;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll:last-child {
-  border-bottom: none;
-  border-radius: 0 0 5px 5px;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll:first-child {
-  border-radius: 5px 5px 0 0;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll input {
-  border: rgba(128, 128, 128, 0.301) 1px solid;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll input.number {
-  width: 13%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.skill
-  section.sheet-tab
-  div.rolls
-  div.roll
-  input.number:first-child {
-  text-align: right;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll span {
-  width: 5%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll input.text {
-  width: 30%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll input.dice {
-  width: 22%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.skill section.sheet-tab div.rolls div.roll button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.skill section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Hybrid */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.hybrid {
-  width: 500px;
-  height: 800px;
-}
-
-form.item-sheet.hybrid header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.hybrid header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(0, 255, 234, 0.555);
-}
-
-form.item-sheet.hybrid header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.hybrid header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.hybrid
-  header.sheet-header
-  table.sheet-header-2
-  table.sheet-header-2-1 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tbody {
-  background-color: rgba(0, 255, 179, 0.11);
-}
-
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td {
-  padding: 5px;
-}
-
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.hybrid header.sheet-header table.sheet-header-2 tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.hybrid
-  header.sheet-header
-  table.sheet-header-2
-  tr
-  td.range
-  div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 0.8em;
-}
-
-form.item-sheet.hybrid
-  header.sheet-header
-  table.sheet-header-2
-  tr
-  td.range
-  div
-  span {
-  border: none;
-  margin: 0 3px;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.hybrid main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls-label {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls-label label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls-label button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(151, 151, 151, 0.356);
-  border-bottom: #858585 1px solid;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll:last-child {
-  border-bottom: none;
-  border-radius: 0 0 5px 5px;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll:first-child {
-  border-radius: 5px 5px 0 0;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input {
-  border: rgba(128, 128, 128, 0.301) 1px solid;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.number {
-  width: 13%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.hybrid
-  section.sheet-tab
-  div.rolls
-  div.roll
-  input.number:first-child {
-  text-align: right;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll span {
-  width: 5%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.text {
-  width: 30%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll input.dice {
-  width: 22%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.hybrid section.sheet-tab div.rolls div.roll button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.hybrid section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Transformation */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.transformation {
-  width: 450px;
-  height: 800px;
-}
-
-form.item-sheet.transformation header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.transformation header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(204, 0, 255, 0.555);
-}
-
-form.item-sheet.transformation header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.transformation header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.transformation table.sheet-main {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.transformation table.sheet-main tbody {
-  background-color: rgba(225, 0, 255, 0.11);
-}
-
-form.item-sheet.transformation table.sheet-main tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.transformation table.sheet-main tr td {
-  padding: 5px;
-}
-
-form.item-sheet.transformation table.sheet-main tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.transformation table.sheet-main tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.transformation main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.transformation section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Passif */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.passif {
-  width: 400px;
-  height: 800px;
-}
-
-form.item-sheet.passif header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.passif header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(255, 0, 76, 0.555);
-}
-
-form.item-sheet.passif header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.passif header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.passif table.sheet-main {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.passif table.sheet-main tbody {
-  background-color: rgba(255, 0, 76, 0.11);
-}
-
-form.item-sheet.passif table.sheet-main tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.passif table.sheet-main tr td {
-  padding: 5px;
-}
-
-form.item-sheet.passif table.sheet-main tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.passif table.sheet-main tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.passif main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.passif section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Proficiency */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.proficiency {
-  width: 400px;
-  height: 800px;
-}
-
-form.item-sheet.proficiency header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.proficiency header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(255, 123, 0, 0.555);
-}
-
-form.item-sheet.proficiency header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.proficiency header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.proficiency table.sheet-main {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.proficiency table.sheet-main tbody {
-  background-color: rgba(255, 102, 0, 0.11);
-}
-
-form.item-sheet.proficiency table.sheet-main tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.proficiency table.sheet-main tr td {
-  padding: 5px;
-}
-
-form.item-sheet.proficiency table.sheet-main tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.proficiency table.sheet-main tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.proficiency main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.proficiency section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Money */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.money {
-  width: 450px;
-  height: 800px;
-}
-
-form.item-sheet.money header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.money header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(255, 230, 0, 0.555);
-}
-
-form.item-sheet.money header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.money header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.money table.sheet-main {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.money table.sheet-main tbody {
-  background-color: rgba(255, 238, 0, 0.11);
-}
-
-form.item-sheet.money table.sheet-main tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.money table.sheet-main tr td {
-  padding: 5px;
-}
-
-form.item-sheet.money table.sheet-main tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.money table.sheet-main tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.money table.sheet-main tr td.moneyValue {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-form.item-sheet.money table.sheet-main tr td.moneyValue label {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.money table.sheet-main tr td.moneyValue input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.money table.sheet-main tr td.moneyValue p {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.money main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.money section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Misc */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.misc {
-  width: 400px;
-  height: 800px;
-}
-
-form.item-sheet.misc header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.misc header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(255, 255, 255, 0.555);
-}
-
-form.item-sheet.misc header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.misc header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.misc table.sheet-main {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.misc table.sheet-main tbody {
-  background-color: rgba(255, 255, 255, 0.11);
-}
-
-form.item-sheet.misc table.sheet-main tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.misc table.sheet-main tr td {
-  padding: 5px;
-}
-
-form.item-sheet.misc table.sheet-main tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.misc table.sheet-main tr td input {
-  width: 60%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.misc main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.misc section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Weapon */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.weapon {
-  width: 400px;
-  height: 800px;
-}
-
-form.item-sheet.weapon header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.weapon header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(228, 0, 0, 0.705);
-}
-
-form.item-sheet.weapon header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.weapon header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.weapon table.sheet-header-2 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tbody {
-  background-color: rgba(255, 0, 0, 0.11);
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td {
-  padding: 5px;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td.range div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 0.8em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td.range div p {
-  width: 30%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td.range div label {
-  width: 40%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td.range div span {
-  width: 15%;
-  border: none;
-  margin: 0 3px;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td.range div input {
-  width: 30%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.weapon table.sheet-header-2 tr td.range div p.unit {
-  width: 10%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.weapon section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls-label {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls-label label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls-label button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(151, 151, 151, 0.356);
-  border-bottom: #858585 1px solid;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll:last-child {
-  border-bottom: none;
-  border-radius: 0 0 5px 5px;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll:first-child {
-  border-radius: 5px 5px 0 0;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll input {
-  border: rgba(128, 128, 128, 0.301) 1px solid;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.number {
-  width: 13%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  div.rolls
-  div.roll
-  input.number:first-child {
-  text-align: right;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll span {
-  width: 5%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.text {
-  width: 30%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll input.dice {
-  width: 22%;
-  background-color: transparent;
-  text-align: left;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab div.rolls div.roll button {
-  width: 10%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  table.sheet-main
-  td.weaponQuantity
-  label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  table.sheet-main
-  td.weaponQuantity
-  input {
-  width: 90%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponWeight {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  table.sheet-main
-  td.weaponWeight
-  label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  table.sheet-main
-  td.weaponWeight
-  input {
-  width: 70%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponWeight p {
-  width: 20%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice input {
-  width: 70%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon section.sheet-tab table.sheet-main td.weaponPrice p {
-  width: 20%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  table.sheet-main
-  td.weaponRarity
-  label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 1.2em;
-}
-
-form.item-sheet.weapon
-  section.sheet-tab
-  table.sheet-main
-  td.weaponRarity
-  input {
-  width: 100%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-/* Equipment */
-/* ----------------------------------------------------------------------------------------------------------- */
-
-form.item-sheet.equipment {
-  width: 400px;
-  height: 800px;
-}
-
-form.item-sheet.equipment header.sheet-header {
-  display: block;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.equipment header.sheet-header div.sheet-header-1 {
-  display: flex;
-  flex-direction: wrap;
-  justify-content: left;
-  align-items: center;
-  width: 120%;
-  margin: 0 10px;
-  padding: 10px 30px;
-  border-radius: 15px 0 0 15px;
-  background-color: rgba(122, 122, 122, 0.705);
-}
-
-form.item-sheet.equipment header.sheet-header div.sheet-header-1 img {
-  height: 100%;
-  width: auto;
-  max-width: 75px;
-  border: rgba(0, 0, 0, 0.1) 1px solid;
-  filter: drop-shadow(0px 0px 5px #000);
-}
-
-form.item-sheet.equipment header.sheet-header div.sheet-header-1 textarea {
-  width: 65%;
-  height: 80px;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-family: "Signika", sans-serif;
-  resize: none;
-}
-
-form.item-sheet.equipment table.sheet-header-2 {
-  width: 100%;
-  text-align: center;
-  table-layout: fixed;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tbody {
-  background-color: rgba(122, 122, 122, 0.11);
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr:last-child {
-  border-bottom: 1px solid #666666;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr td {
-  padding: 5px;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr td i.fas {
-  width: 5%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr td input {
-  width: 80%;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr td.armor-given div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 0.8em;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr td.armor-given div input {
-  width: 20%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.equipment table.sheet-header-2 tr td.armor-given div p {
-  width: 20%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-form.item-sheet.equipment main.sheet-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #ffffff1f;
-  border-bottom: 1px solid #ccc;
-}
-
-form.item-sheet.equipment section.sheet-description {
-  width: 100%;
-  height: 150px;
-}
-
-form.item-sheet.equipment section.sheet-tab table.sheet-main td label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 1.2em;
-}
-
-form.item-sheet.equipment section.sheet-tab table.sheet-main td input {
-  width: 90%;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-.editor {
-  width: 100%;
-  height: 100%;
-  min-height: 150px;
-}
-
-.editor-content {
-  width: 100%;
-  height: 100%;
-  min-height: 150px;
+  width: 256px;
+  height: 350px;
+  margin: auto;
+
+  >section {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 256px;
+    height: 350px;
+
+    header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 175px;
+      background-color: #0000001f;
+      box-shadow: 0 5px 5px 5px #0000001f;
+
+      img {
+        position: absolute;
+        max-width: 131px;
+        max-height: 131px;
+        top: 10px;
+        left: 0px;
+        width: auto;
+        height: auto;
+        border-bottom-right-radius: 90px;
+        border: 4px solid gold;
+        box-shadow: 0 0 1px 1px rgba(255, 215, 0, 0.5);
+        transition: box-shadow 0.3s ease-in-out;
+      }
+
+      img:hover {
+        box-shadow: 0 0 5px 5px rgba(255, 215, 0, 0.75);
+      }
+
+      >section {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        left: 0px;
+        width: auto;
+        height: auto;
+
+        >ul {
+          position: absolute;
+          top: 5px;
+          right: 20px;
+          margin: auto;
+          padding: 0;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 35%;
+
+          >li {
+            padding: 0;
+            margin: 3px;
+            text-align: center;
+            font-size: 0.8em;
+            background-color: #5c5c5c;
+            border: 1px solid #000;
+            border-radius: 50%;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: all 0.3s;
+          }
+
+          li:nth-last-child(1) {
+            flex-basis: 65%;
+          }
+
+          li:nth-last-child(n+2),
+          li:nth-last-child(n+2) ~ li {
+            flex-basis: calc(43%);
+          }
+
+          .mana {
+            background: radial-gradient(circle at top right, rgba(1, 1, 212, 0.9), rgba(25, 25, 255, 0.6));
+            box-shadow: 0px 0px 8px rgba(1, 1, 212, 0.5);
+          }
+          
+          .stamina {
+            background: radial-gradient(circle at top right, rgba(70, 151, 70, 0.9), rgba(80, 180, 80, 0.6));
+            box-shadow: 0px 0px 8px rgba(70, 151, 70, 0.5);
+          }
+          
+          .health {
+            background: radial-gradient(circle at top right, rgba(165, 0, 0, 0.9), rgba(255, 0, 0, 0.6));
+            box-shadow: 0px 0px 8px rgba(165, 0, 0, 0.5);
+          }
+
+          li:hover {
+            transform: scale(1.1);
+            font-size: 1em;
+          }
+        }
+
+        >p {
+          position: absolute;
+          top: 130px;
+          margin: 0 15%;
+          padding: 0;
+          text-align: center;
+          font-size: 1.5em;
+          color: #000000;
+          width: 70%;
+          padding: 3px;
+          background-color: #ffffff48;
+          border-radius: 15px;
+          border: 2px solid #000;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        >p:last-child {
+          position: absolute;
+          top: 95px;
+          right: 15px;
+          margin: 0;
+          text-align: center;
+          font-size: 1em;
+          width: 40%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    main {
+      position: absolute;
+      width: 100%;
+      height: 121px;
+      max-height: 111px;
+      top: 175px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 15px 30px 0;
+      overflow: hidden;
+    
+      > article {
+        background-color: #324e3d1f;
+        border-radius: 15px;
+        border: 1px solid #000;
+        padding: 5px;
+        height: 100%;
+        overflow-y: auto;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 54px;
+
+      button:first-child {
+        position: absolute;
+        top: 0;
+        left: 10%;
+        width: 30%;
+        height: 50%;
+        background-color: #0000001f;
+        border: 1px solid #000;
+        border-radius: 15px;
+        color: #000;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: #0000003f;
+          color: #fff;
+        }
+      }
+
+      button:last-child {
+        position: absolute;
+        top: 0;
+        right: 10%;
+        width: 30%;
+        height: 50%;
+        background-color: #0000001f;
+        border: 1px solid #000;
+        border-radius: 15px;
+        color: #000;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: #0000003f;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  >img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 256px;
+    height: 350px;
+    object-fit: cover;
+    pointer-events: none;
+  }
 }

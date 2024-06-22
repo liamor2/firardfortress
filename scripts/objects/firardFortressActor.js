@@ -1,4 +1,4 @@
-export default class firardFortressDevActor extends Actor {
+export default class firardFortressActor extends Actor {
   constructor(...args) {
     super(...args);
   }
@@ -10,6 +10,29 @@ export default class firardFortressDevActor extends Actor {
     console.log(actorData);
 
     this._prepareCharacterData(actorData);
+
+    const isNPC = actorData.type === "NPC";
+    const statBlocks = isNPC
+      ? [
+          ["STR", "DEX", "CON"],
+          ["INT", "WIS", "CHA"],
+          ["WIL", "LUK", "HON"],
+        ]
+      : [
+          ["STR", "DEX", "CON", "INT", "WIS"],
+          ["WIL", "CHA", "LUK", "HON"],
+        ];
+
+    const dataForTemplate = statBlocks.map((block) => {
+      return block.map((statKey) => ({
+        statKey: statKey,
+        tableColspan: isNPC ? 1 : block === statBlocks[0] ? 4 : 5,
+        modText: actorData.system.stat[statKey].mod.text,
+        modNum: actorData.system.stat[statKey].mod.num,
+      }));
+    });
+
+    actorData.statBlocks = dataForTemplate;
   }
 
   _onUpdate(data, options, userId) {
@@ -42,8 +65,7 @@ export default class firardFortressDevActor extends Actor {
       stat.mod = {
         num: Math.floor((stat.value - 10) / 2),
         text:
-          (Math.floor((stat.value - 10) / 2) >= 0 ? "+" : "") +
-          Math.floor((stat.value - 10) / 2),
+          (Math.floor((stat.value - 10) / 2) >= 0 ? "+" : "") + Math.floor((stat.value - 10) / 2),
       };
     });
   }
@@ -72,11 +94,7 @@ export default class firardFortressDevActor extends Actor {
         temp = 0;
       }
 
-      if (
-        value != max &&
-        temp > 0 &&
-        (index == "HP" || index == "MP" || index == "SP")
-      ) {
+      if (value != max && temp > 0 && (index == "HP" || index == "MP" || index == "SP")) {
         while (value < max && temp > 0) {
           value = value + 1;
           temp = temp - 1;
@@ -123,18 +141,12 @@ export default class firardFortressDevActor extends Actor {
     let baseSpeed = systemData.speed.base;
 
     items.forEach((item) => {
-      if (
-        item.type === "Equipment" ||
-        item.type === "Weapon" ||
-        item.type === "Misc"
-      ) {
+      if (item.type === "Equipment" || item.type === "Weapon" || item.type === "Misc") {
         weight += item.system.weight * item.system.quantity;
-        totalWorth +=
-          parseFloat(item.system.price) * parseFloat(item.system.quantity);
+        totalWorth += parseFloat(item.system.price) * parseFloat(item.system.quantity);
       }
       if (item.type === "Money") {
-        totalMoney +=
-          parseFloat(item.system.value) * parseFloat(item.system.quantity);
+        totalMoney += parseFloat(item.system.value) * parseFloat(item.system.quantity);
       }
     });
 
@@ -151,8 +163,7 @@ export default class firardFortressDevActor extends Actor {
       };
       realSpeed = (
         baseSpeed -
-        (weight - maxWeight) /
-          (10 + systemData.stat.STR.mod.num + systemData.stat.CON.mod.num * 2)
+        (weight - maxWeight) / (10 + systemData.stat.STR.mod.num + systemData.stat.CON.mod.num * 2)
       ).toFixed(2);
     } else {
       systemData.weight = {
@@ -243,9 +254,7 @@ export default class firardFortressDevActor extends Actor {
 
   _updateCharacterDataStances(systemData) {
     console.log("Preparing stances");
-    var stances = this.effects.filter(
-      (effect) => effect.flags.group === "stance"
-    );
+    var stances = this.effects.filter((effect) => effect.flags.group === "stance");
     const dataStance = systemData.stance;
     console.log(stances);
     console.log(dataStance);

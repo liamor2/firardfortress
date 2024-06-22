@@ -1,18 +1,6 @@
 <form class="{{cssClass}} item-sheet transformation" autocomplete="off">
-  <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
-  </header>
-
-  {{!-- Sheet Body --}}
-  <main class="sheet-body">
     <table class="sheet-main">
       {{> "systems/firardfortressdev/templates/parts/items/typeInput.hbs"
       cssClass="transformationType"
@@ -24,9 +12,14 @@
       datalistId="transformationTypes"
       tooltipKey="FI.TransformationSheet.TransformationType"
       localizePrefix="FI.TransformationType"
-      fallbackLocalizationKey="FI.TransformationType.Label.Custom" }}
+      fallbackLocalizationKey="FI.TransformationType.Label.Custom"
+      data=data }}
       {{> "systems/firardfortressdev/templates/parts/items/capacitiesCost.hbs"}}
     </table>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <main class="sheet-body">
     <section class="sheet-description">
       {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
     </section>

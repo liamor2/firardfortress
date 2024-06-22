@@ -1,0 +1,31 @@
+<div style="display:flex; flex-direction:column; height:50px">
+    <select id="rollType">
+        <option value="normal">
+            {{localize "FI.System.Normal"}}
+            </option>
+        <option value="advantage">
+            {{localize  "FI.System.Advantage"}}
+            </option>
+        <option value="disadvantage">
+            {{localize "FI.System.Disadvantage"}}
+            </option>
+        <option value="custom">
+            {{localize "FI.System.Custom"}}
+            </option>
+    </select>
+    <div id="rollCustomDiv" style="display:none">
+        <label for="rollCustom">
+            {{localize "FI.System.CustomRoll"}}
+            </label>
+        <input id="rollCustom" type="text" placeholder="{{localize "FI.System.CustomRollPlaceholder"}}">
+    </div>
+    <script>
+        document.getElementById("rollType").addEventListener("change", function () {
+            if (this.value == "custom") {
+                document.getElementById("rollCustomDiv").style.display = "flex";
+            } else {
+                document.getElementById("rollCustomDiv").style.display = "none";
+            }
+        });
+    </script>
+</div>

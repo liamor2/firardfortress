@@ -169,17 +169,18 @@
     "Weapon": {
       "templates": ["general", "items", "equippable", "statLinked"],
       "weaponType": "",
-      "ranged": false,
-      "roll": [
-        {
-          "dice": 0,
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
           "bonus": 0,
           "damageType": ""
         }
-      ],
+      },
       "range": {
         "min": 0,
-        "max": 0
+        "max": 0,
+        "ranged": false
       },
       "isWeapon": true
     },
@@ -189,7 +190,7 @@
     },
     "Money": {
       "templates": ["general"],
-      "localisation": "",
+      "localization": "",
       "value": 0,
       "quantity": 0,
       "isMoney": true
@@ -205,15 +206,17 @@
       "mpCost": 0,
       "range": {
         "min": 0,
-        "max": 0
+        "max": 0,
+        "ranged": false
       },
-      "roll": [
-        {
-          "dice": 0,
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
           "bonus": 0,
           "damageType": ""
         }
-      ],
+      },
       "isSpell": true
     },
     "Skill": {
@@ -222,15 +225,17 @@
       "spCost": 0,
       "range": {
         "min": 0,
-        "max": 0
+        "max": 0,
+        "ranged": false
       },
-      "roll": [
-        {
-          "dice": 0,
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
           "bonus": 0,
           "damageType": ""
         }
-      ],
+      },
       "isSkill": true
     },
     "Hybrid": {
@@ -242,15 +247,17 @@
       "otherCost": "",
       "range": {
         "min": 0,
-        "max": 0
+        "max": 0,
+        "ranged": false
       },
-      "roll": [
-        {
-          "dice": 0,
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
           "bonus": 0,
           "damageType": ""
         }
-      ],
+      },
       "isHybrid": true
     },
     "Transformation": {
@@ -274,7 +281,6 @@
       "isAdventureDice": true
     },
     "Language": {
-      "name": "",
       "isLanguage": true,
       "speaking": false,
       "reading": false,

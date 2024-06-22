@@ -1,8 +1,8 @@
 <div class="rolls-label">
-  <label>{{localize "FI.WeaponSheet.Rolls"}}</label>
+  <label>{{localize "FI.System.Rolling.Rolls"}}</label>
   <a
     class="item-roll rollable"
-    title="{{localize ' FI.System.Roll'}}"
+    title="{{localize ' FI.System.Rolling.Roll'}}"
     data-type="Weapon"
   ><i class="fa-duotone fa-dice-d20"></i></a>
 </div>
@@ -41,7 +41,7 @@
         name="system.roll.{{@index}}.bonus"
         value="{{roll.bonus}}"
         title="{{localize '
-      FI.WeaponSheet.Bonus'}}"
+      FI.System.Gameplay.Bonus'}}"
       />
       <input
         class="text"
@@ -52,7 +52,7 @@
       />
       <button
         class="roll-delete"
-        title="{{localize ' FI.System.Delete'}}"
+        title="{{localize ' FI.System.Misc.Delete'}}"
         data-index="{{@index}}"
       ><i class="fas fa-trash"></i></button>
     </div>

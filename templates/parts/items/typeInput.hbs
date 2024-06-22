@@ -1,5 +1,5 @@
 <tr class="top">
-  <td class="{{cssClass}}" colspan="2">
+  <td class="{{cssClass}}" {{#if data.system.isHybrid}} colspan="6" {{else}} colspan="2" {{/if}}>
     <label>{{localize labelKey}}</label>
     <div class="{{divClass}}" title="{{localize tooltipKey}}">
       <i class="fas {{iconClass}}"></i>
@@ -28,7 +28,7 @@
         document.querySelector('.{{divClass}}').appendChild(descriptionButton);
       </script>
       <datalist id="{{datalistId}}">
-        {{#each itemOptions}}
+        {{#each this.data.system.itemOptions}}
         <option value="{{localize this.value}}" title="{{this.title}}" />
         {{/each}}
       </datalist>

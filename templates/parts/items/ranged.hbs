@@ -1,0 +1,23 @@
+  <td class="ranged" {{#if data.system.isHybrid}} colspan="2" {{/if}}>
+    <label>{{localize "FI.System.Rolling.Rolls.Ranged"}}</label>
+    <input type="checkbox" name="system.range.ranged" {{#if data.system.range.ranged}} checked {{/if}} />
+  </td>
+</tr>
+{{#if data.system.range.ranged}}
+<tr>
+  <td class="range" {{#if data.system.isHybrid}} colspan="6" {{else}} colspan="2" {{/if}}>
+    <div>
+      <p>{{localize "FI.System.Min"}}</p>
+      <label>{{localize "FI.System.Range"}}</label>
+      <p>{{localize "FI.System.Max"}}</p>
+    </div>
+    <div>
+      <input type="number" name="system.range.min" value="{{data.system.range.min}}" />
+      <p class="unit">{{localize "FI.WeaponSheet.Unit"}}</p>
+      <span>-</span>
+      <input type="number" name="system.range.max" value="{{data.system.range.max}}" />
+      <p class="unit">{{localize "FI.WeaponSheet.Unit"}}</p>
+    </div>
+  </td>
+</tr>
+{{/if}}

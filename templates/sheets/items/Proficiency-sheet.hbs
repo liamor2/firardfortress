@@ -1,12 +1,4 @@
 <form class="{{cssClass}} item-sheet proficiency" autocomplete="off">
-  <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
   </header>
@@ -24,7 +16,8 @@
       datalistId="proficiencyTypes"
       tooltipKey="FI.ProficiencySheet.ProficiencyType"
       localizePrefix="FI.ProficiencyType"
-      fallbackLocalizationKey="FI.ProficiencyType.Label.Custom" }}
+      fallbackLocalizationKey="FI.ProficiencyType.Label.Custom"
+      data=data }}
       {{> "systems/firardfortressdev/templates/parts/items/statInput.hbs"}}
     </table>
     <section class="sheet-description">

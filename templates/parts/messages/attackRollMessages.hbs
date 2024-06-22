@@ -1,0 +1,12 @@
+<h2>{{itemName}}</h2>
+{{#each rolls}}
+<div style="display: flex; align-items: center; flex-wrap: nowrap;">
+    <strong>{{damageType}}: </strong> {{total}} => {{formula}}
+</div>
+<div id="details-{{@index}}" style="display: flex; align-items: center; flex-wrap: nowrap; jusitfy-content: left;">
+    {{#each details}}
+    <span style="display: inline-block; width: 20px; text-align: center; {{#if (eq this.result 1)}}color: red;{{else if (eq this.result this.maxRoll)}}color: green;{{/if}}">{{this.result}}{{#if @last}}{{else}},{{/if}}</span>
+    {{/each}}
+</div>
+{{/each}}
+<p>Total Damage: {{finalRoll}}</p>

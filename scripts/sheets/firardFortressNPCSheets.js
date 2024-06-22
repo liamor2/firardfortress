@@ -1,6 +1,6 @@
-import firardFortressDevActorSheet from "./firardFortressDevActorSheets.js";
+import firardFortressActorSheet from "./firardFortressActorSheets.js";
 
-export default class firardFortressDevNPCSheet extends firardFortressDevActorSheet {
+export default class firardFortressNPCSheet extends firardFortressActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["firardfortressdev", "sheet", "actor", "npc"],

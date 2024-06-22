@@ -1,12 +1,4 @@
 <form class="{{cssClass}} item-sheet misc" autocomplete="off">
-  <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
   </header>
@@ -15,13 +7,14 @@
   <main class="sheet-body">
     {{> "systems/firardfortressdev/templates/parts/items/details.hbs"
     cssClassPrefix="misc"
-    quantityLabel="FI.MiscSheet.Quantity"
+    quantityLabel="FI.System.Misc.Quantity"
     weightLabel="FI.MiscSheet.Weight"
     weightDescription="FI.MiscSheet.WeightDescription"
     weightUnit="FI.MiscSheet.WeightUnit"
     priceLabel="FI.MiscSheet.Price"
     priceUnit="FI.MiscSheet.PriceUnit"
-    rarityLabel="FI.MiscSheet.Rarity" }}
+    rarityLabel="FI.MiscSheet.Rarity"
+    data=data }}
     <section class="sheet-description">
       {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
     </section>

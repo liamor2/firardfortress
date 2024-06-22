@@ -1,5 +1,5 @@
 <tr class="bottom">
-  <td class="stat">
+  <td class="stat" {{#if data.system.isHybrid}} colspan="3" {{/if}}>
     <label>{{localize "FI.Stat.Label"}}</label>
     <select name="system.stat" value="{{data.system.stat}}">
       <option value="None">{{localize "FI.Stat.None"}}</option>
@@ -17,17 +17,24 @@
       </script>
     </select>
   </td>
-  <td class="value">
-    <label>{{localize "FI.System.Bonus"}}</label>
+  <td class="value" {{#if data.system.isHybrid}} colspan="3" {{/if}}>
+    <label>{{localize "FI.System.Gameplay.Bonus"}}</label>
     <input type="number" name="system.value" value="{{data.system.value}}" />
   </td>
 </tr>
 <tr>
-  <td colspan="2" class="notes">
-    <label>{{localize "FI.System.RollFormula"}}</label>
+  <td class="notes" {{#if data.system.isHybrid}} colspan="6" {{else}} colspan="2" {{/if}}>
+    <label>{{localize "FI.System.Rolling.RollFormula"}}</label>
     <aside>
-      <p>{{data.system.formula}}</p>
-      <a class="rollable" title="{{localize 'FI.System.Roll'}}" data-type="itemRoll" data-id="{{data._id}}" data-owner="{{data.ownership}}" {{log data}}><i class="fa-duotone fa-dice-d20"></i></a>
+      <p>1d20{{data.system.rollDetails.formula}} {{data.system.rollDetails.stance}}</p>
+      <a
+      class="rollable"
+      title="{{localize 'FI.System.Rolling.Roll'}}"
+      data-type="itemRoll"
+      data-id="{{data._id}}"
+      data-actor="{{item.actor.id}}"
+      data-from="item">
+      <i class="fa-duotone fa-dice-d20"></i></a>
     </aside>
   </td>
 </tr>

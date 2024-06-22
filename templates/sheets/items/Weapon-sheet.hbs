@@ -1,12 +1,4 @@
 <form class="{{cssClass}} item-sheet weapon" autocomplete="off">
-  <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
     <table class="sheet-header-2">
@@ -20,36 +12,15 @@
       datalistId="weaponTypes"
       tooltipKey="FI.WeaponSheet.WeaponType"
       localizePrefix="FI.WeaponType"
-      fallbackLocalizationKey="FI.WeaponType.Label.Custom" }}
+      fallbackLocalizationKey="FI.WeaponType.Label.Custom"
+      data=data }}
       <tr>
-        <td class="ranged">
-          <label>{{localize "FI.WeaponSheet.isRanged"}}</label>
-          <input type="checkbox" name="system.ranged" {{#if data.system.ranged}} checked {{/if}} />
-        </td>
         <td class="equipped">
           <label>{{localize "FI.WeaponSheet.isEquipped"}}</label>
           <input type="checkbox" name="system.equipped" {{#if data.system.equipped}} checked {{/if}} />
         </td>
-      </tr>
-      {{#if data.system.ranged}}
-      <tr>
-        <td class="range" colspan="2">
-          <div>
-            <p>{{localize "FI.System.Min"}}</p>
-            <label>{{localize "FI.WeaponSheet.WeaponRange"}}</label>
-            <p>{{localize "FI.System.Max"}}</p>
-          </div>
-          <div>
-            <input type="number" name="system.range.min" value="{{data.system.range.min}}" />
-            <p class="unit">{{localize "FI.WeaponSheet.Unit"}}</p>
-            <span>-</span>
-            <input type="number" name="system.range.max" value="{{data.system.range.max}}" />
-            <p class="unit">{{localize "FI.WeaponSheet.Unit"}}</p>
-          </div>
-        </td>
-      </tr>
-      {{/if}}
-      {{> "systems/firardfortressdev/templates/parts/items/statInput.hbs"}}
+        {{> "systems/firardfortressdev/templates/parts/items/ranged.hbs" data=data}}
+      {{> "systems/firardfortressdev/templates/parts/items/statInput.hbs" data=data}}
     </table>
   </header>
   {{> "systems/firardfortressdev/templates/parts/items/navigation.hbs"}}
@@ -62,7 +33,7 @@
       {{> "systems/firardfortressdev/templates/parts/items/roll.hbs"}}
       {{> "systems/firardfortressdev/templates/parts/items/details.hbs"
       cssClassPrefix="weapon"
-      quantityLabel="FI.WeaponSheet.Quantity"
+      quantityLabel="FI.System.Misc.Quantity"
       weightLabel="FI.WeaponSheet.Weight"
       weightDescription="FI.WeaponSheet.WeightDescription"
       weightUnit="FI.WeaponSheet.WeightUnit"

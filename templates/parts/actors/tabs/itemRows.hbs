@@ -1,0 +1,97 @@
+<tr>
+  {{!-- Dynamic Item ID and Image --}}
+  <td class="edit-item" data-id="{{item._id}}">
+    <img src="{{item.img}}" alt="{{item.name}}" />
+  </td>
+
+  {{!-- Item Name --}}
+  <td class="edit-item" data-id="{{item._id}}">
+    <p>{{item.name}}</p>
+  </td>
+
+  {{!-- Special properties for Hybrid and Armor types using Handlebars "or" helper --}}
+  {{#if (or item.system.isSpell item.system.isSkill item.system.isHybrid item.system.isTransformation)}}
+  <td class="edit-item" data-id="{{item._id}}">
+    <div>
+      {{#if item.system.mpCost}}
+      <p>{{item.system.mpCost}} {{localize "FI.System.Attributes.MP"}}</p>
+      {{/if}}
+      {{#if item.system.spCost}}
+      <p>{{item.system.spCost}} {{localize "FI.System.Attributes.SP"}}</p>
+      {{/if}}
+      {{#if item.system.hpCost}}
+      <p>{{item.system.hpCost}} {{localize "FI.System.Attributes.HP"}}</p>
+      {{/if}}
+      {{#if item.system.otherCost}}
+      <p>+</p>
+      {{/if}}
+    </div>
+  </td>
+  {{/if}}
+
+  {{!-- Stat for Weapon or any related equipment type --}}
+  {{#if (or item.system.isWeapon item.system.isProficiency item.system.isSpell item.system.isSkill item.system.isHybrid item.system.isTransformation)}}
+  <td class="edit-item medium" data-id="{{item._id}}">
+    <p>{{localize (concat "FI.Stat." item.system.stat)}}</p>
+  </td>
+  {{/if}}
+
+  {{!-- Armor specific fields --}}
+  {{#if item.system.isEquipment}}
+  <td class="edit-item medium armor" data-id="{{item._id}}">
+    <p>{{item.system.PA}} {{localize "FI.System.Attributes.PA"}}</p><span>/</span>
+    <p>{{item.system.MA}} {{localize "FI.System.Attributes.MA"}}</p>
+  </td>
+  <td class="edit-item medium" data-id="{{item._id}}">
+    <p>{{item.system.equipmentType}}</p>
+  </td>
+  {{/if}}
+
+  {{!-- Currency handling for Money type --}}
+    {{#if (or item.system.isMoney item.system.isProficiency)}}
+  <td class="edit-item" data-id="{{item._id}}">
+    <p>{{item.system.value}} {{#if item.system.isMoney}}{{localize "FI.System.Economy.SC"}}{{/if}}</p>
+  </td>
+    {{/if}}
+
+  {{!-- Equipped status for weapons --}}
+  {{#if (or item.system.isWeapon item.system.isEquipment)}}
+  <td class="small">
+    {{#if item.system.equipped}}
+    <i class="fa-solid fa-check item-checkbox" data-id="{{item._id}}" data-type="equipped"></i>
+    {{else}}
+    <i class="fa-solid fa-times item-checkbox" data-id="{{item._id}}" data-type="equipped"></i>
+    {{/if}}
+  </td>
+  {{/if}}
+
+  {{!-- Input for item quantity, typically for consumables or currency --}}
+  {{#if (or item.system.isWeapon item.system.isEquipment item.system.isMisc item.system.isMoney)}}
+  <td class="small" data-id="{{item._id}}">
+    <input type="number" name="system.quantity" value="{{item.system.quantity}}" />
+  </td>
+  {{/if}}
+
+  {{!-- Action buttons for rolling, moving, and deleting the item --}}
+  {{#if (or item.system.isWeapon item.system.isProficiency item.system.isSpell item.system.isSkill item.system.isHybrid item.system.isTransformation)}}
+  <td>
+    <a
+    class="item-roll rollable"
+    title="{{localize 'FI.System.Rolling.Roll'}}"
+    data-id="{{item._id}}"
+    data-from="item"
+    data-type="itemCard"
+    data-actor="{{actor}}">
+      <i class="fa-duotone fa-dice-d20"></i></a>
+  </td>
+  {{/if}}
+  <td>
+    <a class="move small" data-type="up" data-move="{{item.type}}" data-id="{{item._id}}"><i
+        class="fa-duotone fa-arrow-up"></i></a>
+    <a class="move small" data-type="down" data-move="{{item.type}}" data-id="{{item._id}}"><i
+        class="fa-duotone fa-arrow-down"></i></a>
+  </td>
+  <td>
+    <a class="delete small" data-delete="{{item.type}}" data-id="{{item._id}}" data-actor="{{actor}}"><i class="fa-duotone fa-trash"></i></a>
+  </td>
+</tr>

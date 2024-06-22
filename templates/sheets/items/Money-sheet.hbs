@@ -1,12 +1,4 @@
 <form class="{{cssClass}} item-sheet money" autocomplete="off">
-  <script>
-      if (typeof inputs === 'undefined') {
-        var inputs = document.querySelectorAll('input:not([type="checkbox"])');
-      }
-      inputs.forEach(input => {
-        input.setAttribute('onkeydown', 'if (event.keyCode === 13) { this.blur(); }');
-      });
-    </script>
   <header class="sheet-header">
     {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
   </header>
@@ -16,13 +8,13 @@
     <table class="sheet-main">
       <tr class="top">
         <td class="moneyQuantity">
-          <label>{{localize "FI.MoneySheet.Quantity"}}</label>
-          <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize "FI.MoneySheet.Quantity"}}" />
+          <label>{{localize "FI.System.Misc.Quantity"}}</label>
+          <input type="number" name="system.quantity" value="{{data.system.quantity}}" title="{{localize "FI.System.Misc.Quantity"}}" />
         </td>
         <td class="moneyValue">
           <label>{{localize "FI.MoneySheet.Value"}}</label>
           <input type="number" name="system.value" value="{{data.system.value}}" title="{{localize "FI.MoneySheet.ValueDescription"}}" />
-          <p>{{localize "FI.System.SC"}}</p>
+          <p>{{localize "FI.System.Economy.SC"}}</p>
         </td>
       </tr>
       <tr class="bottom">

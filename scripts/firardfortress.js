@@ -1,37 +1,45 @@
-import firardFortressDevActorSheet from "./sheets/firardFortressDevActorSheets.js";
-import firardFortressDevNPCSheet from "./sheets/firardFortressDevNPCSheets.js";
-import firardFortressDevItemSheet from "./sheets/firardFortressItemSheets.js";
-import firardFortressDevActor from "./objects/firardFortressDevActor.js";
+import firardFortressActorSheet from "./sheets/firardFortressActorSheets.js";
+import firardFortressNPCSheet from "./sheets/firardFortressNPCSheets.js";
+import firardFortressItemSheet from "./sheets/firardFortressItemSheets.js";
+import firardFortressActor from "./objects/firardFortressActor.js";
+import firardFortressItem from "./objects/firardFortressItem.js";
+import { handleRoll } from "./logic/roll.js";
 
 async function preloadHandlebarsPartials() {
-  const templatePaths = [
-    "systems/firardfortressdev/templates/parts/actors/header/subStat.hbs",
-    "systems/firardfortressdev/templates/parts/actors/header/mainStat.hbs",
-    "systems/firardfortressdev/templates/parts/actors/header/attributes.hbs",
-    "systems/firardfortressdev/templates/parts/actors/header/navigation.hbs",
-    "systems/firardfortressdev/templates/parts/actors/tabs/mainTab.hbs",
-    "systems/firardfortressdev/templates/parts/actors/tabs/proficienciesTab.hbs",
-    "systems/firardfortressdev/templates/parts/actors/tabs/spellsTab.hbs",
-    "systems/firardfortressdev/templates/parts/actors/tabs/notesTab.hbs",
-    "systems/firardfortressdev/templates/parts/actors/tabs/npcAttackTab.hbs",
-    "systems/firardfortressdev/templates/parts/actors/footer/advancedRoll.hbs",
-    "systems/firardfortressdev/templates/parts/items/header.hbs",
-    "systems/firardfortressdev/templates/parts/items/capacitiesCost.hbs",
-    "systems/firardfortressdev/templates/parts/items/roll.hbs",
-    "systems/firardfortressdev/templates/parts/items/description.hbs",
-    "systems/firardfortressdev/templates/parts/items/typeInput.hbs",
-    "systems/firardfortressdev/templates/parts/items/navigation.hbs",
-    "systems/firardfortressdev/templates/parts/items/details.hbs",
-    "systems/firardfortressdev/templates/parts/items/statInput.hbs",
+  const basePath = "systems/firardfortressdev/templates/parts";
+  const templates = [
+    "actors/header/mainStat.hbs",
+    "actors/header/subStat.hbs",
+    "actors/header/attributes.hbs",
+    "actors/header/navigation.hbs",
+    "actors/header/statDisplay.hbs",
+    "actors/tabs/mainTab.hbs",
+    "actors/tabs/proficienciesTab.hbs",
+    "actors/tabs/spellsTab.hbs",
+    "actors/tabs/notesTab.hbs",
+    "actors/tabs/npcAttackTab.hbs",
+    "actors/tabs/itemRows.hbs",
+    "actors/footer/advancedRoll.hbs",
+    "items/header.hbs",
+    "items/capacitiesCost.hbs",
+    "items/roll.hbs",
+    "items/description.hbs",
+    "items/typeInput.hbs",
+    "items/navigation.hbs",
+    "items/details.hbs",
+    "items/statInput.hbs",
+    "items/ranged.hbs"
   ];
 
+  const templatePaths = templates.map((template) => `${basePath}/${template}`);
   return loadTemplates(templatePaths);
 }
 
 Hooks.once("init", async function () {
   console.log("firardfortressdev | Initializing firardfortressdev");
 
-  CONFIG.Actor.documentClass = firardFortressDevActor;
+  CONFIG.Actor.documentClass = firardFortressActor;
+  CONFIG.Item.documentClass = firardFortressItem;
 
   CONFIG.statusEffects.push(
     {
@@ -67,22 +75,26 @@ Hooks.once("init", async function () {
   );
 
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("firardfortressdev", firardFortressDevActorSheet, {
+  Actors.registerSheet("firardfortressdev", firardFortressActorSheet, {
     makeDefault: true,
   });
-  Actors.registerSheet("firardfortressdev", firardFortressDevNPCSheet, {
+  Actors.registerSheet("firardfortressdev", firardFortressNPCSheet, {
     types: ["NPC"],
     makeDefault: true,
   });
 
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("firardfortressdev", firardFortressDevItemSheet, {
+  Items.registerSheet("firardfortressdev", firardFortressItemSheet, {
     makeDefault: true,
   });
 
   Handlebars.registerHelper("or", function (...args) {
     args.pop();
     return args.some((arg) => Boolean(arg));
+  });
+
+  Handlebars.registerHelper('colSpan', function (type) {
+    return type === "NPC" ? "" : 'colspan="4"';
   });
 
   game.settings.register("firardfortressdev", "system", {
@@ -115,64 +127,8 @@ Hooks.once("ready", async function () {
   };
 });
 
-Hooks.on("createItem", (item) => {
-  switch (item.type) {
-    case "Weapon":
-      item.update({
-        img: "icons/weapons/swords/greatsword-crossguard-steel.webp",
-      });
-      break;
-    case "Equipment":
-      item.update({
-        img: "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
-      });
-      break;
-    case "Misc":
-      item.update({
-        img: "icons/containers/bags/pack-leather-black-brown.webp",
-      });
-      break;
-    case "Money":
-      item.update({
-        img: "icons/commodities/currency/coin-inset-compass-silver.webp",
-      });
-      break;
-    case "Proficiency":
-      item.update({
-        img: "icons/skills/social/intimidation-impressing.webp",
-      });
-      break;
-    case "Spell":
-      item.update({
-        img: "icons/magic/fire/explosion-embers-orange.webp",
-      });
-      break;
-    case "Skill":
-      item.update({
-        img: "icons/skills/melee/hand-grip-sword-orange.webp",
-      });
-      break;
-    case "Hybrid":
-      item.update({
-        img: "icons/magic/unholy/hand-fire-skeleton-pink.webp",
-      });
-      break;
-    case "Transformation":
-      item.update({
-        img: "icons/magic/holy/angel-winged-humanoid-blue.webp",
-      });
-      break;
-    case "Passif":
-      item.update({
-        img: "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
-      });
-      break;
-    case "AdventureDice":
-      item.update({
-        img: "icons/svg/d4-grey.svg",
-      });
-      break;
-    default:
-      break;
+Hooks.on("renderChatMessage", (message, html, data) => {
+  if (message.flags.customType === "itemCard") {
+    html.find(".rollable").click(handleRoll);
   }
 });

@@ -1,0 +1,24 @@
+<td colspan="{{tableColspan}}" class="stat-input">
+  <div style="display: flex; justify-content: center; border-bottom: 1px solid #000; margin-bottom: 5px; padding-bottom: 5px;">
+    <strong>{{localize label}}</strong>
+  </div>
+  <div>
+    <div class="stat mainStat">
+      <input type="number" name="system.stat.{{statKey}}.value" value="{{lookup (lookup context.data.system.stat statKey) 'value'}}" />
+    </div>
+    <div class="stat modStat">
+      <p>{{this.modText}}</p>
+    </div>
+    <div class="stat">
+      <a class="rollable"
+        title="{{localize "FI.System.Rolling.Roll"}} 1d20{{this.modText}}"
+        data-roll="{{modNum}}"
+        data-type="statRoll"
+        data-from="actor"
+        data-id="{{context.data._id}}"
+        data-stat="{{statKey}}">
+        <i class="fa-duotone fa-dice-d20"></i>
+      </a>
+    </div>
+  </div>
+</td>

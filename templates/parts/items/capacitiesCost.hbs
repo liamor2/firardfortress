@@ -1,56 +1,37 @@
 <tr>
-  {{#if (or (eq data.type "Hybrid") (eq data.type "Transformation") (eq data.type "Spell"))}}
-  <td class="MPCost">
-    <label>{{localize "FI.HybridSheet.MPCost"}}</label>
-    <input type="number" name="system.mpCost" value="{{data.system.mpCost}}" title="{{localize "
-      FI.HybridSheet.MPCost"}}" />
-    <label>{{localize "FI.System.MP"}}</label>
+  {{#if (or data.system.isHybrid data.system.isTransformation data.system.isSpell)}}
+  <td class="MPCost" {{#if data.system.isHybrid}} colspan="3" {{/if}}>
+    <label>{{localize "FI.System.Attributes.MPCost"}}</label>
+    <input type="number" name="system.mpCost" value="{{data.system.mpCost}}" title="{{localize "FI.System.Attributes.MPCost"}}" />
+    <label>{{localize "FI.System.Attributes.MP"}}</label>
   </td>
   {{/if}}
-  {{#if (or (eq data.type "Hybrid") (eq data.type "Transformation") (eq data.type "Skill"))}}
-  <td class="SPCost">
-    <label>{{localize "FI.HybridSheet.SPCost"}}</label>
-    <input type="number" name="system.spCost" value="{{data.system.spCost}}" title="{{localize "
-      FI.HybridSheet.SPCost"}}" />
-    <label>{{localize "FI.System.SP"}}</label>
+  {{#if (or data.system.isHybrid data.system.isTransformation data.system.isSkill)}}
+  <td class="SPCost" {{#if data.system.isHybrid}} colspan="3" {{/if}}>
+    <label>{{localize "FI.System.Attributes.SPCost"}}</label>
+    <input type="number" name="system.spCost" value="{{data.system.spCost}}" title="{{localize "FI.System.Attributes.SPCost"}}" />
+    <label>{{localize "FI.System.Attributes.SP"}}</label>
   </td>
   {{/if}}
-{{#if (or (eq data.type "Hybrid") (eq data.type "Transformation"))}}
+{{#if (or data.system.isHybrid data.system.isTransformation)}}
   </tr>
   <tr>
 {{/if}}
-{{#if (or (eq data.type "Hybrid") (eq data.type "Transformation"))}}
-  <td class="HPCost">
-    <label>{{localize "FI.HybridSheet.HPCost"}}</label>
-    <input type="number" name="system.hpCost" value="{{data.system.hpCost}}" title="{{localize "
-      FI.HybridSheet.HPCost"}}" />
-    <label>{{localize "FI.System.HP"}}</label>
+{{#if (or data.system.isHybrid data.system.isTransformation)}}
+  <td class="HPCost" {{#if data.system.isHybrid}} colspan="2" {{/if}}>
+    <label>{{localize "FI.System.Attributes.HPCost"}}</label>
+    <input type="number" name="system.hpCost" value="{{data.system.hpCost}}" title="{{localize "FI.System.Attributes.HPCost"}}" />
+    <label>{{localize "FI.System.Attributes.HP"}}</label>
   </td>
-  <td class="otherCost">
+  <td class="otherCost" {{#if data.system.isHybrid}} colspan="2" {{/if}}>
     <label>{{localize "FI.HybridSheet.OtherCost"}}</label>
-    <input type="text" name="system.otherCost" value="{{data.system.otherCost}}" title="{{localize "
-      FI.HybridSheet.OtherCost"}}" />
+    <input type="text" name="system.otherCost" value="{{data.system.otherCost}}" title="{{localize "FI.HybridSheet.OtherCost"}}" />
   </td>
 {{/if}}
-{{#if (or (eq data.type "Hybrid") (eq data.type "Transformation"))}}
-</tr>
-<tr>
-{{/if}}
-{{#if (or (eq data.type "Hybrid") (eq data.type "Skill") (eq data.type "Spell"))}}
-  <td class="range" {{#if (eq data.type "Hybrid")}}colspan="2"{{/if}}>
-    <div>
-      <p>{{localize "FI.System.Min"}}</p>
-      <label>{{localize "FI.HybridSheet.HybridRange"}}</label>
-      <p>{{localize "FI.System.Max"}}</p>
-    </div>
-    <div>
-      <input type="number" name="system.range.min" value="{{data.system.range.min}}" />
-      <span>-</span>
-      <input type="number" name="system.range.max" value="{{data.system.range.max}}" />
-    </div>
-  </td>
+{{#if (or data.system.isHybrid data.system.isSkill data.system.isSpell)}}
+  {{> "systems/firardfortressdev/templates/parts/items/ranged.hbs" data=data}}
 {{/if}}
 </tr>
-{{#if (or (eq data.type "Hybrid") (eq data.type "Spell") (eq data.type "Skill"))}}
-{{> "systems/firardfortressdev/templates/parts/items/statInput.hbs"}}
+{{#if (or data.system.isHybrid data.system.isSpell data.system.isSkill data.system.isTransformation)}}
+{{> "systems/firardfortressdev/templates/parts/items/statInput.hbs" data=data }}
 {{/if}}

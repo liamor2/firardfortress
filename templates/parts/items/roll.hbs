@@ -1,14 +1,17 @@
 <div class="rolls-label">
-  <label>{{localize "FI.System.Rolls"}}</label>
+  <label>{{localize "FI.System.Rolling.Rolls"}}</label>
   <a
     class="rollable"
-    title="{{localize 'FI.System.Roll'}}"
+    title="{{localize 'FI.System.Rolling.Roll'}}"
     data-type="attackRoll"
     data-id="{{data._id}}"
-  ><i class="fa-duotone fa-dice-d20"></i></a>
+    data-actor="{{item.actor.id}}"
+    data-from="item">
+    <i class="fa-duotone fa-dice-d20"></i>
+  </a>
 </div>
 <div class="rolls">
-  {{#each data.system.roll as |roll|}}
+  {{#each data.system.roll as |roll index|}}
     <div class="roll">
       <input
         class="number"
@@ -39,7 +42,7 @@
         type="number"
         name="system.roll.{{@index}}.bonus"
         value="{{roll.bonus}}"
-        title="{{localize 'FI.System.Bonus'}}"
+        title="{{localize 'FI.System.Gameplay.Bonus'}}"
       />
       <input
         class="text"
@@ -49,9 +52,12 @@
         title="{{localize 'FI.System.DamageType'}}"
       />
       <button
-        class="roll-delete"
-        title="{{localize 'FI.System.Delete'}}"
+        class="item-delete"
+        title="{{localize 'FI.System.Misc.Delete'}}"
         data-index="{{@index}}"
+        data-type="deleteRoll"
+        data-id="{{../data._id}}"
+        data-actor="{{../item.actor.id}}"
       ><i class="fas fa-trash"></i></button>
     </div>
   {{/each}}
@@ -59,5 +65,8 @@
 <button
   class="item-add"
   title="{{localize 'FI.System.Add'}}"
-  data-add="{{data.type}}"
-><i class="fas fa-plus"></i></button>
+  data-type="addRoll"
+  data-id="{{data._id}}"
+  data-actor="{{item.actor.id}}">
+  <i class="fas fa-plus"></i>
+</button>
