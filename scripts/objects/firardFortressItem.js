@@ -91,17 +91,17 @@ export default class firardFortressItem extends Item {
 }
 
 const itemIcons = {
-  "Weapon": "icons/weapons/swords/greatsword-crossguard-steel.webp",
-  "Equipment": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
-  "Misc": "icons/containers/bags/pack-leather-black-brown.webp",
-  "Money": "icons/commodities/currency/coin-inset-compass-silver.webp",
-  "Proficiency": "icons/skills/social/intimidation-impressing.webp",
-  "Spell": "icons/magic/fire/explosion-embers-orange.webp",
-  "Skill": "icons/skills/melee/hand-grip-sword-orange.webp",
-  "Hybrid": "icons/magic/unholy/hand-fire-skeleton-pink.webp",
-  "Transformation": "icons/magic/holy/angel-winged-humanoid-blue.webp",
-  "Passif": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
-  "AdventureDice": "icons/svg/d4-grey.svg"
+  "Weapon": "assets/weapons/swords/greatsword-crossguard-steel.webp",
+  "Equipment": "assets/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "Misc": "assets/containers/bags/pack-leather-black-brown.webp",
+  "Money": "assets/commodities/currency/coin-inset-compass-silver.webp",
+  "Proficiency": "assets/skills/social/intimidation-impressing.webp",
+  "Spell": "assets/magic/fire/explosion-embers-orange.webp",
+  "Skill": "assets/skills/melee/hand-grip-sword-orange.webp",
+  "Hybrid": "assets/magic/unholy/hand-fire-skeleton-pink.webp",
+  "Transformation": "assets/magic/holy/angel-winged-humanoid-blue.webp",
+  "Passif": "assets/magic/perception/eye-ringed-glow-angry-large-red.webp",
+  "AdventureDice": "assets/svg/d4-grey.svg"
 };
 
 Hooks.on("createItem", (item) => {

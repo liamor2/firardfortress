@@ -45,31 +45,31 @@ Hooks.once("init", async function () {
     {
       id: "Offensive",
       name: "Stance: Offensive",
-      img: "systems/firardfortressdev/icons/Offensive.png",
+      img: "systems/firardfortressdev/assets/Offensive.png",
       flags: { group: "stance", stanceId: "Offensive" },
     },
     {
       id: "Defensive",
       name: "Stance: Defensive",
-      img: "systems/firardfortressdev/icons/Defensive.png",
+      img: "systems/firardfortressdev/assets/Defensive.png",
       flags: { group: "stance", stanceId: "Defensive" },
     },
     {
       id: "Focus",
       name: "Stance: Focus",
-      img: "systems/firardfortressdev/icons/Focus.png",
+      img: "systems/firardfortressdev/assets/Focus.png",
       flags: { group: "stance", stanceId: "Focus" },
     },
     {
       id: "Concentration",
       name: "Stance: Concentration",
-      img: "systems/firardfortressdev/icons/Concentration.png",
+      img: "systems/firardfortressdev/assets/Concentration.png",
       flags: { group: "stance", stanceId: "Concentration" },
     },
     {
       id: "Elemental",
       name: "Stance: Elemental",
-      img: "systems/firardfortressdev/icons/Elemental.png",
+      img: "systems/firardfortressdev/assets/Elemental.png",
       flags: { group: "stance", stanceId: "Elemental" },
     }
   );
