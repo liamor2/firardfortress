@@ -16,7 +16,7 @@
         </tr>
         {{#each items as |spell index|}}
           {{#if spell.system.isSpell}}
-            {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=spell index=index actor=../this.actor._id}}
+            {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=spell index=index actor=../this.actor._id}}
           {{/if}}
         {{/each}}
         <tr>
@@ -44,7 +44,7 @@
         </tr>
         {{#each items as |skill index|}}
           {{#if skill.system.isSkill}}
-            {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=skill index=index actor=../this.actor._id}}
+            {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=skill index=index actor=../this.actor._id}}
           {{/if}}
         {{/each}}
         <tr>
@@ -72,7 +72,7 @@
         </tr>
         {{#each items as |hybrid index|}}
           {{#if hybrid.system.isHybrid}}
-            {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=hybrid index=index actor=../this.actor._id}}
+            {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=hybrid index=index actor=../this.actor._id}}
           {{/if}}
         {{/each}}
         <tr>
@@ -100,7 +100,7 @@
         </tr>
         {{#each items as |transformation index|}}
           {{#if transformation.system.isTransformation}}
-            {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=transformation index=index actor=../this.actor._id}}
+            {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=transformation index=index actor=../this.actor._id}}
           {{/if}}
         {{/each}}
         <tr>
@@ -125,7 +125,7 @@
         </tr>
         {{#each items as |passif index|}}
           {{#if passif.system.isPassif}}
-            {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=passif index=index actor=../this.actor._id}}
+            {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=passif index=index actor=../this.actor._id}}
           {{/if}}
         {{/each}}
         <tr>

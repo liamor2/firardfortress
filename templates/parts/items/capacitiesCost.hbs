@@ -29,9 +29,9 @@
   </td>
 {{/if}}
 {{#if (or data.system.isHybrid data.system.isSkill data.system.isSpell)}}
-  {{> "systems/firardfortressdev/templates/parts/items/ranged.hbs" data=data}}
+  {{> "systems/firardfortress/templates/parts/items/ranged.hbs" data=data}}
 {{/if}}
 </tr>
 {{#if (or data.system.isHybrid data.system.isSpell data.system.isSkill data.system.isTransformation)}}
-{{> "systems/firardfortressdev/templates/parts/items/statInput.hbs" data=data }}
+{{> "systems/firardfortress/templates/parts/items/statInput.hbs" data=data }}
 {{/if}}

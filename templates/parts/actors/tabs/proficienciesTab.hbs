@@ -12,7 +12,7 @@
       </tr>
       {{#each items as |proficiency index|}}
         {{#if proficiency.system.isProficiency}}
-          {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=proficiency index=index actor=../this.actor._id}}
+          {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=proficiency index=index actor=../this.actor._id}}
         {{/if}}
       {{/each}}
       <tr>

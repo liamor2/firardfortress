@@ -17,7 +17,7 @@ export default class firardFortressActorSheet extends ActorSheet {
   get template() {
     console.log(`Firard Fortress | Loading ${this.actor.type} sheet`);
 
-    return `systems/firardfortressdev/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
+    return `systems/firardfortress/templates/sheets/actors/${this.actor.type}-sheets.hbs`;
   }
 
   async getData() {

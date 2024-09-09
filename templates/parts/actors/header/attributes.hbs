@@ -3,7 +3,7 @@
     {{#each actor.statBlocks}}
       <tr>
         {{#each this}}
-          {{> "systems/firardfortressdev/templates/parts/actors/header/statDisplay.hbs" statKey=this.statKey tableColspan=this.tableColspan modText=this.modText modNum=this.modNum label=(concat 'FI.Stat.' this.statKey) context=../../this}}
+          {{> "systems/firardfortress/templates/parts/actors/header/statDisplay.hbs" statKey=this.statKey tableColspan=this.tableColspan modText=this.modText modNum=this.modNum label=(concat 'FI.Stat.' this.statKey) context=../../this}}
         {{/each}}
       </tr>
     {{/each}}
