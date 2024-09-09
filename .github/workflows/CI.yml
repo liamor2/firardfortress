@@ -37,6 +37,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add .
+        git reset .github/workflows/CI.yml  # Exclude the workflow file
         git commit -m "Replace firardfortressdev with firardfortress"
         git push
       env:
