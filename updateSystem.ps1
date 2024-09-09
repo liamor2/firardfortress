@@ -1,7 +1,7 @@
 # Define variables
 $repoUrl = "https://github.com/liamor2/firardfortress.git"  # URL of the GitHub repository
-$repoClonePath = "C:\path\to\cloned\repo"  # Path where the repo will be cloned/pulled
-$targetFolder = "C:\path\to\local\folder"  # Path to the folder you want to replace
+$repoTmpPath = Join-Path -Path $PSScriptRoot -ChildPath "repotmp"  # Temporary path for cloned repository
+$targetFolder = $PSScriptRoot  # Target folder is the folder where the script is located
 
 # Check if git is installed
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
@@ -9,28 +9,36 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     exit
 }
 
-# Clone or pull the repository
-if (Test-Path $repoClonePath) {
-    Write-Host "Repository already cloned. Pulling latest changes..." -ForegroundColor Yellow
-    Set-Location $repoClonePath
-    git pull origin main
-} else {
-    Write-Host "Cloning repository..." -ForegroundColor Green
-    git clone $repoUrl $repoClonePath
+# Remove any existing 'repotmp' folder from previous runs
+if (Test-Path $repoTmpPath) {
+    Write-Host "Removing existing 'repotmp' folder from previous run..." -ForegroundColor Yellow
+    Remove-Item -Recurse -Force $repoTmpPath
 }
 
-# Check if the repository was successfully pulled/cloned
-if (-not (Test-Path $repoClonePath)) {
-    Write-Host "Failed to clone or pull the repository." -ForegroundColor Red
+# Clone the repository into 'repotmp' folder
+Write-Host "Cloning repository into 'repotmp'..." -ForegroundColor Green
+git clone $repoUrl $repoTmpPath
+
+# Check if the repository was successfully cloned
+if (-not (Test-Path $repoTmpPath)) {
+    Write-Host "Failed to clone the repository." -ForegroundColor Red
     exit
 }
 
-# Remove all files in the target folder
-Write-Host "Removing all files in the target folder: $targetFolder" -ForegroundColor Yellow
-Remove-Item -Recurse -Force "$targetFolder\*"
+# Remove all files in the target folder (except the script itself and the 'repotmp' folder)
+Write-Host "Removing all files in the target folder (except this script and 'repotmp')..." -ForegroundColor Yellow
+Get-ChildItem $targetFolder -Recurse |
+    Where-Object {
+        $_.FullName -ne $MyInvocation.MyCommand.Definition -and
+        $_.FullName -notlike "$repoTmpPath*"
+    } | Remove-Item -Recurse -Force
 
-# Copy all files from the cloned repository to the target folder
-Write-Host "Copying files from the repository to the target folder..." -ForegroundColor Green
-Copy-Item -Recurse -Force "$repoClonePath\*" "$targetFolder\"
+# Copy all files from the 'repotmp' folder to the target folder
+Write-Host "Copying files from 'repotmp' to the target folder..." -ForegroundColor Green
+Copy-Item -Recurse -Force "$repoTmpPath\*" "$targetFolder\"
 
-Write-Host "Files successfully replaced with the latest version from the repository!" -ForegroundColor Cyan
+# Clean up by removing the 'repotmp' folder after copying is complete
+Write-Host "Removing 'repotmp' folder..." -ForegroundColor Yellow
+Remove-Item -Recurse -Force $repoTmpPath
+
+Write-Host "Process completed successfully!" -ForegroundColor Cyan
