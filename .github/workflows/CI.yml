@@ -20,17 +20,6 @@ jobs:
       run: |
         find . -type f -exec sed -i 's/firardfortressdev/firardfortress/g' {} +
 
-    - name: Check for changes
-      id: changes_check
-      run: |
-        if git diff --quiet; then
-          echo "No changes detected."
-          echo "skip_commit=true" >> $GITHUB_ENV
-        else
-          echo "Changes detected."
-          echo "skip_commit=false" >> $GITHUB_ENV
-        fi
-
     - name: Commit and push changes excluding workflow files
       run: |
         git config --global user.name "github-actions[bot]"
