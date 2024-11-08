@@ -1,4 +1,4 @@
-import { prepareOptions } from "../logic/prepareItemType.js";
+import { prepareOptions } from "../logic.old/prepareItemType.js";
 import {
   validateAdventureDiceData,
   validateEquipmentData,
@@ -12,7 +12,7 @@ import {
   validateSpellData,
   validateTransformationData,
   validateWeaponData,
-} from "../logic/dataValidator.js";
+} from "../logic.old/dataValidator.js";
 import {
   createAdventureDiceData,
   createEquipmentData,
@@ -26,19 +26,10 @@ import {
   createSpellData,
   createTransformationData,
   createWeaponData,
-} from "../logic/dataCalculator.js";
+} from "../logic.old/dataCalculator.js";
+import { logToConsole } from "../logic.old/helper.js";
 
 export default class firardFortressItem extends Item {
-  constructor(...args) {
-    super(...args);
-  }
-
-  async getData() {
-    const data = super.getData();
-
-    return data;
-  }
-
   async prepareData() {
     super.prepareData();
 
@@ -47,7 +38,7 @@ export default class firardFortressItem extends Item {
     const actorData = this.actor;
 
     this.isGM = game.user.isGM;
-    // console.log(this);
+    logToConsole("info", "Item", "Preparing data", itemData, "green");
 
     itemData.itemOptions = prepareOptions(itemType);
 
@@ -91,17 +82,17 @@ export default class firardFortressItem extends Item {
 }
 
 const itemIcons = {
-  "Weapon": "assets/weapons/swords/greatsword-crossguard-steel.webp",
-  "Equipment": "assets/equipment/chest/breastplate-cuirass-steel-grey.webp",
-  "Misc": "assets/containers/bags/pack-leather-black-brown.webp",
-  "Money": "assets/commodities/currency/coin-inset-compass-silver.webp",
-  "Proficiency": "assets/skills/social/intimidation-impressing.webp",
-  "Spell": "assets/magic/fire/explosion-embers-orange.webp",
-  "Skill": "assets/skills/melee/hand-grip-sword-orange.webp",
-  "Hybrid": "assets/magic/unholy/hand-fire-skeleton-pink.webp",
-  "Transformation": "assets/magic/holy/angel-winged-humanoid-blue.webp",
-  "Passif": "assets/magic/perception/eye-ringed-glow-angry-large-red.webp",
-  "AdventureDice": "assets/svg/d4-grey.svg"
+  "Weapon": "icons/weapons/swords/greatsword-crossguard-steel.webp",
+  "Equipment": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "Misc": "icons/containers/bags/pack-leather-black-brown.webp",
+  "Money": "icons/commodities/currency/coin-inset-compass-silver.webp",
+  "Proficiency": "icons/skills/social/intimidation-impressing.webp",
+  "Spell": "icons/magic/fire/explosion-embers-orange.webp",
+  "Skill": "icons/skills/melee/hand-grip-sword-orange.webp",
+  "Hybrid": "icons/magic/unholy/hand-fire-skeleton-pink.webp",
+  "Transformation": "icons/magic/holy/angel-winged-humanoid-blue.webp",
+  "Passif": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
+  "AdventureDice": "icons/svg/d4-grey.svg"
 };
 
 Hooks.on("createItem", (item) => {

@@ -97,7 +97,8 @@
           "base": 10
         },
         "weight": {
-          "base": 10
+          "base": 10,
+          "value": 0
         }
       },
       "description": {

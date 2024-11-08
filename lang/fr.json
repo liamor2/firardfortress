@@ -111,8 +111,8 @@
         "SelectPrompt": "-- Sélectionnez une posture --"
       },
       "Options": {
-        "Offensive": "Offensif",
-        "Defensive": "Défensif",
+        "Aggressive": "Aggressive",
+        "Defensive": "Défensive",
         "Focus": "Focus",
         "Concentration": "Concentration",
         "Elemental": "Élémentaire"

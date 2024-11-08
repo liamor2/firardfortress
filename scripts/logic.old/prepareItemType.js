@@ -1,3 +1,5 @@
+import { logToConsole } from "./helper.js";
+
 const optionKeys = {
   equipment: ["Armor", "Head", "Torso", "Arms", "Legs", "Feet", "Hands", "Shield", "Trinket", "Ring", "Necklace", "Belt", "Cloak", "Earring", "Bracelet"],
   hybrid: ["Physical", "Magical"],
@@ -12,7 +14,7 @@ const optionKeys = {
 function prepareOptions(itemType) {
   const keys = optionKeys[itemType.toLowerCase()];
   if (!keys) {
-    // console.error(`prepareOptions: No options found for itemType '${itemType}'.`);
+    logToConsole("info", "Prepare Item Type", `No options found for itemType '${itemType}'.`, null, "orange");
     return [];
   }
   return keys.map(key => ({

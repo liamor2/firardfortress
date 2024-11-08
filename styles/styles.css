@@ -55,7 +55,7 @@ form {
           }
         }
 
-        &.bar {
+        &.barMax {
           border: 1px solid #0000001f;
           border-radius: 5px;
           height: 9px;
@@ -71,7 +71,7 @@ form {
           }
         }
 
-        &.stat-container div.bar {
+        &.stat-container div.barMax {
           div.barTemp {
             z-index: 1;
           }
@@ -157,9 +157,9 @@ form {
           }
         }
 
-        &.bar div.barValue.weightBarValue {
+        &.barMax div.barValue.weightBarValue {
           background-color: #000;
-          width: 100%;
+          width: 0%;
         }
 
         &.stat-container div.stat {

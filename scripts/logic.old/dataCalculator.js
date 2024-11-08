@@ -1,3 +1,5 @@
+import { logToConsole } from "./helper.js";
+
 function createAdventureDiceData(data) {
   data.segments = {};
 
@@ -94,12 +96,22 @@ function createItemFormulaData(data, actorData) {
   }
 
   data.rollDetails = rollDetails;
-  // console.log("Final details", data.rollDetails);
+  logToConsole("info", "Data Calculator", "Final details", data.rollDetails);
   return data;
 }
 
 function calculateStanceModifier(stat, actorData) {
   const stanceEffects = {
+    "Aggressive": {
+      "positive": ["STR", "DEX", "INT", "CHA"],
+      "negative": ["CON", "WIS", "LUK", "WIL"],
+      "modifier": {"positive": "+(1d6-3)", "negative": "-3"}
+    },
+    "Defensive": {
+      "positive": ["CON", "WIS", "LUK", "WIL"],
+      "negative": ["STR", "DEX", "INT", "CHA"],
+      "modifier": {"positive": "+(1d6-3)", "negative": "-3"}
+    },
     "Focus": {
       "positive": ["INT", "WIS", "CHA", "WIL"],
       "negative": ["STR", "DEX", "CON", "LUK"],
@@ -129,8 +141,6 @@ function calculateStanceModifier(stat, actorData) {
       stance = ` (${mod.includes('+') ? '+' : '-'} ${actorData.system.stance})`;
     }
   }
-
-  // console.log("Stance mod", mod, stance);
 
   return { mod, stance };
 }

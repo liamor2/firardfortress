@@ -1,37 +1,54 @@
 import { calculateStanceModifier } from "./dataCalculator.js";
+import { logToConsole } from "./helper.js";
 
 function getActorData(dataset) {
-  let data = game.actors.get(dataset.id);
-  data.stat = dataset.stat;
-  console.log(data);
+  let data = fetchActorData(dataset.id);
+  return formatActorData(dataset.stat, data);
+}
 
-  let formula = `${data.system.stat[data.stat].mod.text}`;
-  let stance = "";
+function fetchActorData(id) {
+  return game.actors.get(id);
+}
 
-  if (data.system && data.system.stance) {
-    let stanceMod = calculateStanceModifier(data.stat, data);
-    if (stanceMod.stance !== "") {
-      formula += `${stanceMod.mod >= 0 ? "+" : ""}${stanceMod.mod}`;
-    }
-    stance = stanceMod.stance;
-  }
+function calculateModifierValue(stat, data) {
+  return Math.floor((data.system.stat[stat].value - 10) / 2);
+}
 
-  data.formula = formula;
+function formatModifier(statMod, stanceMod, data) {
+  let modifier = `${statMod >= 0 ? "+" : ""}${statMod}${stanceMod.mod}`;
+  return modifier;
+}
 
-  return data;
+function calculateModifier(stat, data) {
+  let statMod = calculateModifierValue(stat, data);
+  let stanceMod = calculateStanceModifier(stat, data);
+  let formula = formatModifier(statMod, stanceMod, data);
+  return {
+    formula: formula,
+    stance: stanceMod.stance,
+  };
+}
+
+function formatActorData(stat, data) {
+  let modifierData = calculateModifier(stat, data);
+
+  return {
+    stat: stat,
+    formula: modifierData.formula,
+    stance: modifierData.stance,
+  };
 }
 
 function handleAddItem(event) {
   event.preventDefault();
   const element = event.currentTarget;
   const dataset = element.dataset;
-  console.log("Adding", dataset);
 
   const rollTemplate = {
     dice: 1,
     type: "d6",
     bonus: 0,
-    damageType: `${game.i18n.localize(`FI.${dataset.add}.DefaultDamageType`)}`
+    damageType: `${game.i18n.localize(`FI.${dataset.add}.DefaultDamageType`)}`,
   };
 
   const rangedTemplate = {
@@ -148,7 +165,6 @@ function handleAddItem(event) {
 
   const newItem = generateItemTemplate(dataset.add, itemDataOverrides[dataset.add]);
 
-  console.log(newItem);
   if (newItem) {
     game.actors.get(dataset.actor).createEmbeddedDocuments("Item", [newItem]);
   }
@@ -157,19 +173,17 @@ function handleAddItem(event) {
 async function handleDeleteItem(event) {
   const element = event.currentTarget;
   const dataset = element.dataset;
-  console.log("Deleting", dataset);
 
-    const item = game.actors.get(dataset.actor).items.get(dataset.id);
-    if (item) {
-        console.log(`Deleting ${dataset.delete}: ${dataset.id}`);
-        await item.delete();
-    } else {
-        console.log(`No item found with ID ${dataset.id} for deletion.`);
-    }
+  const item = game.actors.get(dataset.actor).items.get(dataset.id);
+  if (item) {
+    logToConsole("info", "Actor Manager", `Deleting ${dataset.delete}: ${dataset.id}`);
+    await item.delete();
+  } else {
+    logToConsole("warn", "Actor Manager", `No item found with ID ${dataset.id} for deletion.`);
+  }
 }
 
-export {
-  getActorData,
-  handleAddItem,
-  handleDeleteItem,
-};
+async function moveItem() {
+}
+
+export { getActorData, handleAddItem, handleDeleteItem, moveItem };

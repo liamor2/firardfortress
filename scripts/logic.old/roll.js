@@ -1,30 +1,38 @@
 import { loadTemplate } from "./loader.js";
 import { getItemData, getItemCardData, handleAdventureBalance, validateCardRollOrigin } from "./itemManager.js";
 import { getActorData } from "./actorManager.js";
+import { logToConsole } from "./helper.js";
 
 function handleRoll(event) {
   event.preventDefault();
-  const element = event.currentTarget;
-  const dataset = element.dataset;
-  console.log("Rolling", dataset);
-  let data = {};
+  const dataset = event.currentTarget.dataset;
+  
 
-  if (dataset.from === "actor") {
-    data = getActorData(dataset);
-  }
-  else if (dataset.from === "item") {
-    data = getItemData(dataset);
-  }
-  else if (dataset.from === "itemCard") {
-    data = getItemCardData(dataset);
-    if (!validateCardRollOrigin(data)) {
-      return;
-    }
-  } else {
-    console.error("Unknown source for roll", dataset);
-    return;
-  }
+  const data = fetchDataBasedOnSource(dataset);
+  if (!data) return;
 
+  processRoll(data, dataset.type);
+}
+
+function fetchDataBasedOnSource(dataset) {
+  switch (dataset.from) {
+    case "actor":
+      return getActorData(dataset);
+    case "item":
+      return getItemData(dataset);
+    case "itemCard":
+      const data = getItemCardData(dataset);
+      if (!validateCardRollOrigin(data)) {
+        return null;
+      }
+      return data;
+    default:
+      logToConsole("error", "Roll", `Unknown source for roll: ${dataset.from}`);
+      return null;
+  }
+}
+
+function processRoll(data, rollType) {
   const rollFunctions = {
     attackRoll: handleAttackRoll,
     itemRoll: handleItemRoll,
@@ -33,9 +41,11 @@ function handleRoll(event) {
     itemCard: handleItemCardRoll,
   };
 
-  const rollFunction = rollFunctions[dataset.type];
+  const rollFunction = rollFunctions[rollType];
   if (rollFunction) {
     rollFunction(data);
+  } else {
+    logToConsole("error", "Roll", `Unknown roll type: ${rollType}`);
   }
 }
 
@@ -110,7 +120,6 @@ async function handleAttackRoll(data) {
 }
 
 function handleItemRoll(data) {
-  console.log("Rolling item", data);
   let formula = data.item.system.rollDetails.formula;
 
   if (data.actor && Object.keys(data.actor).length === 0) {
@@ -145,7 +154,6 @@ function prepareRoll(formula, actor, statName) {
 
 async function handleAdvancedRoll(formula, actor, statName) {
   const template = await loadTemplate("/systems/firardfortressdev/templates/parts/messages/advancedRollDialog.hbs");
-  console.log("Advanced roll", formula, actor, statName);
   new Dialog({
     title: `${game.i18n.localize("FI.System.AdvancedRolling")}: ${
       actor.name
@@ -170,8 +178,6 @@ async function handleAdvancedRoll(formula, actor, statName) {
 }
 
 function renderAdvancedRollMessage(formula, actor, statName, html) {
-  console.log("Rendering advanced roll", formula, actor, statName, html);
-  
   const rollType = html.find("#rollType")[0].value;
   const rollCustom = rollType === "custom" ? html.find("#rollCustom")[0].value : "";
   
@@ -193,7 +199,7 @@ function renderAdvancedRollMessage(formula, actor, statName, html) {
   }
 
   let roll = new Roll(rollExpression);
-  const label = `${game.i18n.localize("FI.System.Rolling.Rolls")} ${statName}`;
+  const label = `${game.i18n.localize("FI.System.Rolling.Roll")}: ${statName}`;
 
   return roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
@@ -203,7 +209,7 @@ function renderAdvancedRollMessage(formula, actor, statName, html) {
 
 function handleSimpleRoll(formula, actor, statName) {
   let roll = new Roll(`1d20${formula}`);
-  const label = `${game.i18n.localize("FI.System.Rolling.Rolls")} ${statName}`;
+  const label = `${game.i18n.localize("FI.System.Rolling.Roll")}: ${statName}`;
 
   return roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
@@ -212,15 +218,14 @@ function handleSimpleRoll(formula, actor, statName) {
 }
 
 function handleStatRoll(data) {
-  console.log("Rolling stat", data);
+  logToConsole("info", "Roll", "Handling stat roll", data);
   let formula = data.formula;
-  let statName = game.i18n.localize(`FI.Stat.${data.stat}`);
+  let statName = game.i18n.localize(`FI.Stat.${data.stat}`) + data.stance;
 
   prepareRoll(formula, data, statName);
 }
 
 async function handleItemCardRoll(data) {
-  console.log("Rolling item card", data);
 
   const template = await loadTemplate("/systems/firardfortressdev/templates/parts/messages/itemCard.hbs");
   const contentHtml = template({
@@ -241,7 +246,6 @@ async function handleItemCardRoll(data) {
 }
 
 async function handleAdventureRoll(data) {
-  console.log("Rolling adventure", data);
   const balance = handleAdventureBalance(data.item, data.item.isGM);
   if (!balance) {
     ChatMessage.create({
@@ -256,7 +260,6 @@ async function handleAdventureRoll(data) {
   const result = roll.result;
   if ((result == 1 || result == 2 || result == 3 || result == 4)) {
     adventureDiceMessageRender(roll, result, data);
-    console.log(game)
   } else {
     adventureDiceMessageRender(roll, "Error", data);
   }

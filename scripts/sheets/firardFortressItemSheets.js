@@ -1,10 +1,10 @@
-import { gsap } from "/scripts/greensock/esm/all.js";
-import { handleRoll } from "../logic/roll.js";
-import { handleAdd, handleDelete } from "../logic/itemManager.js";
+import { handleRoll } from "../logic.old/roll.js";
+import { handleAdd, handleDelete } from "../logic.old/itemManager.js";
+import { logToConsole } from "../logic.old/helper.js";
 
 export default class firardFortressItemSheet extends ItemSheet {
   get template() {
-    console.log(`firardFortress | Loading ${this.item.type} sheet`);
+    logToConsole("info", "Sheet", `Loading ${this.item.type} sheet`, null, "green");
 
     return `systems/firardfortressdev/templates/sheets/items/${this.item.type}-sheet.hbs`;
   }

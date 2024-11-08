@@ -1,9 +1,10 @@
 import firardFortressActorSheet from "./sheets/firardFortressActorSheets.js";
 import firardFortressNPCSheet from "./sheets/firardFortressNPCSheets.js";
 import firardFortressItemSheet from "./sheets/firardFortressItemSheets.js";
-import firardFortressActor from "./objects/firardFortressActor.js";
-import firardFortressItem from "./objects/firardFortressItem.js";
-import { handleRoll } from "./logic/roll.js";
+import firardFortressActor from "./objects.old/firardFortressActor.js";
+import firardFortressItem from "./objects.old/firardFortressItem.js";
+import { handleRoll } from "./logic.old/roll.js";
+import { logToConsole } from "./logic.old/helper.js";
 
 async function preloadHandlebarsPartials() {
   const basePath = "systems/firardfortressdev/templates/parts";
@@ -36,17 +37,17 @@ async function preloadHandlebarsPartials() {
 }
 
 Hooks.once("init", async function () {
-  console.log("firardfortressdev | Initializing firardfortressdev");
+  logToConsole("info", "Setup", `Initializing Firard Fortress System version: ${game.system.version}`, null, "green");
 
   CONFIG.Actor.documentClass = firardFortressActor;
   CONFIG.Item.documentClass = firardFortressItem;
 
   CONFIG.statusEffects.push(
     {
-      id: "Offensive",
-      name: "Stance: Offensive",
-      img: "systems/firardfortressdev/assets/Offensive.png",
-      flags: { group: "stance", stanceId: "Offensive" },
+      id: "Aggressive",
+      name: "Stance: Aggressive",
+      img: "systems/firardfortressdev/assets/Aggressive.png",
+      flags: { group: "stance", stanceId: "Aggressive" },
     },
     {
       id: "Defensive",
@@ -119,7 +120,7 @@ Hooks.once("init", async function () {
 });
 
 Hooks.once("ready", async function () {
-  console.log("firardfortressdev | Ready");
+  logToConsole("info", "Setup", "Firard Fortress System is ready", null, "green");
 
   CONFIG.Combat.initiative = {
     formula: "@initiative.formula",

@@ -1,3 +1,5 @@
+import { logToConsole } from "../logic.old/helper.js";
+
 export default class firardFortressActor extends Actor {
   constructor(...args) {
     super(...args);
@@ -7,7 +9,6 @@ export default class firardFortressActor extends Actor {
     super.prepareData();
 
     const actorData = this;
-    console.log(actorData);
 
     this._prepareCharacterData(actorData);
 
@@ -15,8 +16,8 @@ export default class firardFortressActor extends Actor {
     const statBlocks = isNPC
       ? [
           ["STR", "DEX", "CON"],
-          ["INT", "WIS", "CHA"],
-          ["WIL", "LUK", "HON"],
+          ["INT", "WIS", "WIL"],
+          ["CHA", "LUK", "HON"],
         ]
       : [
           ["STR", "DEX", "CON", "INT", "WIS"],
@@ -33,6 +34,8 @@ export default class firardFortressActor extends Actor {
     });
 
     actorData.statBlocks = dataForTemplate;
+
+    logToConsole("debug", "Actor", "Data prepared", actorData);
   }
 
   _onUpdate(data, options, userId) {
@@ -253,11 +256,8 @@ export default class firardFortressActor extends Actor {
   }
 
   _updateCharacterDataStances(systemData) {
-    console.log("Preparing stances");
     var stances = this.effects.filter((effect) => effect.flags.group === "stance");
     const dataStance = systemData.stance;
-    console.log(stances);
-    console.log(dataStance);
 
     if (stances.length === 1 && stances[0].flags.stanceId === dataStance) {
       return;

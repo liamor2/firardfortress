@@ -20,9 +20,7 @@ function getItemCardData(dataset) {
   };
 
   data.actor = game.actors.get(dataset.actor);
-  console.log(data.actor);
   data.item = data.actor.items.get(dataset.id);
-  console.log(data.item);
 
   return data;
 }
@@ -31,7 +29,6 @@ function handleAdd(event) {
   event.preventDefault();
   const element = event.currentTarget;
   const dataset = element.dataset;
-  console.log("Adding", dataset);
 
   const data = getItemData(dataset);
   const { item, actor } = data;
@@ -67,12 +64,9 @@ function handleDelete(event) {
   event.preventDefault();
   const element = event.currentTarget;
   const dataset = element.dataset;
-  console.log("Deleting", dataset);
 
   const data = getItemData(dataset);
   const { item, actor } = data;
-
-  console.log(item, actor);
 
   const deleteFunctions = {
     deleteRoll: handleDeleteRoll,
@@ -96,10 +90,9 @@ function handleDeleteRoll(item, actor, index) {
 }
 
 function handleAdventureBalance(item, isGM) {
-  console.log("Balancing", item, isGM);
   const balances = [ "heroBalance", "GMBalance" ];
-  const balance = isGM ? balances[1] : balances[0];
-  const otherBalance = isGM ? balances[0] : balances[1];
+  const balance = isGM ? balances[0] : balances[1];
+  const otherBalance = isGM ? balances[1] : balances[0];
   item.system[balance]++;
   item.system[otherBalance]--;
 
@@ -115,7 +108,6 @@ function handleAdventureBalance(item, isGM) {
 }
 
 function validateCardRollOrigin (data) {
-  console.log("Validating card roll origin", data);
   if (data.item.isOwner) {
     return true;
   } else {
