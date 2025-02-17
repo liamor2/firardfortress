@@ -1,0 +1,291 @@
+{
+  "Actor": {
+    "types": ["PC", "NPC", "followerNPC"],
+    "templates": {
+      "mainStat": {
+        "stat": {
+          "STR": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          },
+          "DEX": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          },
+          "CON": {
+            "value": 10,
+            "mod": {
+              "num": 0,
+              "text": ""
+            }
+          },
+          "INT": {
+            "value": 10,
+            "mod": {
+              "num": 0,
+              "text": ""
+            }
+          },
+          "WIS": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          },
+          "CHA": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          },
+          "LUK": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          },
+          "WIL": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          },
+          "HON": {
+            "value": 10,
+            "mod": {
+              "num": 0
+            }
+          }
+        },
+        "HP": {
+          "max": 10,
+          "value": 10,
+          "temp": 0
+        },
+        "MP": {
+          "max": 10,
+          "value": 10,
+          "temp": 0
+        },
+        "SP": {
+          "max": 10,
+          "value": 10,
+          "temp": 0
+        },
+        "PA": {
+          "max": 0,
+          "value": 0,
+          "temp": 0
+        },
+        "MA": {
+          "max": 0,
+          "value": 0,
+          "temp": 0
+        },
+        "stance": ""
+      },
+      "subStat": {
+        "name": "",
+        "race": "",
+        "class": "",
+        "level": 1,
+        "speed": {
+          "base": 10
+        },
+        "weight": {
+          "base": 10,
+          "value": 0
+        }
+      },
+      "description": {
+        "biography": "",
+        "appearance": "",
+        "personality": "",
+        "background": "",
+        "notes": "",
+        "alignment": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "PC": {
+      "templates": ["mainStat", "subStat", "description"],
+      "guild": "",
+      "playerName": ""
+    },
+    "NPC": {
+      "templates": ["mainStat"]
+    },
+    "followerNPC": {
+      "templates": ["mainStat", "subStat", "description"],
+      "PCaffiliation": ""
+    }
+  },
+  "Item": {
+    "types": [
+      "Equipment",
+      "Weapon",
+      "Misc",
+      "Money",
+      "Proficiency",
+      "Spell",
+      "Skill",
+      "Hybrid",
+      "Transformation",
+      "Passif",
+      "AdventureDice",
+      "Language"
+    ],
+    "templates": {
+      "general": {
+        "name": "",
+        "description": ""
+      },
+      "items": {
+        "weight": 0,
+        "price": 0,
+        "quantity": 0,
+        "rarity": ""
+      },
+      "equippable": {
+        "equipped": false
+      },
+      "statLinked": {
+        "stat": "",
+        "value": 0
+      }
+    },
+    "Equipment": {
+      "templates": ["general", "items", "equippable"],
+      "isEquipment": true,
+      "PA": 0,
+      "MA": 0,
+      "equipmentType": ""
+    },
+    "Weapon": {
+      "templates": ["general", "items", "equippable", "statLinked"],
+      "weaponType": "",
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
+          "bonus": 0,
+          "damageType": ""
+        }
+      },
+      "range": {
+        "min": 0,
+        "max": 0,
+        "ranged": false
+      },
+      "isWeapon": true
+    },
+    "Misc": {
+      "templates": ["general", "items"],
+      "isMisc": true
+    },
+    "Money": {
+      "templates": ["general"],
+      "localization": "",
+      "value": 0,
+      "quantity": 0,
+      "isMoney": true
+    },
+    "Proficiency": {
+      "templates": ["general", "statLinked"],
+      "proficiencyType": "",
+      "isProficiency": true
+    },
+    "Spell": {
+      "templates": ["general", "statLinked"],
+      "spellType": "",
+      "mpCost": 0,
+      "range": {
+        "min": 0,
+        "max": 0,
+        "ranged": false
+      },
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
+          "bonus": 0,
+          "damageType": ""
+        }
+      },
+      "isSpell": true
+    },
+    "Skill": {
+      "templates": ["general", "statLinked"],
+      "skillType": "",
+      "spCost": 0,
+      "range": {
+        "min": 0,
+        "max": 0,
+        "ranged": false
+      },
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
+          "bonus": 0,
+          "damageType": ""
+        }
+      },
+      "isSkill": true
+    },
+    "Hybrid": {
+      "templates": ["general", "statLinked"],
+      "hybridType": "",
+      "mpCost": 0,
+      "spCost": 0,
+      "hpCost": 0,
+      "otherCost": "",
+      "range": {
+        "min": 0,
+        "max": 0,
+        "ranged": false
+      },
+      "roll": {
+        "0": {
+          "dice": 1,
+          "type": "d6",
+          "bonus": 0,
+          "damageType": ""
+        }
+      },
+      "isHybrid": true
+    },
+    "Transformation": {
+      "templates": ["general", "statLinked"],
+      "transformationType": "",
+      "mpCost": 0,
+      "spCost": 0,
+      "hpCost": 0,
+      "otherCost": "",
+      "isTransformation": true
+    },
+    "Passif": {
+      "templates": ["general"],
+      "passifType": "",
+      "isPassif": true
+    },
+    "AdventureDice": {
+      "group": "",
+      "heroBalance": 0,
+      "GMBalance": 0,
+      "isAdventureDice": true
+    },
+    "Language": {
+      "isLanguage": true,
+      "speaking": false,
+      "reading": false,
+      "writing": false
+    }
+  }
+}

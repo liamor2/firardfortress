@@ -1,1 +1,0 @@
-export default class BaseActor extends Actor {}

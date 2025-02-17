@@ -1,0 +1,45 @@
+{
+  "name": "firardfortressdev",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This is a system for Foundry VTT that allows you to play Firard Fortress, a custom tabletop RPG system created by [Liamor2](https://www.foundryvtt.com). Mainly inspired by the [Dungeons & Dragons](https://dnd.wizards.com/) system, and the Aventures system from [Joueur du Grenier](https://www.youtube.com/watch?v=jixB1pAJMqY&list=PLWmL9Ldoef0sDNxbi5wVyvoCw8uZmJR-F), this system is designed to be easy to use, and to be used by beginners and experienced players alike, with a high level of customization and liberty for the players and the game master.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "lint": "gulp lint",
+    "lint:fix": "gulp lint --fix",
+    "format": "gulp format",
+    "build": "gulp build",
+    "dev": "gulp dev",
+    "watch": "gulp watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "^12.331.3-beta",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "gulp": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint-new": "^2.4.0",
+    "gulp-if": "^3.0.0",
+    "gulp-prettier": "^6.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "prettier": "^3.5.1",
+    "sass": "^1.81.0",
+    "ts-loader": "^9.5.1",
+    "tslib": "^2.8.1",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "firardfortressdev": "file:",
+    "gulp-eslint-new": "^2.4.0"
+  }
+}

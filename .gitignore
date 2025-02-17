@@ -1,4 +1,17 @@
+# Ignore Visual Studio Code settings
 /.vscode/
+
+# Ignore test JSON files
 test.json
+
+# Ignore workspace files
 firardfortressdev.code-workspace
+
+# Ignore zip files
 firardfortressdev.zip
+
+# Ignore node modules
+node_modules/
+
+# Ignore build files
+dist/
