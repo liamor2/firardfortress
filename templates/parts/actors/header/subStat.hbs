@@ -27,7 +27,7 @@
           <select name="system.stance">
             <option {{#if (eq data.system.stance "" )}}selected{{/if}} disabled>{{localize "FI.Stance.UI.SelectPrompt"}}
             </option>
-            <option value="Offensive" {{#if (eq data.system.stance "Offensive" )}}selected{{/if}}>{{localize "FI.Stance.Options.Offensive"}}</option>
+            <option value="Aggressive" {{#if (eq data.system.stance "Aggressive" )}}selected{{/if}}>{{localize "FI.Stance.Options.Aggressive"}}</option>
             <option value="Defensive" {{#if (eq data.system.stance "Defensive" )}}selected{{/if}}>{{localize "FI.Stance.Options.Defensive"}}</option>
             <option value="Focus" {{#if (eq data.system.stance "Focus" )}}selected{{/if}}>{{localize "FI.Stance.Options.Focus"}}</option>
             <option value="Concentration" {{#if (eq data.system.stance "Concentration" )}}selected{{/if}}>{{localize "FI.Stance.Options.Concentration"}}</option>
@@ -70,7 +70,7 @@
           <select name="system.stance">
             <option {{#if (eq data.system.stance "" )}}selected{{/if}} disabled>{{localize "FI.Stance.UI.SelectPrompt"}}
             </option>
-            <option value="Offensive" {{#if (eq data.system.stance "Offensive" )}}selected{{/if}}>{{localize "FI.Stance.Options.Offensive"}}</option>
+            <option value="Aggressive" {{#if (eq data.system.stance "Aggressive" )}}selected{{/if}}>{{localize "FI.Stance.Options.Aggressive"}}</option>
             <option value="Defensive" {{#if (eq data.system.stance "Defensive" )}}selected{{/if}}>{{localize "FI.Stance.Options.Defensive"}}</option>
             <option value="Focus" {{#if (eq data.system.stance "Focus" )}}selected{{/if}}>{{localize "FI.Stance.Options.Focus"}}</option>
             <option value="Concentration" {{#if (eq data.system.stance "Concentration" )}}selected{{/if}}>{{localize "FI.Stance.Options.Concentration"}}</option>
@@ -90,7 +90,7 @@
             <input type="number" name="system.weight.max" value="{{data.system.weight.max}}" placeholder="{{localize "FI.System.Equipment.ItemMaxWeight"}}" />
             {{localize "FI.System.Misc.WeightUnit"}}
           </div>
-          <div class="bar weightBar">
+          <div class="barMax weightBar">
             <div class="barValue weightBarValue"></div>
           </div>
         </td>

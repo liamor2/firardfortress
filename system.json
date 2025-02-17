@@ -2,7 +2,7 @@
   "id": "firardfortress",
   "title": "Firard System: Fortress Version",
   "description": "A custom system inspired by many others like DnD5 or Aventures, this system is made to play with friends in a casual and narrative way.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "compatibility": {
     "minimum": "10",
     "verified": "12",
@@ -14,8 +14,8 @@
       "url": "https://foundryvtt.com"
     }
   ],
-  "esmodules": ["scripts/firardfortress.js", "greensock/esm/all.js"],
-  "styles": ["styles/styles.css"],
+  "esmodules": ["dist/firardFortressSystem.js", "greensock/esm/all.js"],
+  "styles": ["dist/firardFortressStyles.css"],
   "languages": [
     {
       "lang": "en",
@@ -28,9 +28,69 @@
       "path": "lang/fr.json"
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "NPC": {},
+      "PC": {
+        "htmlFields": [
+          "description.biography",
+          "description.appearance",
+          "description.personality",
+          "description.background",
+          "description.notes"
+        ]
+      },
+      "followerNPC": {
+        "htmlFields": [
+          "description.biography",
+          "description.appearance",
+          "description.personality",
+          "description.background",
+          "description.notes"
+        ]
+      }
+    },
+    "Item": {
+      "AdventureDice": {},
+      "Consumable": {
+        "htmlFields": ["description"]
+      },
+      "Equipment": {
+        "htmlFields": ["description"]
+      },
+      "Hybrid": {
+        "htmlFields": ["description"]
+      },
+      "Language": {},
+      "Misc": {
+        "htmlFields": ["description"]
+      },
+      "Money": {
+        "htmlFields": ["description"]
+      },
+      "Passif": {
+        "htmlFields": ["description"]
+      },
+      "Proficiency": {
+        "htmlFields": ["description"]
+      },
+      "Skill": {
+        "htmlFields": ["description"]
+      },
+      "Spell": {
+        "htmlFields": ["description"]
+      },
+      "Transformation": {
+        "htmlFields": ["description"]
+      },
+      "Weapon": {
+        "htmlFields": ["description"]
+      }
+    }
+  },
   "grid": {
     "distance": "2",
-    "units": "meters"
+    "units": "m"
   },
   "background": "systems/firardfortress/assets/background.png"
 }

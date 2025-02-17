@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "strict": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": "src",
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "types": ["node"],
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@league-of-foundry-developers/foundry-vtt-types",
+      "src/types"
+    ],
+    "paths": {
+      "@app/*": ["./*"],
+      "@foundry/*": ["../node_modules/@league-of-foundry-developers/foundry-vtt-types/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

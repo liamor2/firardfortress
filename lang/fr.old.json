@@ -10,7 +10,11 @@
         "Min": "Min",
         "Max": "Max",
         "Current": "Actuel",
-        "Temp": "Temporaire"
+        "Temp": "Temporaire",
+        "MPCost": "Coût en PM",
+        "SPCost": "Coût en PE",
+        "HPCost": "Coût en PV",
+        "OtherCost": "Autre coût"
       },
       "Gameplay": {
         "Level": "Niveau",
@@ -53,7 +57,8 @@
       },
       "Economy": {
         "TotalMoney": "Total de l'argent",
-        "TotalWorth": "Valeur des objets"
+        "TotalWorth": "Valeur des objets",
+        "SC": "PA"
       },
       "Abilities": {
         "Spell": "Sort",
@@ -179,6 +184,18 @@
       "Restoration": "Restauration",
       "Transmutation": "Transmutation"
     },
+    "SpellSheet": {
+      "SpellType": "Ecole de magie"
+    },
+    "Spell": {
+      "Cost": "PM",
+      "Stat": "Stat",
+      "Roll": "Lancer",
+      "NewSpell": "Nouveau sort",
+      "DefaultDamageType": "Feu",
+      "Image": "Img",
+      "RollResult": "Résultat du lancer"
+    },
     "SkillType": {
       "Label": {
         "Combat": "Les compétences de combat sont utilisées pour attaquer ou défendre en combat. Elles sont utilisées pour les attaques au corps à corps ou les attaques à distance.",
@@ -196,6 +213,23 @@
       "Tactical": "Tactique",
       "Weapon": "Arme"
     },
+    "SkillSheet": {
+      "SPCost": "Coût en PE",
+      "SkillType": "Type de compétence",
+      "SkillRange": "Portée",
+      "Rolls": "Lancers",
+      "Dice": "Nombre de dés",
+      "DiceType": "Type de dés",
+      "Bonus": "Bonus",
+      "DamageType": "Type de dégâts"
+    },
+    "Skill": {
+      "Cost": "PE",
+      "NewSkill": "Nouvelle compétence",
+      "DefaultDamageType": "Tranchant",
+      "Image": "Img",
+      "RollResult": "Résultat du lancer"
+    },
     "HybridType": {
       "Label": {
         "Physical": "Les compétences hybrides physiques sont des compétences qui se basent plus sur le combat, mais en y rajoutant un autre élément, par exemple l'utilisation d'une compétence d'épée après y avoir appliqué un enchantement.",
@@ -205,6 +239,24 @@
       "Physical": "Physique",
       "Magical": "Magique"
     },
+    "HybridSheet": {
+      "MPCost": "Coût en PM",
+      "SPCost": "Coût en PE",
+      "HPCost": "Coût en PV",
+      "OtherCost": "Autre coût",
+      "HybridType": "Type de compétence hybride",
+      "HybridRange": "Portée",
+      "Rolls": "Lancers",
+      "Dice": "Nombre de dés",
+      "DiceType": "Type de dés",
+      "Bonus": "Bonus",
+      "DamageType": "Type de dégâts"
+    },
+    "Hybrid": {
+      "Cost": "PM/PE/PV/Autre",
+      "NewHybrid": "Nouvelle compétence hybride",
+      "DefaultDamageType": "Psychique"
+    },
     "TransformationType": {
       "Label": {
         "Elemental": "Les transformation élémentaires ou forme élémentaire sont atteintes en sacrifiant un dés d'aventures sans obtenir son bonus pour obtenir de manière temporaire une forme ou les compétences sont décuplées.",
@@ -212,9 +264,20 @@
         "Class": "Les transformation de classe sont intrinsèque à la classe choisie par le personnage.",
         "Custom": "Vous avez sélectionné un type de transformation personnalisée, il n'y a donc pas de description détaillées disponible."
       },
-      "Elemental": "Élémentaire",
+      "Elemental": "Elémentaire",
       "Racial": "Raciale",
       "Class": "De classe"
+    },
+    "TransformationSheet": {
+      "MPCost": "Coût en PM",
+      "SPCost": "Coût en PE",
+      "HPCost": "Coût en PV",
+      "OtherCost": "Autre coût",
+      "TransformationType": "Type de compétence de transformation"
+    },
+    "Transformation": {
+      "Cost": "PM/PE/PV/Autre",
+      "NewTransformation": "Nouvelle transformation"
     },
     "PassifType": {
       "Label": {
@@ -227,6 +290,13 @@
       "Permanent": "Permanente",
       "Temporary": "Temporaire"
     },
+    "PassifSheet": {
+      "PassifType": "Type de compétence passive"
+    },
+    "Passif": {
+      "NewPassif": "Nouveau passif",
+      "Image": "Img"
+    },
     "ProficiencyType": {
       "Label": {
         "Physical": "Les dons physiques donnent des bonus lors d'actions liés aux statistiques physiques (FOR/CON/DEX).",
@@ -237,6 +307,57 @@
       "Physical": "Physique",
       "Social": "Social",
       "Mental": "Mental"
+    },
+    "ProficiencySheet": {
+      "ProficiencyType": "Type de don"
+    },
+    "Proficiency": {
+      "NewProficiency": "Nouveau don"
+    },
+    "MoneySheet": {
+      "Quantity": "Quantité",
+      "Value": "Valeur",
+      "Total": "Total",
+      "Localisation": "Localisation",
+      "ValueDescription": "PA"
+    },
+    "Money": {
+      "Quantity": "Quantité",
+      "Value": "Valeur",
+      "Total": "Total",
+      "Localisation": "Localisation",
+      "NewMoney": "Nouvelle monnaie",
+      "Image": "Img",
+      "Label": "Monnaie"
+    },
+    "MiscSheet": {
+      "Quantity": "Quantité",
+      "Price": "Prix",
+      "PriceUnit": "PA",
+      "Weight": "Poids",
+      "WeightUnit": "kg",
+      "Rarity": "Rareté"
+    },
+    "Misc": {
+      "Quantity": "Quantité",
+      "Value": "Price",
+      "PriceUnit": "PA",
+      "Weight": "Poids",
+      "WeightUnit": "kg",
+      "Rarity": "Rareté",
+      "NewMisc": "Nouvel objet",
+      "Image": "Img",
+      "Label": "Objet"
+    },
+    "Rarity": {
+      "Common": "Commun",
+      "Uncommon": "Peu commun",
+      "Special": "Spécial",
+      "Rare": "Rare",
+      "Unique": "Unique",
+      "Legendary": "Légendaire",
+      "Genesis": "Génèse",
+      "Artifact": "Artefact"
     },
     "WeaponType": {
       "Label": {
@@ -264,6 +385,31 @@
       "Spear": "Lance",
       "Staff": "Bâton",
       "Sword": "Épée"
+    },
+    "WeaponSheet": {
+      "Quantity": "Quantité",
+      "Price": "Prix",
+      "PriceUnit": "PA",
+      "Weight": "Poids",
+      "WeightUnit": "kg",
+      "Rarity": "Rareté",
+      "Damage": "Dégâts",
+      "DamageType": "Type de dégâts",
+      "WeaponRange": "Portée",
+      "RangeUnit": "m",
+      "WeaponType": "Type d'arme",
+      "isEquipped": "Équipé",
+      "Unit": "m",
+      "Rolls": "Lancers",
+      "Dice": "Nombre de dés",
+      "DiceType": "Type de dés",
+      "Bonus": "Bonus"
+    },
+    "Weapon": {
+      "Image": "Img",
+      "NewWeapon": "Nouvelle arme",
+      "Label": "Arme",
+      "DefaultDamageType": "Tranchant"
     },
     "Adventure": {
       "GroupLabel": "Groupe",
@@ -309,6 +455,29 @@
       "Necklace": "Collier",
       "Belt": "Ceinture",
       "Cloak": "Cape"
+    },
+    "EquipmentSheet": {
+      "Quantity": "Quantité",
+      "Price": "Prix",
+      "PriceUnit": "PA",
+      "Weight": "Poids",
+      "WeightUnit": "kg",
+      "Rarity": "Rareté",
+      "isEquipped": "Équipé",
+      "Unit": "m",
+      "EquipmentType": "Type d'équipement",
+      "ArmorGiven": "Armure",
+      "PArmorGiven": "Armure physique",
+      "MArmorGiven": "Armure magique"
+    },
+    "Equipment": {
+      "Image": "Img",
+      "Quantity": "Quantité",
+      "Roll": "Lancer",
+      "NewEquipment": "Nouvel équipement",
+      "ArmorGiven": "Armure",
+      "Type": "Type",
+      "Label": "Équipement"
     }
   }
 }
