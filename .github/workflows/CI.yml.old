@@ -1,0 +1,45 @@
+# name: Replace firardfortressdev with firardfortress
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   replace-and-commit:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+
+#     - name: Replace all instances of firardfortressdev
+#       run: |
+#         find . -type f -exec sed -i 's/firardfortressdev/firardfortress/g' {} +
+
+#     - name: Configure Git
+#       run: |
+#         git config --global user.name "github-actions[bot]"
+#         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+#     - name: Check for changes
+#       id: git_diff
+#       run: |
+#         if [ -z "$(git status --porcelain)" ]; then
+#           echo "No changes to commit"
+#           exit 0
+#         fi
+#         echo "Changes detected"
+
+#     - name: Commit and push changes excluding workflow files
+#       if: steps.git_diff.outputs.changes == 'true'
+#       run: |
+#         git add .
+#         git reset .github/workflows/CI.yml
+#         git commit -m "Replace firardfortressdev with firardfortress"
+#         git push
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
