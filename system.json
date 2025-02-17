@@ -1,5 +1,5 @@
 {
-  "id": "firardfortressdev",
+  "id": "firardfortress",
   "title": "Firard System: Fortress Version",
   "description": "A custom system inspired by many others like DnD5 or Aventures, this system is made to play with friends in a casual and narrative way.",
   "version": "2.0.1",
@@ -92,5 +92,5 @@
     "distance": "2",
     "units": "m"
   },
-  "background": "systems/firardfortressdev/assets/background.png"
+  "background": "systems/firardfortress/assets/background.png"
 }

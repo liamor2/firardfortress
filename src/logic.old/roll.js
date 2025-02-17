@@ -1,12 +1,16 @@
 import { loadTemplate } from "./loader.js";
-import { getItemData, getItemCardData, handleAdventureBalance, validateCardRollOrigin } from "./itemManager.js";
+import {
+  getItemData,
+  getItemCardData,
+  handleAdventureBalance,
+  validateCardRollOrigin,
+} from "./itemManager.js";
 import { getActorData } from "./actorManager.js";
 import { logToConsole } from "./helper.js";
 
 function handleRoll(event) {
   event.preventDefault();
   const dataset = event.currentTarget.dataset;
-  
 
   const data = fetchDataBasedOnSource(dataset);
   if (!data) return;
@@ -50,7 +54,9 @@ function processRoll(data, rollType) {
 }
 
 async function handleAttackRoll(data) {
-  const template = await loadTemplate("/systems/firardfortressdev/templates/parts/messages/attackRollMessages.hbs");
+  const template = await loadTemplate(
+    "/systems/firardfortress/templates/parts/messages/attackRollMessages.hbs"
+  );
 
   let rollsData = [];
   let finalRoll = 0;
@@ -64,11 +70,11 @@ async function handleAttackRoll(data) {
 
   let aggregateRoll = new Roll(totalFormula);
   await aggregateRoll.evaluate();
-  if (game.modules.get('dice-so-nice')?.active) {
+  if (game.modules.get("dice-so-nice")?.active) {
     game.dice3d.showForRoll(aggregateRoll);
   }
 
-  const dieTerms = aggregateRoll.terms.filter(term => term instanceof foundry.dice.terms.Die);
+  const dieTerms = aggregateRoll.terms.filter((term) => term instanceof foundry.dice.terms.Die);
 
   let rollIndex = 0;
   for (const key in data.item.system.roll) {
@@ -76,11 +82,16 @@ async function handleAttackRoll(data) {
     let numDice = roll.dice;
     let currentTypeResults = [];
     for (let i = 0; i < dieTerms.length; i++) {
-      if (dieTerms[i].number === numDice && dieTerms[i].faces === parseInt(roll.type.slice(1), 10)) {
-        currentTypeResults.push(...dieTerms[i].results.map(r => ({
-          result: r.result,
-          maxRoll: dieTerms[i].faces
-        })));
+      if (
+        dieTerms[i].number === numDice &&
+        dieTerms[i].faces === parseInt(roll.type.slice(1), 10)
+      ) {
+        currentTypeResults.push(
+          ...dieTerms[i].results.map((r) => ({
+            result: r.result,
+            maxRoll: dieTerms[i].faces,
+          }))
+        );
         break;
       }
     }
@@ -92,7 +103,7 @@ async function handleAttackRoll(data) {
       details: currentTypeResults,
       bonus: roll.bonus,
       maxRoll: parseInt(roll.type.slice(1), 10),
-      formula: `${numDice}${roll.type}+${roll.bonus}`
+      formula: `${numDice}${roll.type}+${roll.bonus}`,
     });
     finalRoll += rollSubTotal + roll.bonus;
   }
@@ -110,12 +121,12 @@ async function handleAttackRoll(data) {
     roll: finalRoll,
   };
 
-  if (game.modules.get('dice-so-nice')?.active) {
+  if (game.modules.get("dice-so-nice")?.active) {
     setTimeout(() => {
       ChatMessage.create(chatData);
-    } , 2000);
+    }, 2000);
   } else {
-  ChatMessage.create(chatData);
+    ChatMessage.create(chatData);
   }
 }
 
@@ -130,22 +141,31 @@ function handleItemRoll(data) {
         ok: {
           icon: '<i class="fas fa-check"></i>',
           label: `${game.i18n.localize("FI.Dialog.Ok")}`,
-          callback: () => prepareRoll(formula, data.actor, `${data.item.name}: ${game.i18n.localize(`FI.Stat.${data.item.system.stat}`)}`),
+          callback: () =>
+            prepareRoll(
+              formula,
+              data.actor,
+              `${data.item.name}: ${game.i18n.localize(`FI.Stat.${data.item.system.stat}`)}`
+            ),
         },
         cancel: {
           icon: '<i class="fas fa-times"></i>',
-          label: `${game.i18n.localize("FI.Dialog.Cancel")}`
+          label: `${game.i18n.localize("FI.Dialog.Cancel")}`,
         },
       },
       default: "cancel",
     }).render(true);
   } else {
-    prepareRoll(formula, data.actor, `${data.item.name}: ${game.i18n.localize(`FI.Stat.${data.item.system.stat}`)}`);
+    prepareRoll(
+      formula,
+      data.actor,
+      `${data.item.name}: ${game.i18n.localize(`FI.Stat.${data.item.system.stat}`)}`
+    );
   }
 }
 
 function prepareRoll(formula, actor, statName) {
-  if (game.settings.get("firardfortressdev", "enableAdvanceRolls")) {
+  if (game.settings.get("firardfortress", "enableAdvanceRolls")) {
     handleAdvancedRoll(formula, actor, statName);
   } else {
     handleSimpleRoll(formula, actor, statName);
@@ -153,12 +173,12 @@ function prepareRoll(formula, actor, statName) {
 }
 
 async function handleAdvancedRoll(formula, actor, statName) {
-  const template = await loadTemplate("/systems/firardfortressdev/templates/parts/messages/advancedRollDialog.hbs");
+  const template = await loadTemplate(
+    "/systems/firardfortress/templates/parts/messages/advancedRollDialog.hbs"
+  );
+  console.log("Advanced roll", formula, actor, statName);
   new Dialog({
-    title: `${game.i18n.localize("FI.System.AdvancedRolling")}: ${
-      actor.name
-    } - ${statName
-    }`,
+    title: `${game.i18n.localize("FI.System.AdvancedRolling")}: ${actor.name} - ${statName}`,
     content: template,
     buttons: {
       confirm: {
@@ -180,9 +200,9 @@ async function handleAdvancedRoll(formula, actor, statName) {
 function renderAdvancedRollMessage(formula, actor, statName, html) {
   const rollType = html.find("#rollType")[0].value;
   const rollCustom = rollType === "custom" ? html.find("#rollCustom")[0].value : "";
-  
+
   let rollExpression;
-  
+
   switch (rollType) {
     case "advantage":
       rollExpression = `2d20kh1${formula}`;
@@ -203,7 +223,7 @@ function renderAdvancedRollMessage(formula, actor, statName, html) {
 
   return roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: label
+    flavor: label,
   });
 }
 
@@ -213,7 +233,7 @@ function handleSimpleRoll(formula, actor, statName) {
 
   return roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: label
+    flavor: label,
   });
 }
 
@@ -226,8 +246,9 @@ function handleStatRoll(data) {
 }
 
 async function handleItemCardRoll(data) {
-
-  const template = await loadTemplate("/systems/firardfortressdev/templates/parts/messages/itemCard.hbs");
+  const template = await loadTemplate(
+    "/systems/firardfortress/templates/parts/messages/itemCard.hbs"
+  );
   const contentHtml = template({
     item: data.item,
     actor: data.actor,
@@ -238,8 +259,8 @@ async function handleItemCardRoll(data) {
     speaker: ChatMessage.getSpeaker({ actor: data.actor }),
     content: contentHtml,
     flags: {
-      customType: "itemCard"
-  }
+      customType: "itemCard",
+    },
   };
 
   ChatMessage.create(chatData);
@@ -255,10 +276,10 @@ async function handleAdventureRoll(data) {
     });
     return;
   }
-  let roll = new Roll('1d4');
+  let roll = new Roll("1d4");
   await roll.evaluate();
   const result = roll.result;
-  if ((result == 1 || result == 2 || result == 3 || result == 4)) {
+  if (result == 1 || result == 2 || result == 3 || result == 4) {
     adventureDiceMessageRender(roll, result, data);
   } else {
     adventureDiceMessageRender(roll, "Error", data);
@@ -275,8 +296,8 @@ function adventureDiceMessageRender(roll, result, data) {
     roll: roll,
   };
 
-  if (game.modules.get('dice-so-nice')?.active) {
-    game.dice3d.showForRoll(roll).then(displayed => ChatMessage.create(chatData));
+  if (game.modules.get("dice-so-nice")?.active) {
+    game.dice3d.showForRoll(roll).then((displayed) => ChatMessage.create(chatData));
   } else {
     ChatMessage.create(chatData);
   }
