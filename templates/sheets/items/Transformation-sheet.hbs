@@ -1,8 +1,8 @@
 <form class="{{cssClass}} item-sheet transformation" autocomplete="off">
   <header class="sheet-header">
-    {{> "systems/firardfortress/templates/parts/items/header.hbs"}}
+    {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
     <table class="sheet-main">
-      {{> "systems/firardfortress/templates/parts/items/typeInput.hbs"
+      {{> "systems/firardfortressdev/templates/parts/items/typeInput.hbs"
       cssClass="transformationType"
       labelKey="FI.TransformationSheet.TransformationType"
       divClass="transformationTypeDiv"
@@ -14,14 +14,14 @@
       localizePrefix="FI.TransformationType"
       fallbackLocalizationKey="FI.TransformationType.Label.Custom"
       data=data }}
-      {{> "systems/firardfortress/templates/parts/items/capacitiesCost.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/capacitiesCost.hbs"}}
     </table>
   </header>
 
   {{!-- Sheet Body --}}
   <main class="sheet-body">
     <section class="sheet-description">
-      {{> "systems/firardfortress/templates/parts/items/description.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
     </section>
   </main>
 </form>

@@ -20,7 +20,7 @@
               </tr>
               {{#each items as |weapon index|}}
                 {{#if weapon.system.isWeapon}}
-                  {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=weapon index=index actor=../this.actor._id}}
+                  {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=weapon index=index actor=../this.actor._id}}
                 {{/if}}
               {{/each}}
               <tr>
@@ -53,7 +53,7 @@
               </tr>
               {{#each items as |equipment index|}}
                 {{#if equipment.system.isEquipment}}
-                  {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=equipment index=index actor=../this.actor._id}}
+                  {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=equipment index=index actor=../this.actor._id}}
                 {{/if}}
               {{/each}}
               <tr>
@@ -83,7 +83,7 @@
               </tr>
               {{#each items as |misc index|}}
                 {{#if misc.system.isMisc}}
-                  {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=misc index=index actor=../this.actor._id}}
+                  {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=misc index=index actor=../this.actor._id}}
                 {{/if}}
               {{/each}}
               <tr>
@@ -112,7 +112,7 @@
               </tr>
               {{#each items as |money index|}}
                 {{#if money.system.isMoney}}
-                  {{> "systems/firardfortress/templates/parts/actors/tabs/itemRows.hbs" item=money index=index actor=../this.actor._id}}
+                  {{> "systems/firardfortressdev/templates/parts/actors/tabs/itemRows.hbs" item=money index=index actor=../this.actor._id}}
                 {{/if}}
               {{/each}}
               <tr>

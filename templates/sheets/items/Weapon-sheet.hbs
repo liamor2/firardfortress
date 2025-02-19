@@ -1,8 +1,8 @@
 <form class="{{cssClass}} item-sheet weapon" autocomplete="off">
   <header class="sheet-header">
-    {{> "systems/firardfortress/templates/parts/items/header.hbs"}}
+    {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
     <table class="sheet-header-2">
-      {{> "systems/firardfortress/templates/parts/items/typeInput.hbs"
+      {{> "systems/firardfortressdev/templates/parts/items/typeInput.hbs"
       cssClass="weaponType"
       labelKey="FI.WeaponSheet.WeaponType"
       divClass="weaponTypeDiv"
@@ -19,19 +19,19 @@
           <label>{{localize "FI.WeaponSheet.isEquipped"}}</label>
           <input type="checkbox" name="system.equipped" {{#if data.system.equipped}} checked {{/if}} />
         </td>
-        {{> "systems/firardfortress/templates/parts/items/ranged.hbs" data=data}}
-      {{> "systems/firardfortress/templates/parts/items/statInput.hbs" data=data}}
+        {{> "systems/firardfortressdev/templates/parts/items/ranged.hbs" data=data}}
+      {{> "systems/firardfortressdev/templates/parts/items/statInput.hbs" data=data}}
     </table>
   </header>
-  {{> "systems/firardfortress/templates/parts/items/navigation.hbs"}}
+  {{> "systems/firardfortressdev/templates/parts/items/navigation.hbs"}}
 
   {{!-- Sheet Body --}}
   <main class="sheet-body">
 
     {{!-- Main Tab --}}
     <section class="sheet-tab tab" data-tab="main">
-      {{> "systems/firardfortress/templates/parts/items/roll.hbs"}}
-      {{> "systems/firardfortress/templates/parts/items/details.hbs"
+      {{> "systems/firardfortressdev/templates/parts/items/roll.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/details.hbs"
       cssClassPrefix="weapon"
       quantityLabel="FI.System.Misc.Quantity"
       weightLabel="FI.WeaponSheet.Weight"
@@ -44,7 +44,7 @@
 
     {{!-- Description Tab --}}
     <section class="sheet-tab tab sheet-description" data-tab="description">
-      {{> "systems/firardfortress/templates/parts/items/description.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
     </section>
   </main>
 </form>

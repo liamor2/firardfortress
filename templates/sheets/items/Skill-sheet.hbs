@@ -1,8 +1,8 @@
 <form class="{{cssClass}} item-sheet skill" autocomplete="off">
   <header class="sheet-header">
-    {{> "systems/firardfortress/templates/parts/items/header.hbs"}}
+    {{> "systems/firardfortressdev/templates/parts/items/header.hbs"}}
     <table class="sheet-header-2">
-      {{> "systems/firardfortress/templates/parts/items/typeInput.hbs"
+      {{> "systems/firardfortressdev/templates/parts/items/typeInput.hbs"
       cssClass="skillType"
       labelKey="FI.SkillSheet.SkillType"
       divClass="skillTypeDiv"
@@ -14,22 +14,22 @@
       localizePrefix="FI.SkillType"
       fallbackLocalizationKey="FI.SkillType.Label.Custom"
       data=data }}
-      {{> "systems/firardfortress/templates/parts/items/capacitiesCost.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/capacitiesCost.hbs"}}
     </table>
   </header>
-  {{> "systems/firardfortress/templates/parts/items/navigation.hbs"}}
+  {{> "systems/firardfortressdev/templates/parts/items/navigation.hbs"}}
 
   {{!-- Sheet Body --}}
   <main class="sheet-body">
 
     {{!-- Main Tab --}}
     <section class="sheet-tab tab" data-tab="main">
-      {{> "systems/firardfortress/templates/parts/items/roll.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/roll.hbs"}}
     </section>
 
     {{!-- Description Tab --}}
     <section class="sheet-tab tab sheet-description" data-tab="description">
-      {{> "systems/firardfortress/templates/parts/items/description.hbs"}}
+      {{> "systems/firardfortressdev/templates/parts/items/description.hbs"}}
     </section>
   </main>
 </form>
