@@ -1,4 +1,4 @@
-# name: Replace firardfortressdev with firardfortress
+# name: Replace firardfortressdev with firardfortressdev
 
 # on:
 #   push:
@@ -18,7 +18,7 @@
 
 #     - name: Replace all instances of firardfortressdev
 #       run: |
-#         find . -type f -exec sed -i 's/firardfortressdev/firardfortress/g' {} +
+#         find . -type f -exec sed -i 's/firardfortressdev/firardfortressdev/g' {} +
 
 #     - name: Configure Git
 #       run: |
@@ -39,7 +39,7 @@
 #       run: |
 #         git add .
 #         git reset .github/workflows/CI.yml
-#         git commit -m "Replace firardfortressdev with firardfortress"
+#         git commit -m "Replace firardfortressdev with firardfortressdev"
 #         git push
 #       env:
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

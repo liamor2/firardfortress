@@ -55,7 +55,7 @@ function processRoll(data, rollType) {
 
 async function handleAttackRoll(data) {
   const template = await loadTemplate(
-    "/systems/firardfortress/templates/parts/messages/attackRollMessages.hbs"
+    "/systems/firardfortressdev/templates/parts/messages/attackRollMessages.hbs"
   );
 
   let rollsData = [];
@@ -165,7 +165,7 @@ function handleItemRoll(data) {
 }
 
 function prepareRoll(formula, actor, statName) {
-  if (game.settings.get("firardfortress", "enableAdvanceRolls")) {
+  if (game.settings.get("firardfortressdev", "enableAdvanceRolls")) {
     handleAdvancedRoll(formula, actor, statName);
   } else {
     handleSimpleRoll(formula, actor, statName);
@@ -174,7 +174,7 @@ function prepareRoll(formula, actor, statName) {
 
 async function handleAdvancedRoll(formula, actor, statName) {
   const template = await loadTemplate(
-    "/systems/firardfortress/templates/parts/messages/advancedRollDialog.hbs"
+    "/systems/firardfortressdev/templates/parts/messages/advancedRollDialog.hbs"
   );
   console.log("Advanced roll", formula, actor, statName);
   new Dialog({
@@ -247,7 +247,7 @@ function handleStatRoll(data) {
 
 async function handleItemCardRoll(data) {
   const template = await loadTemplate(
-    "/systems/firardfortress/templates/parts/messages/itemCard.hbs"
+    "/systems/firardfortressdev/templates/parts/messages/itemCard.hbs"
   );
   const contentHtml = template({
     item: data.item,

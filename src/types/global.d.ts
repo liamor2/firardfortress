@@ -16,7 +16,7 @@ declare global {
   }
 
   interface Game {
-    firardfortress: {
+    firardfortressdev: {
       config: typeof CONFIG;
     };
   }

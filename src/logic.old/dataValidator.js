@@ -65,8 +65,8 @@ function validateEquipmentData(data) {
     quantity: 1,
     rarity: "Common",
     equipped: false,
-    PA: 0,
-    MA: 0,
+    PhysicalArmor: 0,
+    MagicalArmor: 0,
     equipmentType: "",
   };
 

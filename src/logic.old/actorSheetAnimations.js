@@ -46,7 +46,7 @@ async function registerGlobalAnimations() {
 
 async function statBarAnimation(data, oldData, element) {
   oldData = oldData ? oldData.data : null;
-  const statList = ["HP", "MP", "SP", "PA", "MA"];
+  const statList = ["HealthPoints", "ManaPoints", "StaminaPoints", "PhysicalArmor", "MagicalArmor"];
 
   statList.forEach(stat => {
     const statMax = data.system[stat].max;

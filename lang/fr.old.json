@@ -2,11 +2,11 @@
   "FI": {
     "System": {
       "Attributes": {
-        "HP": "PV",
-        "MP": "PM",
-        "SP": "PE",
-        "PA": "AP",
-        "MA": "AM",
+        "HealthPoints": "PV",
+        "ManaPoints": "PM",
+        "StaminaPoints": "PE",
+        "PhysicalArmor": "AP",
+        "MagicalArmor": "AM",
         "Min": "Min",
         "Max": "Max",
         "Current": "Actuel",
@@ -58,7 +58,7 @@
       "Economy": {
         "TotalMoney": "Total de l'argent",
         "TotalWorth": "Valeur des objets",
-        "SC": "PA"
+        "SC": "PhysicalArmor"
       },
       "Abilities": {
         "Spell": "Sort",
@@ -319,7 +319,7 @@
       "Value": "Valeur",
       "Total": "Total",
       "Localisation": "Localisation",
-      "ValueDescription": "PA"
+      "ValueDescription": "PhysicalArmor"
     },
     "Money": {
       "Quantity": "Quantité",
@@ -333,7 +333,7 @@
     "MiscSheet": {
       "Quantity": "Quantité",
       "Price": "Prix",
-      "PriceUnit": "PA",
+      "PriceUnit": "PhysicalArmor",
       "Weight": "Poids",
       "WeightUnit": "kg",
       "Rarity": "Rareté"
@@ -341,7 +341,7 @@
     "Misc": {
       "Quantity": "Quantité",
       "Value": "Price",
-      "PriceUnit": "PA",
+      "PriceUnit": "PhysicalArmor",
       "Weight": "Poids",
       "WeightUnit": "kg",
       "Rarity": "Rareté",
@@ -389,7 +389,7 @@
     "WeaponSheet": {
       "Quantity": "Quantité",
       "Price": "Prix",
-      "PriceUnit": "PA",
+      "PriceUnit": "PhysicalArmor",
       "Weight": "Poids",
       "WeightUnit": "kg",
       "Rarity": "Rareté",
@@ -459,7 +459,7 @@
     "EquipmentSheet": {
       "Quantity": "Quantité",
       "Price": "Prix",
-      "PriceUnit": "PA",
+      "PriceUnit": "PhysicalArmor",
       "Weight": "Poids",
       "WeightUnit": "kg",
       "Rarity": "Rareté",

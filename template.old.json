@@ -61,27 +61,27 @@
             }
           }
         },
-        "HP": {
+        "HealthPoints": {
           "max": 10,
           "value": 10,
           "temp": 0
         },
-        "MP": {
+        "ManaPoints": {
           "max": 10,
           "value": 10,
           "temp": 0
         },
-        "SP": {
+        "StaminaPoints": {
           "max": 10,
           "value": 10,
           "temp": 0
         },
-        "PA": {
+        "PhysicalArmor": {
           "max": 0,
           "value": 0,
           "temp": 0
         },
-        "MA": {
+        "MagicalArmor": {
           "max": 0,
           "value": 0,
           "temp": 0
@@ -163,8 +163,8 @@
     "Equipment": {
       "templates": ["general", "items", "equippable"],
       "isEquipment": true,
-      "PA": 0,
-      "MA": 0,
+      "PhysicalArmor": 0,
+      "MagicalArmor": 0,
       "equipmentType": ""
     },
     "Weapon": {

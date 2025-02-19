@@ -7,7 +7,7 @@ import { handleRoll } from "./logic.old/roll.js";
 import { logToConsole } from "./logic.old/helper.js";
 
 async function preloadHandlebarsPartials() {
-  const basePath = "systems/firardfortress/templates/parts";
+  const basePath = "systems/firardfortressdev/templates/parts";
   const templates = [
     "actors/header/mainStat.hbs",
     "actors/header/subStat.hbs",
@@ -37,7 +37,7 @@ async function preloadHandlebarsPartials() {
 }
 
 Hooks.once("init", async function () {
-  console.log("firardfortress | Initializing firardfortress");
+  console.log("firardfortressdev | Initializing firardfortressdev");
 
   CONFIG.Actor.documentClass = firardFortressActor;
   CONFIG.Item.documentClass = firardFortressItem;
@@ -46,46 +46,46 @@ Hooks.once("init", async function () {
     {
       id: "Offensive",
       name: "Stance: Offensive",
-      img: "systems/firardfortress/assets/Offensive.png",
+      img: "systems/firardfortressdev/assets/Offensive.png",
       flags: { group: "stance", stanceId: "Offensive" },
     },
     {
       id: "Defensive",
       name: "Stance: Defensive",
-      img: "systems/firardfortress/assets/Defensive.png",
+      img: "systems/firardfortressdev/assets/Defensive.png",
       flags: { group: "stance", stanceId: "Defensive" },
     },
     {
       id: "Focus",
       name: "Stance: Focus",
-      img: "systems/firardfortress/assets/Focus.png",
+      img: "systems/firardfortressdev/assets/Focus.png",
       flags: { group: "stance", stanceId: "Focus" },
     },
     {
       id: "Concentration",
       name: "Stance: Concentration",
-      img: "systems/firardfortress/assets/Concentration.png",
+      img: "systems/firardfortressdev/assets/Concentration.png",
       flags: { group: "stance", stanceId: "Concentration" },
     },
     {
       id: "Elemental",
       name: "Stance: Elemental",
-      img: "systems/firardfortress/assets/Elemental.png",
+      img: "systems/firardfortressdev/assets/Elemental.png",
       flags: { group: "stance", stanceId: "Elemental" },
     }
   );
 
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("firardfortress", firardFortressActorSheet, {
+  Actors.registerSheet("firardfortressdev", firardFortressActorSheet, {
     makeDefault: true,
   });
-  Actors.registerSheet("firardfortress", firardFortressNPCSheet, {
+  Actors.registerSheet("firardfortressdev", firardFortressNPCSheet, {
     types: ["NPC"],
     makeDefault: true,
   });
 
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("firardfortress", firardFortressItemSheet, {
+  Items.registerSheet("firardfortressdev", firardFortressItemSheet, {
     makeDefault: true,
   });
 
@@ -98,16 +98,16 @@ Hooks.once("init", async function () {
     return type === "NPC" ? "" : 'colspan="4"';
   });
 
-  game.settings.register("firardfortress", "system", {
+  game.settings.register("firardfortressdev", "system", {
     name: "System",
     hint: "System",
     scope: "world",
     config: false,
     type: String,
-    default: "firardfortress",
+    default: "firardfortressdev",
   });
 
-  game.settings.register("firardfortress", "enableAdvanceRolls", {
+  game.settings.register("firardfortressdev", "enableAdvanceRolls", {
     name: "Enable Advanced Rolls",
     hint: "Enable for a higher level of automation and customization for your rolls.",
     scope: "client",
@@ -120,7 +120,7 @@ Hooks.once("init", async function () {
 });
 
 Hooks.once("ready", async function () {
-  console.log("firardfortress | Ready");
+  console.log("firardfortressdev | Ready");
 
   CONFIG.Combat.initiative = {
     formula: "@initiative.formula",

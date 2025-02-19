@@ -2,11 +2,11 @@
   "FI": {
     "System": {
       "Attributes": {
-        "HP": "PV",
-        "MP": "PM",
-        "SP": "PE",
-        "PA": "AP",
-        "MA": "AM",
+        "HealthPoints": "PV",
+        "ManaPoints": "PM",
+        "StaminaPoints": "PE",
+        "PhysicalArmor": "AP",
+        "MagicalArmor": "AM",
         "Min": "Min",
         "Max": "Max",
         "Current": "Actuel",

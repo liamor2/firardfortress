@@ -7,7 +7,7 @@ export abstract class FirardActorSheet extends ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       width: 800,
       height: 880,
-      classes: ["firardFortress", "sheet", "item"],
+      classes: ["firardfortressdev", "sheet", "item"],
       tabs: [
         {
           navSelector: ".sheet-tabs",

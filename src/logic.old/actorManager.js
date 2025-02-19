@@ -91,8 +91,8 @@ function handleAddItem(event) {
 
   const itemDataOverrides = {
     Equipment: {
-      PA: 0,
-      MA: 0,
+      PhysicalArmor: 0,
+      MagicalArmor: 0,
       equipped: false,
       equipmentType: `${game.i18n.localize("FI.Equipment.DefaultType")}`,
       ...itemTemplate,

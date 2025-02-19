@@ -74,7 +74,7 @@ export default class firardFortressActor extends Actor {
   }
 
   _prepareCharacterSubStats(systemData) {
-    const subStats = ["HP", "MP", "SP", "PA", "MA"];
+    const subStats = ["HealthPoints", "ManaPoints", "StaminaPoints", "PhysicalArmor", "MagicalArmor"];
     const items = this.items;
     subStats.forEach((index) => {
       const subStat = systemData[index];
@@ -97,12 +97,12 @@ export default class firardFortressActor extends Actor {
         temp = 0;
       }
 
-      if (value != max && temp > 0 && (index == "HP" || index == "MP" || index == "SP")) {
+      if (value != max && temp > 0 && (index == "HealthPoints" || index == "ManaPoints" || index == "StaminaPoints")) {
         while (value < max && temp > 0) {
           value = value + 1;
           temp = temp - 1;
         }
-      } else if (index == "PA" || index == "MA") {
+      } else if (index == "PhysicalArmor" || index == "MagicalArmor") {
         max = 0;
 
         items.forEach((item) => {
@@ -114,12 +114,12 @@ export default class firardFortressActor extends Actor {
 
       if (value > max) {
         value = max;
-      } else if (value < -max && index == "HP") {
+      } else if (value < -max && index == "HealthPoints") {
         value = -max;
-      } else if (value < 0 && index == ("MP" || "SP")) {
-        systemData.HP.value += value;
+      } else if (value < 0 && index == ("ManaPoints" || "StaminaPoints")) {
+        systemData.HealthPoints.value += value;
         value = 0;
-      } else if (value < 0 && index == ("PA" || "MA")) {
+      } else if (value < 0 && index == ("PhysicalArmor" || "MagicalArmor")) {
         value = 0;
       }
       if (temp < 0) {
@@ -127,7 +127,7 @@ export default class firardFortressActor extends Actor {
       }
 
       subStat.max = max;
-      subStat.min = index == "HP" ? -max : 0;
+      subStat.min = index == "HealthPoints" ? -max : 0;
       subStat.value = value;
       subStat.temp = temp;
       subStat.total = subStat.value + subStat.temp;

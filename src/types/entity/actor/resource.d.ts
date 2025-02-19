@@ -1,4 +1,9 @@
-export type ResourceType = "HP" | "MP" | "SP" | "PA" | "MA";
+export type ResourceType =
+  | "HealthPoints"
+  | "ManaPoints"
+  | "StaminaPoints"
+  | "PhysicalArmor"
+  | "MagicalArmor";
 export type ResourceModificationOptions = {
   temp?: number;
   max?: number;
@@ -41,10 +46,10 @@ export type ResourceFields = {
 
 export type BasicResources = {
   fields: {
-    HP?: number;
-    MP?: number;
-    SP?: number;
-    PA?: number;
-    MA?: number;
+    HealthPoints?: number;
+    ManaPoints?: number;
+    StaminaPoints?: number;
+    PhysicalArmor?: number;
+    MagicalArmor?: number;
   };
 };

@@ -51,15 +51,27 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
       }),
       resources: new SchemaField({
         basic: new SchemaField({
-          HP: createResourceField({
+          HealthPoints: createResourceField({
             initial: 10,
             allowNegative: true,
-            metadata: DEFAULT_RESOURCE_METADATA.HP,
+            metadata: DEFAULT_RESOURCE_METADATA.HealthPoints,
           }),
-          MP: createResourceField({ initial: 10, metadata: DEFAULT_RESOURCE_METADATA.MP }),
-          SP: createResourceField({ initial: 10, metadata: DEFAULT_RESOURCE_METADATA.SP }),
-          PA: createResourceField({ initial: 0, metadata: DEFAULT_RESOURCE_METADATA.PA }),
-          MA: createResourceField({ initial: 0, metadata: DEFAULT_RESOURCE_METADATA.MA }),
+          ManaPoints: createResourceField({
+            initial: 10,
+            metadata: DEFAULT_RESOURCE_METADATA.ManaPoints,
+          }),
+          StaminaPoints: createResourceField({
+            initial: 10,
+            metadata: DEFAULT_RESOURCE_METADATA.StaminaPoints,
+          }),
+          PhysicalArmor: createResourceField({
+            initial: 0,
+            metadata: DEFAULT_RESOURCE_METADATA.PhysicalArmor,
+          }),
+          MagicalArmor: createResourceField({
+            initial: 0,
+            metadata: DEFAULT_RESOURCE_METADATA.MagicalArmor,
+          }),
         }),
         custom: new SchemaField({}),
       }),
@@ -77,26 +89,26 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
   static migrateData(source: ActorSchema): ActorSchema {
     if (!source.resources?.fields) {
       const basicResourcesSchema = new SchemaField({
-        HP: createResourceField({
+        HealthPoints: createResourceField({
           initial: 10,
           allowNegative: true,
-          metadata: DEFAULT_RESOURCE_METADATA.HP,
+          metadata: DEFAULT_RESOURCE_METADATA.HealthPoints,
         }),
-        MP: createResourceField({
+        ManaPoints: createResourceField({
           initial: 10,
-          metadata: DEFAULT_RESOURCE_METADATA.MP,
+          metadata: DEFAULT_RESOURCE_METADATA.ManaPoints,
         }),
-        SP: createResourceField({
+        StaminaPoints: createResourceField({
           initial: 10,
-          metadata: DEFAULT_RESOURCE_METADATA.SP,
+          metadata: DEFAULT_RESOURCE_METADATA.StaminaPoints,
         }),
-        PA: createResourceField({
+        PhysicalArmor: createResourceField({
           initial: 0,
-          metadata: DEFAULT_RESOURCE_METADATA.PA,
+          metadata: DEFAULT_RESOURCE_METADATA.PhysicalArmor,
         }),
-        MA: createResourceField({
+        MagicalArmor: createResourceField({
           initial: 0,
-          metadata: DEFAULT_RESOURCE_METADATA.MA,
+          metadata: DEFAULT_RESOURCE_METADATA.MagicalArmor,
         }),
       });
       source.resources = new SchemaField({
@@ -117,7 +129,9 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
     const resources = source.resources.fields.basic as unknown as BasicResources;
     resources.fields = resources.fields ?? {};
 
-    (["HP", "MP", "SP", "PA", "MA"] as const).forEach((key) => migrateResource(resources, key));
+    (
+      ["HealthPoints", "ManaPoints", "StaminaPoints", "PhysicalArmor", "MagicalArmor"] as const
+    ).forEach((key) => migrateResource(resources, key));
 
     return {
       ...source,
@@ -182,13 +196,13 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
   // #region Resource Management Methods
   /**
    * Modifies a resource value with various options.
-   * @param {ResourceType} resource - The resource to modify (HP, MP, SP, etc.)
+   * @param {ResourceType} resource - The resource to modify (HealthPoints, ManaPoints, StaminaPoints, etc.)
    * @param {number | string} value - The value to set or modify (can be absolute number or relative change like '+5' or '-3')
    * @param {ResourceModificationOptions} [options={}] - Additional options for modification
    * @example
-   * actor.modifyResource('HP', '+5'); // Heals 5 HP
-   * actor.modifyResource('MP', -3); // Reduces MP by 3
-   * actor.modifyResource('SP', 10, { bypass: true }); // Sets SP to 10 bypassing validation
+   * actor.modifyResource('HealthPoints', '+5'); // Heals 5 HealthPoints
+   * actor.modifyResource('ManaPoints', -3); // Reduces ManaPoints by 3
+   * actor.modifyResource('StaminaPoints', 10, { bypass: true }); // Sets StaminaPoints to 10 bypassing validation
    */
   public modifyResource(
     resource: ResourceType,
@@ -213,7 +227,7 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
     };
 
     if (spillover < 0 && !options.silent) {
-      this.modifyResource("HP", spillover.toString(), { silent: true });
+      this.modifyResource("HealthPoints", spillover.toString(), { silent: true });
     }
 
     Object.assign(field, changes);
@@ -286,9 +300,9 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
         spillover: 0,
       };
 
-    const spillover = resource === "MP" || resource === "SP" ? value : 0;
+    const spillover = resource === "ManaPoints" || resource === "StaminaPoints" ? value : 0;
     return {
-      value: resource === "MP" || resource === "SP" ? 0 : value,
+      value: resource === "ManaPoints" || resource === "StaminaPoints" ? 0 : value,
       spillover,
     };
   }
