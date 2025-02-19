@@ -72,6 +72,10 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
             initial: 0,
             metadata: DEFAULT_RESOURCE_METADATA.MagicalArmor,
           }),
+          ActionPoints: createResourceField({
+            initial: 0,
+            metadata: DEFAULT_RESOURCE_METADATA.ActionPoints,
+          }),
         }),
         custom: new SchemaField({}),
       }),
@@ -110,6 +114,10 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
           initial: 0,
           metadata: DEFAULT_RESOURCE_METADATA.MagicalArmor,
         }),
+        ActionPoints: createResourceField({
+          initial: 0,
+          metadata: DEFAULT_RESOURCE_METADATA.ActionPoints,
+        }),
       });
       source.resources = new SchemaField({
         basic: basicResourcesSchema,
@@ -130,7 +138,14 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
     resources.fields = resources.fields ?? {};
 
     (
-      ["HealthPoints", "ManaPoints", "StaminaPoints", "PhysicalArmor", "MagicalArmor"] as const
+      [
+        "HealthPoints",
+        "ManaPoints",
+        "StaminaPoints",
+        "PhysicalArmor",
+        "MagicalArmor",
+        "ActionPoints",
+      ] as const
     ).forEach((key) => migrateResource(resources, key));
 
     return {

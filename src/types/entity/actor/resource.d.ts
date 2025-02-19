@@ -3,7 +3,8 @@ export type ResourceType =
   | "ManaPoints"
   | "StaminaPoints"
   | "PhysicalArmor"
-  | "MagicalArmor";
+  | "MagicalArmor"
+  | "ActionPoints";
 export type ResourceModificationOptions = {
   temp?: number;
   max?: number;
@@ -51,5 +52,6 @@ export type BasicResources = {
     StaminaPoints?: number;
     PhysicalArmor?: number;
     MagicalArmor?: number;
+    ActionPoints?: number;
   };
 };

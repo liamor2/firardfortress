@@ -10,6 +10,9 @@ export const RESOURCES = {
     PHYSICAL: "PhysicalArmor",
     MAGICAL: "MagicalArmor",
   },
+  GAMEPLAY: {
+    ACTIONS: "ActionPoints",
+  },
 };
 
 export const DEFAULT_RESOURCE_METADATA: Record<ResourceType, ResourceMetadata> = {
@@ -45,6 +48,13 @@ export const DEFAULT_RESOURCE_METADATA: Record<ResourceType, ResourceMetadata> =
     label: "Mental Actions",
     icon: "fas fa-brain",
     color: "#ff00ff",
+    recoveryRate: "1",
+    recoveryPeriod: "turn",
+  },
+  ActionPoints: {
+    label: "Action Points",
+    icon: "fas fa-bolt",
+    color: "#00ffff",
     recoveryRate: "1",
     recoveryPeriod: "turn",
   },
