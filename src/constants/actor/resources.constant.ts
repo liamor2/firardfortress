@@ -42,14 +42,14 @@ export const DEFAULT_RESOURCE_METADATA: Record<ResourceType, ResourceMetadata> =
     icon: "fas fa-fist-raised",
     color: "#ffff00",
     recoveryRate: "1",
-    recoveryPeriod: "turn",
+    recoveryPeriod: "never",
   },
   MagicalArmor: {
     label: "Mental Actions",
     icon: "fas fa-brain",
     color: "#ff00ff",
     recoveryRate: "1",
-    recoveryPeriod: "turn",
+    recoveryPeriod: "never",
   },
   ActionPoints: {
     label: "Action Points",

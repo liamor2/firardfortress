@@ -9,7 +9,6 @@ import {
 } from "@app/types";
 import { DEFAULT_RESOURCE_METADATA } from "@app/constants";
 import { createStatField, createResourceField, createBonusField } from "@app/utils";
-import { TypeDataModel } from "@foundry/src/foundry/common/abstract/module.mjs";
 // import { RollOptions } from "@app/types/generic/roll/roll.types";
 
 const { SchemaField, StringField, ArrayField } = foundry.data.fields;
@@ -163,8 +162,9 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
    * Prepares derived data for the actor.
    * @override
    */
-  prepareDerivedData(this: TypeDataModel.PrepareDerivedDataThis<this>): void {
+  prepareDerivedData(): void {
     super.prepareDerivedData();
+    (this as ActorData)._recalculateTotalModifier();
     console.log("prepareDerivedData", this);
   }
   // #endregion
@@ -370,6 +370,23 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
   }
 
   /**
+   * Recalculates the total modifier for all stats including bonuses.
+   * @protected
+   */
+  protected _recalculateTotalModifier(): void {
+    for (const stat of Object.keys(this.stats) as StatType[]) {
+      this._recalculateModifier(stat);
+
+      const bonus = this.getBonusModifier(stat);
+
+      if (bonus !== 0) {
+        const statField = this.stats[stat as keyof typeof this.stats];
+        statField.totalMod = (statField.mod ?? 0) + bonus;
+      }
+    }
+  }
+
+  /**
    * Gets a stat's modifier for use in roll formulas
    * @param {StatType} stat - The stat to get the modifier for
    * @returns {string} The modifier in a format usable in roll formulas
@@ -378,6 +395,71 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
     const statField = this.stats[stat as keyof typeof this.stats];
     const mod = statField.mod ?? 0;
     return mod >= 0 ? `+${mod}` : `${mod}`;
+  }
+  // #endregion
+
+  // #region Bonus Stat Management Methods
+  /**
+   * Adds a bonus stat to the actor.
+   * @param {BonusStatSchema} bonus - The bonus stat to add
+   * @example
+   * actor.addBonusStat({ name: 'Strength', value: 2 });
+   */
+  public addBonusStat(bonus: ActorSchema["bonus"]["element"]): void {
+    this.bonus.push({
+      ...bonus,
+      key: "",
+      stats: {} as {
+        STR: undefined;
+        DEX: undefined;
+        CON: undefined;
+        INT: undefined;
+        WIS: undefined;
+        WIL: undefined;
+        CHA: undefined;
+        LUK: undefined;
+        HON: undefined;
+      },
+      duration: null,
+      source: "",
+      isActive: undefined,
+      condition: undefined,
+      type: "additive",
+      priority: null,
+    });
+  }
+
+  /**
+   * Removes a bonus stat from the actor.
+   * @param {string} key - The key of the bonus stat to remove
+   * @example
+   * actor.removeBonusStat('Strength');
+   */
+  public removeBonusStat(key: string): void {
+    this.bonus = this.bonus.filter((bonus) => bonus.key !== key);
+  }
+
+  /**
+   * Updates a bonus stat with new data.
+   * @param {string} key - The key of the bonus stat to update
+   * @param {Partial<BonusStatSchema>} data - The new data to apply
+   * @example
+   * actor.updateBonusStat('Strength', { value: 3 });
+   */
+  public updateBonusStat(key: string, data: Partial<ActorSchema["bonus"]["element"]>): void {
+    const bonus = this.bonus.find((b) => b.key === key);
+    if (bonus) {
+      Object.assign(bonus, data);
+    }
+  }
+
+  /**
+   * Gets the total bonus modifier for a given stat.
+   * @param {StatType} stat - The stat to get the total bonus modifier for
+   * @returns {number} The total bonus modifier
+   */
+  public getBonusModifier(stat: StatType): number {
+    return this.bonus.reduce((total, bonus) => total + (bonus.stats[stat] ?? 0), 0);
   }
   // #endregion
 }

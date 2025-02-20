@@ -1,8 +1,7 @@
 import { ResourceFieldOption, ResourceMetadata, BaseNumberFieldOption } from "@app/types";
 import { BonusStatSchema } from "@app/interfaces";
-import { STAT_CHOICES } from "@app/constants";
 
-const { SchemaField, NumberField, StringField, ArrayField, ColorField } = foundry.data.fields;
+const { SchemaField, NumberField, StringField, ColorField } = foundry.data.fields;
 
 export const createBaseNumberField = (options: BaseNumberFieldOption) => {
   return new NumberField({
@@ -67,7 +66,18 @@ export const createBonusField = () => {
 
   return new SchemaField<BonusStatSchema>({
     key: new StringField({ required: true, initial: "" }),
-    stats: new ArrayField(new StringField({ required: true, choices: STAT_CHOICES })),
+    label: new StringField({ required: true, initial: "" }),
+    stats: new SchemaField({
+      STR: new NumberField({ required: false, initial: 0 }),
+      DEX: new NumberField({ required: false, initial: 0 }),
+      CON: new NumberField({ required: false, initial: 0 }),
+      INT: new NumberField({ required: false, initial: 0 }),
+      WIS: new NumberField({ required: false, initial: 0 }),
+      CHA: new NumberField({ required: false, initial: 0 }),
+      LUK: new NumberField({ required: false, initial: 0 }),
+      SPD: new NumberField({ required: false, initial: 0 }),
+      PER: new NumberField({ required: false, initial: 0 }),
+    }),
     value: new NumberField({ required: true, initial: 0 }),
     duration: new NumberField({ required: true, initial: -1, min: -1 }),
     source: new StringField({ required: true, initial: "" }),

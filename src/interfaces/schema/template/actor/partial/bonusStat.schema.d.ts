@@ -1,23 +1,22 @@
 import type {
-  ArrayField,
   StringField,
   NumberField,
+  SchemaField,
 } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/fields.d.mts";
+
+import type { BaseStatType } from "@app/types";
 
 export interface BonusStatSchema extends DataSchema {
   key: StringField<{
     required: true;
     initial: string;
   }>;
-  stats: ArrayField<
-    StringField<{
-      required: true;
-      choices: string[];
-    }>
-  >;
-  value: NumberField<{
+  label: StringField<{
     required: true;
-    initial: number;
+    initial: string;
+  }>;
+  stats: SchemaField<{
+    [K in BaseStatType]?: NumberField<{ required: false; initial: 0 }>;
   }>;
   duration: NumberField<{
     required: true;
