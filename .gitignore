@@ -15,3 +15,9 @@ node_modules/
 
 # Ignore build files
 dist/
+
+# Ignore package-lock.json
+package-lock.json
+
+# Ignore pnpm-lock.yaml
+pnpm-lock.yaml
