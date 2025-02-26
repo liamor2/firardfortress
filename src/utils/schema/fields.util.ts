@@ -1,7 +1,13 @@
-import { ResourceFieldOption, ResourceMetadata, BaseNumberFieldOption } from "@app/types";
+import {
+  ResourceMetadata,
+  BaseNumberFieldOption,
+  NumericFieldOptions,
+  ResourceType,
+} from "@app/types";
 import { BonusStatSchema } from "@app/interfaces";
+import { ResourceField } from "@app/utils/actor/resource/resourceField";
 
-const { SchemaField, NumberField, StringField, ColorField } = foundry.data.fields;
+const { SchemaField, NumberField, StringField } = foundry.data.fields;
 
 export const createBaseNumberField = (options: BaseNumberFieldOption) => {
   return new NumberField({
@@ -22,39 +28,12 @@ export const createStatField = (initial: number = 10) => {
 };
 
 export const createResourceField = (
-  options: ResourceFieldOption & { metadata?: ResourceMetadata }
-) => {
-  const min = options.allowNegative ? (options.min ?? Number.MIN_SAFE_INTEGER) : (options.min ?? 0);
-  const max = options.max ?? options.initial;
-
-  return new SchemaField({
-    value: createBaseNumberField({ initial: options.initial, min, max, required: true }),
-    temp: createBaseNumberField({ initial: 0, min, max }),
-    max: createBaseNumberField({ initial: max, min }),
-    min: createBaseNumberField({ initial: min }),
-    metadata: new SchemaField({
-      label: new StringField({ required: true, initial: options.metadata?.label ?? "" }),
-      icon: new StringField({ required: false, initial: options.metadata?.icon ?? "" }),
-      color: new ColorField({ required: false, initial: options.metadata?.color ?? "#000000" }),
-      stack: new foundry.data.fields.BooleanField({
-        required: false,
-        initial: options.metadata?.stack ?? false,
-      }),
-      maxStack: createBaseNumberField({
-        initial: options.metadata?.maxStack ?? 0,
-        required: false,
-      }),
-      recoveryRate: new StringField({
-        required: true,
-        initial: options.metadata?.recoveryRate ?? "never",
-      }),
-      recoveryPeriod: new StringField({
-        required: false,
-        initial: options.metadata?.recoveryPeriod ?? "never",
-        choices: ["turn", "round", "rest", "never"],
-      }),
-    }),
-  });
+  options: NumericFieldOptions & {
+    type: ResourceType;
+    metadata?: ResourceMetadata;
+  }
+): ResourceField => {
+  return new ResourceField(options);
 };
 
 export const createBonusField = () => {

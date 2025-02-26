@@ -3,13 +3,13 @@ export type BonusType = "additive" | "multiplicative" | "override";
 export type BonusStat = {
   key: string;
   stats: {
-    [K in BaseStatType]?: number;
+    [K in StatType]?: number;
   };
   label: string;
-  duration: number;
+  duration: number | null;
   source: string;
   isActive: boolean;
   condition?: string;
   type: BonusType;
-  priority: number;
+  priority: number | null;
 };

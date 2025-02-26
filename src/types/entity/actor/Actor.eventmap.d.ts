@@ -7,11 +7,10 @@ export type ActorEventMap = {
     oldValue: number;
     newValue: number;
   };
-  resourceChanged: {
+  resourceModified: {
     resource: string;
     oldValue: number;
     newValue: number;
-    type: "basic" | "custom";
     spillover?: number;
   };
   stanceChanged: {

@@ -4,7 +4,7 @@ import type {
   SchemaField,
 } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/fields.d.mts";
 
-import type { BaseStatType } from "@app/types";
+import type { StatType } from "@app/types";
 
 export interface BonusStatSchema extends DataSchema {
   key: StringField<{
@@ -16,7 +16,7 @@ export interface BonusStatSchema extends DataSchema {
     initial: string;
   }>;
   stats: SchemaField<{
-    [K in BaseStatType]?: NumberField<{ required: false; initial: 0 }>;
+    [K in StatType]?: NumberField<{ required: false; initial: 0 }>;
   }>;
   duration: NumberField<{
     required: true;

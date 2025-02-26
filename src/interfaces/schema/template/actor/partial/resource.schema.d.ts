@@ -1,9 +1,23 @@
 import type {
   NumberField,
   StringField,
-  booleanField,
+  BooleanField,
   ColorField,
 } from "@foundry/src/foundry/common/data/fields.mjs";
+
+export interface ResourceMetadataSchema extends DataSchema {
+  label: StringField<{ required: true; initial: string }>;
+  icon: StringField<{ required: false; initial: string }>;
+  color: ColorField<{ required: false; initial: Color }>;
+  stack: BooleanField<{ required: false; initial: boolean }>;
+  maxStack: NumberField<{ required: false; initial: number }>;
+  recoveryRate: StringField<{ required: true; initial: string }>;
+  recoveryPeriod: StringField<{
+    required: false;
+    initial: "never";
+    choices: ["turn", "round", "rest", "never"];
+  }>;
+}
 
 export interface ResourceSchema extends DataSchema {
   value: NumberField<{
@@ -30,17 +44,5 @@ export interface ResourceSchema extends DataSchema {
     min?: number;
     initial: number;
   }>;
-  metadata: SchemaField<{
-    label: StringField<{ required: true; initial: string }>;
-    icon: StringField<{ required: false; initial: string }>;
-    color: ColorField<{ required: false; initial: Color }>;
-    stack: booleanField<{ required: false; initial: false }>;
-    maxStack: NumberField<{ required: false; initial: 0 }>;
-    recoveryRate: StringField<{ required: true; initial: string }>;
-    recoveryPeriod: StringField<{
-      required: false;
-      initial: "never";
-      choices: ["turn", "round", "rest", "never"];
-    }>;
-  }>;
+  metadata: SchemaField<ResourceMetadataSchema>;
 }
