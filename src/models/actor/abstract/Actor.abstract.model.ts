@@ -195,6 +195,22 @@ export abstract class ActorData extends foundry.abstract.TypeDataModel<
     const statField = this.statManager.getStat(stat);
     return statField.totalMod;
   }
+
+  /**
+   * Gets the current main casting stat
+   * @returns The stat type that is set as main casting stat, or undefined if none is set
+   */
+  public get mainCastingStat(): StatType | undefined {
+    return this.statManager.getMainCastingStat();
+  }
+
+  /**
+   * Sets the main casting stat
+   * @param stat - The stat to set as main casting stat
+   */
+  public set mainCastingStat(stat: StatType) {
+    this.statManager.setMainCastingStat(stat);
+  }
   // #endregion
 
   // #region Bonus Management Methods

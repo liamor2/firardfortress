@@ -55,4 +55,36 @@ export class StatManager {
       statField.totalMod = statField.mod + (bonus ?? 0);
     }
   }
+
+  /**
+   * Gets the current main casting stat
+   * @returns The stat type that is set as main casting stat, or undefined if none is set
+   */
+  public getMainCastingStat(): StatType | undefined {
+    for (const stat of Object.keys(this.actor.stats) as StatType[]) {
+      const statField = this.getStat(stat);
+      if (statField.isMainCastingStat) {
+        return stat;
+      }
+    }
+    return undefined;
+  }
+
+  /**
+   * Sets the main casting stat
+   * @param stat - The stat to set as main casting stat
+   */
+  public setMainCastingStat(stat: StatType): void {
+    // First, clear any existing main casting stat
+    for (const existingStat of Object.keys(this.actor.stats) as StatType[]) {
+      const statField = this.getStat(existingStat);
+      if (statField.isMainCastingStat) {
+        statField.isMainCastingStat = false;
+      }
+    }
+
+    // Set the new main casting stat
+    const statField = this.getStat(stat);
+    statField.isMainCastingStat = true;
+  }
 }

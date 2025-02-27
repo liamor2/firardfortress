@@ -20,4 +20,11 @@ export type StatFieldData = {
   value: number;
   mod: number;
   totalMod: number;
+  isMainCastingStat?: boolean;
 };
+
+export interface StatPointsConfig {
+  maxPoints: number;
+  bonusPoints: number;
+  spentPoints: number;
+}

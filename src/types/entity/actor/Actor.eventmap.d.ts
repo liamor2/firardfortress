@@ -17,4 +17,8 @@ export type ActorEventMap = {
     oldStance: string;
     newStance: string;
   };
+  stanceResourcesApplied: {
+    stance: string;
+    effects: Record<string, number>;
+  };
 };

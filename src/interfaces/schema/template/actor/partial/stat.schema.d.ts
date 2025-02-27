@@ -1,4 +1,4 @@
-import type { NumberField } from "@foundry/src/foundry/common/data/fields.mjs";
+import type { NumberField, BooleanField } from "@foundry/src/foundry/common/data/fields.mjs";
 
 export interface StatSchema extends DataSchema {
   value: NumberField<{
@@ -17,5 +17,9 @@ export interface StatSchema extends DataSchema {
     required: boolean;
     integer: boolean;
     initial: number;
+  }>;
+  isMainCastingStat?: BooleanField<{
+    required: boolean;
+    initial: boolean;
   }>;
 }
