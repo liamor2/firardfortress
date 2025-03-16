@@ -1,13 +1,8 @@
-import {
-  ResourceMetadata,
-  BaseNumberFieldOption,
-  NumericFieldOptions,
-  ResourceType,
-} from "@app/types";
+import { ResourceMetadata, NumericFieldOptions, ResourceType } from "@app/types";
 import { BonusStatSchema } from "@app/interfaces";
-import { ResourceField } from "@app/utils/actor/resource/resourceField";
+import { ResourceField } from "@app/utils";
 
-const { SchemaField, NumberField, StringField } = foundry.data.fields;
+const { SchemaField, NumberField, StringField, HTMLField } = foundry.data.fields;
 
 export const createBaseNumberField = (options: BaseNumberFieldOption) => {
   return new NumberField({
@@ -64,5 +59,48 @@ export const createBonusField = () => {
     condition: new StringField({ required: false, initial: "" }),
     type: new StringField({ required: true, initial: "additive", choices: bonusTypes }),
     priority: new NumberField({ required: true, initial: 0 }),
+  });
+};
+
+export const createNumericField = (options: {
+  required?: boolean;
+  integer?: boolean;
+  initial?: number;
+  min?: number;
+  max?: number;
+}) => {
+  return new NumberField({
+    required: options.required ?? true,
+    integer: options.integer ?? true,
+    initial: options.initial ?? 0,
+    min: options.min,
+    max: options.max,
+  });
+};
+
+export const createTextField = (options: {
+  required?: boolean;
+  initial?: string;
+  choices?: string[];
+}) => {
+  return new StringField({
+    required: options.required ?? true,
+    initial: options.initial ?? "",
+    choices: options.choices,
+  });
+};
+
+export const createHTMLField = (initial: string = "") => {
+  return new HTMLField({
+    required: true,
+    initial,
+  });
+};
+
+export const createPointsField = () => {
+  return new SchemaField({
+    max: createNumericField({ initial: 0, min: 0 }),
+    bonus: createNumericField({ initial: 0, min: 0 }),
+    spent: createNumericField({ initial: 0, min: 0 }),
   });
 };

@@ -1,4 +1,4 @@
-/// <reference types="@league-of-foundry-developers/foundry-vtt-types" />
+import { DataField } from "@foundry/src/foundry/common/data/fields.mjs";
 
 declare global {
   namespace ClientSettings {
@@ -19,6 +19,36 @@ declare global {
     firardfortressdev: {
       config: typeof CONFIG;
     };
+  }
+
+  interface DataSchema {
+    [key: string]: DataField;
+  }
+
+  interface StringFieldOptions {
+    required?: boolean;
+    initial?: string;
+    choices?: string[] | readonly string[];
+  }
+
+  interface NumberFieldOptions {
+    required?: boolean;
+    initial?: number;
+    min?: number;
+    max?: number;
+    integer?: boolean;
+    positive?: boolean;
+    choices?: number[] | readonly number[];
+  }
+
+  interface BooleanFieldOptions {
+    required?: boolean;
+    initial?: boolean;
+  }
+
+  interface ColorFieldOptions {
+    required?: boolean;
+    initial?: string;
   }
 }
 

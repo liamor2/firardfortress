@@ -1,5 +1,5 @@
 import { ActorData } from "@app/models";
-import { StatType, StatFieldData } from "@app/types";
+import { StatType, StatData } from "@app/types";
 
 export class StatManager {
   constructor(private readonly actor: ActorData) {}
@@ -9,8 +9,8 @@ export class StatManager {
    * @param stat - The stat to retrieve
    * @returns The stat data
    */
-  public getStat(stat: StatType): StatFieldData {
-    return this.actor.stats[stat] as StatFieldData;
+  public getStat(stat: StatType): StatData {
+    return this.actor.stats[stat];
   }
 
   /**

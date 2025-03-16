@@ -1,4 +1,4 @@
-export * from "./common/fields.d";
+export * from "./common/base.d";
 export * from "./entity/actor/Actor.eventmap.d";
 export * from "./entity/actor/actor.d";
 export * from "./entity/actor/bonus.d";

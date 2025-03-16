@@ -1,4 +1,4 @@
-export type ActorEventMap = {
+export interface ActorEventMap {
   resourceDepleted: {
     resource: string;
   };
@@ -21,4 +21,4 @@ export type ActorEventMap = {
     stance: string;
     effects: Record<string, number>;
   };
-};
+}

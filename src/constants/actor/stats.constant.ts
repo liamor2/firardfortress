@@ -37,3 +37,5 @@ export const SOCIAL_STATS = ["CHA", "LUK", "HON"] as const;
 export const ACTION_STATS = ["STR", "INT", "CHA"] as const;
 export const PRECISION_STATS = ["DEX", "WIS", "LUK"] as const;
 export const RESISTANCE_STATS = ["CON", "WIL", "HON"] as const;
+
+export const BASE_STATS_POINTS = 90;
